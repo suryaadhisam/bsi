@@ -3,7 +3,7 @@
     <div class="container">
 
       <!-- Brand -->
-      <a class="navbar-brand" href="https://mdbootstrap.com/material-design-for-bootstrap/" target="_blank">
+      <a class="navbar-brand" href="<?php echo site_url('Welcome'); ?>" target="_blank">
         <strong>BSA</strong>
       </a>
 
@@ -19,27 +19,27 @@
         <!-- Left -->
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="#">Home
+            <a class="nav-link" href="<?php echo site_url('Welcome'); ?>">Home
               <span class="sr-only">(current)</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="https://mdbootstrap.com/material-design-for-bootstrap/" target="_blank">About</a>
+            <a class="nav-link" href="<?php echo site_url('About'); ?>" target="_blank">About</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="https://mdbootstrap.com/getting-started/" target="_blank">Services</a>
+            <a class="nav-link" href="<?php echo site_url('Services'); ?>" target="_blank">Services</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="https://mdbootstrap.com/bootstrap-tutorial/" target="_blank">Booking</a>
+            <a class="nav-link" href="<?php echo site_url('Boking'); ?>" target="_blank">Booking</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="https://mdbootstrap.com/bootstrap-tutorial/" target="_blank">FAQ</a>
+            <a class="nav-link" href="<?php echo site_url('F.A.Q'); ?>" target="_blank">F.A.Q</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="https://mdbootstrap.com/bootstrap-tutorial/" target="_blank">Comment</a>
+            <a class="nav-link" href="<?php echo site_url('Comment'); ?>" target="_blank">Comment</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="https://mdbootstrap.com/bootstrap-tutorial/" target="_blank">Contact</a>
+            <a class="nav-link" href="<?php echo site_url('Contact'); ?>" target="_blank">Contact</a>
           </li>
         </ul>
 

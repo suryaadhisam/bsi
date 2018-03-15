@@ -364,7 +364,7 @@
         </ul>
         <br>
         <!-- Tab panels -->
-        <div class="tab-content card">
+        <div class="tab-content card" style="padding:5px 5px 20px 5px;">
             <div class="tab-pane fade in show active" id="panel1" role="tabpanel">
               <div class="row">
                   <div class="col-md-6 mb-4">
@@ -581,8 +581,6 @@
             </div>
           </div>
         </div>
-
-
       </section>
 
     </div>

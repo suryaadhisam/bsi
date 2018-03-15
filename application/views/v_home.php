@@ -72,19 +72,16 @@
                   }
                 </style>
                 <li class="nav-item">
-                    <a class="nav-link active" data-toggle="tab" href="#panel1" role="tab">ATV</a>
+                    <a class="nav-link active" data-toggle="tab" href="#panel1" role="tab"><i class"fa fa-motorcycle"></i> ATV Ride</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="#panel2" role="tab">Perang</a>
+                    <a class="nav-link" data-toggle="tab" href="#panel2" role="tab"><i class="fa fa-bicycle"></i> Cycling</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="#panel3" role="tab">Ayunan</a>
+                    <a class="nav-link" data-toggle="tab" href="#panel3" role="tab">River Tubing</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="#panel4" role="tab">Tebing</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="#panel5" role="tab">Makan</a>
+                    <a class="nav-link" data-toggle="tab" href="#panel4" role="tab">Spa & Refleksi</a>
                 </li>
             </ul>
             <!-- Tab panels -->
@@ -120,14 +117,6 @@
                 <div class="tab-pane fade" id="panel4" role="tabpanel">
                     <br>
                     <p>yyLorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil odit magnam minima, soluta doloribus
-                        reiciendis molestiae placeat unde eos molestias. Quisquam aperiam, pariatur. Tempora, placeat ratione
-                        porro voluptate odit minima.</p>
-                </div>
-                <!--/.Panel 3-->
-                <!--Panel 3-->
-                <div class="tab-pane fade" id="panel5" role="tabpanel">
-                    <br>
-                    <p>zzLorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil odit magnam minima, soluta doloribus
                         reiciendis molestiae placeat unde eos molestias. Quisquam aperiam, pariatur. Tempora, placeat ratione
                         porro voluptate odit minima.</p>
                 </div>

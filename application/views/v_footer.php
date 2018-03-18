@@ -1,38 +1,86 @@
 <footer class="page-footer text-center font-small mt-4 wow fadeIn">
 
-  <div class="pt-4">
-    <a class="btn btn-outline-white" href="https://mdbootstrap.com/getting-started/" target="_blank" role="button">Download MDB
-      <i class="fa fa-download ml-2"></i>
-    </a>
-    <a class="btn btn-outline-white" href="https://mdbootstrap.com/bootstrap-tutorial/" target="_blank" role="button">Start free tutorial
-      <i class="fa fa-graduation-cap ml-2"></i>
-    </a>
-  </div>
+  <div class="container text-center text-md-left">
+        <div class="row">
+
+            <!--First column-->
+            <div class="col-md-4">
+                <h5 class="text-uppercase mb-4 mt-3 font-weight-bold">ABOUT US</h5>
+                <p>Here you can use rows and columns here to organize your footer content. Lorem ipsum dolor sit
+                    amet, consectetur adipisicing elit.</p>
+                <button type="button" class="btn btn-warning btn-sm">Read More</button>
+            </div>
+            <!--/.First column-->
+
+            <hr class="clearfix w-100 d-md-none">
+
+            <!--Second column-->
+            <div class="col-md-2 mx-auto">
+                <h5 class="text-uppercase mb-4 mt-3 font-weight-bold">HELP</h5>
+                <ul class="list-unstyled">
+                    <li>
+                        <a href="#!">Confirmation</a>
+                    </li>
+                    <li>
+                        <a href="#!">Complaint</a>
+                    </li>
+                    <li>
+                        <a href="#!">Review</a>
+                    </li>
+                    <li>
+                        <a href="#!">Term & Condition</a>
+                    </li>
+                </ul>
+            </div>
+            <!--/.Second column-->
+
+            <hr class="clearfix w-100 d-md-none">
+
+            <!--Third column-->
+            <div class="col-md-2 mx-auto">
+                <h5 class="text-uppercase mb-4 mt-3 font-weight-bold">CONTACT US</h5>
+                <ul class="list-unstyled">
+                    <li>
+                        <a href="#!">Alamat</a>
+                    </li>
+                    <li>
+                        <a href="#!">No Hp</a>
+                    </li>
+                    <li>
+                        <a href="#!">Email</a>
+                    </li>
+                </ul>
+            </div>
+            <!--/.Third column-->
+
+            <hr class="clearfix w-100 d-md-none">
+
+            <!--Fourth column-->
+            <div class="col-md-2 mx-auto">
+                <h5 class="text-uppercase mb-4 mt-3 font-weight-bold">FIND US</h5>
+                <ul class="list-unstyled">
+                    <li>
+                        <a href="#!">Dini misi google maps</a>
+                    </li>
+                </ul>
+            </div>
+            <!--/.Fourth column-->
+        </div>
+    </div>
+  
   <hr class="my-4">
   <div class="pb-4">
-    <a href="https://www.facebook.com/mdbootstrap" target="_blank">
-      <i class="fa fa-facebook mr-3"></i>
+    <a href="#" target="_blank">
+      <i class="fa fa-facebook mr-3 fa-3x"></i>
     </a>
-    <a href="https://twitter.com/MDBootstrap" target="_blank">
-      <i class="fa fa-twitter mr-3"></i>
+    <a href="#" target="_blank">
+      <i class="fa fa-instagram mr-3 fa-3x"></i>
     </a>
-    <a href="https://www.youtube.com/watch?v=7MUISDJ5ZZ4" target="_blank">
-      <i class="fa fa-youtube mr-3"></i>
+    <a href="#" target="_blank">
+      <i class="fa fa-twitter mr-3 fa-3x"></i>
     </a>
-    <a href="https://plus.google.com/u/0/b/107863090883699620484" target="_blank">
-      <i class="fa fa-google-plus mr-3"></i>
-    </a>
-    <a href="https://dribbble.com/mdbootstrap" target="_blank">
-      <i class="fa fa-dribbble mr-3"></i>
-    </a>
-    <a href="https://pinterest.com/mdbootstrap" target="_blank">
-      <i class="fa fa-pinterest mr-3"></i>
-    </a>
-    <a href="https://github.com/mdbootstrap/bootstrap-material-design" target="_blank">
-      <i class="fa fa-github mr-3"></i>
-    </a>
-    <a href="http://codepen.io/mdbootstrap/" target="_blank">
-      <i class="fa fa-codepen mr-3"></i>
+    <a href="#" target="_blank">
+      <i class="fa fa-whatsapp mr-3 fa-3x"></i>
     </a>
   </div>
   <div class="footer-copyright py-3">

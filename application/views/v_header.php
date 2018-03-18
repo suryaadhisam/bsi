@@ -41,27 +41,9 @@
             <a class="nav-link" href="<?php echo site_url('Comments'); ?>">Comment</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="<?php echo site_url('Contact'); ?>">Contact</a>
+            <a class="nav-link" href="<?php echo site_url('Contact_Us'); ?>">Contact Us</a>
           </li>
         </ul>
-
-        <!-- Right -->
-        <!-- <ul class="navbar-nav nav-flex-icons">
-          <li class="nav-item">
-            <a href="https://www.facebook.com/mdbootstrap" class="nav-link" target="_blank">
-              <i class="fa fa-facebook"></i>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="https://twitter.com/MDBootstrap" class="nav-link" target="_blank">
-              <i class="fa fa-twitter"></i>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="https://github.com/mdbootstrap/bootstrap-material-design" class="nav-link border border-light rounded"
-              target="_blank">
-              <i class="fa fa-github mr-2"></i>MDB GitHub
-            </a>
           </li>
         </ul> -->
 

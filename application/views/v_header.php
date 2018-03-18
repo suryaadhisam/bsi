@@ -44,7 +44,7 @@
         </ul>
 
         <!-- Right -->
-        <ul class="navbar-nav nav-flex-icons">
+        <!-- <ul class="navbar-nav nav-flex-icons">
           <li class="nav-item">
             <a href="https://www.facebook.com/mdbootstrap" class="nav-link" target="_blank">
               <i class="fa fa-facebook"></i>
@@ -61,7 +61,7 @@
               <i class="fa fa-github mr-2"></i>MDB GitHub
             </a>
           </li>
-        </ul>
+        </ul> -->
 
       </div>
 

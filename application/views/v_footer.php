@@ -38,16 +38,16 @@
 
             <!--Third column-->
             <div class="col-md-2 mx-auto">
-                <h5 class="text-uppercase mb-4 mt-3 font-weight-bold">CONTACT US</h5>
+                <h5 class="text-uppercase mb-4 mt-3 font-weight-bold">JOIN US</h5>
                 <ul class="list-unstyled">
                     <li>
-                        <a href="#!">Alamat</a>
+                        <a href="#!">Caries</a>
                     </li>
                     <li>
-                        <a href="#!">No Hp</a>
+                        <a href="#!">Collaboration</a>
                     </li>
                     <li>
-                        <a href="#!">Email</a>
+                        <a href="#!">Announcement</a>
                     </li>
                 </ul>
             </div>
@@ -57,12 +57,24 @@
 
             <!--Fourth column-->
             <div class="col-md-2 mx-auto">
-                <h5 class="text-uppercase mb-4 mt-3 font-weight-bold">FIND US</h5>
-                <ul class="list-unstyled">
-                    <li>
-                        <a href="#!">Dini misi google maps</a>
-                    </li>
-                </ul>
+                <h5 class="text-uppercase mb-4 mt-3 font-weight-bold">POLLING</h5>
+                <P>How do you feel about our service?</p>
+                <!--Radio group-->
+                    <div class="form-check">
+                        <input class="form-check-input" name="group100" type="radio" id="radio100">
+                        <label class="form-check-label" for="radio100">Very Good</label>
+                    </div>
+
+                    <div class="form-check">
+                        <input class="form-check-input" name="group100" type="radio" id="radio101">
+                        <label class="form-check-label" for="radio101">Good</label>
+                    </div>
+
+                    <div class="form-check">
+                        <input class="form-check-input" name="group100" type="radio" id="radio102">
+                        <label class="form-check-label" for="radio102">Not Bad</label>
+                    </div>
+                <!--Radio group-->
             </div>
             <!--/.Fourth column-->
         </div>

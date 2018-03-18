@@ -12,5 +12,7 @@ class Welcome extends CI_Controller {
 		$this->load->view('v_carousel');
 		$this->load->view('v_home');
 		$this->load->view('v_footer');
+
+		// tes komen malu
 	}
 }

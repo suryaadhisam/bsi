@@ -768,12 +768,11 @@ h3{
     // Animations initialization
     new WOW().init();
   </script>
-<<<<<<< HEAD
+  
   <script language="JavaScript" type="text/javascript">
   TrustLogo("https://balisunsetadventure.com/assets/img/comodo_secure_seal_76x26_transp.png", "CL1", "none");
   </script>
   <a  href="https://ssl.comodo.com" id="comodoTL">Comodo SSL</a>
-=======
   <script>
     // get today value
     var date = new Date();
@@ -790,7 +789,6 @@ h3{
 
     document.getElementById('theDate').value = today;
   </script>
->>>>>>> c01ddda0706b42ee3bb0fd99d66d4ecb8a5d364e
 </body>
 
 </html>

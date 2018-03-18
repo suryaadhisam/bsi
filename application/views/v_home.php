@@ -373,67 +373,61 @@ h3{
       <!--Section: Main features & Quick Start-->
       <section>
 
-        <h3 class="h3 text-center mb-5">About MDB</h3>
+        <!-- <h3 class="h3 text-center mb-5">Book Now!</h3> -->
 
         <!--Grid row-->
         <div class="row wow fadeIn">
 
           <!--Grid column-->
-          <div class="col-lg-6 col-md-12 px-4">
+          <div class="col-lg-12 col-md-12 px-4">
 
-            <!--First row-->
-            <div class="row">
-              <div class="col-1 mr-3">
-                <i class="fa fa-code fa-2x indigo-text"></i>
-              </div>
-              <div class="col-10">
-                <h5 class="feature-title">Bootstrap 4</h5>
-                <p class="grey-text">Thanks to MDB you can take advantage of all feature of newest Bootstrap 4.</p>
-              </div>
-            </div>
-            <!--/First row-->
+            
+<!-- Card -->
+<div class="card mx-xl-5">
 
-            <div style="height:30px"></div>
+<!-- Card body -->
+<div class="card-body">
 
-            <!--Second row-->
-            <div class="row">
-              <div class="col-1 mr-3">
-                <i class="fa fa-book fa-2x blue-text"></i>
-              </div>
-              <div class="col-10">
-                <h5 class="feature-title">Detailed documentation</h5>
-                <p class="grey-text">We give you detailed user-friendly documentation at your disposal. It will help you to implement your ideas
-                  easily.
-                </p>
-              </div>
-            </div>
-            <!--/Second row-->
-
-            <div style="height:30px"></div>
-
-            <!--Third row-->
-            <div class="row">
-              <div class="col-1 mr-3">
-                <i class="fa fa-graduation-cap fa-2x cyan-text"></i>
-              </div>
-              <div class="col-10">
-                <h5 class="feature-title">Lots of tutorials</h5>
-                <p class="grey-text">We care about the development of our users. We have prepared numerous tutorials, which allow you to learn
-                  how to use MDB as well as other technologies.</p>
-              </div>
-            </div>
-            <!--/Third row-->
-
+    <!-- Default form subscription -->
+    <form>
+        <h3 class="h3 text-center">Book Now!</h3>
+        <br/>
+        <div class="row">
+          <div class="col-md-4">
+            <label for="defaultFormCardNameEx" class="grey-text font-weight-light">Date</label>
+            <input type="date" class="form-control" id="theDate">
           </div>
-          <!--/Grid column-->
+          <div class="col-md-2">
+          <label for="defaultFormCardNameEx" class="grey-text font-weight-light">Adult</label>
+            <input type="number" id="defaultFormCardNameEx" class="form-control" value="0">
+          </div>
+          <div class="col-md-2">
+          <label for="defaultFormCardNameEx" class="grey-text font-weight-light">Children</label>
+            <input type="number" id="defaultFormCardNameEx" class="form-control" value="0">
+          </div>
+          <div class="col-md-2">
+            <label for="defaultFormCardNameEx" class="grey-text font-weight-light">Infant</label>
+            <input type="number" id="defaultFormCardNameEx" class="form-control" value="0">
+          </div>
+          <div class="col-md-2">
+            <label for="defaultFormCardNameEx" class="grey-text font-weight-light">Family</label>
+            <input type="number" id="defaultFormCardNameEx" class="form-control" value="0">
+          </div>
+        </div>
 
-          <!--Grid column-->
-          <div class="col-lg-6 col-md-12">
+        <div class="text-center py-4 mt-3">
+            <button class="btn btn-outline-orange" type="submit">Search<i class="fa fa-search ml-2"></i></button>
+        </div>
+    </form>
+    <!-- Default form subscription -->
 
-            <p class="h5 text-center mb-4">Watch our "5 min Quick Start" tutorial</p>
-            <div class="embed-responsive embed-responsive-16by9">
-              <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/cXTThxoywNQ" allowfullscreen></iframe>
-            </div>
+</div>
+<!-- Card body -->
+
+</div>
+<!-- Card -->
+                  
+
           </div>
           <!--/Grid column-->
 
@@ -769,6 +763,22 @@ h3{
   <script type="text/javascript">
     // Animations initialization
     new WOW().init();
+  </script>
+  <script>
+    // get today value
+    var date = new Date();
+
+    var day = date.getDate();
+    var month = date.getMonth() + 1;
+    var year = date.getFullYear();
+
+    if (month < 10) month = "0" + month;
+    if (day < 10) day = "0" + day;
+
+    var today = year + "-" + month + "-" + day;
+
+
+    document.getElementById('theDate').value = today;
   </script>
 </body>
 

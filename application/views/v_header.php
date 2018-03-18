@@ -41,7 +41,7 @@
             <a class="nav-link" href="<?php echo site_url('Comments'); ?>">Comment</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="<?php echo site_url('Contact'); ?>">Contact</a>
+            <a class="nav-link" href="<?php echo site_url('Contact_Us'); ?>">Contact Us</a>
           </li>
         </ul>
           </li>

@@ -4,7 +4,7 @@
 
       <!-- Brand -->
       <a class="navbar-brand" href="<?php echo site_url('Welcome'); ?>">
-        <strong>BSA</strong>
+        <strong>BSAs</strong>
       </a>
 
       <!-- Collapse -->
@@ -19,7 +19,7 @@
         <!-- Left -->
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="<?php echo site_url('Welcome'); ?>">Homeaa
+            <a class="nav-link" href="<?php echo site_url('Welcome'); ?>">Home
               <span class="sr-only">(current)</span>
             </a>
           </li>

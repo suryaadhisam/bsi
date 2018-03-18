@@ -14,7 +14,7 @@
 
       <!--First slide-->
       <div class="carousel-item active">
-        <div class="view" style="background-image: url('https://mdbootstrap.com/img/Photos/Others/images/77.jpg'); background-repeat: no-repeat; background-size: cover;">
+        <div class="view" style="background-image: url(<?php echo base_url('assets/img/carousel/3.jpg'); ?>); background-repeat: no-repeat; background-size: cover;">
 
           <!-- Mask & flexbox options-->
           <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
@@ -22,10 +22,10 @@
             <!-- Content -->
             <div class="text-center white-text mx-5 wow fadeIn">
               <h1 class="mb-4">
-                <strong>Learn Bootstrap 4 with MDB</strong>
+                <strong>SELAMAT DATANG DI BALI SUNSET ADVENTURE</strong>
               </h1>
 
-              <p>
+              <!-- <p>
                 <strong>Best & free guide of responsive web design</strong>
               </p>
 
@@ -36,7 +36,7 @@
 
               <a target="_blank" href="https://mdbootstrap.com/bootstrap-tutorial/" class="btn btn-outline-white btn-lg">Start free tutorial
                 <i class="fa fa-graduation-cap ml-2"></i>
-              </a>
+              </a> -->
             </div>
             <!-- Content -->
 
@@ -49,14 +49,14 @@
 
       <!--Second slide-->
       <div class="carousel-item">
-        <div class="view" style="background-image: url('https://mdbootstrap.com/img/Photos/Others/images/47.jpg'); background-repeat: no-repeat; background-size: cover;">
+        <div class="view" style="background-image: url(<?php echo base_url('assets/img/carousel/2.jpg'); ?>); background-repeat: no-repeat; background-size: cover;">
 
           <!-- Mask & flexbox options-->
           <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
 
             <!-- Content -->
             <div class="text-center white-text mx-5 wow fadeIn">
-              <h1 class="mb-4">
+              <!-- <h1 class="mb-4">
                 <strong>Learn Bootstrap 4 with MDB</strong>
               </h1>
 
@@ -71,7 +71,7 @@
 
               <a target="_blank" href="https://mdbootstrap.com/bootstrap-tutorial/" class="btn btn-outline-white btn-lg">Start free tutorial
                 <i class="fa fa-graduation-cap ml-2"></i>
-              </a>
+              </a> -->
             </div>
             <!-- Content -->
 
@@ -84,14 +84,14 @@
 
       <!--Third slide-->
       <div class="carousel-item">
-        <div class="view" style="background-image: url('https://mdbootstrap.com/img/Photos/Others/images/79.jpg'); background-repeat: no-repeat; background-size: cover;">
+        <div class="view" style="background-image: url(<?php echo base_url('assets/img/carousel/1.jpg'); ?>); background-repeat: no-repeat; background-size: cover;">
 
           <!-- Mask & flexbox options-->
           <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
 
             <!-- Content -->
             <div class="text-center white-text mx-5 wow fadeIn">
-              <h1 class="mb-4">
+              <!-- <h1 class="mb-4">
                 <strong>Learn Bootstrap 4 with MDB</strong>
               </h1>
 
@@ -106,7 +106,7 @@
 
               <a target="_blank" href="https://mdbootstrap.com/bootstrap-tutorial/" class="btn btn-outline-white btn-lg">Start free tutorial
                 <i class="fa fa-graduation-cap ml-2"></i>
-              </a>
+              </a> -->
             </div>
             <!-- Content -->
 

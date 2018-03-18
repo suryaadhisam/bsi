@@ -5,8 +5,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Bali Sunset Adventure</title>
-    <!-- Font Awesome -->
 
 </head>
 <body>
@@ -15,7 +13,10 @@
       <h2 style="font-family:Impact, Charcoal, sans-serif; text-align:center;">BALI SUNSET ADVENTURE</h2>
 
       <hr class="my-5">
-      <h3 class="font-weight-bold orange-text mb-3" style="font-family:Georgia, serif;">History</h3>
+      <p style="text-align:justify; font-family:Georgia, serif;">
+        Are you an adrenaline junkie who wants a more adventurous life experience? If you think it's you, we challenge you to try driving an All-Terrain Vehicle (ATV) at Bali Sunset Adventure (BSA)! Traveling to Bali is not complete if you just come to see the sunset in Kuta or shopping at Ubud Market. ATV Bali Sunset Adventure (BSA) offers an amazing experience during your vacation in Bali. BSA is located in Silakarang, Desa Singapadu Kaler, Gianyar Regency, just 30 minutes from Denpasar City. We give you the opportunity to explore and feel closer to the beauty of Bali. Our professional instructors will give you a brief explanation of full safety while driving through plantations, rivers and villages plus our driving trails also offer beautiful sunset views. Besides that we also offer fun tubing games. After the move, you can still indulge in BSA SPA and Treatment and also order food at BSA Restaurant. Feel the joy of riding a 150 cc and 250 cc ATV in the middle of the most amazing countryside on offer in Bali. So, let's join us, create memories and unforgettable experiences during your holiday in Bali. Come on, book your tickets now!
+      </p>
+      <!-- <h3 class="font-weight-bold orange-text mb-3" style="font-family:Georgia, serif;">History</h3>
       <p style="text-align:justify; font-family:Georgia, serif;">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tincidunt dui vitae luctus malesuada. Fusce interdum, elit ut facilisis rutrum, velit leo semper lacus, eu aliquam tortor sem non augue. Integer eros augue, fermentum ut quam at, volutpat efficitur nulla. Curabitur auctor augue in purus facilisis auctor. Integer tempor lectus diam, id auctor massa lobortis vel. Mauris euismod posuere erat eu consequat. Fusce ac varius orci, sit amet ullamcorper felis. Proin vulputate, lectus sit amet venenatis egestas, urna urna tincidunt lacus, vel tristique lacus sapien sit amet turpis. Nullam vehicula consectetur leo. Pellentesque luctus metus sollicitudin, interdum arcu ut, convallis eros. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
 
@@ -32,7 +33,7 @@
       <h3 class="font-weight-bold orange-text mb-3" style="font-family:Georgia, serif;">Careers With Us</h3>
       <p style="text-align:justify; font-family:Georgia, serif;">
         Nunc interdum pretium tristique. Curabitur eu ante placerat, imperdiet erat at, molestie ligula. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Vivamus commodo, mauris eu commodo rhoncus, mi eros sollicitudin urna, vel pretium mauris ex in sapien. Morbi nec mi et enim interdum blandit. Fusce dictum ut ipsum et semper. Integer gravida, nibh vitae accumsan maximus, neque ligula luctus est, vitae sollicitudin odio tellus a risus. Sed nec tincidunt enim. Pellentesque lobortis, tortor vel imperdiet iaculis, mi odio iaculis ipsum, at suscipit dolor erat et mi. Nulla sit amet mi eget ligula malesuada sollicitudin elementum vitae quam. Nulla non cursus magna. Ut a tempor nulla.
-      </p>
+      </p> -->
     </div>
 </body>
 

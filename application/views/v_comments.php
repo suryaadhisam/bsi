@@ -93,7 +93,7 @@
 
       <hr class="my-5">
 
-      <div class="row">
+      <!-- <div class="row">
         <div class="col-md-4">
           <figure class="snip1167">
             <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sq-sample3.jpg" alt="sq-sample3"/>
@@ -153,7 +153,7 @@
             </div>
           </figure>
         </div>
-      </div>
+      </div> -->
 
 
 

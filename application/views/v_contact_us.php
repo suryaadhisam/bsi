@@ -88,12 +88,12 @@
 
           <h5 class="font-weight-bold orange-text mb-3" style="font-family:Georgia, serif;">Email</h5>
           <p class="brown-lighter-hover" style="text-align:justify;font-family:Georgia, serif;">
-            balisunsetadventure@gmail.com
+            cs@balisunsetadventure.com
           </p>
 
-          <h5 class="font-weight-bold orange-text mb-3" style="font-family:Georgia, serif;">Fax.</h5>
+          <h5 class="font-weight-bold orange-text mb-3" style="font-family:Georgia, serif;">Phone.</h5>
           <p class="brown-lighter-hover" style="text-align:justify;font-family:Georgia, serif;">
-            085737040742.
+            087830056086.
           </p>
 
           <div class="pb-4">

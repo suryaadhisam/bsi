@@ -19,7 +19,7 @@
         <!-- Left -->
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="<?php echo site_url('Welcome'); ?>">Home
+            <a class="nav-link" href="<?php echo site_url('Welcome'); ?>">Homeaa
               <span class="sr-only">(current)</span>
             </a>
           </li>

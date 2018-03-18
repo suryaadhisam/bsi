@@ -4,7 +4,7 @@
 
       <!-- Brand -->
       <a class="navbar-brand" href="<?php echo site_url('Welcome'); ?>">
-        <strong>BSAs</strong>
+        <strong>BSA</strong>
       </a>
 
       <!-- Collapse -->

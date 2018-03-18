@@ -6,7 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <!-- Font Awesome -->
-
+    <script type="text/javascript"> //<![CDATA[ 
+    var tlJsHost = ((window.location.protocol == "https:") ? "https://secure.comodo.com/" : "http://www.trustlogo.com/");
+    document.write(unescape("%3Cscript src='" + tlJsHost + "trustlogo/javascript/trustlogo.js' type='text/javascript'%3E%3C/script%3E"));
+    //]]>
+    </script>
     <style>
       .nav-tabs {
         border: 0;
@@ -770,6 +774,10 @@ h3{
     // Animations initialization
     new WOW().init();
   </script>
+  <script language="JavaScript" type="text/javascript">
+  TrustLogo("https://balisunsetadventure.com/assets/img/comodo_secure_seal_76x26_transp.png", "CL1", "none");
+  </script>
+  <a  href="https://ssl.comodo.com" id="comodoTL">Comodo SSL</a>
 </body>
 
 </html>

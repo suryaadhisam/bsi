@@ -1,0 +1,1 @@
+<span>Bali Sunset Adventure &copy; 2018</span>

@@ -52,3 +52,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'welcome';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
+
+
+//untuk admin
+$route['admin/auth'] = 'admin/auth';
+$route['admin'] = 'admin/dashboard';
+$route['admin/booking'] = 'admin/dashboard/booking';
+$route['admin/package'] = 'admin/dashboard/package';
+$route['admin/schedule'] = 'admin/dashboard/schedule';
+$route['admin/services'] = 'admin/dashboard/services';
+$route['admin/carousel'] = 'admin/dashboard/carousel';
+$route['admin/contact-us'] = 'admin/dashboard/contactus';
+$route['admin/social-media'] = 'admin/dashboard/socialmedia';
+$route['admin/profile'] = 'admin/dashboard/profile';

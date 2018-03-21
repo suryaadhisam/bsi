@@ -47,7 +47,68 @@
 
         <div class="container-fluid">
             <div id="ui-view">
-                <h1>Profile</h1>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header">
+                                Profile
+                            </div>
+
+                            <div class="card-body">
+                                <div class="form-group row">
+                                    <label class="col-md-4 col-form-label" for="inputName">Nama</label>
+                                    <div class="col-md-8">
+                                        <input type="text" id="inputName" name="inputName" class="form-control" placeholder="Nama...">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-4 col-form-label" for="inputEmail">Email</label>
+                                    <div class="col-md-8">
+                                        <input type="text" id="inputEmail" name="inputEmail" class="form-control" placeholder="Email...">
+                                    </div>
+                                </div>
+
+                                <br/>
+                                <div class="form-group row margin-bottom-4">
+                                    <label class="col-md-4 col-form-label"></label>
+                                    <div class="col-md-8">
+                                        <label class="switch switch-default switch-pill switch-primary">
+                                            <input type="checkbox" class="switch-input" id="changeStateUpdatePassword" onchange="changeStateUpdatePassword()">
+                                            <span class="switch-label"></span>
+                                            <span class="switch-handle"></span>
+                                        </label> Ganti kata sandi
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group row">
+                                    <label class="col-md-4 col-form-label" for="inputOldPassword">Kata sandi</label>
+                                    <div class="col-md-8">
+                                        <input type="password" id="inputOldPassword" disabled name="inputOldPassword" class="form-control" placeholder="Kata sandi...">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-4 col-form-label" for="inputPassword">Kata sandi baru</label>
+                                    <div class="col-md-8">
+                                        <input type="password" id="inputPassword" disabled name="inputPassword" class="form-control" placeholder="Kata sandi baru...">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-4 col-form-label" for="inputConfirmPassword">Kata sandi baru</label>
+                                    <div class="col-md-8">
+                                        <input type="password" id="inputConfirmPassword" disabled name="inputConfirmPassword" class="form-control" placeholder="Konfirmasi kata sandi baru...">
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="card-footer">
+                                <button class="btn btn-primary pull-right" id="buttonUpdateProfile">Perbaharui profile</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
             </div>
         </div>
         <!-- /.conainer-fluid -->
@@ -59,5 +120,38 @@
     <?php echo $footer; ?>
 </footer>
 <?php echo $script; ?>
+<script>
+    function changeStateUpdatePassword(){
+        if($("#changeStateUpdatePassword").is(':checked')) {
+
+            $("#inputOldPassword").removeAttr("disabled");
+            $("#inputPassword").removeAttr("disabled");
+            $("#inputConfirmPassword").removeAttr("disabled");
+
+        }
+        else{
+            $("#inputOldPassword").attr("disabled", "true");
+            $("#inputPassword").attr("disabled", "true");
+            $("#inputConfirmPassword").attr("disabled", "true");
+
+        }
+    }
+
+    $("#buttonUpdateProfile").click(function(){
+
+        swal({
+            title: "Berhasil",
+            icon: "success",
+            button: "OK",
+        }).then((willDelete) => {
+            if (willDelete) {
+                location.reload();
+            }
+        });
+
+    });
+
+
+</script>
 </body>
 </html>

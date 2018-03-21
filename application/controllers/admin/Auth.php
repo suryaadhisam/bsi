@@ -3,6 +3,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Auth extends CI_Controller {
 
+	function __construct(){
+		parent::__construct();		
+		$this->load->model('user');
+ 
+	}
+
 	public function index(){
 		$data['title'] = "Login || Sunset Bali Adventure";
 
@@ -12,16 +18,31 @@ class Auth extends CI_Controller {
 		$this->load->view('admin/v_login', $data);
 	}
 
-	public function login(){
-		// $data['title'] = "Login || Sunset Bali Adventure";
+	public function aksiLogin(){
+		$email = $this->input->post('email');
+		$password = $this->input->post('password');
+		$where = array(
+			'email' => $email,
+			'password' => md5($password)
+			);
+		$cek = $this->User->cekLogin($where)->num_rows();
+		if($cek > 0){
+			$data_session = array(
+				'email' => $email,
+				'status' => "login"
+				);
+ 
+			$this->session->set_userdata($data_session);
+ 
+			redirect(base_url("admin"));
+		} else{
+			echo "Email or password wrong !";
+		}
+	}
 
-		// $data['style'] = $this->load->view('admin/template/v_style', '', TRUE);
-		// $data['script'] = $this->load->view('admin/template/v_script', '', TRUE);
-		// $data['footer'] = $this->load->view('admin/template/v_footer', '', TRUE);
-		// $data['menu_admin_left'] = $this->load->view('admin/template/v_menu_admin_left', '', TRUE);
-		// $data['menu_admin_top'] = $this->load->view('admin/template/v_menu_admin_top', '', TRUE);
-
-		// $this->load->view('admin/v_login', $data);
+	function logout(){
+		$this->session->sess_destroy();
+		redirect(base_url('admin/auth'));
 	}
 
 	

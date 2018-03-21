@@ -54,6 +54,24 @@
     var urlDashboard = base_url+"/admin/dashboard";
     $('#buttonLogin').click(function(){
        window.location.href=urlDashboard;
+
+        // $.ajax({
+        //     type: 'POST',
+        //     url: urlYankeeCandle+'cart/add.js',
+        //     dataType: 'jsonp',
+        //     async: false,
+        //     data:{
+        //         quantity: 1,
+        //         id: 6911700238390
+        //     },
+        //     success: function(data) { 
+        //         console.log(data);
+        //     },
+        //     error: function(xhr, status, error){
+        //         console.log(error);
+        //     }
+
+        // });
     });
 </script>
 

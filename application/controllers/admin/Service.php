@@ -72,6 +72,32 @@ class Service extends CI_Controller {
 		echo json_encode($result);
 	}
 
+	public function softDeleteService() {
+		try {
+			$this->db->trans_start();
+			$this->m_service->softDeleteService($this->input->post('id_services'));
+			$this->db->trans_complete();
+
+			$result = [
+				"status" => true,
+				"data" => [],
+				"message" => "Successfully delete service",
+				"errors" => []
+			];
+		} catch(Excepion $err) {
+			$this->db->trans_complete();
+			$result = [
+				"status" => false,
+				"data" => [],
+				"message" => "Failed delete service",
+				"errors" => array(
+					"delete service"=>"Failed delete service"
+				)
+			];
+		}
+		echo json_encode($result);
+	}
+
 	
 
 	

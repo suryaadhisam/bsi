@@ -70,5 +70,6 @@ $route['admin/profile'] = 'admin/dashboard/profile';
 $route['admin/auth-check-login'] = 'admin/auth/aksiLogin';
 $route['admin/logout'] = 'admin/auth/logout';
 $route['admin/service/add'] = 'admin/service/addService';
+$route['admin/service/soft-delete'] = 'admin/service/softDeleteService';
 
 

@@ -216,6 +216,7 @@
 
     var base_url = window.location.origin;
     var urlAddService = base_url+"/admin/service/add";
+    var urlSoftDeleteService = base_url+"/admin/service/soft-delete";
 
     $("#buttonAddService").click(function(){
 
@@ -267,7 +268,7 @@
         $('#modalUpdateService').modal('show');
     }
 
-    function confirmDeleteService(idBank){
+    function confirmDeleteService(idService){
         swal({
             title: "Are you sure?",
             icon: "warning",
@@ -275,15 +276,34 @@
             dangerMode: true,
         }).then((willDelete) => {
             if (willDelete) {
-                swal({
-                    title: "Successfull",
-                    icon: "success",
-                    button: "OK",
-                }).then((willDelete) => {
-                    if (willDelete) {
-                        location.reload();
+                $.ajax({
+                    type: 'POST',
+                    url: urlSoftDeleteService,
+                    dataType: 'json',
+                    async: true,
+                    data:{
+                        id_services: idService
+                    },
+                    success: function(data) {
+                        console.log(data);
+                        if(data.status){
+                            swal({
+                                title: "Successfull",
+                                icon: "success",
+                                button: "OK",
+                            }).then((willDelete) => {
+                                if (willDelete) {
+                                    location.reload();
+                                }
+                            });
+                        }
+                    },
+                    error: function(xhr, status, error){
+                        console.log(error);
                     }
                 });
+
+                
             }
         });
     }

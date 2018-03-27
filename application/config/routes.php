@@ -69,5 +69,6 @@ $route['admin/profile'] = 'admin/dashboard/profile';
 //API
 $route['admin/auth-check-login'] = 'admin/auth/aksiLogin';
 $route['admin/logout'] = 'admin/auth/logout';
+$route['admin/service/add'] = 'admin/service/addService';
 
 

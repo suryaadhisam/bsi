@@ -82,6 +82,12 @@
                                             <input type="text" id="pathImageService" name="pathImageService" class="form-control" placeholder="Path image service...">
                                         </div>
                                     </div>
+                                    <div class="form-group row">
+                                        <label class="col-md-3 col-form-label" for="brgPersonal">Brg Personal</label>
+                                        <div class="col-md-9">
+                                            <input type="text" id="brgPersonal" name="brgPersonal" class="form-control" placeholder="Brg personal...">
+                                        </div>
+                                    </div>
                                 </form>
                             </div>
                             <div class="modal-footer">
@@ -141,7 +147,7 @@
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="card-body">
-                                <button type="button" id="buttonAddServiceNew" class="btn btn-success" data-toggle="modal" data-target="#modalAddService"><i class="fa fa-plus"></i>&nbsp; Add service</button>
+                                <button type="button" id="buttonAddServiceNew" class="btn btn-success" data-toggle="modal" data-target="#modalAddService" style="margin-bottom: 10px;"><i class="fa fa-plus"></i>&nbsp; Add service</button>
                                 <?php 
                                     if(count($services) > 0) {
                                 ?>
@@ -206,14 +212,41 @@
 </footer>
 <?php echo $script; ?>
 <script>
+    
+
+    var base_url = window.location.origin;
+    var urlAddService = base_url+"/admin/service/add";
+
     $("#buttonAddService").click(function(){
-        swal({
-            title: "Successfull",
-            icon: "success",
-            button: "OK",
-        }).then((willDelete) => {
-            if (willDelete) {
-                location.reload();
+
+        $.ajax({
+            type: 'POST',
+            url: urlAddService,
+            dataType: 'json',
+            async: true,
+            data:{
+                name_services: $("#nameService").val(),
+                path_img: $("#pathImageService").val(),
+                detail: $("#detailService").val(),
+                facility: $("#facilityService").val(),
+                brg_personal: $("#brgPersonal").val(),
+            },
+            success: function(data) {
+                console.log(data);
+                if(data.status){
+                    swal({
+                        title: "Successfull",
+                        icon: "success",
+                        button: "OK",
+                    }).then((willDelete) => {
+                        if (willDelete) {
+                            location.reload();
+                        }
+                    });
+                }
+            },
+            error: function(xhr, status, error){
+                console.log(error);
             }
         });
     });

@@ -73,11 +73,12 @@ class Dashboard extends CI_Controller {
 		$data['menu_admin_left'] = $this->load->view('admin/template/v_menu_admin_left', '', TRUE);
 		$data['menu_admin_top'] = $this->load->view('admin/template/v_menu_admin_top', '', TRUE);
 
-		$this->load->model("service");
+		$this->load->model("m_service");
+
 		$where = array(
 			'state' => 1
 		);
-		$data["services"] = $this->service->getAllServices($where);
+		$data["services"] = $this->m_service->getAllServices($where);
 		$this->load->view('admin/v_services', $data);
 	}
 

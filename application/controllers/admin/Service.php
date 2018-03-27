@@ -18,6 +18,32 @@ class Service extends CI_Controller {
 		
 	}
 
+	public function getService() {
+		try {
+			$where = array(
+				'id_services' => $this->input->post('idServices')
+			);
+
+			$result = [
+				"status" => true,
+				"data" => $this->m_service->getService($where)[0],
+				"message" => "Successfully get service",
+				"errors" => []
+			];
+		} catch(Excepion $err) {
+			$result = [
+				"status" => false,
+				"data" => [],
+				"message" => "Failed get service",
+				"errors" => array(
+					"get service"=>"Failed get service"
+				)
+			];
+		}
+
+		echo json_encode($result);
+	}
+
 	public function addService() {
 		//validasi
 		$this->form_validation->set_error_delimiters('', '');
@@ -98,7 +124,59 @@ class Service extends CI_Controller {
 		echo json_encode($result);
 	}
 
-	
+	public function updateService() {
+		//validasi
+		$this->form_validation->set_error_delimiters('', '');
+		$this->form_validation->set_rules('name_services','Name service', 'required|max_length[255]');
+		$this->form_validation->set_rules('path_img','Path Image','required|max_length[255]');
+		$this->form_validation->set_rules('detail','Detail','required|max_length[255]');
+		$this->form_validation->set_rules('facility','Facility','required|max_length[255]');
+		$this->form_validation->set_rules('brg_personal','Brg personal','required|max_length[255]');
+
+		if ($this->form_validation->run() == FALSE) {
+			$result = [
+				"status" => false,
+				"data" => [],
+				"message" => "Incorrect input",
+				"errors" => $this->form_validation->error_array()
+			];
+		} 
+		else {
+			//update
+			try {
+				$this->db->trans_start();
+				$data = array(
+					'id_services' => $this->input->post('id'),
+					'name_services' => $this->input->post('name_services'),
+					'path_img' => $this->input->post('path_img'),
+					'detail' => $this->input->post('detail'),
+					'facility' => $this->input->post('facility'),
+					'brg_personal' => $this->input->post('brg_personal'),
+				);
+				$this->m_service->updateService($data);
+				$this->db->trans_complete();
+
+				$result = [
+					"status" => true,
+					"data" => [],
+					"message" => "Successfully update service",
+					"errors" => []
+				];
+			} catch(Excepion $err) {
+				$this->db->trans_complete();
+				$result = [
+					"status" => false,
+					"data" => [],
+					"message" => "Failed update service",
+					"errors" => array(
+						"update service"=>"Failed update service"
+					)
+				];
+			}
+		}
+
+		echo json_encode($result);
+	}
 
 	
 	

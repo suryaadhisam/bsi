@@ -109,28 +109,36 @@
                             </div>
                             <div class="modal-body">
                                 <form action="" method="post" class="form-horizontal">
+                                    <input type="hidden" id="idService" name="idService" class="form-control" value="1">
+
                                     <div class="form-group row">
-                                        <label class="col-md-3 col-form-label" for="nameService">Name</label>
+                                        <label class="col-md-3 col-form-label" for="nameServiceUpdate">Name</label>
                                         <div class="col-md-9">
-                                            <input type="text" id="nameService" name="nameService" class="form-control" placeholder="Name service..." value="Makan gratis">
+                                            <input type="text" id="nameServiceUpdate" name="nameServiceUpdate" class="form-control" placeholder="Name service..." value="Makan gratis">
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label class="col-md-3 col-form-label" for="detailService">Detail</label>
+                                        <label class="col-md-3 col-form-label" for="detailServiceUpdate">Detail</label>
                                         <div class="col-md-9">
-                                            <input type="text" id="detailService" name="detailService" class="form-control" placeholder="Detail service..." value="Makan gratis untuk 2 orang dengan belanja minimal 200rb">
+                                            <input type="text" id="detailServiceUpdate" name="detailServiceUpdate" class="form-control" placeholder="Detail service..." value="Makan gratis untuk 2 orang dengan belanja minimal 200rb">
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label class="col-md-3 col-form-label" for="facilityService">Facility</label>
+                                        <label class="col-md-3 col-form-label" for="facilityServiceUpdate">Facility</label>
                                         <div class="col-md-9">
-                                            <input type="text" id="facilityService" name="facilityService" class="form-control" placeholder="Facility service..." value="Tempat makan dengan view sawah">
+                                            <input type="text" id="facilityServiceUpdate" name="facilityServiceUpdate" class="form-control" placeholder="Facility service..." value="Tempat makan dengan view sawah">
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label class="col-md-3 col-form-label" for="pathImageService">Path Image</label>
+                                        <label class="col-md-3 col-form-label" for="pathImageServiceUpdate">Path Image</label>
                                         <div class="col-md-9">
-                                            <input type="text" id="pathImageService" name="pathImageService" class="form-control" placeholder="Path image service..." value="http://agussuarya.com/image.jpg">
+                                            <input type="text" id="pathImageServiceUpdate" name="pathImageServiceUpdate" class="form-control" placeholder="Path image service..." value="http://agussuarya.com/image.jpg">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-md-3 col-form-label" for="brgPersonalUpdate">Brg Personal</label>
+                                        <div class="col-md-9">
+                                            <input type="text" id="brgPersonalUpdate" name="brgPersonalUpdate" class="form-control" placeholder="Brg personal...">
                                         </div>
                                     </div>
                                 </form>
@@ -213,10 +221,11 @@
 <?php echo $script; ?>
 <script>
     
-
     var base_url = window.location.origin;
     var urlAddService = base_url+"/admin/service/add";
     var urlSoftDeleteService = base_url+"/admin/service/soft-delete";
+    var urlUpdateService = base_url+"/admin/service/update";
+    var urlGetService = base_url+"/admin/service/get";
 
     $("#buttonAddService").click(function(){
 
@@ -253,19 +262,63 @@
     });
 
     $("#buttonUpdateService").click(function(){
-        swal({
-            title: "Successfull",
-            icon: "success",
-            button: "OK",
-        }).then((willDelete) => {
-            if (willDelete) {
-                location.reload();
+        $.ajax({
+            type: 'POST',
+            url: urlUpdateService,
+            dataType: 'json',
+            async: true,
+            data:{
+                id: $("#idService").val(),
+                name_services: $("#nameServiceUpdate").val(),
+                path_img: $("#pathImageServiceUpdate").val(),
+                detail: $("#detailServiceUpdate").val(),
+                facility: $("#facilityServiceUpdate").val(),
+                brg_personal: $("#brgPersonalUpdate").val(),
+            },
+            success: function(data) {
+                console.log(data);
+                if(data.status){
+                    swal({
+                        title: "Successfull",
+                        icon: "success",
+                        button: "OK",
+                    }).then((willDelete) => {
+                        if (willDelete) {
+                            location.reload();
+                        }
+                    });
+                }
+            },
+            error: function(xhr, status, error){
+                console.log(error);
             }
         });
     });
 
-    function openFormUpdateService(idBank){
-        $('#modalUpdateService').modal('show');
+    function openFormUpdateService(idService){
+        $.ajax({
+            type: 'POST',
+            url: urlGetService,
+            dataType: 'json',
+            async: true,
+            data:{
+                idServices: idService
+            },
+            success: function(data) {
+                console.log(data);
+                $("#nameServiceUpdate").val(data.data.name_services);
+                $("#detailServiceUpdate").val(data.data.detail);
+                $("#facilityServiceUpdate").val(data.data.facility);
+                $("#pathImageServiceUpdate").val(data.data.path_img);
+                $("#brgPersonalUpdate").val(data.data.brg_personal);
+                
+                $("#idService").val(idService);
+                $('#modalUpdateService').modal('show');
+            },
+            error: function(xhr, status, error){
+                console.log(error);
+            }
+        });
     }
 
     function confirmDeleteService(idService){

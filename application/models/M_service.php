@@ -10,7 +10,11 @@ class M_service extends CI_Model {
 
 	function getAllServices($where){		
 		return $this->db->get_where($this->namaTabel, $where)->result();
-	}	
+	}
+
+	function getService($where) {
+		return $this->db->get_where($this->namaTabel, $where)->result();
+	}
 
 	function addService($data) {
 		return $this->db->insert($this->namaTabel, $data);
@@ -22,6 +26,11 @@ class M_service extends CI_Model {
 		);
 	
 		$this->db->where('id_services', $id);
+		return $this->db->update($this->namaTabel, $data);
+	}
+
+	function updateService($data) {
+		$this->db->where('id_services', $data["id_services"]);
 		return $this->db->update($this->namaTabel, $data);
 	}
 }

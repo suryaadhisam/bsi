@@ -71,5 +71,7 @@ $route['admin/auth-check-login'] = 'admin/auth/aksiLogin';
 $route['admin/logout'] = 'admin/auth/logout';
 $route['admin/service/add'] = 'admin/service/addService';
 $route['admin/service/soft-delete'] = 'admin/service/softDeleteService';
+$route['admin/service/update'] = 'admin/service/updateService';
+$route['admin/service/get'] = 'admin/service/getService';
 
 

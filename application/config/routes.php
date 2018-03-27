@@ -65,3 +65,9 @@ $route['admin/carousel'] = 'admin/dashboard/carousel';
 $route['admin/contact-us'] = 'admin/dashboard/contactus';
 $route['admin/social-media'] = 'admin/dashboard/socialmedia';
 $route['admin/profile'] = 'admin/dashboard/profile';
+
+//API
+$route['admin/auth-check-login'] = 'admin/auth/aksiLogin';
+$route['admin/logout'] = 'admin/auth/logout';
+
+

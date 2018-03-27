@@ -23,13 +23,13 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="icon-user"></i></span>
                             </div>
-                            <input type="text" class="form-control" placeholder="Email">
+                            <input type="text" id="inputEmail" name="inputEmail" class="form-control" placeholder="Email">
                         </div>
                         <div class="input-group mb-4">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="icon-lock"></i></span>
                             </div>
-                            <input type="password" class="form-control" placeholder="Password">
+                            <input type="password" id="inputPassword" name="inputPassword" class="form-control" placeholder="Password">
                         </div>
                         <div class="row">
                             <div class="col-12 text-right">
@@ -52,26 +52,33 @@
     var base_url = window.location.origin;
 
     var urlDashboard = base_url+"/admin/dashboard";
+    var urlCheckLogin = base_url+"/admin/auth-check-login";
+
     $('#buttonLogin').click(function(){
-       window.location.href=urlDashboard;
+       //window.location.href=urlDashboard;
 
-        // $.ajax({
-        //     type: 'POST',
-        //     url: urlYankeeCandle+'cart/add.js',
-        //     dataType: 'jsonp',
-        //     async: false,
-        //     data:{
-        //         quantity: 1,
-        //         id: 6911700238390
-        //     },
-        //     success: function(data) { 
-        //         console.log(data);
-        //     },
-        //     error: function(xhr, status, error){
-        //         console.log(error);
-        //     }
+        $.ajax({
+            type: 'POST',
+            url: urlCheckLogin,
+            dataType: 'json',
+            async: true,
+            data:{
+                email: $("#inputEmail").val(),
+                password: $("#inputPassword").val()
+            },
+            success: function(data) {
+                console.log(data);
 
-        // });
+                if(data.message == "Successfully get data user") {
+                    window.location = base_url+"/admin/dashboard";
+                } else {
+                    alert(data.message);
+                }
+            },
+            error: function(xhr, status, error){
+                console.log(error);
+            }
+        });
     });
 </script>
 

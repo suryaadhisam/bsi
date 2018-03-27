@@ -2,9 +2,9 @@
 
 class User extends CI_Model {
 
-    private $namaTabel = "user";
+    private $namaTabel = "tb_user";
 
-	function cekLogin($where){		
-		return $this->db->get_where($namaTabel, $where);
+	function getUsers($where){		
+		return $this->db->get_where($this->namaTabel, $where)->result();
 	}	
 }

@@ -6,5 +6,5 @@
         <strong>Account</strong>
     </div>
     <a class="dropdown-item" href="<?php echo base_url(); ?>admin/profile"><i class="fa fa-user"></i> Profile</a>
-    <a class="dropdown-item" href="<?php echo base_url(); ?>admin/auth"><i class="fa fa-lock"></i> Logout</a>
+    <a class="dropdown-item" href="<?php echo base_url(); ?>admin/logout"><i class="fa fa-lock"></i> Logout</a>
 </div>

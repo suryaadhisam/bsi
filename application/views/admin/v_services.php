@@ -142,38 +142,54 @@
                         <div class="card">
                             <div class="card-body">
                                 <button type="button" id="buttonAddServiceNew" class="btn btn-success" data-toggle="modal" data-target="#modalAddService"><i class="fa fa-plus"></i>&nbsp; Add service</button>
-
-                                <table class="table table-responsive-sm table-hover">
-                                    <thead>
-                                    <tr>
-                                        <th>Name</th>
-                                        <th>Detail</th>
-                                        <th>Facility</th>
-                                        <th>Action</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td>Makan gratis</td>
-                                        <td>Makan gratis untuk 2 orang dengan belanja minimal 200rb</td>
-                                        <td>Tempat makan dengan view sawah</>
-                                        <td>
-                                            <button type="button" class="btn btn-primary" onclick="openFormUpdateService(1)"><i class="fa fa-pencil"></i>&nbsp; Edit</button>
-                                            <button type="button" class="btn btn-danger" onclick="confirmDeleteService(1)"><i class="fa fa-trash"></i>&nbsp; Delete</button>
-                                        </td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                                <ul class="pagination justify-content-center">
-                                    <li class="page-item"><a class="page-link" href="#">Prev</a></li>
-                                    <li class="page-item active">
-                                        <a class="page-link" href="#">1</a>
-                                    </li>
-                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">4</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                                </ul>
+                                <?php 
+                                    if(count($services) > 0) {
+                                ?>
+                                    <table class="table table-responsive-sm table-hover">
+                                        <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Detail</th>
+                                            <th>Facility</th>
+                                            <th>Action</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php 
+                                                foreach($services as $row) {
+                                            ?>
+                                                <tr>
+                                                    <td><?php echo $row->name_services; ?></td>
+                                                    <td><?php echo $row->detail; ?></td>
+                                                    <td><?php echo $row->facility; ?></td>
+                                                    <td>
+                                                        <button type="button" class="btn btn-primary" onclick="openFormUpdateService(<?php echo $row->id_services; ?>)"><i class="fa fa-pencil"></i>&nbsp; Edit</button>
+                                                        <button type="button" class="btn btn-danger" onclick="confirmDeleteService(<?php echo $row->id_services; ?>)"><i class="fa fa-trash"></i>&nbsp; Delete</button>
+                                                    </td>
+                                                </tr>
+                                            <?php 
+                                                }
+                                            ?>
+                                        </tbody>
+                                    </table>
+                                    <ul class="pagination justify-content-center">
+                                        <li class="page-item"><a class="page-link" href="#">Prev</a></li>
+                                        <li class="page-item active">
+                                            <a class="page-link" href="#">1</a>
+                                        </li>
+                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">4</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                                    </ul>
+                                <?php 
+                                    } else {
+                                ?>
+                                    <h1 style="font-size: 26pt;color: #9E9E9E;text-align: center;margin: 20px;">EMPTY</h1>
+                                <?php 
+                                    }
+                                ?>
+                                
                             </div>
                         </div>
                     </div>

@@ -65,7 +65,7 @@ class Service extends CI_Controller {
 		} 
 		else {
 			//upload img
-			$resultTmp = $this->do_upload("fileImgService", $pathDestination, "aa");
+			$resultTmp = $this->do_upload("fileImgService", $pathDestination, "service-img");
 			if (!$resultTmp["status"]){
 				$result = [
 					"status" => false,
@@ -150,13 +150,15 @@ class Service extends CI_Controller {
 	}
 
 	public function updateService() {
+		//pathDestination
+		$pathDestination = "uploads/services/";
+
 		//validasi
 		$this->form_validation->set_error_delimiters('', '');
-		$this->form_validation->set_rules('name_services','Name service', 'required|max_length[255]');
-		$this->form_validation->set_rules('path_img','Path Image','required|max_length[255]');
-		$this->form_validation->set_rules('detail','Detail','required|max_length[255]');
-		$this->form_validation->set_rules('facility','Facility','required|max_length[255]');
-		$this->form_validation->set_rules('brg_personal','Brg personal','required|max_length[255]');
+		$this->form_validation->set_rules('nameServiceUpdate','Name service', 'required|max_length[255]');
+		$this->form_validation->set_rules('detailServiceUpdate','Detail','required|max_length[255]');
+		$this->form_validation->set_rules('facilityServiceUpdate','Facility','required|max_length[255]');
+		$this->form_validation->set_rules('brgPersonalUpdate','Brg personal','required|max_length[255]');
 
 		if ($this->form_validation->run() == FALSE) {
 			$result = [
@@ -167,17 +169,53 @@ class Service extends CI_Controller {
 			];
 		} 
 		else {
+			if($this->input->post('isChangeImg')) {
+				//upload img
+				$resultTmp = $this->do_upload("fileImgServiceUpdate", $pathDestination, "service-img");
+				if (!$resultTmp["status"]){
+					$result = [
+						"status" => false,
+						"data" => [],
+						"message" => "Incorrect input",
+						"errors" => $resultTmp
+					];
+				}
+				else {
+					$data = $this->upload->data();
+					$result = [
+						"status" => true,
+						"data" => array(
+							"full_path" => $pathDestination."".$data["file_name"]
+						),
+						"message" => "Successfully update services",
+						"errors" => []
+					];
+				}
+				@unlink($_FILES[$this->input->post('fileImgServiceUpdate')]);
+			}
+
 			//update
 			try {
 				$this->db->trans_start();
-				$data = array(
-					'id_services' => $this->input->post('id'),
-					'name_services' => $this->input->post('name_services'),
-					'path_img' => $this->input->post('path_img'),
-					'detail' => $this->input->post('detail'),
-					'facility' => $this->input->post('facility'),
-					'brg_personal' => $this->input->post('brg_personal'),
-				);
+				if($this->input->post('isChangeImg')) {
+					$data = array(
+						'id_services' => $this->input->post('id'),
+						'name_services' => $this->input->post('nameServiceUpdate'),
+						'path_img' => $result["data"]["full_path"],
+						'detail' => $this->input->post('detailServiceUpdate'),
+						'facility' => $this->input->post('facilityServiceUpdate'),
+						'brg_personal' => $this->input->post('brgPersonalUpdate'),
+					);
+				} else {
+					$data = array(
+						'id_services' => $this->input->post('id'),
+						'name_services' => $this->input->post('nameServiceUpdate'),
+						'detail' => $this->input->post('detailServiceUpdate'),
+						'facility' => $this->input->post('facilityServiceUpdate'),
+						'brg_personal' => $this->input->post('brgPersonalUpdate'),
+					);
+				}
+				
 				$this->m_service->updateService($data);
 				$this->db->trans_complete();
 

@@ -82,11 +82,9 @@
                                             <button type="button" class="btn btn-primary" id="buttonAddFileToUpload">Choose image</button>
 
                                             <input type="file" name="fileImgService" id="fileImgService"/>
-
-                                            <!-- <input type="text" id="pathImageService" name="pathImageService" class="form-control" placeholder="Path image service..."> -->
                                             <div class="previewImgWraper">
                                                 <div class="row">
-                                                    <span class="buttonXImgPreviewFileUpload">x</span>
+                                                    <!-- <span class="buttonXImgPreviewFileUpload">x</span> -->
                                                     <div class="col-md-4 padding-right-0">
                                                         <img src="as" class="imgPreviewImgFileUpload">
                                                     </div>
@@ -123,7 +121,7 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <form action="" method="post" class="form-horizontal">
+                                <form action="" method="post" class="form-horizontal" id="formUpdateService">
                                     <input type="hidden" id="idService" name="idService" class="form-control" value="1">
 
                                     <div class="form-group row">
@@ -145,9 +143,22 @@
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label class="col-md-3 col-form-label" for="pathImageServiceUpdate">Path Image</label>
+                                        <label class="col-md-3 col-form-label" for="pathImageService">Path Image</label>
                                         <div class="col-md-9">
-                                            <input type="text" id="pathImageServiceUpdate" name="pathImageServiceUpdate" class="form-control" placeholder="Path image service..." value="http://agussuarya.com/image.jpg">
+                                            <button type="button" class="btn btn-primary" id="buttonUpdateFileToUpload">Choose image</button>
+
+                                            <input type="file" name="fileImgServiceUpdate" id="fileImgServiceUpdate"/>
+                                            <div class="previewImgWraper">
+                                                <div class="row">
+                                                    <!-- <span class="buttonXImgPreviewFileUpload">x</span> -->
+                                                    <div class="col-md-4 padding-right-0">
+                                                        <img src="as" class="imgPreviewImgFileUpload">
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        <span class="textImgPreviewFileUpload">asas</span>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="form-group row">
@@ -245,6 +256,8 @@
     var urlUpdateService = base_url+"/admin/service/update";
     var urlGetService = base_url+"/admin/service/get";
 
+    var isChangeImg = false;
+
     $("#buttonAddService").click(function(){
         var data = new FormData(document.getElementById("formAddService"));
 
@@ -277,19 +290,21 @@
     });
 
     $("#buttonUpdateService").click(function(){
+        var data = new FormData(document.getElementById("formUpdateService"));
+        if(isChangeImg) {
+            data.append("isChangeImg", isChangeImg);
+        }
+        data.append("id", $("#idService").val());
+
         $.ajax({
             type: 'POST',
             url: urlUpdateService,
             dataType: 'json',
             async: true,
-            data:{
-                id: $("#idService").val(),
-                name_services: $("#nameServiceUpdate").val(),
-                path_img: $("#pathImageServiceUpdate").val(),
-                detail: $("#detailServiceUpdate").val(),
-                facility: $("#facilityServiceUpdate").val(),
-                brg_personal: $("#brgPersonalUpdate").val(),
-            },
+            processData: false,
+            contentType: false,
+            data:data,
+            data:data,
             success: function(data) {
                 console.log(data);
                 if(data.status){
@@ -324,16 +339,24 @@
                 $("#nameServiceUpdate").val(data.data.name_services);
                 $("#detailServiceUpdate").val(data.data.detail);
                 $("#facilityServiceUpdate").val(data.data.facility);
-                $("#pathImageServiceUpdate").val(data.data.path_img);
                 $("#brgPersonalUpdate").val(data.data.brg_personal);
-                
+
+                $('.imgPreviewImgFileUpload').attr('src', base_url+"/"+data.data.path_img);
+                $(".textImgPreviewFileUpload").text(getFileNameImg(data.data.path_img));
+                $(".previewImgWraper").css("display", "flex");
+
                 $("#idService").val(idService);
                 $('#modalUpdateService').modal('show');
+                isChangeImg = false;
             },
             error: function(xhr, status, error){
                 console.log(error);
             }
         });
+    }
+
+    function getFileNameImg(fullPath){
+        return fullPath.substring(fullPath.lastIndexOf('/')+1);
     }
 
     function confirmDeleteService(idService){
@@ -398,8 +421,36 @@
         }
     });
 
+    $("#fileImgServiceUpdate").change(function(){
+        $(".textImgPreviewFileUpload").text(this.files[0].name);
+
+        var url = $(this).val();
+        var ext = url.substring(url.lastIndexOf('.') + 1).toLowerCase();
+        if (this.files && this.files[0]&& (ext == "png" || ext == "jpeg" || ext == "jpg")) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('.imgPreviewImgFileUpload').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(this.files[0]);
+            $(".previewImgWraper").css("display", "flex");
+
+            isChangeImg = true;
+        }
+        else {
+            swal({
+                title: "Please choose img (.jpg, .jpeg or .png)",
+                icon: "warning",
+                button: "OK",
+            });
+        }
+    });
+
     $("#buttonAddFileToUpload").click(function(){
         $("#fileImgService").trigger("click");
+    });
+
+    $("#buttonUpdateFileToUpload").click(function(){
+        $("#fileImgServiceUpdate").trigger("click");
     });
 </script>
 </body>

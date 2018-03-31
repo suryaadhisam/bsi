@@ -60,7 +60,10 @@ $route['admin'] = 'admin/dashboard';
 $route['admin/booking'] = 'admin/dashboard/booking';
 $route['admin/package'] = 'admin/dashboard/package';
 $route['admin/schedule'] = 'admin/dashboard/schedule';
-$route['admin/services'] = 'admin/dashboard/services';
+
+$route['admin/services'] = 'admin/service/getServices';
+$route['admin/services/(:num)'] = 'admin/service/getServices/$1';
+
 $route['admin/carousel'] = 'admin/dashboard/carousel';
 $route['admin/contact-us'] = 'admin/dashboard/contactus';
 $route['admin/social-media'] = 'admin/dashboard/socialmedia';

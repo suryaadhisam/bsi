@@ -6,9 +6,9 @@ class Service extends CI_Controller {
 	function __construct(){
 		parent::__construct();
 	
-		// if(!$this->session->userdata('email')){
-		// 	redirect(base_url("admin/auth"));
-		// }
+		if(!$this->session->userdata('email')){
+			redirect(base_url("admin/auth"));
+		}
 		$this->load->library('form_validation');
 		$this->load->model('m_service');
 
@@ -16,6 +16,77 @@ class Service extends CI_Controller {
 
 	public function index(){
 		
+	}
+
+	public function getServices() {
+		$data = array();
+		$data['title'] = "Services || Sunset Bali Adventure";
+
+		$data['style'] = $this->load->view('admin/template/v_style', '', TRUE);
+		$data['script'] = $this->load->view('admin/template/v_script', '', TRUE);
+		
+		$data['footer'] = $this->load->view('admin/template/v_footer', '', TRUE);
+		$data['menu_admin_left'] = $this->load->view('admin/template/v_menu_admin_left', '', TRUE);
+		$data['menu_admin_top'] = $this->load->view('admin/template/v_menu_admin_top', '', TRUE);
+
+		$this->load->model("m_service");
+
+		$where = array(
+			'state' => 1
+		);
+	 
+		$this->load->library('pagination');        
+        $limit_per_page = 10;
+        $page = ($this->uri->segment(3)) ? ($this->uri->segment(3) - 1) : 0;
+        $total_records = $this->m_service->getCount();
+     
+        if ($total_records > 0) {
+            // get current page records
+            $data["services"] = $this->m_service->getCurrentPageRecordServices($limit_per_page, $page*$limit_per_page);
+                 
+            $config['base_url'] = base_url() . 'admin/services';
+            $config['total_rows'] = $total_records;
+            $config['per_page'] = $limit_per_page;
+            $config["uri_segment"] = 3;
+             
+            // custom paging configuration
+            $config['num_links'] = 2;
+            $config['use_page_numbers'] = TRUE;
+            $config['reuse_query_string'] = TRUE;
+             
+            $config['full_tag_open'] = '<div class="pagination justify-content-center">';
+            $config['full_tag_close'] = '</div>';
+             
+            $config['first_link'] = 'First Page';
+            $config['first_tag_open'] = '<li class="page-item">';
+            $config['first_tag_close'] = '</li>';
+             
+            $config['last_link'] = 'Last Page';
+            $config['last_tag_open'] = '<li class="page-item">';
+            $config['last_tag_close'] = '</li>';
+             
+            $config['next_link'] = 'Next';
+            $config['next_tag_open'] = '<li class="page-item">';
+            $config['next_tag_close'] = '</li>';
+ 
+            $config['prev_link'] = 'Prev';
+            $config['prev_tag_open'] = '<li class="page-item">';
+            $config['prev_tag_close'] = '</li>';
+ 
+            $config['cur_tag_open'] = '<li class="page-item active"><a class="page-link">';
+            $config['cur_tag_close'] = '</a></li>';
+ 
+            $config['num_tag_open'] = '<li class="page-item">';
+            $config['num_tag_close'] = '</li>';
+             
+            $this->pagination->initialize($config);
+                 
+            // build paging links
+            $data["links"] = $this->pagination->create_links();
+        }
+		
+
+		$this->load->view('admin/v_services', $data);
 	}
 
 	public function getService() {

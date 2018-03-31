@@ -215,7 +215,7 @@
                                             ?>
                                         </tbody>
                                     </table>
-                                    <ul class="pagination justify-content-center">
+                                    <!-- <ul class="pagination justify-content-center">
                                         <li class="page-item"><a class="page-link" href="#">Prev</a></li>
                                         <li class="page-item active">
                                             <a class="page-link" href="#">1</a>
@@ -224,7 +224,12 @@
                                         <li class="page-item"><a class="page-link" href="#">3</a></li>
                                         <li class="page-item"><a class="page-link" href="#">4</a></li>
                                         <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                                    </ul>
+                                    </ul> -->
+                                    <?php 
+                                        if (isset($links)) {
+                                            echo $links;
+                                        } 
+                                    ?>
                                 <?php 
                                     } else {
                                 ?>

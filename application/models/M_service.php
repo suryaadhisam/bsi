@@ -8,9 +8,26 @@ class M_service extends CI_Model {
         parent::__construct();
     }
 
-	function getAllServices($where){		
+	function getAllServices($where){
 		return $this->db->get_where($this->namaTabel, $where)->result();
 	}
+
+	function getCount() {
+		return $this->db->get_where($this->namaTabel, array('state' => 1))->num_rows();
+	}
+	
+	public function getCurrentPageRecordServices($limit, $start) {
+        $this->db->limit($limit, $start);
+        $query = $this->db->get_where($this->namaTabel, array('state' => 1));
+ 
+        if ($query->num_rows() > 0) {
+            foreach ($query->result() as $row) {
+                $data[] = $row;
+            }
+            return $data;
+		}
+        return false;
+    }
 
 	function getService($where) {
 		return $this->db->get_where($this->namaTabel, $where)->result();

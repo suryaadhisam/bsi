@@ -58,3 +58,12 @@
     vertical-align: middle;
 }
 
+.hasError{
+    border: 1px solid #F44336;
+}
+
+.hasErrorText {
+    color: #F44336;
+    font-size: 10pt;
+}
+

@@ -142,10 +142,44 @@ class Service extends CI_Controller {
 					"status" => false,
 					"data" => [],
 					"message" => "Incorrect input",
-					"errors" => $resultTmp
+					"errors" => $resultTmp["errors"]
 				];
 			}
 			else {
+				@unlink($_FILES[$this->input->post('fileImgService')]);
+			
+				//add
+				try {
+					$this->db->trans_start();
+					$data = array(
+						'name_services' => $this->input->post('nameService'),
+						'path_img' => $result["data"]["full_path"],
+						'detail' => $this->input->post('detailService'),
+						'facility' => $this->input->post('facilityService'),
+						'brg_personal' => $this->input->post('brgPersonal'),
+						'state' => 1
+					);
+					$this->m_service->addService($data);
+					$this->db->trans_complete();
+
+					$result = [
+						"status" => true,
+						"data" => [],
+						"message" => "Successfully add services",
+						"errors" => []
+					];
+				} catch(Excepion $err) {
+					$this->db->trans_complete();
+					$result = [
+						"status" => false,
+						"data" => [],
+						"message" => "Failed add services",
+						"errors" => array(
+							"add service"=>"Failed add services"
+						)
+					];
+				}
+
 				$data = $this->upload->data();
 				$result = [
 					"status" => true,
@@ -154,39 +188,6 @@ class Service extends CI_Controller {
 					),
 					"message" => "Successfully add services",
 					"errors" => []
-				];
-			}
-			@unlink($_FILES[$this->input->post('fileImgService')]);
-			
-			//add
-			try {
-				$this->db->trans_start();
-				$data = array(
-					'name_services' => $this->input->post('nameService'),
-					'path_img' => $result["data"]["full_path"],
-					'detail' => $this->input->post('detailService'),
-					'facility' => $this->input->post('facilityService'),
-					'brg_personal' => $this->input->post('brgPersonal'),
-					'state' => 1
-				);
-				$this->m_service->addService($data);
-				$this->db->trans_complete();
-
-				$result = [
-					"status" => true,
-					"data" => [],
-					"message" => "Successfully add services",
-					"errors" => []
-				];
-			} catch(Excepion $err) {
-				$this->db->trans_complete();
-				$result = [
-					"status" => false,
-					"data" => [],
-					"message" => "Failed add services",
-					"errors" => array(
-						"add service"=>"Failed add services"
-					)
 				];
 			}
 		}
@@ -248,7 +249,7 @@ class Service extends CI_Controller {
 						"status" => false,
 						"data" => [],
 						"message" => "Incorrect input",
-						"errors" => $resultTmp
+						"errors" => $resultTmp["errors"]
 					];
 				}
 				else {
@@ -261,9 +262,11 @@ class Service extends CI_Controller {
 						"message" => "Successfully update services",
 						"errors" => []
 					];
+
+					
 				}
-				@unlink($_FILES[$this->input->post('fileImgServiceUpdate')]);
 			}
+			@unlink($_FILES[$this->input->post('fileImgServiceUpdate')]);
 
 			//update
 			try {
@@ -321,7 +324,7 @@ class Service extends CI_Controller {
 			$this->load->library('upload', $config);
 
 			if ( !$this->upload->do_upload($formFileName)) {
-				$error = array('error' => $this->upload->display_errors());
+				$error = array($formFileName => $this->upload->display_errors());
 				$result = [
 					"status" => false,
 					"data" => [],

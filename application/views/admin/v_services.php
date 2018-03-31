@@ -62,18 +62,21 @@
                                         <label class="col-md-3 col-form-label" for="nameService">Name</label>
                                         <div class="col-md-9">
                                             <input type="text" id="nameService" name="nameService" class="form-control" placeholder="Name service...">
+                                            <span class="hasErrorText"></span>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-md-3 col-form-label" for="detailService">Detail</label>
                                         <div class="col-md-9">
                                             <input type="text" id="detailService" name="detailService" class="form-control" placeholder="Detail service...">
+                                            <span class="hasErrorText"></span>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-md-3 col-form-label" for="facilityService">Facility</label>
                                         <div class="col-md-9">
                                             <input type="text" id="facilityService" name="facilityService" class="form-control" placeholder="Facility service...">
+                                            <span class="hasErrorText"></span>
                                         </div>
                                     </div>
                                     <div class="form-group row">
@@ -82,11 +85,12 @@
                                             <button type="button" class="btn btn-primary" id="buttonAddFileToUpload">Choose image</button>
 
                                             <input type="file" name="fileImgService" id="fileImgService"/>
+                                            <span class="hasErrorText"></span>
                                             <div class="previewImgWraper">
                                                 <div class="row">
                                                     <!-- <span class="buttonXImgPreviewFileUpload">x</span> -->
                                                     <div class="col-md-4 padding-right-0">
-                                                        <img src="as" class="imgPreviewImgFileUpload">
+                                                        <img class="imgPreviewImgFileUpload">
                                                     </div>
                                                     <div class="col-md-8">
                                                         <span class="textImgPreviewFileUpload">asas</span>
@@ -99,6 +103,7 @@
                                         <label class="col-md-3 col-form-label" for="brgPersonal">Brg Personal</label>
                                         <div class="col-md-9">
                                             <input type="text" id="brgPersonal" name="brgPersonal" class="form-control" placeholder="Brg personal...">
+                                            <span class="hasErrorText"></span>
                                         </div>
                                     </div>
                                 </form>
@@ -115,7 +120,7 @@
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title">Add Service</h5>
+                                <h5 class="modal-title">Update Service</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -128,18 +133,21 @@
                                         <label class="col-md-3 col-form-label" for="nameServiceUpdate">Name</label>
                                         <div class="col-md-9">
                                             <input type="text" id="nameServiceUpdate" name="nameServiceUpdate" class="form-control" placeholder="Name service..." value="Makan gratis">
+                                            <span class="hasErrorText"></span>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-md-3 col-form-label" for="detailServiceUpdate">Detail</label>
                                         <div class="col-md-9">
                                             <input type="text" id="detailServiceUpdate" name="detailServiceUpdate" class="form-control" placeholder="Detail service..." value="Makan gratis untuk 2 orang dengan belanja minimal 200rb">
+                                            <span class="hasErrorText"></span>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-md-3 col-form-label" for="facilityServiceUpdate">Facility</label>
                                         <div class="col-md-9">
                                             <input type="text" id="facilityServiceUpdate" name="facilityServiceUpdate" class="form-control" placeholder="Facility service..." value="Tempat makan dengan view sawah">
+                                            <span class="hasErrorText"></span>
                                         </div>
                                     </div>
                                     <div class="form-group row">
@@ -148,11 +156,12 @@
                                             <button type="button" class="btn btn-primary" id="buttonUpdateFileToUpload">Choose image</button>
 
                                             <input type="file" name="fileImgServiceUpdate" id="fileImgServiceUpdate"/>
+                                            <span class="hasErrorText"></span>
                                             <div class="previewImgWraper">
                                                 <div class="row">
                                                     <!-- <span class="buttonXImgPreviewFileUpload">x</span> -->
                                                     <div class="col-md-4 padding-right-0">
-                                                        <img src="as" class="imgPreviewImgFileUpload">
+                                                        <img class="imgPreviewImgFileUpload">
                                                     </div>
                                                     <div class="col-md-8">
                                                         <span class="textImgPreviewFileUpload">asas</span>
@@ -165,6 +174,7 @@
                                         <label class="col-md-3 col-form-label" for="brgPersonalUpdate">Brg Personal</label>
                                         <div class="col-md-9">
                                             <input type="text" id="brgPersonalUpdate" name="brgPersonalUpdate" class="form-control" placeholder="Brg personal...">
+                                            <span class="hasErrorText"></span>
                                         </div>
                                     </div>
                                 </form>
@@ -265,7 +275,7 @@
 
     $("#buttonAddService").click(function(){
         var data = new FormData(document.getElementById("formAddService"));
-
+        cleanStatusInputAddService();
         $.ajax({
             type: 'POST',
             url: urlAddService,
@@ -286,6 +296,13 @@
                             location.reload();
                         }
                     });
+                } else {
+                    for (var key in data.errors){
+                        $("#"+key).addClass("hasError");
+                        $("#"+key+" + .hasErrorText").css("display", "content");
+                        $("#"+key+" + .hasErrorText").text(data.errors[key].replace(/<p[^>]*>/g, "").replace(/<\/?p[^>]*>/g, ""));
+                    }
+
                 }
             },
             error: function(xhr, status, error){
@@ -294,8 +311,35 @@
         });
     });
 
+    function cleanStatusInputAddService() {
+        $("#nameService").removeClass("hasError");
+        $("#detailService").removeClass("hasError");
+        $("#facilityService").removeClass("hasError");
+        $("#brgPersonal").removeClass("hasError");
+
+        $("#nameService + .hasErrorText").text("");
+        $("#detailService + .hasErrorText").text("");
+        $("#facilityService + .hasErrorText").text("");
+        $("#brgPersonal + .hasErrorText").text("");
+        $("#fileImgService + .hasErrorText").text("");
+    }
+
+    function cleanStatusInputUpdateService() {
+        $("#nameServiceUpdate").removeClass("hasError");
+        $("#detailServiceUpdate").removeClass("hasError");
+        $("#facilityServiceUpdate").removeClass("hasError");
+        $("#brgPersonalUpdate").removeClass("hasError");
+
+        $("#nameServiceUpdate + .hasErrorText").text("");
+        $("#detailServiceUpdate + .hasErrorText").text("");
+        $("#facilityServiceUpdate + .hasErrorText").text("");
+        $("#brgPersonalUpdate + .hasErrorText").text("");
+        $("#fileImgServiceUpdate + .hasErrorText").text("");
+    }
+
     $("#buttonUpdateService").click(function(){
         var data = new FormData(document.getElementById("formUpdateService"));
+        cleanStatusInputUpdateService();
         if(isChangeImg) {
             data.append("isChangeImg", isChangeImg);
         }
@@ -322,7 +366,14 @@
                             location.reload();
                         }
                     });
+                } else {
+                    for (var key in data.errors){
+                        $("#"+key).addClass("hasError");
+                        $("#"+key+" + .hasErrorText").css("display", "content");
+                        $("#"+key+" + .hasErrorText").text(data.errors[key].replace(/<p[^>]*>/g, "").replace(/<\/?p[^>]*>/g, ""));
+                    }
                 }
+
             },
             error: function(xhr, status, error){
                 console.log(error);
@@ -456,6 +507,26 @@
 
     $("#buttonUpdateFileToUpload").click(function(){
         $("#fileImgServiceUpdate").trigger("click");
+    });
+
+    function resetFormAddUpdateService(){
+        $("#nameService").val("");
+        $("#detailService").val("");
+        $("#facilityService").val("");
+        $("#brgPersonal").val("");
+
+        $("#idService").val("");
+        $("#nameServiceUpdate").val("");
+        $("#detailServiceUpdate").val("");
+        $("#facilityServiceUpdate").val("");
+        $("#brgPersonalUpdate").val("");
+
+        $(".previewImgWraper").css("display", "none");
+    }
+
+
+    $("#modalAddService, #modalUpdateService").on('hidden.bs.modal', function () {
+        resetFormAddUpdateService();
     });
 </script>
 </body>

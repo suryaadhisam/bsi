@@ -36,7 +36,7 @@ class Service extends CI_Controller {
 		);
 	 
 		$this->load->library('pagination');        
-        $limit_per_page = 10;
+        $limit_per_page = 4;
         $page = ($this->uri->segment(3)) ? ($this->uri->segment(3) - 1) : 0;
         $total_records = $this->m_service->getCount();
      

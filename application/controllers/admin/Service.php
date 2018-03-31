@@ -45,13 +45,15 @@ class Service extends CI_Controller {
 	}
 
 	public function addService() {
+		//pathDestination
+		$pathDestination = "uploads/services/";
+
 		//validasi
 		$this->form_validation->set_error_delimiters('', '');
-		$this->form_validation->set_rules('name_services','Name service', 'required|max_length[255]');
-		$this->form_validation->set_rules('path_img','Path Image','required|max_length[255]');
-		$this->form_validation->set_rules('detail','Detail','required|max_length[255]');
-		$this->form_validation->set_rules('facility','Facility','required|max_length[255]');
-		$this->form_validation->set_rules('brg_personal','Brg personal','required|max_length[255]');
+		$this->form_validation->set_rules('nameService','Name service', 'required|max_length[255]');
+		$this->form_validation->set_rules('detailService','Detail','required|max_length[255]');
+		$this->form_validation->set_rules('facilityService','Facility','required|max_length[255]');
+		$this->form_validation->set_rules('brgPersonal','Brg personal','required|max_length[255]');
 
 		if ($this->form_validation->run() == FALSE) {
 			$result = [
@@ -62,15 +64,38 @@ class Service extends CI_Controller {
 			];
 		} 
 		else {
+			//upload img
+			$resultTmp = $this->do_upload("fileImgService", $pathDestination, "aa");
+			if (!$resultTmp["status"]){
+				$result = [
+					"status" => false,
+					"data" => [],
+					"message" => "Incorrect input",
+					"errors" => $resultTmp
+				];
+			}
+			else {
+				$data = $this->upload->data();
+				$result = [
+					"status" => true,
+					"data" => array(
+						"full_path" => $pathDestination."".$data["file_name"]
+					),
+					"message" => "Successfully add services",
+					"errors" => []
+				];
+			}
+			@unlink($_FILES[$this->input->post('fileImgService')]);
+			
 			//add
 			try {
 				$this->db->trans_start();
 				$data = array(
-					'name_services' => $this->input->post('name_services'),
-					'path_img' => $this->input->post('path_img'),
-					'detail' => $this->input->post('detail'),
-					'facility' => $this->input->post('facility'),
-					'brg_personal' => $this->input->post('brg_personal'),
+					'name_services' => $this->input->post('nameService'),
+					'path_img' => $result["data"]["full_path"],
+					'detail' => $this->input->post('detailService'),
+					'facility' => $this->input->post('facilityService'),
+					'brg_personal' => $this->input->post('brgPersonal'),
 					'state' => 1
 				);
 				$this->m_service->addService($data);
@@ -176,6 +201,35 @@ class Service extends CI_Controller {
 		}
 
 		echo json_encode($result);
+	}
+
+	public function do_upload($formFileName, $pathImg, $fileNameImg) {
+			$config['upload_path']          = realpath(FCPATH.$pathImg);
+			$config['allowed_types']        = 'jpg|png|jpeg';
+			$config['max_size']             = 1024 * 5; //5MB
+			$config['file_name']            = $fileNameImg;
+
+			$this->load->library('upload', $config);
+
+			if ( !$this->upload->do_upload($formFileName)) {
+				$error = array('error' => $this->upload->display_errors());
+				$result = [
+					"status" => false,
+					"data" => [],
+					"message" => "Failed upload img",
+					"errors" => $error
+				];
+			}
+			else {
+				$data = array('upload_data' => $this->upload->data());
+				$result = [
+					"status" => true,
+					"data" => $data,
+					"message" => "Successfully upload img",
+					"errors" => []
+				];
+			}
+			return $result;
 	}
 
 	

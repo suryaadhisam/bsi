@@ -57,7 +57,7 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <form action="" method="post" class="form-horizontal">
+                                <form action="" method="post" class="form-horizontal" id="formAddService">
                                     <div class="form-group row">
                                         <label class="col-md-3 col-form-label" for="nameService">Name</label>
                                         <div class="col-md-9">
@@ -79,7 +79,22 @@
                                     <div class="form-group row">
                                         <label class="col-md-3 col-form-label" for="pathImageService">Path Image</label>
                                         <div class="col-md-9">
-                                            <input type="text" id="pathImageService" name="pathImageService" class="form-control" placeholder="Path image service...">
+                                            <button type="button" class="btn btn-primary" id="buttonAddFileToUpload">Choose image</button>
+
+                                            <input type="file" name="fileImgService" id="fileImgService"/>
+
+                                            <!-- <input type="text" id="pathImageService" name="pathImageService" class="form-control" placeholder="Path image service..."> -->
+                                            <div class="previewImgWraper">
+                                                <div class="row">
+                                                    <span class="buttonXImgPreviewFileUpload">x</span>
+                                                    <div class="col-md-4 padding-right-0">
+                                                        <img src="as" class="imgPreviewImgFileUpload">
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        <span class="textImgPreviewFileUpload">asas</span>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="form-group row">
@@ -159,7 +174,7 @@
                                 <?php 
                                     if(count($services) > 0) {
                                 ?>
-                                    <table class="table table-responsive-sm table-hover">
+                                    <table class="table table-responsive-sm table-hover" id="tableListServives">
                                         <thead>
                                         <tr>
                                             <th>Name</th>
@@ -173,7 +188,10 @@
                                                 foreach($services as $row) {
                                             ?>
                                                 <tr>
-                                                    <td><?php echo $row->name_services; ?></td>
+                                                    <td>
+                                                        <img src="<?php echo base_url().$row->path_img; ?>" class="imgThumbnailService">
+                                                        <?php echo $row->name_services; ?>
+                                                    </td>
                                                     <td><?php echo $row->detail; ?></td>
                                                     <td><?php echo $row->facility; ?></td>
                                                     <td>
@@ -228,19 +246,16 @@
     var urlGetService = base_url+"/admin/service/get";
 
     $("#buttonAddService").click(function(){
+        var data = new FormData(document.getElementById("formAddService"));
 
         $.ajax({
             type: 'POST',
             url: urlAddService,
             dataType: 'json',
             async: true,
-            data:{
-                name_services: $("#nameService").val(),
-                path_img: $("#pathImageService").val(),
-                detail: $("#detailService").val(),
-                facility: $("#facilityService").val(),
-                brg_personal: $("#brgPersonal").val(),
-            },
+            processData: false,
+            contentType: false,
+            data:data,
             success: function(data) {
                 console.log(data);
                 if(data.status){
@@ -360,6 +375,32 @@
             }
         });
     }
+
+    $("#fileImgService").change(function(){
+        $(".textImgPreviewFileUpload").text(this.files[0].name);
+
+        var url = $(this).val();
+        var ext = url.substring(url.lastIndexOf('.') + 1).toLowerCase();
+        if (this.files && this.files[0]&& (ext == "png" || ext == "jpeg" || ext == "jpg")) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('.imgPreviewImgFileUpload').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(this.files[0]);
+            $(".previewImgWraper").css("display", "flex");
+        }
+        else {
+            swal({
+                title: "Please choose img (.jpg, .jpeg or .png)",
+                icon: "warning",
+                button: "OK",
+            });
+        }
+    });
+
+    $("#buttonAddFileToUpload").click(function(){
+        $("#fileImgService").trigger("click");
+    });
 </script>
 </body>
 </html>

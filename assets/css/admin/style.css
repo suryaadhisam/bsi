@@ -5,3 +5,56 @@
 .center {
     margin: auto;
 }
+
+.previewImgWraper{
+    border: 1px solid #4CAF50;
+    margin-top: 10px;
+    display: none;
+}
+
+.imgPreviewImgFileUpload {
+    width: 51px;
+    height: 51px;
+    border: 1px solid #E0E0E0;
+    margin: 2px;
+    object-fit: cover;
+}
+
+.textImgPreviewFileUpload{
+    margin-top: 2px;
+    margin-left: 2px;
+}
+
+.buttonXImgPreviewFileUpload {
+    position: absolute;
+    top: 46px;
+    right: 25px;
+}
+
+.buttonXImgPreviewFileUpload:hover {
+    cursor: pointer;
+}
+
+#fileImgService {
+    display: none;
+}
+
+.padding-left-0 {
+    padding-left: 0px;
+}
+
+.padding-right-0 {
+    padding-right: 0px;
+}
+
+#tableListServives .imgThumbnailService{
+    width: 55px;
+    height: 50px;
+    object-fit: cover;
+    margin-right: 5px;
+}
+
+#tableListServives td {
+    vertical-align: middle;
+}
+

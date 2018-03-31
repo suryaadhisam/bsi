@@ -33,4 +33,13 @@ class M_service extends CI_Model {
 		$this->db->where('id_services', $data["id_services"]);
 		return $this->db->update($this->namaTabel, $data);
 	}
+
+	function insert_file($filename, $title) {
+        $data = array(
+            'filename'      => $filename,
+            'title'         => $title
+        );
+        $this->db->insert('files', $data);
+        return $this->db->insert_id();
+    }
 }

@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Service extends CI_Controller {
+class Socmed extends CI_Controller {
 
 	function __construct(){
 		parent::__construct();
@@ -10,7 +10,7 @@ class Service extends CI_Controller {
 			redirect(base_url("admin/auth"));
 		}
 		$this->load->library('form_validation');
-		$this->load->model('m_service');
+		$this->load->model('m_socmed');
 
 	}
 
@@ -18,9 +18,9 @@ class Service extends CI_Controller {
 		
 	}
 
-	public function getServices() {
+	public function getSocmeds() {
 		$data = array();
-		$data['title'] = "Services || Sunset Bali Adventure";
+		$data['title'] = "Social media || Sunset Bali Adventure";
 
 		$data['style'] = $this->load->view('admin/template/v_style', '', TRUE);
 		$data['script'] = $this->load->view('admin/template/v_script', '', TRUE);
@@ -29,8 +29,6 @@ class Service extends CI_Controller {
 		$data['menu_admin_left'] = $this->load->view('admin/template/v_menu_admin_left', '', TRUE);
 		$data['menu_admin_top'] = $this->load->view('admin/template/v_menu_admin_top', '', TRUE);
 
-		$this->load->model("m_service");
-
 		$where = array(
 			'state' => 1
 		);
@@ -38,13 +36,13 @@ class Service extends CI_Controller {
 		$this->load->library('pagination');        
         $limit_per_page = 4;
         $page = ($this->uri->segment(3)) ? ($this->uri->segment(3) - 1) : 0;
-        $total_records = $this->m_service->getCount();
+        $total_records = $this->m_socmed->getCount();
      
         if ($total_records > 0) {
             // get current page records
-            $data["services"] = $this->m_service->getCurrentPageRecordServices($limit_per_page, $page*$limit_per_page);
+            $data["socmeds"] = $this->m_socmed->getCurrentPageRecordSocmed($limit_per_page, $page*$limit_per_page);
                  
-            $config['base_url'] = base_url() . 'admin/services';
+            $config['base_url'] = base_url() . 'admin/social-media';
             $config['total_rows'] = $total_records;
             $config['per_page'] = $limit_per_page;
             $config["uri_segment"] = 3;
@@ -84,32 +82,30 @@ class Service extends CI_Controller {
             // build paging links
             $data["links"] = $this->pagination->create_links();
         } else {
-			$data["services"] = [];
+			$data["socmeds"] = [];
 		}
-		
-
-		$this->load->view('admin/v_services', $data);
+		$this->load->view('admin/v_socmed', $data);
 	}
 
-	public function getService() {
+	public function getSocmed() {
 		try {
 			$where = array(
-				'id_services' => $this->input->post('idServices')
+				'id' => $this->input->post('idSocmed')
 			);
 
 			$result = [
 				"status" => true,
-				"data" => $this->m_service->getService($where)[0],
-				"message" => "Successfully get service",
+				"data" => $this->m_socmed->getSocmed($where)[0],
+				"message" => "Successfully get social media",
 				"errors" => []
 			];
 		} catch(Excepion $err) {
 			$result = [
 				"status" => false,
 				"data" => [],
-				"message" => "Failed get service",
+				"message" => "Failed get social media",
 				"errors" => array(
-					"get service"=>"Failed get service"
+					"get social media"=>"Failed get social media"
 				)
 			];
 		}
@@ -117,16 +113,14 @@ class Service extends CI_Controller {
 		echo json_encode($result);
 	}
 
-	public function addService() {
+	public function addSocmed() {
 		//pathDestination
-		$pathDestination = "uploads/services/";
+		$pathDestination = "uploads/social_media/";
 
 		//validasi
 		$this->form_validation->set_error_delimiters('', '');
-		$this->form_validation->set_rules('nameService','Name service', 'required|max_length[255]');
-		$this->form_validation->set_rules('detailService','Detail','required|max_length[255]');
-		$this->form_validation->set_rules('facilityService','Facility','required|max_length[255]');
-		$this->form_validation->set_rules('brgPersonal','Brg personal','required|max_length[255]');
+		$this->form_validation->set_rules('nameSocmed','Socmed name', 'required|max_length[255]');
+		$this->form_validation->set_rules('linkSocmed','Socmed link','required|max_length[255]');
 
 		if ($this->form_validation->run() == FALSE) {
 			$result = [
@@ -138,7 +132,7 @@ class Service extends CI_Controller {
 		}
 		else {
 			//upload img
-			$resultTmp = $this->do_upload("fileImgService", $pathDestination, "service-img");
+			$resultTmp = $this->do_upload("fileImgSocmed", $pathDestination, "socmed-img");
 			if (!$resultTmp["status"]){
 				$result = [
 					"status" => false,
@@ -147,26 +141,24 @@ class Service extends CI_Controller {
 					"errors" => $resultTmp["errors"]
 				];
 			} else {
-				@unlink($_FILES[$this->input->post('fileImgService')]);
+				@unlink($_FILES[$this->input->post('fileImgSocmed')]);
 			
 				//add
 				try {
 					$this->db->trans_start();
 					$data = array(
-						'name_services' => $this->input->post('nameService'),
-						'path_img' => $pathDestination.$resultTmp["data"]["upload_data"]["file_name"],
-						'detail' => $this->input->post('detailService'),
-						'facility' => $this->input->post('facilityService'),
-						'brg_personal' => $this->input->post('brgPersonal'),
+						'socmed_name' => $this->input->post('nameSocmed'),
+						'socmed_path_icon' => $pathDestination.$resultTmp["data"]["upload_data"]["file_name"],
+						'socmed_url' => $this->input->post('linkSocmed'),
 						'state' => 1
 					);
-					$this->m_service->addService($data);
+					$this->m_socmed->addSocmed($data);
 					$this->db->trans_complete();
 
 					$result = [
 						"status" => true,
 						"data" => [],
-						"message" => "Successfully add services",
+						"message" => "Successfully add socmed",
 						"errors" => []
 					];
 				} catch(Excepion $err) {
@@ -174,9 +166,9 @@ class Service extends CI_Controller {
 					$result = [
 						"status" => false,
 						"data" => [],
-						"message" => "Failed add services",
+						"message" => "Failed add socmed",
 						"errors" => array(
-							"add service"=>"Failed add services"
+							"add service"=>"Failed add socmed"
 						)
 					];
 				}
@@ -186,16 +178,16 @@ class Service extends CI_Controller {
 		echo json_encode($result);
 	}
 
-	public function softDeleteService() {
+	public function softDeleteSocmed() {
 		try {
 			$this->db->trans_start();
-			$this->m_service->softDeleteService($this->input->post('id_services'));
+			$this->m_socmed->softDeleteSocmed($this->input->post('id_socmed'));
 			$this->db->trans_complete();
 
 			$result = [
 				"status" => true,
 				"data" => [],
-				"message" => "Successfully delete service",
+				"message" => "Successfully delete socmed",
 				"errors" => []
 			];
 		} catch(Excepion $err) {
@@ -203,25 +195,23 @@ class Service extends CI_Controller {
 			$result = [
 				"status" => false,
 				"data" => [],
-				"message" => "Failed delete service",
+				"message" => "Failed delete socmed",
 				"errors" => array(
-					"delete service"=>"Failed delete service"
+					"delete socmed"=>"Failed delete socmed"
 				)
 			];
 		}
 		echo json_encode($result);
 	}
 
-	public function updateService() {
+	public function updateSocmed() {
 		//pathDestination
 		$pathDestination = "uploads/services/";
 
 		//validasi
 		$this->form_validation->set_error_delimiters('', '');
-		$this->form_validation->set_rules('nameServiceUpdate','Name service', 'required|max_length[255]');
-		$this->form_validation->set_rules('detailServiceUpdate','Detail','required|max_length[255]');
-		$this->form_validation->set_rules('facilityServiceUpdate','Facility','required|max_length[255]');
-		$this->form_validation->set_rules('brgPersonalUpdate','Brg personal','required|max_length[255]');
+		$this->form_validation->set_rules('nameSocmedUpdate','Socmed name', 'required|max_length[255]');
+		$this->form_validation->set_rules('linkSocmedUpdate','Socmed link','required|max_length[255]');
 
 		if ($this->form_validation->run() == FALSE) {
 			$result = [
@@ -234,7 +224,7 @@ class Service extends CI_Controller {
 		else {
 			if($this->input->post('isChangeImg')) {
 				//upload img
-				$resultTmp = $this->do_upload("fileImgServiceUpdate", $pathDestination, "service-img");
+				$resultTmp = $this->do_upload("fileImgSocmedUpdate", $pathDestination, "socmed-img");
 				if (!$resultTmp["status"]){
 					$result = [
 						"status" => false,
@@ -250,42 +240,38 @@ class Service extends CI_Controller {
 						"data" => array(
 							"full_path" => $pathDestination."".$data["file_name"]
 						),
-						"message" => "Successfully update services",
+						"message" => "Successfully update socmed",
 						"errors" => []
 					];		
 				}
 			}
-			@unlink($_FILES[$this->input->post('fileImgServiceUpdate')]);
+			@unlink($_FILES[$this->input->post('fileImgSocmedUpdate')]);
 
 			//update
 			try {
 				$this->db->trans_start();
 				if($this->input->post('isChangeImg')) {
 					$data = array(
-						'id_services' => $this->input->post('id'),
-						'name_services' => $this->input->post('nameServiceUpdate'),
-						'path_img' => $result["data"]["full_path"],
-						'detail' => $this->input->post('detailServiceUpdate'),
-						'facility' => $this->input->post('facilityServiceUpdate'),
-						'brg_personal' => $this->input->post('brgPersonalUpdate'),
+						'id' => $this->input->post('idSocmed'),
+						'socmed_name' => $this->input->post('nameSocmedUpdate'),
+						'socmed_path_icon' => $result["data"]["full_path"],
+						'socmed_url' => $this->input->post('linkSocmedUpdate')
 					);
 				} else {
 					$data = array(
-						'id_services' => $this->input->post('id'),
-						'name_services' => $this->input->post('nameServiceUpdate'),
-						'detail' => $this->input->post('detailServiceUpdate'),
-						'facility' => $this->input->post('facilityServiceUpdate'),
-						'brg_personal' => $this->input->post('brgPersonalUpdate'),
+						'id' => $this->input->post('idSocmed'),
+						'socmed_name' => $this->input->post('nameSocmedUpdate'),
+						'socmed_url' => $this->input->post('linkSocmedUpdate')
 					);
 				}
 				
-				$this->m_service->updateService($data);
+				$this->m_socmed->updateSocmed($data);
 				$this->db->trans_complete();
 
 				$result = [
 					"status" => true,
 					"data" => [],
-					"message" => "Successfully update service",
+					"message" => "Successfully update socmed",
 					"errors" => []
 				];
 			} catch(Excepion $err) {
@@ -293,9 +279,9 @@ class Service extends CI_Controller {
 				$result = [
 					"status" => false,
 					"data" => [],
-					"message" => "Failed update service",
+					"message" => "Failed update socmed",
 					"errors" => array(
-						"update service"=>"Failed update service"
+						"update socmed"=>"Failed update socmed"
 					)
 				];
 			}

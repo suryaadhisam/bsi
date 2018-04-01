@@ -42,49 +42,43 @@
         <!-- Breadcrumb -->
         <ol class="breadcrumb">
             <li class="breadcrumb-item">Home</li>
-            <li class="breadcrumb-item active">Services</li>
+            <li class="breadcrumb-item">Setting</li>
+            <li class="breadcrumb-item active">Social Media</li>
         </ol>
 
         <div class="container-fluid">
             <div id="ui-view">
-                <div class="modal fade" id="modalAddService" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal fade" id="modalAddSocmed" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title">Add Service</h5>
+                                <h5 class="modal-title">Add Socal Media</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <form action="" method="post" class="form-horizontal" id="formAddService">
+                                <form action="" method="post" class="form-horizontal" id="formAddSocmed">
                                     <div class="form-group row">
-                                        <label class="col-md-3 col-form-label" for="nameService">Name</label>
+                                        <label class="col-md-3 col-form-label" for="nameSocmed">Name</label>
                                         <div class="col-md-9">
-                                            <input type="text" id="nameService" name="nameService" class="form-control" placeholder="Name service...">
+                                            <input type="text" id="nameSocmed" name="nameSocmed" class="form-control" placeholder="Name social media...">
                                             <span class="hasErrorText"></span>
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label class="col-md-3 col-form-label" for="detailService">Detail</label>
+                                        <label class="col-md-3 col-form-label" for="linkSocmed">Link Socmed</label>
                                         <div class="col-md-9">
-                                            <textarea id="detailService" name="detailService" rows="4" class="form-control" placeholder="Detail service..."></textarea>
+                                            <input type="text" id="linkSocmed" name="linkSocmed" class="form-control" placeholder="Link social media...">
                                             <span class="hasErrorText"></span>
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label class="col-md-3 col-form-label" for="facilityService">Facility</label>
-                                        <div class="col-md-9">
-                                            <input type="text" id="facilityService" name="facilityService" class="form-control" placeholder="Facility service...">
-                                            <span class="hasErrorText"></span>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-md-3 col-form-label" for="pathImageService">Path Image</label>
+                                        <label class="col-md-3 col-form-label" for="pathImageService">Image Icon</label>
                                         <div class="col-md-9">
                                             <button type="button" class="btn btn-primary" id="buttonAddFileToUpload">Choose image</button>
 
-                                            <input type="file" name="fileImgService" id="fileImgService"/>
+                                            <input type="file" name="fileImgSocmed" id="fileImgSocmed" accept="image/x-png,image/jpg,image/jpeg" />
                                             <span class="hasErrorText"></span>
                                             <div class="previewImgWraper">
                                                 <div class="row">
@@ -99,63 +93,50 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="form-group row">
-                                        <label class="col-md-3 col-form-label" for="brgPersonal">Brg Personal</label>
-                                        <div class="col-md-9">
-                                            <input type="text" id="brgPersonal" name="brgPersonal" class="form-control" placeholder="Brg personal...">
-                                            <span class="hasErrorText"></span>
-                                        </div>
-                                    </div>
+                                    
                                 </form>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-primary" id="buttonAddService"><i class="fa fa-refresh fa-spin loadingButtonProccess"></i> Add</button>
+                                <button type="button" class="btn btn-primary" id="buttonAddSocmed"><i class="fa fa-refresh fa-spin loadingButtonProccess"></i> Add</button>
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="modal fade" id="modalUpdateService" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal fade" id="modalUpdateSocmed" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title">Update Service</h5>
+                                <h5 class="modal-title">Update Social Media</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <form action="" method="post" class="form-horizontal" id="formUpdateService">
-                                    <input type="hidden" id="idService" name="idService" class="form-control" value="1">
+                                <form action="" method="post" class="form-horizontal" id="formUpdateSocmed">
+                                    <input type="hidden" id="idSocmed" name="idSocmed" class="form-control" value="1">
 
                                     <div class="form-group row">
-                                        <label class="col-md-3 col-form-label" for="nameServiceUpdate">Name</label>
+                                        <label class="col-md-3 col-form-label" for="nameSocmedUpdate">Name</label>
                                         <div class="col-md-9">
-                                            <input type="text" id="nameServiceUpdate" name="nameServiceUpdate" class="form-control" placeholder="Name service..." value="Makan gratis">
+                                            <input type="text" id="nameSocmedUpdate" name="nameSocmedUpdate" class="form-control" placeholder="Name social media...">
                                             <span class="hasErrorText"></span>
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label class="col-md-3 col-form-label" for="detailServiceUpdate">Detail</label>
+                                        <label class="col-md-3 col-form-label" for="linkSocmedUpdate">Link Socmed</label>
                                         <div class="col-md-9">
-                                            <textarea id="detailServiceUpdate" name="detailServiceUpdate" rows="4" class="form-control" placeholder="Detail service...">Makan gratis untuk 2 orang dengan belanja minimal 200rb</textarea>
+                                            <input type="text" id="linkSocmedUpdate" name="linkSocmedUpdate" class="form-control" placeholder="Link social media...">
                                             <span class="hasErrorText"></span>
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label class="col-md-3 col-form-label" for="facilityServiceUpdate">Facility</label>
-                                        <div class="col-md-9">
-                                            <input type="text" id="facilityServiceUpdate" name="facilityServiceUpdate" class="form-control" placeholder="Facility service..." value="Tempat makan dengan view sawah">
-                                            <span class="hasErrorText"></span>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-md-3 col-form-label" for="pathImageService">Path Image</label>
+                                        <label class="col-md-3 col-form-label" for="imageSocmedUpdate">Image Icon</label>
                                         <div class="col-md-9">
                                             <button type="button" class="btn btn-primary" id="buttonUpdateFileToUpload">Choose image</button>
 
-                                            <input type="file" name="fileImgServiceUpdate" id="fileImgServiceUpdate"/>
+                                            <input type="file" name="fileImgSocmedUpdate" id="fileImgSocmedUpdate" accept="image/x-png,image/jpg,image/jpeg" />
                                             <span class="hasErrorText"></span>
                                             <div class="previewImgWraper">
                                                 <div class="row">
@@ -170,17 +151,11 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="form-group row">
-                                        <label class="col-md-3 col-form-label" for="brgPersonalUpdate">Brg Personal</label>
-                                        <div class="col-md-9">
-                                            <input type="text" id="brgPersonalUpdate" name="brgPersonalUpdate" class="form-control" placeholder="Brg personal...">
-                                            <span class="hasErrorText"></span>
-                                        </div>
-                                    </div>
+                                    
                                 </form>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-primary" id="buttonUpdateService"><i class="fa fa-refresh fa-spin loadingButtonProccess"></i> Update</button>
+                                <button type="button" class="btn btn-primary" id="buttonUpdateSocmed"><i class="fa fa-refresh fa-spin loadingButtonProccess"></i> Update</button>
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                             </div>
                         </div>
@@ -191,33 +166,31 @@
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="card-body">
-                                <button type="button" id="buttonAddServiceNew" class="btn btn-success" data-toggle="modal" data-target="#modalAddService" style="margin-bottom: 10px;"><i class="fa fa-plus"></i>&nbsp; Add service</button>
+                                <button type="button" id="buttonAddSocmedNew" class="btn btn-success" data-toggle="modal" data-target="#modalAddSocmed" style="margin-bottom: 10px;"><i class="fa fa-plus"></i>&nbsp; Add socmed</button>
                                 <?php 
-                                    if(count($services) > 0) {
+                                    if(count($socmeds) > 0) {
                                 ?>
                                     <table class="table table-responsive-sm table-hover" id="tableListServives">
                                         <thead>
                                         <tr>
                                             <th>Name</th>
-                                            <th>Detail</th>
-                                            <th>Facility</th>
+                                            <th>Link Social Media</th>
                                             <th>Action</th>
                                         </tr>
                                         </thead>
                                         <tbody>
                                             <?php 
-                                                foreach($services as $row) {
+                                                foreach($socmeds as $row) {
                                             ?>
                                                 <tr>
                                                     <td>
-                                                        <img src="<?php echo base_url().$row->path_img; ?>" class="imgThumbnailService">
-                                                        <?php echo $row->name_services; ?>
+                                                        <img src="<?php echo base_url().$row->socmed_path_icon; ?>" class="imgThumbnailService">
+                                                        <?php echo $row->socmed_name; ?>
                                                     </td>
-                                                    <td><?php echo $row->detail; ?></td>
-                                                    <td><?php echo $row->facility; ?></td>
+                                                    <td><?php echo $row->socmed_url; ?></td>
                                                     <td>
-                                                        <button type="button" class="btn btn-primary" onclick="openFormUpdateService(<?php echo $row->id_services; ?>)"><i class="fa fa-pencil"></i>&nbsp; Edit</button>
-                                                        <button type="button" class="btn btn-danger" onclick="confirmDeleteService(<?php echo $row->id_services; ?>)"><i class="fa fa-trash"></i>&nbsp; Delete</button>
+                                                        <button type="button" class="btn btn-primary" onclick="openFormUpdateSocmed(<?php echo $row->id; ?>)"><i class="fa fa-pencil"></i>&nbsp; Edit</button>
+                                                        <button type="button" class="btn btn-danger" onclick="confirmDeleteSocmed(<?php echo $row->id; ?>)"><i class="fa fa-trash"></i>&nbsp; Delete</button>
                                                     </td>
                                                 </tr>
                                             <?php 
@@ -266,21 +239,21 @@
 <script>
     
     var base_url = window.location.origin;
-    var urlAddService = base_url+"/admin/service/add";
-    var urlSoftDeleteService = base_url+"/admin/service/soft-delete";
-    var urlUpdateService = base_url+"/admin/service/update";
-    var urlGetService = base_url+"/admin/service/get";
+    var urlAddSocmed = base_url+"/admin/socmed/add";
+    var urlSoftDeleteSocmed = base_url+"/admin/socmed/soft-delete";
+    var urlUpdateSocmed = base_url+"/admin/socmed/update";
+    var urlGetSocmed = base_url+"/admin/socmed/get";
 
     var isChangeImg = false;
 
-    $("#buttonAddService").click(function(){
-        var data = new FormData(document.getElementById("formAddService"));
-        cleanStatusInputAddService();
+    $("#buttonAddSocmed").click(function(){
+        var data = new FormData(document.getElementById("formAddSocmed"));
+        cleanStatusInputAddSocmed();
         $(".loadingButtonProccess").css("display", "inline-flex");
 
         $.ajax({
             type: 'POST',
-            url: urlAddService,
+            url: urlAddSocmed,
             dataType: 'json',
             async: true,
             processData: false,
@@ -315,45 +288,37 @@
         });
     });
 
-    function cleanStatusInputAddService() {
-        $("#nameService").removeClass("hasError");
-        $("#detailService").removeClass("hasError");
-        $("#facilityService").removeClass("hasError");
-        $("#brgPersonal").removeClass("hasError");
+    function cleanStatusInputAddSocmed() {
+        $("#nameSocmed").removeClass("hasError");
+        $("#linkSocmed").removeClass("hasError");
 
-        $("#nameService + .hasErrorText").text("");
-        $("#detailService + .hasErrorText").text("");
-        $("#facilityService + .hasErrorText").text("");
-        $("#brgPersonal + .hasErrorText").text("");
-        $("#fileImgService + .hasErrorText").text("");
+        $("#nameSocmed + .hasErrorText").text("");
+        $("#linkSocmed + .hasErrorText").text("");
+        $("#fileImgSocmed + .hasErrorText").text("");
     }
 
-    function cleanStatusInputUpdateService() {
-        $("#nameServiceUpdate").removeClass("hasError");
-        $("#detailServiceUpdate").removeClass("hasError");
-        $("#facilityServiceUpdate").removeClass("hasError");
-        $("#brgPersonalUpdate").removeClass("hasError");
+    function cleanStatusInputUpdateSocmed() {
+        $("#nameSocmedUpdate").removeClass("hasError");
+        $("#linkSocmedUpdate").removeClass("hasError");
 
-        $("#nameServiceUpdate + .hasErrorText").text("");
-        $("#detailServiceUpdate + .hasErrorText").text("");
-        $("#facilityServiceUpdate + .hasErrorText").text("");
-        $("#brgPersonalUpdate + .hasErrorText").text("");
-        $("#fileImgServiceUpdate + .hasErrorText").text("");
+        $("#nameSocmedUpdate + .hasErrorText").text("");
+        $("#linkSocmedUpdate + .hasErrorText").text("");
+        $("#fileImgSocmedUpdate + .hasErrorText").text("");
     }
 
-    $("#buttonUpdateService").click(function(){
-        var data = new FormData(document.getElementById("formUpdateService"));
-        cleanStatusInputUpdateService();
+    $("#buttonUpdateSocmed").click(function(){
+        var data = new FormData(document.getElementById("formUpdateSocmed"));
+        cleanStatusInputUpdateSocmed();
         $(".loadingButtonProccess").css("display", "inline-flex");
 
         if(isChangeImg) {
             data.append("isChangeImg", isChangeImg);
         }
-        data.append("id", $("#idService").val());
+        data.append("id", $("#idSocmed").val());
 
         $.ajax({
             type: 'POST',
-            url: urlUpdateService,
+            url: urlUpdateSocmed,
             dataType: 'json',
             async: true,
             processData: false,
@@ -389,28 +354,26 @@
         });
     });
 
-    function openFormUpdateService(idService){
+    function openFormUpdateSocmed(idSocmed){
         $.ajax({
             type: 'POST',
-            url: urlGetService,
+            url: urlGetSocmed,
             dataType: 'json',
             async: true,
             data:{
-                idServices: idService
+                idSocmed: idSocmed
             },
             success: function(data) {
                 console.log(data);
-                $("#nameServiceUpdate").val(data.data.name_services);
-                $("#detailServiceUpdate").val(data.data.detail);
-                $("#facilityServiceUpdate").val(data.data.facility);
-                $("#brgPersonalUpdate").val(data.data.brg_personal);
+                $("#nameSocmedUpdate").val(data.data.socmed_name);
+                $("#linkSocmedUpdate").val(data.data.socmed_url);
 
-                $('.imgPreviewImgFileUpload').attr('src', base_url+"/"+data.data.path_img);
-                $(".textImgPreviewFileUpload").text(getFileNameImg(data.data.path_img));
+                $('.imgPreviewImgFileUpload').attr('src', base_url+"/"+data.data.socmed_path_icon);
+                $(".textImgPreviewFileUpload").text(getFileNameImg(data.data.socmed_path_icon));
                 $(".previewImgWraper").css("display", "flex");
 
-                $("#idService").val(idService);
-                $('#modalUpdateService').modal('show');
+                $("#idService").val(idSocmed);
+                $('#modalUpdateSocmed').modal('show');
                 isChangeImg = false;
             },
             error: function(xhr, status, error){
@@ -423,7 +386,7 @@
         return fullPath.substring(fullPath.lastIndexOf('/')+1);
     }
 
-    function confirmDeleteService(idService){
+    function confirmDeleteSocmed(idSocmed){
         swal({
             title: "Are you sure?",
             icon: "warning",
@@ -433,11 +396,11 @@
             if (willDelete) {
                 $.ajax({
                     type: 'POST',
-                    url: urlSoftDeleteService,
+                    url: urlSoftDeleteSocmed,
                     dataType: 'json',
                     async: true,
                     data:{
-                        id_services: idService
+                        id_socmed: idSocmed
                     },
                     success: function(data) {
                         console.log(data);
@@ -463,7 +426,7 @@
         });
     }
 
-    $("#fileImgService").change(function(){
+    $("#fileImgSocmed").change(function(){
         $(".textImgPreviewFileUpload").text(this.files[0].name);
 
         var url = $(this).val();
@@ -485,7 +448,7 @@
         }
     });
 
-    $("#fileImgServiceUpdate").change(function(){
+    $("#fileImgSocmedUpdate").change(function(){
         $(".textImgPreviewFileUpload").text(this.files[0].name);
 
         var url = $(this).val();
@@ -510,31 +473,28 @@
     });
 
     $("#buttonAddFileToUpload").click(function(){
-        $("#fileImgService").trigger("click");
+        $("#fileImgSocmed").trigger("click");
     });
 
     $("#buttonUpdateFileToUpload").click(function(){
-        $("#fileImgServiceUpdate").trigger("click");
+        $("#fileImgSocmedUpdate").trigger("click");
     });
 
-    function resetFormAddUpdateService(){
-        $("#nameService").val("");
-        $("#detailService").val("");
-        $("#facilityService").val("");
-        $("#brgPersonal").val("");
-
-        $("#idService").val("");
-        $("#nameServiceUpdate").val("");
-        $("#detailServiceUpdate").val("");
-        $("#facilityServiceUpdate").val("");
-        $("#brgPersonalUpdate").val("");
+    function resetFormAddUpdateSocmed(){
+        $("#nameSocmed").val("");
+        $("#linkSocmed").val("");
+    
+        $("#idSocmed").val("");
+        $("#nameSocmedUpdate").val("");
+        $("#linkSocmedUpdate").val("");
 
         $(".previewImgWraper").css("display", "none");
     }
 
-    $("#modalAddService, #modalUpdateService").on('hidden.bs.modal', function () {
-        resetFormAddUpdateService();
+    $("#modalAddSocmed, #modalUpdateSocmed").on('hidden.bs.modal', function () {
+        resetFormAddUpdateSocmed();
     });
+
 </script>
 </body>
 </html>

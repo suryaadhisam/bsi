@@ -1,14 +1,14 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class M_service extends CI_Model {
+class M_socmed extends CI_Model {
 
-    private $namaTabel = "tb_services";
+    private $namaTabel = "tb_socmed";
 
 	public function __construct(){
         parent::__construct();
     }
 
-	function getAllServices($where){
+	function getAllSocmed($where){
 		return $this->db->get_where($this->namaTabel, $where)->result();
 	}
 
@@ -16,7 +16,7 @@ class M_service extends CI_Model {
 		return $this->db->get_where($this->namaTabel, array('state' => 1))->num_rows();
 	}
 	
-	public function getCurrentPageRecordServices($limit, $start) {
+	public function getCurrentPageRecordSocmed($limit, $start) {
         $this->db->limit($limit, $start);
         $query = $this->db->get_where($this->namaTabel, array('state' => 1));
  
@@ -29,25 +29,25 @@ class M_service extends CI_Model {
         return false;
     }
 
-	function getService($where) {
+	function getSocmed($where) {
 		return $this->db->get_where($this->namaTabel, $where)->result();
 	}
 
-	function addService($data) {
+	function addSocmed($data) {
 		return $this->db->insert($this->namaTabel, $data);
 	}
 
-	function softDeleteService($id) {
+	function softDeleteSocmed($id) {
 		$data = array(
 			'state' => 0
 		);
 	
-		$this->db->where('id_services', $id);
+		$this->db->where('id', $id);
 		return $this->db->update($this->namaTabel, $data);
 	}
 
-	function updateService($data) {
-		$this->db->where('id_services', $data["id_services"]);
+	function updateSocmed($data) {
+		$this->db->where('id', $data["id"]);
 		return $this->db->update($this->namaTabel, $data);
 	}
 }

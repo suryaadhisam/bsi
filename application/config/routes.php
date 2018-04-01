@@ -66,15 +66,24 @@ $route['admin/services/(:num)'] = 'admin/service/getServices/$1';
 
 $route['admin/carousel'] = 'admin/dashboard/carousel';
 $route['admin/contact-us'] = 'admin/dashboard/contactus';
-$route['admin/social-media'] = 'admin/dashboard/socialmedia';
+
+$route['admin/social-media'] = 'admin/socmed/getSocmeds';
+$route['admin/social-media/(:num)'] = 'admin/socmed/getSocmeds/$1';
+
 $route['admin/profile'] = 'admin/dashboard/profile';
 
 //API
 $route['admin/auth-check-login'] = 'admin/auth/aksiLogin';
 $route['admin/logout'] = 'admin/auth/logout';
+
 $route['admin/service/add'] = 'admin/service/addService';
 $route['admin/service/soft-delete'] = 'admin/service/softDeleteService';
 $route['admin/service/update'] = 'admin/service/updateService';
 $route['admin/service/get'] = 'admin/service/getService';
+
+$route['admin/socmed/add'] = 'admin/socmed/addSocmed';
+$route['admin/socmed/soft-delete'] = 'admin/socmed/softDeleteSocmed';
+$route['admin/socmed/update'] = 'admin/socmed/updateSocmed';
+$route['admin/socmed/get'] = 'admin/socmed/getSocmed';
 
 

@@ -33,7 +33,7 @@
                         </div>
                         <div class="row">
                             <div class="col-12 text-right">
-                                <button type="button" id="buttonLogin" class="btn btn-primary px-4">Login</button>
+                                <button type="button" id="buttonLogin" class="btn btn-primary px-4"><i class="fa fa-refresh fa-spin loadingButtonProccess"></i> Login</button>
                             </div>
                             <!-- {{--<div class="col-6 text-right">--}}
                                 {{--<button type="button" class="btn btn-link px-0">Lupa password?</button>--}}
@@ -55,7 +55,7 @@
     var urlCheckLogin = base_url+"/admin/auth-check-login";
 
     $('#buttonLogin').click(function(){
-       //window.location.href=urlDashboard;
+        $(".loadingButtonProccess").css("display", "inline-flex");
 
         $.ajax({
             type: 'POST',
@@ -67,6 +67,7 @@
                 password: $("#inputPassword").val()
             },
             success: function(data) {
+                $(".loadingButtonProccess").css("display", "none");
                 console.log(data);
 
                 if(data.message == "Successfully get data user") {

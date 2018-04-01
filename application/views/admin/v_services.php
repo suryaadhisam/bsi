@@ -109,7 +109,7 @@
                                 </form>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-primary" id="buttonAddService">Add</button>
+                                <button type="button" class="btn btn-primary" id="buttonAddService"><i class="fa fa-refresh fa-spin loadingButtonProccess"></i> Add</button>
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                             </div>
                         </div>
@@ -180,7 +180,7 @@
                                 </form>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-primary" id="buttonUpdateService">Update</button>
+                                <button type="button" class="btn btn-primary" id="buttonUpdateService"><i class="fa fa-refresh fa-spin loadingButtonProccess"></i> Update</button>
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                             </div>
                         </div>
@@ -276,6 +276,8 @@
     $("#buttonAddService").click(function(){
         var data = new FormData(document.getElementById("formAddService"));
         cleanStatusInputAddService();
+        $(".loadingButtonProccess").css("display", "inline-flex");
+
         $.ajax({
             type: 'POST',
             url: urlAddService,
@@ -286,6 +288,8 @@
             data:data,
             success: function(data) {
                 console.log(data);
+                $(".loadingButtonProccess").css("display", "none");
+
                 if(data.status){
                     swal({
                         title: "Successfull",
@@ -340,6 +344,8 @@
     $("#buttonUpdateService").click(function(){
         var data = new FormData(document.getElementById("formUpdateService"));
         cleanStatusInputUpdateService();
+        $(".loadingButtonProccess").css("display", "inline-flex");
+
         if(isChangeImg) {
             data.append("isChangeImg", isChangeImg);
         }
@@ -356,6 +362,8 @@
             data:data,
             success: function(data) {
                 console.log(data);
+                $(".loadingButtonProccess").css("display", "none");
+
                 if(data.status){
                     swal({
                         title: "Successfull",

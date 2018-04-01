@@ -139,7 +139,7 @@
                                     <div class="form-group row">
                                         <label class="col-md-3 col-form-label" for="detailServiceUpdate">Detail</label>
                                         <div class="col-md-9">
-                                            <input type="text" id="detailServiceUpdate" name="detailServiceUpdate" class="form-control" placeholder="Detail service..." value="Makan gratis untuk 2 orang dengan belanja minimal 200rb">
+                                            <textarea id="detailServiceUpdate" name="detailServiceUpdate" rows="4" class="form-control" placeholder="Detail service...">Makan gratis untuk 2 orang dengan belanja minimal 200rb</textarea>
                                             <span class="hasErrorText"></span>
                                         </div>
                                     </div>

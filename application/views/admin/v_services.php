@@ -68,7 +68,7 @@
                                     <div class="form-group row">
                                         <label class="col-md-3 col-form-label" for="detailService">Detail</label>
                                         <div class="col-md-9">
-                                            <input type="text" id="detailService" name="detailService" class="form-control" placeholder="Detail service...">
+                                            <textarea id="detailService" name="detailService" rows="4" class="form-control" placeholder="Detail service..."></textarea>
                                             <span class="hasErrorText"></span>
                                         </div>
                                     </div>

@@ -133,7 +133,7 @@ class Service extends CI_Controller {
 				"message" => "Incorrect input",
 				"errors" => $this->form_validation->error_array()
 			];
-		} 
+		}
 		else {
 			//upload img
 			$resultTmp = $this->do_upload("fileImgService", $pathDestination, "service-img");
@@ -144,8 +144,7 @@ class Service extends CI_Controller {
 					"message" => "Incorrect input",
 					"errors" => $resultTmp["errors"]
 				];
-			}
-			else {
+			} else {
 				@unlink($_FILES[$this->input->post('fileImgService')]);
 			
 				//add
@@ -153,7 +152,7 @@ class Service extends CI_Controller {
 					$this->db->trans_start();
 					$data = array(
 						'name_services' => $this->input->post('nameService'),
-						'path_img' => $result["data"]["full_path"],
+						'path_img' => $pathDestination.$resultTmp["data"]["upload_data"]["file_name"],
 						'detail' => $this->input->post('detailService'),
 						'facility' => $this->input->post('facilityService'),
 						'brg_personal' => $this->input->post('brgPersonal'),
@@ -179,16 +178,6 @@ class Service extends CI_Controller {
 						)
 					];
 				}
-
-				$data = $this->upload->data();
-				$result = [
-					"status" => true,
-					"data" => array(
-						"full_path" => $pathDestination."".$data["file_name"]
-					),
-					"message" => "Successfully add services",
-					"errors" => []
-				];
 			}
 		}
 
@@ -261,9 +250,7 @@ class Service extends CI_Controller {
 						),
 						"message" => "Successfully update services",
 						"errors" => []
-					];
-
-					
+					];		
 				}
 			}
 			@unlink($_FILES[$this->input->post('fileImgServiceUpdate')]);

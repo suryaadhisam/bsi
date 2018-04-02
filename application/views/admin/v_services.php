@@ -84,7 +84,7 @@
                                         <div class="col-md-9">
                                             <button type="button" class="btn btn-primary" id="buttonAddFileToUpload">Choose image</button>
 
-                                            <input type="file" name="fileImgService" id="fileImgService"/>
+                                            <input type="file" name="fileImgService" id="fileImgService" accept="image/x-png,image/jpg,image/jpeg" />
                                             <span class="hasErrorText"></span>
                                             <div class="previewImgWraper">
                                                 <div class="row">
@@ -155,7 +155,7 @@
                                         <div class="col-md-9">
                                             <button type="button" class="btn btn-primary" id="buttonUpdateFileToUpload">Choose image</button>
 
-                                            <input type="file" name="fileImgServiceUpdate" id="fileImgServiceUpdate"/>
+                                            <input type="file" name="fileImgServiceUpdate" id="fileImgServiceUpdate" accept="image/x-png,image/jpg,image/jpeg" />
                                             <span class="hasErrorText"></span>
                                             <div class="previewImgWraper">
                                                 <div class="row">

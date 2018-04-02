@@ -64,7 +64,9 @@ $route['admin/schedule'] = 'admin/dashboard/schedule';
 $route['admin/services'] = 'admin/service/getServices';
 $route['admin/services/(:num)'] = 'admin/service/getServices/$1';
 
-$route['admin/carousel'] = 'admin/dashboard/carousel';
+$route['admin/carousel'] = 'admin/carousel/getCarousels';
+$route['admin/carousel/(:num)'] = 'admin/carousel/getCarousels/$1';
+
 $route['admin/contact-us'] = 'admin/dashboard/contactus';
 
 $route['admin/social-media'] = 'admin/socmed/getSocmeds';
@@ -86,4 +88,7 @@ $route['admin/socmed/soft-delete'] = 'admin/socmed/softDeleteSocmed';
 $route['admin/socmed/update'] = 'admin/socmed/updateSocmed';
 $route['admin/socmed/get'] = 'admin/socmed/getSocmed';
 
-
+$route['admin/carousel/add'] = 'admin/carousel/addCarousel';
+$route['admin/carousel/soft-delete'] = 'admin/carousel/softDeleteCarousel';
+$route['admin/carousel/update'] = 'admin/carousel/updateCarousel';
+$route['admin/carousel/get'] = 'admin/carousel/getCarousel';

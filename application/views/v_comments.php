@@ -93,69 +93,21 @@
 
       <hr class="my-5">
 
-      <!-- <div class="row">
+      <div class="row">
+        <?php foreach ($list_comments as $row) {?>
         <div class="col-md-4">
           <figure class="snip1167">
-            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sq-sample3.jpg" alt="sq-sample3"/>
-            <blockquote>Calvin: Hobbes, sometimes when I'm talking, my words can't keep up with my thoughts. I am beginning to wonder why we think faster than we speak. Hobbes: Probably so we can think twice. </blockquote>
+            <img src="<?php echo ($row->path_img); ?>" alt="sq-sample3"/>
+            <blockquote><?php echo ($row->comments); ?></blockquote>
             <div class="author">
-              <h5>Pelican Steve <span> LittleSnippets</span></h5>
+              <h5><?php echo ($row->name); ?> <span> <?php echo ($row->country); ?></span></h5>
             </div>
           </figure>
         </div>
-        <div class="col-md-4">
-          <figure class="snip1167">
-            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sq-sample27.jpg" alt="sq-sample27"/>
-            <blockquote>Thank you. before I begin, I'd like everyone to notice that my report is in a professional, clear plastic binder...When a report looks this good, you know it'll get an A. That's a tip kids. Write it down.</blockquote>
-            <div class="author">
-              <h5>Max Conversion<span> LittleSnippets</span></h5>
-            </div>
-          </figure>
-        </div>
-        <div class="col-md-4">
-          <figure class="snip1167">
-            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sq-sample17.jpg" alt="sq-sample17"/>
-            <blockquote>My behaviour is addictive functioning in a disease process of toxic co-dependency. I need holistic healing and wellness before I'll accept any responsibility for my actions.</blockquote>
-            <div class="author">
-              <h5>Eleanor Faint<span> LittleSnippets</span></h5>
-            </div>
-          </figure>
-        </div>
+      <?php } ?>
       </div>
 
       <hr class="my-5">
-
-      <div class="row">
-        <div class="col-md-4">
-          <figure class="snip1167">
-            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sq-sample3.jpg" alt="sq-sample3"/>
-            <blockquote>Calvin: Hobbes, sometimes when I'm talking, my words can't keep up with my thoughts. I am beginning to wonder why we think faster than we speak. Hobbes: Probably so we can think twice. </blockquote>
-            <div class="author">
-              <h5>Pelican Steve <span> LittleSnippets</span></h5>
-            </div>
-          </figure>
-        </div>
-        <div class="col-md-4">
-          <figure class="snip1167">
-            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sq-sample27.jpg" alt="sq-sample27"/>
-            <blockquote>Thank you. before I begin, I'd like everyone to notice that my report is in a professional, clear plastic binder...When a report looks this good, you know it'll get an A. That's a tip kids. Write it down.</blockquote>
-            <div class="author">
-              <h5>Max Conversion<span> LittleSnippets</span></h5>
-            </div>
-          </figure>
-        </div>
-        <div class="col-md-4">
-          <figure class="snip1167">
-            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sq-sample17.jpg" alt="sq-sample17"/>
-            <blockquote>My behaviour is addictive functioning in a disease process of toxic co-dependency. I need holistic healing and wellness before I'll accept any responsibility for my actions.</blockquote>
-            <div class="author">
-              <h5>Eleanor Faint<span> LittleSnippets</span></h5>
-            </div>
-          </figure>
-        </div>
-      </div> -->
-
-
 
     </div>
   </main>

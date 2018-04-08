@@ -16,7 +16,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="<?php echo site_url('About'); ?>">About</a>
+            <a class="nav-link" href="<?php echo site_url('About'); ?>" >About</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="<?php echo site_url('Services'); ?>">Services</a>

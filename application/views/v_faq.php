@@ -12,135 +12,19 @@
     <div class="container">
       <h2 style="font-family:Impact, Charcoal, sans-serif; text-align:center;">F.A.Q</h2>
 
+      <?php foreach ($list_faq as $row) {?>
       <hr class="my-5">
-
-        <!-- <div class="row">
+        <div class="row">
           <div class="col-lg mb-4">
             <div class="card">
                 <div class="card-body">
-                    <h3 class="font-weight-bold orange-text mb-3" style="font-family:Georgia, serif;">Question?</h3>
-                    <p class="brown-lighter-hover" style="text-align:justify;font-family:Georgia, serif;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tincidunt dui vitae luctus malesuada. Fusce interdum, elit ut facilisis rutrum, velit leo semper lacus, eu aliquam tortor sem non augue. Integer eros augue, fermentum ut quam at, volutpat efficitur nulla. Curabitur auctor augue in purus facilisis auctor. Integer tempor lectus diam, id auctor massa lobortis vel. Mauris euismod posuere erat eu consequat. Fusce ac varius orci, sit amet ullamcorper felis. Proin vulputate, lectus sit amet venenatis egestas, urna urna tincidunt lacus, vel tristique lacus sapien sit amet turpis. .</p>
+                    <h3 class="font-weight-bold orange-text mb-3" style="font-family:Georgia, serif;"><?php echo ($row->question); ?>?</h3>
+                    <p class="brown-lighter-hover" style="text-align:justify;font-family:Georgia, serif;"><?php echo ($row->answer); ?></p>
                 </div>
             </div>
           </div>
         </div>
-
-      <hr class="my-5">
-
-      <div class="row">
-        <div class="col-lg mb-4">
-          <div class="card">
-              <div class="card-body">
-                  <h3 class="font-weight-bold orange-text mb-3" style="font-family:Georgia, serif;">Qustion?</h3>
-                  <p class="brown-lighter-hover" style="text-align:justify;font-family:Georgia, serif;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tincidunt dui vitae luctus malesuada. Fusce interdum, elit ut facilisis rutrum, velit leo semper lacus, eu aliquam tortor sem non augue. Integer eros augue, fermentum ut quam at, volutpat efficitur nulla. Curabitur auctor augue in purus facilisis auctor. Integer tempor lectus diam, id auctor massa lobortis vel. Mauris euismod posuere erat eu consequat. Fusce ac varius orci, sit amet ullamcorper felis. Proin vulputate, lectus sit amet venenatis egestas, urna urna tincidunt lacus, vel tristique lacus sapien sit amet turpis. .</p>
-              </div>
-          </div>
-        </div>
-      </div>
-
-      <hr class="mb-5">
-
-      <div class="row">
-        <div class="col-lg mb-4">
-          <div class="card">
-              <div class="card-body">
-                  <h3 class="font-weight-bold orange-text mb-3" style="font-family:Georgia, serif;">Qustion?</h3>
-                  <p class="brown-lighter-hover" style="text-align:justify;font-family:Georgia, serif;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tincidunt dui vitae luctus malesuada. Fusce interdum, elit ut facilisis rutrum, velit leo semper lacus, eu aliquam tortor sem non augue. Integer eros augue, fermentum ut quam at, volutpat efficitur nulla. Curabitur auctor augue in purus facilisis auctor. Integer tempor lectus diam, id auctor massa lobortis vel. Mauris euismod posuere erat eu consequat. Fusce ac varius orci, sit amet ullamcorper felis. Proin vulputate, lectus sit amet venenatis egestas, urna urna tincidunt lacus, vel tristique lacus sapien sit amet turpis. .</p>
-              </div>
-          </div>
-        </div>
-      </div>
-
-      <hr class="mb-5">
-
-      <div class="row">
-        <div class="col-lg mb-4">
-          <div class="card">
-              <div class="card-body">
-                  <h3 class="font-weight-bold orange-text mb-3" style="font-family:Georgia, serif;">Qustion?</h3>
-                  <p class="brown-lighter-hover" style="text-align:justify;font-family:Georgia, serif;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tincidunt dui vitae luctus malesuada. Fusce interdum, elit ut facilisis rutrum, velit leo semper lacus, eu aliquam tortor sem non augue. Integer eros augue, fermentum ut quam at, volutpat efficitur nulla. Curabitur auctor augue in purus facilisis auctor. Integer tempor lectus diam, id auctor massa lobortis vel. Mauris euismod posuere erat eu consequat. Fusce ac varius orci, sit amet ullamcorper felis. Proin vulputate, lectus sit amet venenatis egestas, urna urna tincidunt lacus, vel tristique lacus sapien sit amet turpis. .</p>
-              </div>
-          </div>
-        </div>
-      </div>
-
-      <hr class="mb-5">
-
-      <div class="row">
-        <div class="col-lg mb-4">
-          <div class="card">
-              <div class="card-body">
-                  <h3 class="font-weight-bold orange-text mb-3" style="font-family:Georgia, serif;">Qustion?</h3>
-                  <p class="brown-lighter-hover" style="text-align:justify;font-family:Georgia, serif;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tincidunt dui vitae luctus malesuada. Fusce interdum, elit ut facilisis rutrum, velit leo semper lacus, eu aliquam tortor sem non augue. Integer eros augue, fermentum ut quam at, volutpat efficitur nulla. Curabitur auctor augue in purus facilisis auctor. Integer tempor lectus diam, id auctor massa lobortis vel. Mauris euismod posuere erat eu consequat. Fusce ac varius orci, sit amet ullamcorper felis. Proin vulputate, lectus sit amet venenatis egestas, urna urna tincidunt lacus, vel tristique lacus sapien sit amet turpis. .</p>
-              </div>
-          </div>
-        </div>
-      </div>
-
-      <hr class="mb-5">
-
-      <div class="row">
-        <div class="col-lg mb-4">
-          <div class="card">
-              <div class="card-body">
-                  <h3 class="font-weight-bold orange-text mb-3" style="font-family:Georgia, serif;">Qustion?</h3>
-                  <p class="brown-lighter-hover" style="text-align:justify;font-family:Georgia, serif;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tincidunt dui vitae luctus malesuada. Fusce interdum, elit ut facilisis rutrum, velit leo semper lacus, eu aliquam tortor sem non augue. Integer eros augue, fermentum ut quam at, volutpat efficitur nulla. Curabitur auctor augue in purus facilisis auctor. Integer tempor lectus diam, id auctor massa lobortis vel. Mauris euismod posuere erat eu consequat. Fusce ac varius orci, sit amet ullamcorper felis. Proin vulputate, lectus sit amet venenatis egestas, urna urna tincidunt lacus, vel tristique lacus sapien sit amet turpis. .</p>
-              </div>
-          </div>
-        </div>
-      </div>
-
-      <hr class="mb-5">
-
-      <div class="row">
-        <div class="col-lg mb-4">
-          <div class="card">
-              <div class="card-body">
-                  <h3 class="font-weight-bold orange-text mb-3" style="font-family:Georgia, serif;">Qustion?</h3>
-                  <p class="brown-lighter-hover" style="text-align:justify;font-family:Georgia, serif;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tincidunt dui vitae luctus malesuada. Fusce interdum, elit ut facilisis rutrum, velit leo semper lacus, eu aliquam tortor sem non augue. Integer eros augue, fermentum ut quam at, volutpat efficitur nulla. Curabitur auctor augue in purus facilisis auctor. Integer tempor lectus diam, id auctor massa lobortis vel. Mauris euismod posuere erat eu consequat. Fusce ac varius orci, sit amet ullamcorper felis. Proin vulputate, lectus sit amet venenatis egestas, urna urna tincidunt lacus, vel tristique lacus sapien sit amet turpis. .</p>
-              </div>
-          </div>
-        </div>
-      </div>
-
-      <hr class="mb-5">
-
-      <div class="row">
-        <div class="col-lg mb-4">
-          <div class="card">
-              <div class="card-body">
-                  <h3 class="font-weight-bold orange-text mb-3" style="font-family:Georgia, serif;">Qustion?</h3>
-                  <p class="brown-lighter-hover" style="text-align:justify;font-family:Georgia, serif;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tincidunt dui vitae luctus malesuada. Fusce interdum, elit ut facilisis rutrum, velit leo semper lacus, eu aliquam tortor sem non augue. Integer eros augue, fermentum ut quam at, volutpat efficitur nulla. Curabitur auctor augue in purus facilisis auctor. Integer tempor lectus diam, id auctor massa lobortis vel. Mauris euismod posuere erat eu consequat. Fusce ac varius orci, sit amet ullamcorper felis. Proin vulputate, lectus sit amet venenatis egestas, urna urna tincidunt lacus, vel tristique lacus sapien sit amet turpis. .</p>
-              </div>
-          </div>
-        </div>
-      </div>
-
-      <hr class="mb-5">
-
-      <div class="row">
-        <div class="col-lg mb-4">
-          <div class="card">
-              <div class="card-body">
-                  <h3 class="font-weight-bold orange-text mb-3" style="font-family:Georgia, serif;">Qustion?</h3>
-                  <p class="brown-lighter-hover" style="text-align:justify;font-family:Georgia, serif;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tincidunt dui vitae luctus malesuada. Fusce interdum, elit ut facilisis rutrum, velit leo semper lacus, eu aliquam tortor sem non augue. Integer eros augue, fermentum ut quam at, volutpat efficitur nulla. Curabitur auctor augue in purus facilisis auctor. Integer tempor lectus diam, id auctor massa lobortis vel. Mauris euismod posuere erat eu consequat. Fusce ac varius orci, sit amet ullamcorper felis. Proin vulputate, lectus sit amet venenatis egestas, urna urna tincidunt lacus, vel tristique lacus sapien sit amet turpis. .</p>
-              </div>
-          </div>
-        </div>
-      </div>
-
-      <hr class="mb-5">
-
-      <div class="row">
-        <div class="col-lg mb-4">
-          <div class="card">
-              <div class="card-body">
-                  <h3 class="font-weight-bold orange-text mb-3" style="font-family:Georgia, serif;">Qustion?</h3>
-                  <p class="brown-lighter-hover" style="text-align:justify;font-family:Georgia, serif;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tincidunt dui vitae luctus malesuada. Fusce interdum, elit ut facilisis rutrum, velit leo semper lacus, eu aliquam tortor sem non augue. Integer eros augue, fermentum ut quam at, volutpat efficitur nulla. Curabitur auctor augue in purus facilisis auctor. Integer tempor lectus diam, id auctor massa lobortis vel. Mauris euismod posuere erat eu consequat. Fusce ac varius orci, sit amet ullamcorper felis. Proin vulputate, lectus sit amet venenatis egestas, urna urna tincidunt lacus, vel tristique lacus sapien sit amet turpis. .</p>
-              </div>
-          </div>
-        </div>
-      </div> -->
+      <?php } ?>
 
     </div>
   </main>

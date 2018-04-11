@@ -265,7 +265,7 @@
 <?php echo $script; ?>
 <script>
     
-    var base_url = window.location.origin;
+    var base_url = "<?php echo base_url(); ?>";
     var urlAddService = base_url+"/admin/service/add";
     var urlSoftDeleteService = base_url+"/admin/service/soft-delete";
     var urlUpdateService = base_url+"/admin/service/update";

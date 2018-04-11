@@ -237,7 +237,7 @@
 <?php echo $script; ?>
 <script>
     
-    var base_url = window.location.origin;
+    var base_url = "<?php echo base_url(); ?>";
     var urlAddCarousel = base_url+"/admin/carousel/add";
     var urlSoftDeleteCarousel = base_url+"/admin/carousel/soft-delete";
     var urlUpdateCarousel = base_url+"/admin/carousel/update";

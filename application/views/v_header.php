@@ -31,9 +31,9 @@
           <li class="nav-item">
             <a class="nav-link" href="<?php echo site_url('Services'); ?>">Services</a>
           </li>
-          <!-- <li class="nav-item">
+          <li class="nav-item">
             <a class="nav-link" href="<?php echo site_url('Boking'); ?>">Booking</a>
-          </li> -->
+          </li>
           <li class="nav-item">
             <a class="nav-link" href="<?php echo site_url('FAQ'); ?>">F.A.Q</a>
           </li>

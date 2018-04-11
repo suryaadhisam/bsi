@@ -324,7 +324,6 @@
             processData: false,
             contentType: false,
             data:data,
-            data:data,
             success: function(data) {
                 console.log(data);
                 $(".loadingButtonProccess").css("display", "none");

@@ -58,8 +58,10 @@ $route['translate_uri_dashes'] = FALSE;
 $route['admin/auth'] = 'admin/auth';
 $route['admin'] = 'admin/dashboard';
 $route['admin/booking'] = 'admin/dashboard/booking';
-$route['admin/package'] = 'admin/dashboard/package';
 $route['admin/schedule'] = 'admin/dashboard/schedule';
+
+$route['admin/package'] = 'admin/package/getPackages';
+$route['admin/package/(:num)'] = 'admin/package/getPackages/$1';
 
 $route['admin/services'] = 'admin/service/getServices';
 $route['admin/services/(:num)'] = 'admin/service/getServices/$1';
@@ -92,3 +94,8 @@ $route['admin/carousel/add'] = 'admin/carousel/addCarousel';
 $route['admin/carousel/soft-delete'] = 'admin/carousel/softDeleteCarousel';
 $route['admin/carousel/update'] = 'admin/carousel/updateCarousel';
 $route['admin/carousel/get'] = 'admin/carousel/getCarousel';
+
+$route['admin/package/add'] = 'admin/package/addPackage';
+$route['admin/package/soft-delete'] = 'admin/package/softDeletePackage';
+$route['admin/package/update'] = 'admin/package/updatePackage';
+$route['admin/package/get'] = 'admin/package/getPackage';

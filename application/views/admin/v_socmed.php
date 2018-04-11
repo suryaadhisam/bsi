@@ -238,7 +238,7 @@
 <?php echo $script; ?>
 <script>
     
-    var base_url = window.location.origin;
+    var base_url = "<?php echo base_url(); ?>";
     var urlAddSocmed = base_url+"/admin/socmed/add";
     var urlSoftDeleteSocmed = base_url+"/admin/socmed/soft-delete";
     var urlUpdateSocmed = base_url+"/admin/socmed/update";

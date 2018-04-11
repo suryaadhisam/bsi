@@ -49,7 +49,8 @@
 <?php echo $script; ?>
 
 <script>
-    var base_url = window.location.origin;
+    var base_url = "<?php echo base_url(); ?>";
+    alert(base_url);
 
     var urlDashboard = base_url+"/admin/dashboard";
     var urlCheckLogin = base_url+"/admin/auth-check-login";

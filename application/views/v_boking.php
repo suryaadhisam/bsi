@@ -42,36 +42,24 @@
                           <div class="row">
 
                             <div class="col-md-3">
-                              <div class="btn-group">
-                                  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Adult (s)</button>
-                                  <div class="dropdown-menu">
-                                      <a class="dropdown-item" href="#">1</a>
-                                      <a class="dropdown-item" href="#">2</a>
-                                      <a class="dropdown-item" href="#">3</a>
-                                      <a class="dropdown-item" href="#">4</a>
-                                  </div>
+                              <div class="md-form">
+                                  <i class="fa fa-user prefix"></i>
+                                  <input type="number" id="inputValidationEx" class="form-control validate">
+                                  <label for="inputValidationEx" data-error="wrong" data-success="right" class="">Adult(s)</label>
                               </div>
                             </div>
                             <div class="col-md-3">
-                              <div class="btn-group">
-                                  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Children</button>
-                                  <div class="dropdown-menu">
-                                      <a class="dropdown-item" href="#">1</a>
-                                      <a class="dropdown-item" href="#">2</a>
-                                      <a class="dropdown-item" href="#">3</a>
-                                      <a class="dropdown-item" href="#">4</a>
-                                  </div>
+                              <div class="md-form">
+                                <i class="fa fa-user prefix"></i>
+                                <input type="number" id="inputValidationEx" class="form-control validate">
+                                <label for="inputValidationEx" data-error="wrong" data-success="right" class="">Children(s)</label>
                               </div>
                             </div>
                           <div class="col-md-3">
-                            <div class="btn-group">
-                                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Infant</button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="#">1</a>
-                                    <a class="dropdown-item" href="#">2</a>
-                                    <a class="dropdown-item" href="#">3</a>
-                                    <a class="dropdown-item" href="#">4</a>
-                                </div>
+                            <div class="md-form">
+                              <i class="fa fa-user prefix"></i>
+                              <input type="number" id="inputValidationEx" class="form-control validate">
+                              <label for="inputValidationEx" data-error="wrong" data-success="right" class="">Infant(s)</label>
                             </div>
                           </div>
                           <div class="col-md-3">

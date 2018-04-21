@@ -52,7 +52,7 @@ class Schedule extends CI_Controller {
             // get current page records
             $data["schedules"] = $this->m_schedule->getCurrentPageRecordSchedule($limit_per_page, $page*$limit_per_page);
                  
-            $config['base_url'] = base_url() . 'admin/schedules';
+            $config['base_url'] = base_url() . 'admin/schedule';
             $config['total_rows'] = $total_records;
             $config['per_page'] = $limit_per_page;
             $config["uri_segment"] = 3;

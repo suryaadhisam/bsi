@@ -50,20 +50,6 @@ class Dashboard extends CI_Controller {
 		$this->load->view('admin/v_package', $data);
 	}
 
-	public function schedule(){
-		$data['title'] = "Schedule || Sunset Bali Adventure";
-
-		$data['style'] = $this->load->view('admin/template/v_style', '', TRUE);
-		$data['script'] = $this->load->view('admin/template/v_script', '', TRUE);
-		
-		$data['footer'] = $this->load->view('admin/template/v_footer', '', TRUE);
-		$data['menu_admin_left'] = $this->load->view('admin/template/v_menu_admin_left', '', TRUE);
-		$data['menu_admin_top'] = $this->load->view('admin/template/v_menu_admin_top', '', TRUE);
-
-		$this->load->view('admin/v_schedule', $data);
-	}
-
-
 	public function carousel(){
 		$data['title'] = "Carousel || Sunset Bali Adventure";
 

@@ -1,15 +1,22 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class M_service extends CI_Model {
+class M_schedule extends CI_Model {
 
     private $namaTabel = "tb_schedule";
+    private $namaTabel2 = "tb_services";
 
 	public function __construct(){
         parent::__construct();
     }
 
 	function getAllSchedule($where){
-		return $this->db->get_where($this->namaTabel, $where)->result();
+		//return $this->db->get_where($this->namaTabel, $where)->result();
+
+		return $this->db->select('*')
+      					->from("$namaTabel as schd, $namaTabel2 as serv")
+						->where('schd.id_service = serv.id_services')
+						->where('schd.state = 1')
+						->get();
 	}
 
 	function getCount() {
@@ -18,8 +25,12 @@ class M_service extends CI_Model {
 	
 	public function getCurrentPageRecordSchedule($limit, $start) {
         $this->db->limit($limit, $start);
-        $query = $this->db->get_where($this->namaTabel, array('state' => 1));
- 
+        //$query = $this->db->get_where($this->namaTabel, array('state' => 1));
+		$query = $this->db->select('*')
+							->from("$this->namaTabel as schd, $this->namaTabel2 as serv")
+							->where('schd.id_service = serv.id_services')
+							->where('schd.state = 1')
+							->get();
         if ($query->num_rows() > 0) {
             foreach ($query->result() as $row) {
                 $data[] = $row;

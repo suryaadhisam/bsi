@@ -317,6 +317,45 @@
         });
     }
 
+    //confirm delete schedule
+    function confirmDeleteSchedule(idSchedule) {
+        swal({
+            title: "Are you sure?",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        }).then((willDelete) => {
+            if (willDelete) {
+                $.ajax({
+                    type: 'POST',
+                    url: urlSoftDeleteSchedule,
+                    dataType: 'json',
+                    async: true,
+                    data:{
+                        id_schedule: idSchedule
+                    },
+                    success: function(data) {
+                        console.log(data);
+                        if(data.status){
+                            swal({
+                                title: "Successfull",
+                                icon: "success",
+                                button: "OK",
+                            }).then((willDelete) => {
+                                if (willDelete) {
+                                    location.reload();
+                                }
+                            });
+                        }
+                    },
+                    error: function(xhr, status, error){
+                        console.log(error);
+                    }
+                }); 
+            }
+        });
+    }
+
     //chean status error input
     function cleanStatusInputAddSchedule() {
         $("#serviceId").removeClass("hasError");

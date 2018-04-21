@@ -179,7 +179,7 @@ class Schedule extends CI_Controller {
 	public function softDeleteSchedule() {
 		try {
 			$this->db->trans_start();
-			$this->m_service->softDeleteSchedule($this->input->post('id_schedule'));
+			$this->m_schedule->softDeleteSchedule($this->input->post('id_schedule'));
 			$this->db->trans_complete();
 
 			$result = [

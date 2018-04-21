@@ -108,7 +108,7 @@ class Schedule extends CI_Controller {
 
 			$result = [
 				"status" => true,
-				"data" => $this->m_service->getService($where)[0],
+				"data" => $this->m_schedule->getSchedule($where)[0],
 				"message" => "Successfully get schedule",
 				"errors" => []
 			];
@@ -205,9 +205,9 @@ class Schedule extends CI_Controller {
 	public function updateSchedule() {
 		//validasi
 		$this->form_validation->set_error_delimiters('', '');
-		$this->form_validation->set_rules('serviceId','Service', 'required');
-		$this->form_validation->set_rules('timeStart','Time start','required');
-		$this->form_validation->set_rules('timeEnd','Time end','required');
+		$this->form_validation->set_rules('serviceIdUpdate','Service', 'required');
+		$this->form_validation->set_rules('timeStartUpdate','Time start','required');
+		$this->form_validation->set_rules('timeEndUpdate','Time end','required');
 
 		if ($this->form_validation->run() == FALSE) {
 			$result = [
@@ -222,11 +222,10 @@ class Schedule extends CI_Controller {
 			try {
 				$this->db->trans_start();
 				$data = array(
-					'id_service' => $this->input->post('serviceId'),
-					'id_schedule' => $this->input->post('idSchedule'),
-					'time_begin' => $this->input->post('timeStart'),
-					'time_end' => $this->input->post('timeEnd'),
-					'state' => 1
+					'id_service' => $this->input->post('serviceIdUpdate'),
+					'id_schedule' => $this->input->post('id'),
+					'time_begin' => $this->input->post('timeStartUpdate'),
+					'time_end' => $this->input->post('timeEndUpdate'),
 				);
 				
 				$this->m_schedule->updateSchedule($data);

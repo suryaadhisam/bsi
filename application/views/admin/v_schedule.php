@@ -107,35 +107,42 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                            <form action="" method="post" class="form-horizontal" id="formUpdateSchedule">
+                                <form action="" method="post" class="form-horizontal" id="formUpdateSchedule">
+                                    <input type="hidden" id="idSchedule" name="idSchedule" value="0">
+
                                     <div class="form-group row">
                                         <label class="col-md-3 col-form-label" for="nameService">Service</label>
                                         <div class="col-md-9">
-                                            <select class="form-control" id="serviceId">
-                                                <option>2014</option>
-                                                <option>2015</option>
+                                            <select class="form-control" id="serviceIdUpdate" name="serviceIdUpdate">
+                                                <?php 
+                                                    foreach($services as $row) {
+                                                ?>
+                                                    <option value="<?php echo $row->id_services; ?>"><?php echo $row->name_services; ?></option>
+                                                <?php 
+                                                    }
+                                                ?>
                                             </select>
                                             <span class="hasErrorText"></span>
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label class="col-md-3 col-form-label" for="timeStart">Time start</label>
+                                        <label class="col-md-3 col-form-label" for="timeStartUpdate">Time start</label>
                                         <div class="col-md-9">
-                                            <input type="time" id="timeStart" name="timeStart" class="form-control">
+                                            <input type="time" id="timeStartUpdate" name="timeStartUpdate" class="form-control">
                                             <span class="hasErrorText"></span>
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label class="col-md-3 col-form-label" for="timeEnd">Time end</label>
+                                        <label class="col-md-3 col-form-label" for="timeEndUpdate">Time end</label>
                                         <div class="col-md-9">
-                                            <input type="time" id="timeEnd" name="timeEnd" class="form-control">
+                                            <input type="time" id="timeEndUpdate" name="timeEndUpdate" class="form-control">
                                             <span class="hasErrorText"></span>
                                         </div>
                                     </div>
                                 </form>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-primary" id="buttonUpdateService"><i class="fa fa-refresh fa-spin loadingButtonProccess"></i> Update</button>
+                                <button type="button" class="btn btn-primary" id="buttonUpdateSchedule"><i class="fa fa-refresh fa-spin loadingButtonProccess"></i> Update</button>
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                             </div>
                         </div>
@@ -218,10 +225,21 @@
         $("#buttonAddSchedule").click(function(){
             var data = new FormData(document.getElementById("formAddSchedule"));
             cleanStatusInputAddSchedule();
+            $(".loadingButtonProccess").css("display", "inline-flex");
             addSchedule(data);
+        });
+
+        $("#buttonUpdateSchedule").click(function(){
+            var data = new FormData(document.getElementById("formUpdateSchedule"));
+            cleanStatusInputUpdateSchedule();
+            $(".loadingButtonProccess").css("display", "inline-flex");
+            data.append("id", $("#idSchedule").val());
+            updateSchedule(data);
         });
     });
 
+
+    //add schedule
     function addSchedule(data){
         $.ajax({
             type: 'POST',
@@ -259,6 +277,47 @@
         });
     }
 
+    //update schedule
+    function updateSchedule(data) {
+        $.ajax({
+            type: 'POST',
+            url: urlUpdateSchedule,
+            dataType: 'json',
+            async: true,
+            processData: false,
+            contentType: false,
+            data:data,
+            data:data,
+            success: function(data) {
+                console.log(data);
+                $(".loadingButtonProccess").css("display", "none");
+
+                if(data.status){
+                    swal({
+                        title: "Successfull",
+                        icon: "success",
+                        button: "OK",
+                    }).then((willDelete) => {
+                        if (willDelete) {
+                            location.reload();
+                        }
+                    });
+                } else {
+                    for (var key in data.errors){
+                        $("#"+key).addClass("hasError");
+                        $("#"+key+" + .hasErrorText").css("display", "content");
+                        $("#"+key+" + .hasErrorText").text(data.errors[key].replace(/<p[^>]*>/g, "").replace(/<\/?p[^>]*>/g, ""));
+                    }
+                }
+
+            },
+            error: function(xhr, status, error){
+                console.log(error);
+            }
+        });
+    }
+
+    //chean status error input
     function cleanStatusInputAddSchedule() {
         $("#serviceId").removeClass("hasError");
         $("#timeStart").removeClass("hasError");
@@ -269,6 +328,45 @@
         $("#facilityService + .hasErrorText").text("");
         $("#timeEnd + .hasErrorText").text("");
     }
+    function cleanStatusInputUpdateSchedule() {
+        $("#serviceIdUpdate").removeClass("hasError");
+        $("#timeStartUpdate").removeClass("hasError");
+        $("#timeEndUpdate").removeClass("hasError");
+
+        $("#serviceIdUpdate + .hasErrorText").text("");
+        $("#timeStartUpdate + .hasErrorText").text("");
+        $("#facilityServiceUpdate + .hasErrorText").text("");
+        $("#timeEndUpdate + .hasErrorText").text("");
+    }
+
+    //open form update schedule
+    function openFormUpdateSchedule(idSchedule){
+        $.ajax({
+            type: 'POST',
+            url: urlGetSchedule,
+            dataType: 'json',
+            async: true,
+            data:{
+                idSchedule: idSchedule
+            },
+            success: function(data) {
+                console.log(data);
+                if(data.status) {
+                    $("#serviceIdUpdate").val(data.data.id_service);
+                    $("#timeStartUpdate").val(data.data.time_begin);
+                    $("#timeEndUpdate").val(data.data.time_end);
+
+                    $("#idSchedule").val(data.data.id_schedule);
+                    $('#modalUpdateSchedule').modal('show');
+                }
+            },
+            error: function(xhr, status, error){
+                console.log(error);
+            }
+        });
+    }
+
+
 
 
 

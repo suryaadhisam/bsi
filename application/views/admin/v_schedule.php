@@ -61,9 +61,14 @@
                                     <div class="form-group row">
                                         <label class="col-md-3 col-form-label" for="nameService">Service</label>
                                         <div class="col-md-9">
-                                            <select class="form-control" id="serviceId">
-                                                <option>2014</option>
-                                                <option>2015</option>
+                                            <select class="form-control" id="serviceId" name="serviceId">
+                                                <?php 
+                                                    foreach($services as $row) {
+                                                ?>
+                                                    <option value="<?php echo $row->id_services; ?>"><?php echo $row->name_services; ?></option>
+                                                <?php 
+                                                    }
+                                                ?>
                                             </select>
                                             <span class="hasErrorText"></span>
                                         </div>
@@ -92,64 +97,38 @@
                     </div>
                 </div>
 
-                <div class="modal fade" id="modalUpdateService" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal fade" id="modalUpdateSchedule" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title">Update Service</h5>
+                                <h5 class="modal-title">Update Schedule</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <form action="" method="post" class="form-horizontal" id="formUpdateService">
-                                    <input type="hidden" id="idService" name="idService" class="form-control" value="1">
-
+                            <form action="" method="post" class="form-horizontal" id="formUpdateSchedule">
                                     <div class="form-group row">
-                                        <label class="col-md-3 col-form-label" for="nameServiceUpdate">Name</label>
+                                        <label class="col-md-3 col-form-label" for="nameService">Service</label>
                                         <div class="col-md-9">
-                                            <input type="text" id="nameServiceUpdate" name="nameServiceUpdate" class="form-control" placeholder="Name service..." value="Makan gratis">
+                                            <select class="form-control" id="serviceId">
+                                                <option>2014</option>
+                                                <option>2015</option>
+                                            </select>
                                             <span class="hasErrorText"></span>
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label class="col-md-3 col-form-label" for="detailServiceUpdate">Detail</label>
+                                        <label class="col-md-3 col-form-label" for="timeStart">Time start</label>
                                         <div class="col-md-9">
-                                            <textarea id="detailServiceUpdate" name="detailServiceUpdate" rows="4" class="form-control" placeholder="Detail service...">Makan gratis untuk 2 orang dengan belanja minimal 200rb</textarea>
+                                            <input type="time" id="timeStart" name="timeStart" class="form-control">
                                             <span class="hasErrorText"></span>
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label class="col-md-3 col-form-label" for="facilityServiceUpdate">Facility</label>
+                                        <label class="col-md-3 col-form-label" for="timeEnd">Time end</label>
                                         <div class="col-md-9">
-                                            <input type="text" id="facilityServiceUpdate" name="facilityServiceUpdate" class="form-control" placeholder="Facility service..." value="Tempat makan dengan view sawah">
-                                            <span class="hasErrorText"></span>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-md-3 col-form-label" for="pathImageService">Path Image</label>
-                                        <div class="col-md-9">
-                                            <button type="button" class="btn btn-primary" id="buttonUpdateFileToUpload">Choose image</button>
-
-                                            <input type="file" name="fileImgServiceUpdate" id="fileImgServiceUpdate" accept="image/x-png,image/jpg,image/jpeg" />
-                                            <span class="hasErrorText"></span>
-                                            <div class="previewImgWraper">
-                                                <div class="row">
-                                                    <!-- <span class="buttonXImgPreviewFileUpload">x</span> -->
-                                                    <div class="col-md-4 padding-right-0">
-                                                        <img class="imgPreviewImgFileUpload">
-                                                    </div>
-                                                    <div class="col-md-8">
-                                                        <span class="textImgPreviewFileUpload">asas</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-md-3 col-form-label" for="brgPersonalUpdate">Brg Personal</label>
-                                        <div class="col-md-9">
-                                            <input type="text" id="brgPersonalUpdate" name="brgPersonalUpdate" class="form-control" placeholder="Brg personal...">
+                                            <input type="time" id="timeEnd" name="timeEnd" class="form-control">
                                             <span class="hasErrorText"></span>
                                         </div>
                                     </div>
@@ -191,8 +170,8 @@
                                                     <td><?php echo $row->facility ?></td>
                                                     <td><?php echo $row->time_begin." - ".$row->time_end; ?></td>
                                                     <td>
-                                                        <button type="button" class="btn btn-primary" onclick="openFormUpdateService(<?php echo $row->id_schedule; ?>)"><i class="fa fa-pencil"></i>&nbsp; Edit</button>
-                                                        <button type="button" class="btn btn-danger" onclick="confirmDeleteService(<?php echo $row->id_schedule; ?>)"><i class="fa fa-trash"></i>&nbsp; Delete</button>
+                                                        <button type="button" class="btn btn-primary" onclick="openFormUpdateSchedule(<?php echo $row->id_schedule; ?>)"><i class="fa fa-pencil"></i>&nbsp; Edit</button>
+                                                        <button type="button" class="btn btn-danger" onclick="confirmDeleteSchedule(<?php echo $row->id_schedule; ?>)"><i class="fa fa-trash"></i>&nbsp; Delete</button>
                                                     </td>
                                                 </tr>
                                             <?php 
@@ -229,14 +208,77 @@
 </footer>
 <?php echo $script; ?>
 <script>
-    
+    var base_url = "<?php echo base_url(); ?>";
+    var urlAddSchedule = base_url+"/admin/schedule/add";
+    var urlSoftDeleteSchedule = base_url+"/admin/schedule/soft-delete";
+    var urlUpdateSchedule = base_url+"/admin/schedule/update";
+    var urlGetSchedule = base_url+"/admin/schedule/get";
+
+    $(document).ready(function(){
+        $("#buttonAddSchedule").click(function(){
+            var data = new FormData(document.getElementById("formAddSchedule"));
+            cleanStatusInputAddSchedule();
+            addSchedule(data);
+        });
+    });
+
+    function addSchedule(data){
+        $.ajax({
+            type: 'POST',
+            url: urlAddSchedule,
+            dataType: 'json',
+            async: true,
+            processData: false,
+            contentType: false,
+            data:data,
+            success: function(data) {
+                console.log(data);
+                $(".loadingButtonProccess").css("display", "none");
+
+                if(data.status){
+                    swal({
+                        title: "Successfull",
+                        icon: "success",
+                        button: "OK",
+                    }).then((willDelete) => {
+                        if (willDelete) {
+                            location.reload();
+                        }
+                    });
+                } else {
+                    for (var key in data.errors){
+                        $("#"+key).addClass("hasError");
+                        $("#"+key+" + .hasErrorText").css("display", "content");
+                        $("#"+key+" + .hasErrorText").text(data.errors[key].replace(/<p[^>]*>/g, "").replace(/<\/?p[^>]*>/g, ""));
+                    }
+                }
+            },
+            error: function(xhr, status, error){
+                console.log(error);
+            }
+        });
+    }
+
+    function cleanStatusInputAddSchedule() {
+        $("#serviceId").removeClass("hasError");
+        $("#timeStart").removeClass("hasError");
+        $("#timeEnd").removeClass("hasError");
+
+        $("#serviceId + .hasErrorText").text("");
+        $("#timeStart + .hasErrorText").text("");
+        $("#facilityService + .hasErrorText").text("");
+        $("#timeEnd + .hasErrorText").text("");
+    }
+
+
+
+
+
     var base_url = "<?php echo base_url(); ?>";
     var urlAddService = base_url+"/admin/service/add";
     var urlSoftDeleteService = base_url+"/admin/service/soft-delete";
     var urlUpdateService = base_url+"/admin/service/update";
     var urlGetService = base_url+"/admin/service/get";
-
-    var isChangeImg = false;
 
     $("#buttonAddService").click(function(){
         var data = new FormData(document.getElementById("formAddService"));

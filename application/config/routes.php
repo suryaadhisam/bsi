@@ -102,3 +102,8 @@ $route['admin/package/add'] = 'admin/package/addPackage';
 $route['admin/package/soft-delete'] = 'admin/package/softDeletePackage';
 $route['admin/package/update'] = 'admin/package/updatePackage';
 $route['admin/package/get'] = 'admin/package/getPackage';
+
+$route['admin/schedule/add'] = 'admin/schedule/addSchedule';
+$route['admin/schedule/soft-delete'] = 'admin/schedule/softDeleteSchedule';
+$route['admin/schedule/update'] = 'admin/schedule/updateSchedule';
+$route['admin/schedule/get'] = 'admin/schedule/getSchedule';

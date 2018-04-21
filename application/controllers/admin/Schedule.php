@@ -30,6 +30,7 @@ class Schedule extends CI_Controller {
 		$data['menu_admin_top'] = $this->load->view('admin/template/v_menu_admin_top', '', TRUE);
 
 		$this->load->model("m_schedule");
+		$this->load->model("m_service");
 
 		$where = array(
 			'state' => 1
@@ -39,7 +40,14 @@ class Schedule extends CI_Controller {
         $limit_per_page = 4;
         $page = ($this->uri->segment(3)) ? ($this->uri->segment(3) - 1) : 0;
         $total_records = $this->m_schedule->getCount();
-     
+		
+		//get data services
+		$where = array(
+			'state' => 1
+		);
+		$data["services"] = $this->m_service->getAllServices($where);
+
+
         if ($total_records > 0) {
             // get current page records
             $data["schedules"] = $this->m_schedule->getCurrentPageRecordSchedule($limit_per_page, $page*$limit_per_page);
@@ -87,30 +95,30 @@ class Schedule extends CI_Controller {
 			$data["schedules"] = [];
 		}
 		// echo "<pre>";
-		// print_r($data["schedules"]);
+		// print_r($data["services"]);
 		// echo "</pre>";
 		$this->load->view('admin/v_schedule', $data);
 	}
 
-	public function getService() {
+	public function getSchedule() {
 		try {
 			$where = array(
-				'id_services' => $this->input->post('idServices')
+				'id_schedule' => $this->input->post('idSchedule')
 			);
 
 			$result = [
 				"status" => true,
 				"data" => $this->m_service->getService($where)[0],
-				"message" => "Successfully get service",
+				"message" => "Successfully get schedule",
 				"errors" => []
 			];
 		} catch(Excepion $err) {
 			$result = [
 				"status" => false,
 				"data" => [],
-				"message" => "Failed get service",
+				"message" => "Failed get schedule",
 				"errors" => array(
-					"get service"=>"Failed get service"
+					"get schedule"=>"Failed get schedule"
 				)
 			];
 		}
@@ -118,16 +126,12 @@ class Schedule extends CI_Controller {
 		echo json_encode($result);
 	}
 
-	public function addService() {
-		//pathDestination
-		$pathDestination = "uploads/services/";
-
+	public function addSchedule() {
 		//validasi
 		$this->form_validation->set_error_delimiters('', '');
-		$this->form_validation->set_rules('nameService','Name service', 'required|max_length[255]');
-		$this->form_validation->set_rules('detailService','Detail','required|max_length[255]');
-		$this->form_validation->set_rules('facilityService','Facility','required|max_length[255]');
-		$this->form_validation->set_rules('brgPersonal','Brg personal','required|max_length[255]');
+		$this->form_validation->set_rules('serviceId','Service', 'required');
+		$this->form_validation->set_rules('timeStart','Time start','required');
+		$this->form_validation->set_rules('timeEnd','Time end','required');
 
 		if ($this->form_validation->run() == FALSE) {
 			$result = [
@@ -138,65 +142,50 @@ class Schedule extends CI_Controller {
 			];
 		}
 		else {
-			//upload img
-			$resultTmp = $this->do_upload("fileImgService", $pathDestination, "service-img");
-			if (!$resultTmp["status"]){
+			//add
+			try {
+				$this->db->trans_start();
+				$data = array(
+					'id_service' => $this->input->post('serviceId'),
+					'time_begin' => $this->input->post('timeStart'),
+					'time_end' => $this->input->post('timeEnd'),
+					'state' => 1
+				);
+				$this->m_schedule->addSchedule($data);
+				$this->db->trans_complete();
+
+				$result = [
+					"status" => true,
+					"data" => [],
+					"message" => "Successfully add schedule",
+					"errors" => []
+				];
+			} catch(Excepion $err) {
+				$this->db->trans_complete();
 				$result = [
 					"status" => false,
 					"data" => [],
-					"message" => "Incorrect input",
-					"errors" => $resultTmp["errors"]
+					"message" => "Failed add schedule",
+					"errors" => array(
+						"add schedule"=>"Failed add schedule"
+					)
 				];
-			} else {
-				@unlink($_FILES[$this->input->post('fileImgService')]);
-			
-				//add
-				try {
-					$this->db->trans_start();
-					$data = array(
-						'name_services' => $this->input->post('nameService'),
-						'path_img' => $pathDestination.$resultTmp["data"]["upload_data"]["file_name"],
-						'detail' => $this->input->post('detailService'),
-						'facility' => $this->input->post('facilityService'),
-						'brg_personal' => $this->input->post('brgPersonal'),
-						'state' => 1
-					);
-					$this->m_service->addService($data);
-					$this->db->trans_complete();
-
-					$result = [
-						"status" => true,
-						"data" => [],
-						"message" => "Successfully add services",
-						"errors" => []
-					];
-				} catch(Excepion $err) {
-					$this->db->trans_complete();
-					$result = [
-						"status" => false,
-						"data" => [],
-						"message" => "Failed add services",
-						"errors" => array(
-							"add service"=>"Failed add services"
-						)
-					];
-				}
 			}
 		}
 
 		echo json_encode($result);
 	}
 
-	public function softDeleteService() {
+	public function softDeleteSchedule() {
 		try {
 			$this->db->trans_start();
-			$this->m_service->softDeleteService($this->input->post('id_services'));
+			$this->m_service->softDeleteSchedule($this->input->post('id_schedule'));
 			$this->db->trans_complete();
 
 			$result = [
 				"status" => true,
 				"data" => [],
-				"message" => "Successfully delete service",
+				"message" => "Successfully delete schedule",
 				"errors" => []
 			];
 		} catch(Excepion $err) {
@@ -204,25 +193,21 @@ class Schedule extends CI_Controller {
 			$result = [
 				"status" => false,
 				"data" => [],
-				"message" => "Failed delete service",
+				"message" => "Failed delete schedule",
 				"errors" => array(
-					"delete service"=>"Failed delete service"
+					"delete schedule"=>"Failed delete schedule"
 				)
 			];
 		}
 		echo json_encode($result);
 	}
 
-	public function updateService() {
-		//pathDestination
-		$pathDestination = "uploads/services/";
-
+	public function updateSchedule() {
 		//validasi
 		$this->form_validation->set_error_delimiters('', '');
-		$this->form_validation->set_rules('nameServiceUpdate','Name service', 'required|max_length[255]');
-		$this->form_validation->set_rules('detailServiceUpdate','Detail','required|max_length[255]');
-		$this->form_validation->set_rules('facilityServiceUpdate','Facility','required|max_length[255]');
-		$this->form_validation->set_rules('brgPersonalUpdate','Brg personal','required|max_length[255]');
+		$this->form_validation->set_rules('serviceId','Service', 'required');
+		$this->form_validation->set_rules('timeStart','Time start','required');
+		$this->form_validation->set_rules('timeEnd','Time end','required');
 
 		if ($this->form_validation->run() == FALSE) {
 			$result = [
@@ -233,60 +218,24 @@ class Schedule extends CI_Controller {
 			];
 		} 
 		else {
-			if($this->input->post('isChangeImg')) {
-				//upload img
-				$resultTmp = $this->do_upload("fileImgServiceUpdate", $pathDestination, "service-img");
-				if (!$resultTmp["status"]){
-					$result = [
-						"status" => false,
-						"data" => [],
-						"message" => "Incorrect input",
-						"errors" => $resultTmp["errors"]
-					];
-				}
-				else {
-					$data = $this->upload->data();
-					$result = [
-						"status" => true,
-						"data" => array(
-							"full_path" => $pathDestination."".$data["file_name"]
-						),
-						"message" => "Successfully update services",
-						"errors" => []
-					];		
-				}
-			}
-			@unlink($_FILES[$this->input->post('fileImgServiceUpdate')]);
-
 			//update
 			try {
 				$this->db->trans_start();
-				if($this->input->post('isChangeImg')) {
-					$data = array(
-						'id_services' => $this->input->post('id'),
-						'name_services' => $this->input->post('nameServiceUpdate'),
-						'path_img' => $result["data"]["full_path"],
-						'detail' => $this->input->post('detailServiceUpdate'),
-						'facility' => $this->input->post('facilityServiceUpdate'),
-						'brg_personal' => $this->input->post('brgPersonalUpdate'),
-					);
-				} else {
-					$data = array(
-						'id_services' => $this->input->post('id'),
-						'name_services' => $this->input->post('nameServiceUpdate'),
-						'detail' => $this->input->post('detailServiceUpdate'),
-						'facility' => $this->input->post('facilityServiceUpdate'),
-						'brg_personal' => $this->input->post('brgPersonalUpdate'),
-					);
-				}
+				$data = array(
+					'id_service' => $this->input->post('serviceId'),
+					'id_schedule' => $this->input->post('idSchedule'),
+					'time_begin' => $this->input->post('timeStart'),
+					'time_end' => $this->input->post('timeEnd'),
+					'state' => 1
+				);
 				
-				$this->m_service->updateService($data);
+				$this->m_schedule->updateSchedule($data);
 				$this->db->trans_complete();
 
 				$result = [
 					"status" => true,
 					"data" => [],
-					"message" => "Successfully update service",
+					"message" => "Successfully update schedule",
 					"errors" => []
 				];
 			} catch(Excepion $err) {
@@ -294,46 +243,15 @@ class Schedule extends CI_Controller {
 				$result = [
 					"status" => false,
 					"data" => [],
-					"message" => "Failed update service",
+					"message" => "Failed update schedule",
 					"errors" => array(
-						"update service"=>"Failed update service"
+						"update schedule"=>"Failed update schedule"
 					)
 				];
 			}
 		}
 
 		echo json_encode($result);
-	}
-
-	public function do_upload($formFileName, $pathImg, $fileNameImg) {
-			$config['upload_path']          = realpath(FCPATH.$pathImg);
-			$config['allowed_types']        = 'jpg|png|jpeg';
-			$config['max_size']             = 1024 * 5; //5MB
-			$config['file_name']            = $fileNameImg;
-
-			$this->load->library('upload', $config);
-
-			if ( !$this->upload->do_upload($formFileName)) {
-				$error = array($formFileName => $this->upload->display_errors());
-				$result = [
-					"status" => false,
-					"data" => [],
-					"message" => "Failed upload img",
-					"errors" => $error
-				];
-			}
-			else {
-				$data = array('upload_data' => $this->upload->data());
-				$result = [
-					"status" => true,
-					"data" => $data,
-					"message" => "Successfully upload img",
-					"errors" => []
-				];
-			}
-			return $result;
-	}
-
-	
+	}	
 	
 }

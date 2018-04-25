@@ -57,7 +57,9 @@ $route['translate_uri_dashes'] = FALSE;
 //untuk admin
 $route['admin/auth'] = 'admin/auth';
 $route['admin'] = 'admin/dashboard';
-$route['admin/booking'] = 'admin/dashboard/booking';
+
+$route['admin/booking'] = 'admin/booking/getAllBooking';
+$route['admin/booking/(:num)'] = 'admin/booking/getAllBooking/$1';
 
 $route['admin/package'] = 'admin/package/getPackages';
 $route['admin/package/(:num)'] = 'admin/package/getPackages/$1';
@@ -67,8 +69,6 @@ $route['admin/services/(:num)'] = 'admin/service/getServices/$1';
 
 $route['admin/carousel'] = 'admin/carousel/getCarousels';
 $route['admin/carousel/(:num)'] = 'admin/carousel/getCarousels/$1';
-
-$route['admin/contact-us'] = 'admin/dashboard/contactus';
 
 $route['admin/social-media'] = 'admin/socmed/getSocmeds';
 $route['admin/social-media/(:num)'] = 'admin/socmed/getSocmeds/$1';

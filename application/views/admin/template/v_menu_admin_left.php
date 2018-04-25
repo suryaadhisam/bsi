@@ -9,7 +9,6 @@
     <ul class="nav-dropdown-items">
         <li class="nav-item">
             <a class="nav-link" href="<?php echo base_url() ?>admin/carousel"><i class="icon-control-play"></i> Carousel</a>
-            <a class="nav-link" href="<?php echo base_url() ?>admin/contact-us"><i class="icon-phone"></i> Contact Us</a>
             <a class="nav-link" href="<?php echo base_url() ?>admin/social-media"><i class="icon-social-facebook"></i> Social Media</a>
         </li>
     </ul>

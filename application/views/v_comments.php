@@ -97,7 +97,7 @@
         <?php foreach ($list_comments as $row) {?>
         <div class="col-md-4">
           <figure class="snip1167">
-            <img src="<?php echo ($row->path_img); ?>" alt="sq-sample3"/>
+            <img src="<?php echo base_url($row->path_img); ?>" alt="sq-sample3"/>
             <blockquote><?php echo ($row->comments); ?></blockquote>
             <div class="author">
               <h5><?php echo ($row->name); ?> <span> <?php echo ($row->country); ?></span></h5>

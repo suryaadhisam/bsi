@@ -5,10 +5,10 @@ class About extends CI_Controller {
 
 	public function __construct()
  	{
-     	parent::__construct();
-      $this->load->model('M_about');
-			$this->load->library('pagination');
-  }
+            parent::__construct();
+          $this->load->model('M_about');
+                $this->load->library('pagination');
+      }
 
 	public function index(){
 		$baris = $this->M_about->row();

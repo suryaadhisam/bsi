@@ -11,7 +11,7 @@
 </head>
 <body>
 
-    <div class="container" style="padding:100px 25px 0 25px;">
+    <div class="container" style="padding:50px 25px 0 25px;">
       <h2 style="font-family:Impact, Charcoal, sans-serif; text-align:center;">OUR SERVICES</h2>
 
       <hr class="my-5">

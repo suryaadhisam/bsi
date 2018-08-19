@@ -1,102 +1,63 @@
-<footer class="page-footer text-center font-small mt-4 wow fadeIn">
-
-  <div class="container text-center text-md-left">
-        <div class="row">
-
-            <!--First column-->
-            <div class="col-md-4">
-                <h5 class="text-uppercase mb-4 mt-3 font-weight-bold">ABOUT US</h5>
-                <p>Here you can use rows and columns here to organize your footer content. Lorem ipsum dolor sit
-                    amet, consectetur adipisicing elit.</p>
-                <button type="button" class="btn btn-warning btn-sm">Read More</button>
-            </div>
-            <!--/.First column-->
-
-            <hr class="clearfix w-100 d-md-none">
-
-            <!--Second column-->
-            <div class="col-md-2 mx-auto">
-                <h5 class="text-uppercase mb-4 mt-3 font-weight-bold">HELP</h5>
-                <ul class="list-unstyled">
-                    <li>
-                        <a href="#!">Confirmation</a>
-                    </li>
-                    <li>
-                        <a href="#!">Complaint</a>
-                    </li>
-                    <li>
-                        <a href="#!">Review</a>
-                    </li>
-                    <li>
-                        <a href="#!">Term & Condition</a>
-                    </li>
-                </ul>
-            </div>
-            <!--/.Second column-->
-
-            <hr class="clearfix w-100 d-md-none">
-
-            <!--Third column-->
-            <div class="col-md-2 mx-auto">
-                <h5 class="text-uppercase mb-4 mt-3 font-weight-bold">JOIN US</h5>
-                <ul class="list-unstyled">
-                    <li>
-                        <a href="#!">Caries</a>
-                    </li>
-                    <li>
-                        <a href="#!">Collaboration</a>
-                    </li>
-                    <li>
-                        <a href="#!">Announcement</a>
-                    </li>
-                </ul>
-            </div>
-            <!--/.Third column-->
-
-            <hr class="clearfix w-100 d-md-none">
-
-            <!--Fourth column-->
-            <div class="col-md-2 mx-auto">
-                <h5 class="text-uppercase mb-4 mt-3 font-weight-bold">POLLING</h5>
-                <P>How do you feel about our service?</p>
-                <!--Radio group-->
-                    <div class="form-check">
-                        <input class="form-check-input" name="group100" type="radio" id="radio100">
-                        <label class="form-check-label" for="radio100">Very Good</label>
+<div class="footer">
+            <div class="container">
+                <div class="row ">
+                    <!-- footer-logo -->
+                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12 ">
+                        <div class="ft-img"><img src="<?php echo base_url('uploads/images/ft_logo.png'); ?>" alt=""></div>
                     </div>
-
-                    <div class="form-check">
-                        <input class="form-check-input" name="group100" type="radio" id="radio101">
-                        <label class="form-check-label" for="radio101">Good</label>
+                    <!-- /.footer-logo -->
+                    <!-- footer-links -->
+                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-12 ">
+                        <div class="footer-widget ">
+                            <h3 class="footer-title ">Quick Links</h3>
+                            <ul class="angle list-none">
+                                <li><a href="# ">Home</a></li>
+                                <li><a href="# ">About</a></li>
+                                <li><a href="# ">Services</a></li>
+                                <li><a href="# ">Booking</a></li>
+                                <li><a href="# ">F.A.Q</a></li>
+                                <li><a href="# ">Comment</a></li>
+                                <li><a href="# ">Gallery</a></li>
+                                <li><a href="# ">Contact Us</a></li>
+                            </ul>
+                        </div>
                     </div>
-
-                    <div class="form-check">
-                        <input class="form-check-input" name="group100" type="radio" id="radio102">
-                        <label class="form-check-label" for="radio102">Not Bad</label>
+                    <!-- /.footer-links -->
+                    <!-- footer-tours -->
+                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-12 ">
+                        <div class="footer-widget ">
+                            <h3 class="footer-title ">Services</h3>
+                            <ul class="angle list-none">
+                                <li><a href="# ">ATV Ride</a>
+                                <li><a href="# ">SPA & Reflexy</a></li>
+                                <li><a href="# ">Cycling</a></li>
+                                <li><a href="# ">River Tubing</a></li>
+                            </ul>
+                        </div>
                     </div>
-                <!--Radio group-->
+                    <!-- /.footer-Tours -->
+                    <!-- footer-post -->
+                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12 ">
+                        <div class="footer-widget">
+                            <h3 class="footer-title">Contact Info</h3>
+                            <div class="ft-contact-info"> <span class="ft-contact-icon"><i class="fa fa-map-marker"></i></span> <span class="ft-contact-text">3927 Birch StreetEl Paso, TX 79930 </span></div>
+                            <div class="ft-contact-info"> <span class="ft-contact-icon"><i class="fa fa-phone "></i></span> <span class="ft-contact-text">+180-123-4567</span></div>
+                            <div class="ft-contact-info"> <span class="ft-contact-icon"><i class="fa fa-envelope "></i></span> <span class="ft-contact-text">info@travel.com</span></div>
+                            <div class="social-icon "> <a href="# " class="btn-social-icon "><i class="fa fa-facebook "></i></a> <a href="# " class="btn-social-icon "><i class="fa fa-twitter "></i></a> <a href="# " class="btn-social-icon "><i class="fa fa-linkedin "></i></a> <a href="# " class="btn-social-icon "><i class="fa fa-google-plus "></i></a> </div>
+                        </div>
+                    </div>
+                    <!-- /.footer-post -->
+                </div>
+                <!-- tiny-footer -->
             </div>
-            <!--/.Fourth column-->
+            <div class="tiny-footer ">
+                <div class="container ">
+                    <div class="row ">
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 text-center ">
+                            <p>Copyright © All Rights Reserved 2020 Template Design & Development by <a href="https://easetemplate.com/ " target="_blank " class="copyrightlink ">EaseTemplate</a></p>
+                        </div>
+                    </div>
+                    <!-- /. tiny-footer -->
+                </div>
+            </div>
         </div>
-    </div>
-  
-  <hr class="my-4">
-  <div class="pb-4">
-    <a href="#" target="_blank">
-      <i class="fa fa-facebook mr-3 fa-3x"></i>
-    </a>
-    <a href="#" target="_blank">
-      <i class="fa fa-instagram mr-3 fa-3x"></i>
-    </a>
-    <a href="#" target="_blank">
-      <i class="fa fa-twitter mr-3 fa-3x"></i>
-    </a>
-    <a href="#" target="_blank">
-      <i class="fa fa-whatsapp mr-3 fa-3x"></i>
-    </a>
-  </div>
-  <div class="footer-copyright py-3">
-    © 2018 Copyright: BSA
-    <!-- <a href="https://mdbootstrap.com/bootstrap-tutorial/" target="_blank"> MDBootstrap.com </a> -->
-  </div>
-</footer>

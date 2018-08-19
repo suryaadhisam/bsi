@@ -2,7 +2,7 @@
 
 class M_comments extends CI_Model {
   function get_comments(){
-    $query = $this->db->query('SELECT * FROM tb_comments');
+    $query = $this->db->query('SELECT * FROM tb_testimoni');
     return $query->result();
   }
 

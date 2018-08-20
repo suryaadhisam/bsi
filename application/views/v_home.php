@@ -15,50 +15,24 @@
     <div class="slider">
           <div class="owl-carousel owl-one owl-theme">
 
+            <?php foreach ($list_slider as $row): ?>
               <div class="item">
                   <div class="slider-img">
-                      <img src="<?php echo base_url('uploads/images/slider_1.jpg'); ?>" alt=""></div>
+                      <img src="<?php echo base_url($row->path_img); ?>" alt=""></div>
                   <div class="container">
                       <div class="row">
                           <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
                               <div class="slider-captions">
-                                  <h1 class="slider-title">Get travel website template</h1>
-                                  <a href="#" class="btn btn-primary">Get Template</a>
+                                  <h4 class="slider-title"><?php echo $row->tagline; ?></h4>
                               </div>
                           </div>
                       </div>
                   </div>
               </div>
-
-              <div class="item">
-                  <div class="slider-img"><img src="<?php echo base_url('uploads/images/slider_2.jpg'); ?>" alt=""></div>
-                  <div class="container">
-                      <div class="row">
-                          <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
-                              <div class="slider-captions">
-                                  <h1 class="slider-title">Travel air agency Website template</h1>
-                                  <a href="#" class="btn btn-primary">Download Template</a>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-              <div class="item">
-                  <div class="slider-img"><img src="<?php echo base_url('uploads/images/slider_3.jpg'); ?>" alt=""></div>
-                  <div class="container">
-                      <div class="row">
-                          <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
-                              <div class="slider-captions">
-                                  <h1 class="slider-title">Get tourism website template</h1>
-                                  <a href="#" class="btn btn-primary">View Packages</a>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
+            <?php endforeach; ?>
           </div>
       </div>
-      
+
 
       <div class="bg-default enquiry-form ">
             <div class="container">
@@ -71,11 +45,9 @@
                                         <label class="control-label sr-only" for="select"></label>
                                         <div class="select">
                                             <select id="select" name="city" class="form-control">
-                                                <option value="">Serivce</option>
-                                                <option value="">ATV Ride</option>
-                                                <option value="">SPA & Reflexy</option>
-                                                <option value="">Cycling</option>
-                                                <option value="">River Tubing</option>
+                                              <?php foreach ($list_services as $row): ?>
+                                                <option value=""><?php echo $row->varian; ?></option>
+                                              <?php endforeach; ?>
                                             </select>
                                         </div>
                                     </div>
@@ -132,58 +104,46 @@
         <div class="space-medium">
             <div class="container">
                 <!-- tour-1 -->
-                <div class="row ">
-                    <div class="col-xl-4 col-lg-4 offset-md-1 col-md-4 col-sm-12 col-12 mb40">
-                        <div class="tour-img">
-                            <a href="#" class="imghover"> <img src="<?php echo base_url('uploads/images/tour_img_1.jpg'); ?>" alt="" class="img-fluid"></a>
+                <?php foreach ($list_services as $key): ?>
+                  <?php if ($key->id % 2 == 1): ?>
+                    <div class="row ">
+                        <div class="col-xl-4 col-lg-4 offset-md-1 col-md-4 col-sm-12 col-12 mb40">
+                            <div class="tour-img">
+                                <a href="#" class="imghover"> <img src="<?php echo base_url($key->photo); ?>" alt="" class="img-fluid"></a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-xl-5 col-lg-5 offset-md-1 col-md-5 col-sm-12 col-12 mb40">
-                        <div class="tour-block">
-                            <div class="tour-content">
-                                <h2 class="mb30"><a href="#" class="title">International Tour</a></h2>
-                                <p class="mb30">Vestibulum nec mauris interdum facilisis nequeet convallis odioses praesentet lacinia orciulla dolorerat ullamcorper sitamet meuesered egestas venenatis enimusce sed ipsum seddolor.</p>
-                                <a href="#" class="btn-link">Go For International Tour<i class="fa fa-angle-right"></i></a>
+                        <div class="col-xl-5 col-lg-5 offset-md-1 col-md-5 col-sm-12 col-12 mb40">
+                            <div class="tour-block">
+                                <div class="tour-content">
+                                    <h2 class="mb30"><a href="#" class="title"><?php echo $key->varian; ?></a></h2>
+                                    <p class="mb30">Vestibulum nec mauris interdum facilisis nequeet convallis odioses praesentet lacinia orciulla dolorerat ullamcorper sitamet meuesered egestas venenatis enimusce sed ipsum seddolor.</p>
+                                    <a href="#" class="btn-link">Go For Details...<i class="fa fa-angle-right"></i></a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <!-- /.tour-1 -->
-                <!-- tour-2 -->
-                <div class="row">
-                    <div class="col-xl-5 col-lg-5 offset-md-1 col-md-5 col-sm-12 col-12 mb40">
-                        <div class="tour-block">
-                            <div class="tour-content">
-                                <h2 class="mb30"><a href="#" class="title">Adventure Tour</a></h2>
-                                <p class="mb30">Donec porttitor lorem utdiam iaculis euismod congue eroset lectus consectetur fermen uspendissolutpat risus utarcu dapibusat conquat quam sodenean pretium a metus euauctor.</p>
-                                <a href="#" class="btn-link">Go For Adventure Tour<i class="fa fa-angle-right"></i></a>
+                  <?php endif; ?>
+                  <!-- /.tour-1 -->
+                  <!-- tour-2 -->
+                  <?php if ($key->id % 2 == 0): ?>
+                    <div class="row">
+                        <div class="col-xl-5 col-lg-5 offset-md-1 col-md-5 col-sm-12 col-12 mb40">
+                            <div class="tour-block">
+                                <div class="tour-content">
+                                    <h2 class="mb30"><a href="#" class="title"><?php echo $key->varian; ?></a></h2>
+                                    <p class="mb30">Donec porttitor lorem utdiam iaculis euismod congue eroset lectus consectetur fermen uspendissolutpat risus utarcu dapibusat conquat quam sodenean pretium a metus euauctor.</p>
+                                    <a href="#" class="btn-link">Go For Details...<i class="fa fa-angle-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 offset-md-1 col-md-4 col-sm-12 col-12 mb40">
+                            <div class="tour-img">
+                                <a href="#" class="imghover"> <img src="<?php echo base_url($key->photo); ?>" alt="" class="img-fluid"></a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-4 col-lg-4 offset-md-1 col-md-4 col-sm-12 col-12 mb40">
-                        <div class="tour-img">
-                            <a href="#" class="imghover"> <img src="<?php echo base_url('uploads/images/tour_img_2.jpg'); ?>" alt="" class="img-fluid"></a>
-                        </div>
-                    </div>
-                </div>
-                <!-- /.tour-2 -->
-                <!-- tour-3 -->
-                <div class="row">
-                    <div class="col-xl-4 col-lg-4 offset-md-1 col-md-4 col-sm-12 col-12 mb20">
-                        <div class="tour-img">
-                            <a href="#" class="imghover"> <img src="<?php echo base_url('uploads/images/tour_img_3.jpg'); ?>" alt="" class="img-fluid"></a>
-                        </div>
-                    </div>
-                    <div class="col-xl-5 col-lg-5 offset-md-1 col-md-5 col-sm-12 col-12 mb20">
-                        <div class="tour-block">
-                            <div class="tour-content">
-                                <h2 class="mb30"><a href="#" class="title">Domestic Tour</a></h2>
-                                <p class="mb30">Proin in urna hendrerit tortor dignissim auctor vitae etnibstibulum venenatis lectus urnaut sodales nibh sagittis eestibulum ante ipsum primisin faucibusorci luctus etultrices posuere cubilia.</p>
-                                <a href="#" class="btn-link">Go For Domestic Tour<i class="fa fa-angle-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                  <?php endif; ?>
+                <?php endforeach; ?>
             </div>
         </div>
 

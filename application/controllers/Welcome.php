@@ -16,6 +16,9 @@ class Welcome extends CI_Controller {
 
 		$data['list_contact'] = $this->M_header->get_contact_us();
 		$data['list_socmed'] = $this->M_header->get_socmed();
+		$data['logo'] = $this->M_header->get_logo();
+		$data['list_slider'] = $this->M_home->get_slider();
+		$data['list_services'] = $this->M_home->get_services();
 
 		$this->load->view('v_style', $data);
 		$this->load->view('v_script');

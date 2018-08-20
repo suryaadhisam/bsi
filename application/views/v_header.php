@@ -15,8 +15,24 @@
                         <div class="col-xl-2 col-lg-4 col-md-3 col-sm-6 col-8 d-none d-block d-sm-block">
                             <div class="top-header-content">
                                 <div class="top-social">
-                                  <?php foreach ($list_socmed as $row) {
-                                     if ($row->socmed_name == 'Facebook') { ?>
+                                  <?php foreach ($list_socmed as $row) { ?>
+                                    <?php if ($row->socmed_name == 'Linkedin') { ?>
+                                  <a href="<?php echo $row->socmed_url; ?>" target="_blank" class="btn-social-icon"><i class="fa fa-linkedin"></i></a>
+                                    <?php } ?>
+
+                                    <?php if ($row->socmed_name == 'Google+') { ?>
+                                  <a href="<?php echo $row->socmed_url; ?>" target="_blank" class="btn-social-icon"><i class="fa fa-google-plus"></i></a>
+                                    <?php } ?>
+
+                                    <?php if ($row->socmed_name == 'YouTube') { ?>
+                                  <a href="<?php echo $row->socmed_url; ?>" target="_blank" class="btn-social-icon"><i class="fa fa-youtube"></i></a>
+                                    <?php } ?>
+
+                                    <?php if ($row->socmed_name == 'Skype') { ?>
+                                  <a href="<?php echo $row->socmed_url; ?>" target="_blank" class="btn-social-icon"><i class="fa fa-skype"></i></a>
+                                    <?php } ?>
+
+                                    <?php if ($row->socmed_name == 'Facebook') { ?>
                                       <a href="<?php echo $row->socmed_url ?>" target="_blank" class="btn-social-icon"><i class="fa fa-facebook"></i></a>
                                     <?php } ?>
 
@@ -44,7 +60,9 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-xl-3 col-lg-2 col-md-3 col-sm-3 col-12">
-                            <div class="logo"> <a href="index.html"><img src="<?php echo base_url('uploads/images/logo.png'); ?>" alt=""> </a> </div>
+                          <?php foreach ($logo as $row): ?>
+                            <div class="logo"> <a href="<?php echo site_url('Welcome') ?>"><img src="<?php echo base_url($row->path); ?>" alt=""> </a> </div>
+                          <?php endforeach; ?>
                         </div>
                         <div class="col-xl-9 col-lg-10 col-md-9 col-sm-12 col-12">
                             <div class="navigation">

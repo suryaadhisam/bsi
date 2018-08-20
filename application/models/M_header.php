@@ -13,7 +13,12 @@ class M_header extends CI_Model {
   }
 
   function get_socmed(){
-    $query = $this->db->query('SELECT * FROM tb_socmed');
+    $query = $this->db->query('SELECT * FROM tb_socmed WHERE state = 1');
+    return $query->result();
+  }
+
+  function get_logo(){
+    $query = $this->db->query('SELECT * FROM tb_logo WHERE state = 1');
     return $query->result();
   }
 

@@ -2,7 +2,12 @@
 
 class M_home extends CI_Model {
   function get_services(){
-    $query = $this->db->query('SELECT * FROM tb_services');
+    $query = $this->db->query('SELECT * FROM tb_varian_service WHERE state = 1');
+    return $query->result();
+  }
+
+  function get_slider(){
+    $query = $this->db->query('SELECT * FROM tb_carousel WHERE state = 1');
     return $query->result();
   }
 

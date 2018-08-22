@@ -7,6 +7,8 @@ class Services extends CI_Controller {
  	{
      	parent::__construct();
 			$this->load->model('M_header');
+			$this->load->model('M_service');
+			$this->load->model('M_home');
   }
 
 	public function index(){
@@ -20,6 +22,23 @@ class Services extends CI_Controller {
 		$this->load->view('v_script');
 		$this->load->view('v_header', $data);
 		$this->load->view('v_services');
+		$this->load->view('v_footer');
+	}
+
+	function detail_service($id){
+		$data['title']			= "Services || Sunset Bali Adventure";
+
+		$data['list_contact'] = $this->M_header->get_contact_us();
+		$data['list_socmed'] = $this->M_header->get_socmed();
+		$data['logo'] = $this->M_header->get_logo();
+		$data['list_slider'] = $this->M_home->get_slider();
+		$data['list_service_detail'] = $this->M_service->detailService($id);
+		$data['list_photo_service'] = $this->M_service->photoService($id);
+
+		$this->load->view('v_style', $data);
+		$this->load->view('v_script');
+		$this->load->view('v_header', $data);
+		$this->load->view('v_service_detail', $data);
 		$this->load->view('v_footer');
 	}
 }

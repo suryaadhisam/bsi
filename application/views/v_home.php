@@ -115,9 +115,9 @@
                         <div class="col-xl-5 col-lg-5 offset-md-1 col-md-5 col-sm-12 col-12 mb40">
                             <div class="tour-block">
                                 <div class="tour-content">
-                                    <h2 class="mb30"><a href="#" class="title"><?php echo $key->varian; ?></a></h2>
+                                    <h2 class="mb30"><a href="<?php echo base_url() ?>Services/detail_service/<?php echo $key->id; ?>" class="title"><?php echo $key->varian; ?></a></h2>
                                     <p class="mb30">Vestibulum nec mauris interdum facilisis nequeet convallis odioses praesentet lacinia orciulla dolorerat ullamcorper sitamet meuesered egestas venenatis enimusce sed ipsum seddolor.</p>
-                                    <a href="#" class="btn-link">Go For Details...<i class="fa fa-angle-right"></i></a>
+                                    <a href="<?php echo base_url() ?>Services/detail_service/<?php echo $key->id; ?>" class="btn-link">Go For Details...<i class="fa fa-angle-right"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -130,9 +130,9 @@
                         <div class="col-xl-5 col-lg-5 offset-md-1 col-md-5 col-sm-12 col-12 mb40">
                             <div class="tour-block">
                                 <div class="tour-content">
-                                    <h2 class="mb30"><a href="#" class="title"><?php echo $key->varian; ?></a></h2>
+                                    <h2 class="mb30"><a href="<?php echo base_url() ?>Services/detail_service/<?php echo $key->id; ?>" class="title"><?php echo $key->varian; ?></a></h2>
                                     <p class="mb30">Donec porttitor lorem utdiam iaculis euismod congue eroset lectus consectetur fermen uspendissolutpat risus utarcu dapibusat conquat quam sodenean pretium a metus euauctor.</p>
-                                    <a href="#" class="btn-link">Go For Details...<i class="fa fa-angle-right"></i></a>
+                                    <a href="<?php echo base_url() ?>Services/detail_service/<?php echo $key->id; ?>" class="btn-link">Go For Details...<i class="fa fa-angle-right"></i></a>
                                 </div>
                             </div>
                         </div>

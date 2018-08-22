@@ -74,7 +74,7 @@
                                         <li><a href="<?php echo site_url('Boking') ?>">Booking</a></li>
                                         <li><a href="<?php echo site_url('FAQ') ?>">F.A.Q</a></li>
                                         <li><a href="<?php echo site_url('Comments') ?>">Comment</a></li>
-                                        <li><a href="about.html">Gallery</a></li>
+                                        <li><a href="<?php echo site_url('Gallery') ?>">Gallery</a></li>
                                         <li><a href="<?php echo site_url('Contact_Us') ?>">Contact Us</a></li>
                                     </ul>
                                 </div>

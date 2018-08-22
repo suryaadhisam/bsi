@@ -90,6 +90,7 @@ $route['admin/service/get'] = 'admin/service/getService';
 
 $route['admin/socmed/add'] = 'admin/socmed/addSocmed';
 $route['admin/socmed/soft-delete'] = 'admin/socmed/softDeleteSocmed';
+$route['admin/socmed/change-state'] = 'admin/socmed/changeStateSocmed';
 $route['admin/socmed/update'] = 'admin/socmed/updateSocmed';
 $route['admin/socmed/get'] = 'admin/socmed/getSocmed';
 

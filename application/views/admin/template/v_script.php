@@ -11,4 +11,5 @@
 
 <script src="<?php echo base_url(); ?>assets/js/admin/coreui/app.js"></script>
 
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<!-- SweatAlert2 -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.26.10/dist/sweetalert2.all.min.js"></script>

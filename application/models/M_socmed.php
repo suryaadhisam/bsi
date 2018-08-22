@@ -18,7 +18,7 @@ class M_socmed extends CI_Model {
 	
 	public function getCurrentPageRecordSocmed($limit, $start) {
         $this->db->limit($limit, $start);
-        $query = $this->db->get_where($this->namaTabel, array('state' => 1));
+        $query = $this->db->get($this->namaTabel);
  
         if ($query->num_rows() > 0) {
             foreach ($query->result() as $row) {
@@ -45,6 +45,15 @@ class M_socmed extends CI_Model {
 		$this->db->where('id', $id);
 		return $this->db->update($this->namaTabel, $data);
 	}
+
+    function changeState($id, $state) {
+        $data = array(
+            'state' => $state
+        );
+
+        $this->db->where('id', $id);
+        return $this->db->update($this->namaTabel, $data);
+    }
 
 	function updateSocmed($data) {
 		$this->db->where('id', $data["id"]);

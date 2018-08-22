@@ -120,38 +120,17 @@
                                     <div class="form-group row">
                                         <label class="col-md-3 col-form-label" for="nameSocmedUpdate">Name</label>
                                         <div class="col-md-9">
-                                            <input type="text" id="nameSocmedUpdate" name="nameSocmedUpdate" class="form-control" placeholder="Name social media...">
+                                            <input type="text" id="nameSocmedUpdate" name="nameSocmedUpdate" class="form-control" placeholder="Name social media..." disabled>
                                             <span class="hasErrorText"></span>
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label class="col-md-3 col-form-label" for="linkSocmedUpdate">Link Socmed</label>
+                                        <label class="col-md-3 col-form-label" for="linkSocmedUpdate">Value</label>
                                         <div class="col-md-9">
                                             <input type="text" id="linkSocmedUpdate" name="linkSocmedUpdate" class="form-control" placeholder="Link social media...">
                                             <span class="hasErrorText"></span>
                                         </div>
                                     </div>
-                                    <div class="form-group row">
-                                        <label class="col-md-3 col-form-label" for="imageSocmedUpdate">Image Icon</label>
-                                        <div class="col-md-9">
-                                            <button type="button" class="btn btn-primary" id="buttonUpdateFileToUpload">Choose image</button>
-
-                                            <input type="file" name="fileImgSocmedUpdate" id="fileImgSocmedUpdate" accept="image/x-png,image/jpg,image/jpeg" />
-                                            <span class="hasErrorText"></span>
-                                            <div class="previewImgWraper">
-                                                <div class="row">
-                                                    <!-- <span class="buttonXImgPreviewFileUpload">x</span> -->
-                                                    <div class="col-md-4 padding-right-0">
-                                                        <img class="imgPreviewImgFileUpload">
-                                                    </div>
-                                                    <div class="col-md-8">
-                                                        <span class="textImgPreviewFileUpload">asas</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
                                 </form>
                             </div>
                             <div class="modal-footer">
@@ -166,61 +145,42 @@
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="card-body">
-                                <button type="button" id="buttonAddSocmedNew" class="btn btn-success" data-toggle="modal" data-target="#modalAddSocmed" style="margin-bottom: 10px;"><i class="fa fa-plus"></i>&nbsp; Add socmed</button>
-                                <?php 
-                                    if(count($socmeds) > 0) {
-                                ?>
+<!--                                <button type="button" id="buttonAddSocmedNew" class="btn btn-success" data-toggle="modal" data-target="#modalAddSocmed" style="margin-bottom: 10px;"><i class="fa fa-plus"></i>&nbsp; Add socmed</button>-->
+                                <?php if (count($socmeds) > 0): ?>
                                     <table class="table table-responsive-sm table-hover" id="tableListServives">
                                         <thead>
                                         <tr>
                                             <th>Name</th>
                                             <th>Link Social Media</th>
+                                            <th>Status</th>
                                             <th>Action</th>
                                         </tr>
                                         </thead>
                                         <tbody>
-                                            <?php 
-                                                foreach($socmeds as $row) {
-                                            ?>
+                                            <?php foreach($socmeds as $row) { ?>
                                                 <tr>
-                                                    <td>
-                                                        <img src="<?php echo base_url().$row->socmed_path_icon; ?>" class="imgThumbnailService">
-                                                        <?php echo $row->socmed_name; ?>
-                                                    </td>
+                                                    <td><?php echo $row->socmed_name; ?></td>
                                                     <td><?php echo $row->socmed_url; ?></td>
+                                                    <td><?php echo ($row->state == 1) ? "<b style='color: green;'>Active</b>" : "<b style='color: grey;'>Non Active</b>" ?></td>
+
                                                     <td>
                                                         <button type="button" class="btn btn-primary" onclick="openFormUpdateSocmed(<?php echo $row->id; ?>)"><i class="fa fa-pencil"></i>&nbsp; Edit</button>
-                                                        <button type="button" class="btn btn-danger" onclick="confirmDeleteSocmed(<?php echo $row->id; ?>)"><i class="fa fa-trash"></i>&nbsp; Delete</button>
+                                                        <?php if ($row->state == 1): ?>
+                                                            <button type="button" class="btn btn-warning" onclick="confirmDeleteSocmed(<?php echo $row->id; ?>, 0)"><i class="fa fa-close"></i>&nbsp; Deactive</button>
+                                                        <?php else: ?>
+                                                            <button type="button" class="btn btn-success" onclick="confirmDeleteSocmed(<?php echo $row->id; ?>, 1)"><i class="fa fa-check"></i>&nbsp; Active</button>
+                                                        <?php endif ?>
                                                     </td>
                                                 </tr>
-                                            <?php 
-                                                }
-                                            ?>
+                                            <?php } ?>
                                         </tbody>
                                     </table>
-                                    <!-- <ul class="pagination justify-content-center">
-                                        <li class="page-item"><a class="page-link" href="#">Prev</a></li>
-                                        <li class="page-item active">
-                                            <a class="page-link" href="#">1</a>
-                                        </li>
-                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">4</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                                    </ul> -->
-                                    <?php 
-                                        if (isset($links)) {
-                                            echo $links;
-                                        } 
-                                    ?>
-                                <?php 
-                                    } else {
-                                ?>
+
+                                    <?php if (isset($links)) echo $links; ?>
+                                <?php else: ?>
                                     <h1 style="font-size: 26pt;color: #9E9E9E;text-align: center;margin: 20px;">EMPTY</h1>
-                                <?php 
-                                    }
-                                ?>
-                                
+                                <?php endif ?>
+
                             </div>
                         </div>
                     </div>
@@ -241,6 +201,7 @@
     var base_url = "<?php echo base_url(); ?>";
     var urlAddSocmed = base_url+"/admin/socmed/add";
     var urlSoftDeleteSocmed = base_url+"/admin/socmed/soft-delete";
+    var urlChangeStateSocmed = base_url+"/admin/socmed/change-state";
     var urlUpdateSocmed = base_url+"/admin/socmed/update";
     var urlGetSocmed = base_url+"/admin/socmed/get";
 
@@ -367,10 +328,6 @@
                 $("#nameSocmedUpdate").val(data.data.socmed_name);
                 $("#linkSocmedUpdate").val(data.data.socmed_url);
 
-                $('.imgPreviewImgFileUpload').attr('src', base_url+"/"+data.data.socmed_path_icon);
-                $(".textImgPreviewFileUpload").text(getFileNameImg(data.data.socmed_path_icon));
-                $(".previewImgWraper").css("display", "flex");
-
                 $("#idService").val(idSocmed);
                 $('#modalUpdateSocmed').modal('show');
                 isChangeImg = false;
@@ -385,44 +342,92 @@
         return fullPath.substring(fullPath.lastIndexOf('/')+1);
     }
 
-    function confirmDeleteSocmed(idSocmed){
-        swal({
-            title: "Are you sure?",
-            icon: "warning",
-            buttons: true,
-            dangerMode: true,
-        }).then((willDelete) => {
-            if (willDelete) {
-                $.ajax({
-                    type: 'POST',
-                    url: urlSoftDeleteSocmed,
-                    dataType: 'json',
-                    async: true,
-                    data:{
-                        id_socmed: idSocmed
-                    },
-                    success: function(data) {
-                        console.log(data);
-                        if(data.status){
-                            swal({
-                                title: "Successfull",
-                                icon: "success",
-                                button: "OK",
-                            }).then((willDelete) => {
-                                if (willDelete) {
-                                    location.reload();
-                                }
-                            });
+    function confirmDeleteSocmed(idSocmed, state){
+        if(state === 1) {
+            swal({
+                title: 'Are you sure to deactive?',
+                type: 'question',
+                showCancelButton: true,
+                confirmButtonColor: '#795548',
+                cancelButtonColor: '#BDBDBD',
+                confirmButtonText: 'Deactive',
+                reverseButtons: true
+            }).then((result) => {
+                if (result.value) {
+                    $.ajax({
+                        type: 'POST',
+                        url: urlChangeStateSocmed,
+                        dataType: 'json',
+                        async: true,
+                        data:{
+                            id_socmed: idSocmed,
+                            state: state
+                        },
+                        success: function(data) {
+                            console.log(data);
+                            if(data.status){
+                                swal({
+                                    title: "Successfull",
+                                    icon: "success",
+                                    button: "OK",
+                                    type: 'success',
+                                }).then((willDelete) => {
+                                    if (willDelete) {
+                                        location.reload();
+                                    }
+                                });
+                            }
+                        },
+                        error: function(xhr, status, error){
+                            console.log(error);
                         }
-                    },
-                    error: function(xhr, status, error){
-                        console.log(error);
-                    }
-                });
+                    });
+                }
+            });
+        }
+        else {
+            swal({
+                title: 'Are you sure to active?',
+                type: 'question',
+                showCancelButton: true,
+                confirmButtonColor: '#4CAF50',
+                cancelButtonColor: '#BDBDBD',
+                confirmButtonText: 'Active',
+                reverseButtons: true
+            }).then((result) => {
+                if (result.value) {
+                    $.ajax({
+                        type: 'POST',
+                        url: urlChangeStateSocmed,
+                        dataType: 'json',
+                        async: true,
+                        data:{
+                            id_socmed: idSocmed,
+                            state: state
+                        },
+                        success: function(data) {
+                            console.log(data);
+                            if(data.status){
+                                swal({
+                                    title: "Successfull",
+                                    icon: "success",
+                                    button: "OK",
+                                    type: 'success',
+                                }).then((willDelete) => {
+                                    if (willDelete) {
+                                        location.reload();
+                                    }
+                                });
+                            }
+                        },
+                        error: function(xhr, status, error){
+                            console.log(error);
+                        }
+                    });
+                }
+            });
+        }
 
-                
-            }
-        });
     }
 
     $("#fileImgSocmed").change(function(){

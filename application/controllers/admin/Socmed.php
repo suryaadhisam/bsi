@@ -33,8 +33,8 @@ class Socmed extends CI_Controller {
 			'state' => 1
 		);
 	 
-		$this->load->library('pagination');        
-        $limit_per_page = 4;
+		$this->load->library('pagination');
+        $limit_per_page = 10;
         $page = ($this->uri->segment(3)) ? ($this->uri->segment(3) - 1) : 0;
         $total_records = $this->m_socmed->getCount();
      
@@ -204,13 +204,38 @@ class Socmed extends CI_Controller {
 		echo json_encode($result);
 	}
 
+    public function changeStateSocmed() {
+        try {
+            $this->db->trans_start();
+            $this->m_socmed->changeState($this->input->post('id_socmed'), $this->input->post('state'));
+            $this->db->trans_complete();
+
+            $result = [
+                "status" => true,
+                "data" => [],
+                "message" => "Successfully change state socmed",
+                "errors" => []
+            ];
+        } catch(Excepion $err) {
+            $this->db->trans_complete();
+            $result = [
+                "status" => false,
+                "data" => [],
+                "message" => "Failed change state socmed",
+                "errors" => array(
+                    "change state socmed"=>"Failed change state socmed"
+                )
+            ];
+        }
+        echo json_encode($result);
+    }
+
 	public function updateSocmed() {
 		//pathDestination
 		$pathDestination = "uploads/services/";
 
 		//validasi
 		$this->form_validation->set_error_delimiters('', '');
-		$this->form_validation->set_rules('nameSocmedUpdate','Socmed name', 'required|max_length[255]');
 		$this->form_validation->set_rules('linkSocmedUpdate','Socmed link','required|max_length[255]');
 
 		if ($this->form_validation->run() == FALSE) {
@@ -253,14 +278,12 @@ class Socmed extends CI_Controller {
 				if($this->input->post('isChangeImg')) {
 					$data = array(
 						'id' => $this->input->post('idSocmed'),
-						'socmed_name' => $this->input->post('nameSocmedUpdate'),
 						'socmed_path_icon' => $result["data"]["full_path"],
 						'socmed_url' => $this->input->post('linkSocmedUpdate')
 					);
 				} else {
 					$data = array(
 						'id' => $this->input->post('idSocmed'),
-						'socmed_name' => $this->input->post('nameSocmedUpdate'),
 						'socmed_url' => $this->input->post('linkSocmedUpdate')
 					);
 				}

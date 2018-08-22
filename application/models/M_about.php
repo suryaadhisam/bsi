@@ -7,12 +7,11 @@ class M_about extends CI_Model {
   }
 
 
-  function get_about($perPage, $start){
-    return $get = $this->db->get('tb_about', $perPage, $start)->result_array();
+  function get_about(){
+    $query = $this->db->query('SELECT * FROM tb_about');
+    return $query->result();
   }
 
-  function row(){
-    return $this->db->get('tb_about')->num_rows();
-  }
+
 
 }

@@ -87,7 +87,7 @@
 </head>
 <body>
 
-  <main style="padding : 100px 0 0 0;">
+  <main style="padding : 50px 0 0 0;">
     <div class="container">
       <h2 style="font-family:Impact, Charcoal, sans-serif; text-align:center;">Guest Comments</h2>
 

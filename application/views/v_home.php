@@ -5,499 +5,308 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <!-- Font Awesome -->
-    <script type="text/javascript"> //<![CDATA[ 
-    var tlJsHost = ((window.location.protocol == "https:") ? "https://secure.comodo.com/" : "http://www.trustlogo.com/");
-    document.write(unescape("%3Cscript src='" + tlJsHost + "trustlogo/javascript/trustlogo.js' type='text/javascript'%3E%3C/script%3E"));
-    //]]>
-    </script>
-    <style>
-      .nav-tabs {
-        border: 0;
-        padding: .7rem;
-        margin-left: 1rem;
-        margin-right: 1rem;
-        margin-bottom: -20px;
-        background-color: #FF9800;
-        z-index: 2;
-        position: relative;
-        border-radius: 2px;
-      }
+    <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:300,300i,400,400i,700,700i,800,800i" rel="stylesheet">
 
-      .nav{
-        display: flex;
-        -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-        padding-left: 0;
-        margin-bottom: 0;
-        list-style: none;
-      }
 
-      /* ul, menu, dir {
-        -webkit-margin-before: 1em;
-        -webkit-margin-after: 1em;
-        -webkit-margin-start: 0px;
-        -webkit-margin-end: 0px;
-        -webkit-padding-start: 40px;
-      } */
-
-      .nav-justified .nav-item {
-          /* -ms-flex-preferred-size: 0; */
-          /* flex-basis: 0; */
-          /* -webkit-box-flex: 1; */
-          /* -ms-flex-positive: 1; */
-          /* flex-grow: 1; */
-          /* text-align: center; */
-      }
-    </style>
-    <style>
-      body{
-  font-family: 'Roboto';
-  text-align: center;
-  background: #f1f1f1;
-}
-
-h3{
-  color: #555;
-}
-
-#presentation{
-  width: 480px;
-  height: 120px;
-  padding: 20px;
-  margin: auto;
-  background: #FFF;
-  margin-top: 10px;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-  transition: all 0.3s;
-  border-radius: 3px;
-}
-
-#presentation:hover{
-  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-  transition: all 0.3s;
-  transform: translateZ(10px);
-}
-
-#floating-button{
-  width: 55px;
-  height: 55px;
-  border-radius: 50%;
-  background: #db4437;
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  cursor: pointer;
-  box-shadow: 0px 2px 5px #666;
-}
-
-.plus{
-  color: white;
-  position: absolute;
-  top: 0;
-  display: block;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  text-align: center;
-  padding: 0;
-  margin: 0;
-  line-height: 55px;
-  font-size: 38px;
-  font-family: 'Roboto';
-  font-weight: 300;
-  animation: plus-out 0.3s;
-  transition: all 0.3s;
-}
-
-#container-floating{
-  position: fixed;
-  width: 70px;
-  height: 70px;
-  bottom: 30px;
-  right: 30px;
-  z-index: 50px;
-}
-
-#container-floating:hover{
-  height: 400px;
-  width: 90px;
-  padding: 30px;
-}
-
-#container-floating:hover .plus{
-  animation: plus-in 0.15s linear;
-  animation-fill-mode: forwards;
-}
-
-.edit{
-  position: absolute;
-  top: 0;
-  display: block;
-  bottom: 0;
-  left: 0;
-  display: block;
-  right: 0;
-  padding: 0;
-  opacity: 0;
-  margin: auto;
-  line-height: 65px;
-  transform: rotateZ(-70deg);
-  transition: all 0.3s;
-  animation: edit-out 0.3s;
-}
-
-#container-floating:hover .edit{
-  animation: edit-in 0.2s;
-   animation-delay: 0.1s;
-  animation-fill-mode: forwards;
-}
-
-@keyframes edit-in{
-    from {opacity: 0; transform: rotateZ(-70deg);}
-    to {opacity: 1; transform: rotateZ(0deg);}
-}
-
-@keyframes edit-out{
-    from {opacity: 1; transform: rotateZ(0deg);}
-    to {opacity: 0; transform: rotateZ(-70deg);}
-}
-
-@keyframes plus-in{
-    from {opacity: 1; transform: rotateZ(0deg);}
-    to {opacity: 0; transform: rotateZ(180deg);}
-}
-
-@keyframes plus-out{
-    from {opacity: 0; transform: rotateZ(180deg);}
-    to {opacity: 1; transform: rotateZ(0deg);}
-}
-
-.nds{
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  position: fixed;
-  z-index: 300;
-  transform:  scale(0);
-  cursor: pointer;
-}
-
-.nd1{
-  background: #d3a411;
-  right: 40px;
-  bottom: 120px;
-  animation-delay: 0.2s;
-    animation: bounce-out-nds 0.3s linear;
-  animation-fill-mode:  forwards;
-}
-
-.nd3{
-  background: #3c80f6;
-  right: 40px;
-  bottom: 180px;
-  animation-delay: 0.15s;
-    animation: bounce-out-nds 0.15s linear;
-  animation-fill-mode:  forwards;
-}
-
-.nd4{
-  background: #ba68c8;
-  right: 40px;
-  bottom: 240px;
-  animation-delay: 0.1s;
-    animation: bounce-out-nds 0.1s linear;
-  animation-fill-mode:  forwards;
-}
-
-.nd5{
-  background-image: url('https://lh3.googleusercontent.com/-X-aQXHatDQY/Uy86XLOyEdI/AAAAAAAAAF0/TBEZvkCnLVE/w140-h140-p/fb3a11ae-1fb4-4c31-b2b9-bf0cfa835c27');
-  background-size: 100%;
-  right: 40px;
-  bottom: 300px;
-  animation-delay: 0.08s;
-  animation: bounce-out-nds 0.1s linear;
-  animation-fill-mode:  forwards;
-}
-
-@keyframes bounce-nds{
-    from {opacity: 0;}
-    to {opacity: 1; transform: scale(1);}
-}
-
-@keyframes bounce-out-nds{
-    from {opacity: 1; transform: scale(1);}
-    to {opacity: 0; transform: scale(0);}
-}
-
-#container-floating:hover .nds{
-
-  animation: bounce-nds 0.1s linear;
-  animation-fill-mode:  forwards;
-}
-
-#container-floating:hover .nd3{
-  animation-delay: 0.08s;
-}
-#container-floating:hover .nd4{
-  animation-delay: 0.15s;
-}
-#container-floating:hover .nd5{
-  animation-delay: 0.2s;
-}
-
-.letter{
-  font-size: 23px;
-  font-family: 'Roboto';
-  color: white;
-  position: absolute;
-  left: 0;
-  right: 0;
-  margin: 0;
-  top: 0;
-  bottom: 0;
-  text-align: center;
-  line-height: 40px;
-}
-
-.reminder{
-  position: absolute;
-  left: 0;
-  right: 0;
-  margin: auto;
-  top: 0;
-  bottom: 0;
-  line-height: 40px;
-}
-
-.profile{
-  border-radius: 50%;
-  width: 40px;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  margin: auto;
-  right: 20px;
-}
-    </style>
 </head>
 <body>
+  <div class="wrapper">
 
-  <!--Main layout-->
-  <main>
-    <div class="container">
-      <section class="mt-5 wow fadeIn">
-        <div class="row">
-          <div class="col-md-12 ">
-            <ul class="nav nav-tabs nav-justified">
-                <style>
-                  a {
-                    color: white;
-                  }
+    <div class="slider">
+          <div class="owl-carousel owl-one owl-theme">
 
-                  a.hover{
-                    color: white;
-                  }
-                </style>
-                <li class="nav-item">
-                    <a class="nav-link active" data-toggle="tab" href="#panel1" role="tab"><i class="fa fa-bicycle"></i> ATV Ride</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="#panel2" role="tab"><i class="fa fa-bicycle"></i> Cycling</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="#panel3" role="tab"><i class="fa fa-bicycle"></i> River Tubing</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="#panel4" role="tab"><i class="fa fa-bicycle"></i> Spa & Refleksi</a>
-                </li>
-            </ul>
-            <!-- Tab panels -->
-            <div class="tab-content card">
-                <!--Panel 1-->
-                <div class="tab-pane fade in show active" id="panel1" role="tabpanel">
-                <br/>
+            <?php foreach ($list_slider as $row): ?>
+              <div class="item">
+                  <div class="slider-img">
+                      <img src="<?php echo base_url($row->path_img); ?>" alt=""></div>
+                  <div class="container">
+                      <div class="row">
+                          <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                              <div class="slider-captions">
+                                  <h4 class="slider-title"><?php echo $row->tagline; ?></h4>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+            <?php endforeach; ?>
+          </div>
+      </div>
+
+
+      <div class="bg-default enquiry-form ">
+            <div class="container">
                 <div class="row">
-                  <div class="col-md-4 mb-2">
-                    <img class="img-fluid img-thumbnail" src="<?php echo base_url();?>/assets/img/home/1.jpg">
-                  </div>
-                  <div class="col-md-7 mb-2">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil odit magnam minima, soluta doloribus
-                        reiciendis molestiae placeat unde eos molestias. Quisquam aperiam, pariatur. Tempora, placeat ratione
-                        porro voluptate odit minima.
-                    </p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil odit magnam minima, soluta doloribus
-                        reiciendis molestiae placeat unde eos molestias. Quisquam aperiam, pariatur. Tempora, placeat ratione
-                        porro voluptate odit minima.
-                    </p>
-                    <button type="button" class="btn btn-warning btn-sm">Read More</button>
-                  </div>
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
+                        <form>
+                            <div class="row">
+                                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-3 col-12">
+                                    <div class="form-group">
+                                        <label class="control-label sr-only" for="select"></label>
+                                        <div class="select">
+                                            <select id="select" name="city" class="form-control">
+                                              <?php foreach ($list_services as $row): ?>
+                                                <option value=""><?php echo $row->varian; ?></option>
+                                              <?php endforeach; ?>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-3 col-12">
+                                    <div class="form-group">
+                                        <label class="control-label sr-only" for="datepicker"></label>
+                                        <div class="input-group">
+                                            <input id="datepicker" name="datepicker" type="text" placeholder="Check In" class="form-control" required>
+                                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-3 col-12">
+                                    <div class="form-group">
+                                        <label class="control-label sr-only" for="select"></label>
+                                        <div class="select">
+                                            <select id="select" name="select" class="form-control">
+                                                <option value="">Number of Peoples</option>
+                                                <option value="">1</option>
+                                                <option value="">2</option>
+                                                <option value="">3</option>
+                                                <option value="">4</option>
+                                                <option value="">5</option>
+                                                <option value="">6</option>
+                                                <option value="">7</option>
+                                                <option value="">8</option>
+                                                <option value="">9</option>
+                                                <option value="">10</option>
+                                                <option value="">11</option>
+                                                <option value="">12</option>
+                                                <option value="">13</option>
+                                                <option value="">14</option>
+                                                <option value="">15</option>
+                                                <option value="">16</option>
+                                                <option value="">17</option>
+                                                <option value="">18</option>
+                                                <option value="">19</option>
+                                                <option value="">20</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-3 col-lg-12 col-md-6 col-sm-3 col-12">
+                                    <button type="submit" name="singlebutton" class="btn btn-primary btn-lg">Booking Now</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-                </div>
-                <!--/.Panel 1-->
-                <!--Panel 2-->
-                <div class="tab-pane fade" id="panel2" role="tabpanel">
-                    <br>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil odit magnam minima, soluta doloribus
-                        reiciendis molestiae placeat unde eos molestias. Quisquam aperiam, pariatur. Tempora, placeat ratione
-                        porro voluptate odit minima.</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil odit magnam minima, soluta doloribus
-                        reiciendis molestiae placeat unde eos molestias. Quisquam aperiam, pariatur. Tempora, placeat ratione
-                        porro voluptate odit minima.</p>
-                </div>
-                <!--/.Panel 2-->
-                <!--Panel 3-->
-                <div class="tab-pane fade" id="panel3" role="tabpanel">
-                    <br>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil odit magnam minima, soluta doloribus
-                        reiciendis molestiae placeat unde eos molestias. Quisquam aperiam, pariatur. Tempora, placeat ratione
-                        porro voluptate odit minima.</p>
-                </div>
-                <!--/.Panel 3-->
-                <!--Panel 3-->
-                <div class="tab-pane fade" id="panel4" role="tabpanel">
-                    <br>
-                    <p>yyLorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil odit magnam minima, soluta doloribus
-                        reiciendis molestiae placeat unde eos molestias. Quisquam aperiam, pariatur. Tempora, placeat ratione
-                        porro voluptate odit minima.</p>
-                </div>
-                <!--/.Panel 3-->
             </div>
-          </div>
-        </div>
-        <!--Grid row-->
-
-        <!--Grid row-->
-
-      </section>
-      <!--Section: Main info-->
-
-      <!-- <hr class="my-5"> -->
-
-      <!--Section: Main features & Quick Start-->
-      <section>
-
-        <!-- <h3 class="h3 text-center mb-5">Book Now!</h3> -->
-
-        <!--Grid row-->
-        <div class="row wow fadeIn">
-
-          <!--Grid column-->
-          <div class="col-lg-12 col-md-12 px-4">
-
-            
-<!-- Card -->
-<div class="card mx-xl-5">
-
-<!-- Card body -->
-<!-- <div class="card-body"> -->
-
-    <!-- Default form subscription -->
-    <!-- <form>
-        <h3 class="h3 text-center">Book Now!</h3>
-        <br/>
-        <div class="row">
-          <div class="col-md-4">
-            <label for="defaultFormCardNameEx" class="grey-text font-weight-light">Date</label>
-            <input type="date" class="form-control" id="theDate">
-          </div>
-          <div class="col-md-2">
-          <label for="defaultFormCardNameEx" class="grey-text font-weight-light">Adult</label>
-            <input type="number" id="defaultFormCardNameEx" class="form-control" value="0">
-          </div>
-          <div class="col-md-2">
-          <label for="defaultFormCardNameEx" class="grey-text font-weight-light">Children</label>
-            <input type="number" id="defaultFormCardNameEx" class="form-control" value="0">
-          </div>
-          <div class="col-md-2">
-            <label for="defaultFormCardNameEx" class="grey-text font-weight-light">Infant</label>
-            <input type="number" id="defaultFormCardNameEx" class="form-control" value="0">
-          </div>
-          <div class="col-md-2">
-            <label for="defaultFormCardNameEx" class="grey-text font-weight-light">Family</label>
-            <input type="number" id="defaultFormCardNameEx" class="form-control" value="0">
-          </div>
         </div>
 
-        <div class="text-center py-4 mt-3">
-            <button class="btn btn-outline-orange" type="submit">Search<i class="fa fa-search ml-2"></i></button>
+        <div class="space-medium">
+            <div class="container">
+                <!-- tour-1 -->
+                <?php foreach ($list_services as $key): ?>
+                  <?php if ($key->id % 2 == 1): ?>
+                    <div class="row ">
+                        <div class="col-xl-4 col-lg-4 offset-md-1 col-md-4 col-sm-12 col-12 mb40">
+                            <div class="tour-img">
+                                <a href="#" class="imghover"> <img src="<?php echo base_url($key->photo); ?>" alt="" class="img-fluid"></a>
+                            </div>
+                        </div>
+                        <div class="col-xl-5 col-lg-5 offset-md-1 col-md-5 col-sm-12 col-12 mb40">
+                            <div class="tour-block">
+                                <div class="tour-content">
+                                    <h2 class="mb30"><a href="<?php echo base_url() ?>Services/detail_service/<?php echo $key->id; ?>" class="title"><?php echo $key->varian; ?></a></h2>
+                                    <p class="mb30">Vestibulum nec mauris interdum facilisis nequeet convallis odioses praesentet lacinia orciulla dolorerat ullamcorper sitamet meuesered egestas venenatis enimusce sed ipsum seddolor.</p>
+                                    <a href="<?php echo base_url() ?>Services/detail_service/<?php echo $key->id; ?>" class="btn-link">Go For Details...<i class="fa fa-angle-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                  <?php endif; ?>
+                  <!-- /.tour-1 -->
+                  <!-- tour-2 -->
+                  <?php if ($key->id % 2 == 0): ?>
+                    <div class="row">
+                        <div class="col-xl-5 col-lg-5 offset-md-1 col-md-5 col-sm-12 col-12 mb40">
+                            <div class="tour-block">
+                                <div class="tour-content">
+                                    <h2 class="mb30"><a href="<?php echo base_url() ?>Services/detail_service/<?php echo $key->id; ?>" class="title"><?php echo $key->varian; ?></a></h2>
+                                    <p class="mb30">Donec porttitor lorem utdiam iaculis euismod congue eroset lectus consectetur fermen uspendissolutpat risus utarcu dapibusat conquat quam sodenean pretium a metus euauctor.</p>
+                                    <a href="<?php echo base_url() ?>Services/detail_service/<?php echo $key->id; ?>" class="btn-link">Go For Details...<i class="fa fa-angle-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 offset-md-1 col-md-4 col-sm-12 col-12 mb40">
+                            <div class="tour-img">
+                                <a href="#" class="imghover"> <img src="<?php echo base_url($key->photo); ?>" alt="" class="img-fluid"></a>
+                            </div>
+                        </div>
+                    </div>
+                  <?php endif; ?>
+                <?php endforeach; ?>
+            </div>
         </div>
-    </form> -->
-    <!-- Default form subscription -->
 
-<!-- </div> -->
-<!-- Card body -->
 
-</div>
-<!-- Card -->
-                  
-
-          </div>
-          <!--/Grid column-->
-
+        <div class="space-medium service-wrapper" style="">
+            <div class="container">
+                <!-- service-head -->
+                <div class="row">
+                    <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12 mb60">
+                        <div class="">
+                            <h2>Facilities</h2>
+                        </div>
+                    </div>
+                    <div class="col-xl-8 col-lg-8 offset-md-1 col-md-8 col-sm-12 col-12 mb60">
+                        <div class="">
+                            <p class="lead">Suctus felis non nibh maximus consectetuis sed nisl eniullase pellentesque euismod eronon ntesque tortor molestieege.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.service-head -->
+                <div class="row">
+                    <!-- service-block -->
+                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 nopr">
+                        <div class="service-block border-bottom border-right">
+                            <div class="service-img"><img src="<?php echo base_url('uploads/images/hotel_1.png'); ?>" alt=""></div>
+                            <div class="service-content">
+                                <h3 class="service-title">Hotel Reservation</h3></div>
+                        </div>
+                    </div>
+                    <!-- /.service-block -->
+                    <!-- service-block -->
+                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 nopl nopr">
+                        <div class="service-block border-bottom border-right">
+                            <div class="service-img"><img src="<?php echo base_url('uploads/images/disability.png'); ?>" alt=""></div>
+                            <div class="service-content">
+                                <h3 class="service-title">Staff Transportation Services </h3></div>
+                        </div>
+                    </div>
+                    <!-- /.service-block -->
+                    <!-- service-block -->
+                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 nopl">
+                        <div class="service-block border-bottom">
+                            <div class="service-img"><img src="<?php echo base_url('uploads/images/airplane.png'); ?>" alt=""></div>
+                            <div class="service-content">
+                                <h3 class="service-title">Air Ticketing Services</h3></div>
+                        </div>
+                    </div>
+                    <!-- /.service-block -->
+                    <!-- service-block -->
+                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 nopr">
+                        <div class="service-block border-right">
+                            <div class="service-img"><img src="<?php echo base_url('uploads/images/passport.png'); ?>" alt=""></div>
+                            <div class="service-content">
+                                <h3 class="service-title">Passport and Visa Assistance </h3></div>
+                        </div>
+                    </div>
+                    <!-- /.service-block -->
+                    <!-- service-block -->
+                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 nopl nopr">
+                        <div class="service-block  border-right">
+                            <div class="service-img"><img src="<?php echo base_url('uploads/images/car_wash.png'); ?>" alt=""></div>
+                            <div class="service-content">
+                                <h3 class="service-title">Car Rental Services </h3></div>
+                        </div>
+                    </div>
+                    <!-- /.service-block -->
+                    <!-- service-block -->
+                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 nopl">
+                        <div class="service-block service-right-border service-bottom-border">
+                            <div class="service-img"><img src="<?php echo base_url('uploads/images/car.png'); ?>" alt=""></div>
+                            <div class="service-content">
+                                <h3 class="service-title">Car on Call</h3></div>
+                        </div>
+                    </div>
+                    <!-- /.service-block -->
+                </div>
+            </div>
         </div>
-        <!--/Grid row-->
-
-      </section>
-      <!--Section: Main features & Quick Start-->
-
-      <!-- <hr class="my-5">
 
 
-      <hr class="mb-5"> -->
+        <div class="space-medium bg-light">
+            <div class="container">
+                <div class="row">
+                    <!-- testimonial-head -->
+                    <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12 mb60">
+                        <div class="testimonial-head">
+                            <h2 class="mb40">What Our Customers Say About Our Tours</h2>
+                            <a href="#" class="btn-link">Read All Reviews <i class="fa fa-angle-right"></i></a>
+                        </div>
+                    </div>
+                    <!-- /.testimonial-head -->
+                    <div class="col-xl-6 col-lg-6 offset-md-1 col-md-6 col-sm-12 col-12 mb60">
+                        <div class="testimonial-carousel">
+                            <div class="owl-carousel owl-theme testimonial-owl">
+                                <!-- testimonial-item -->
+                                <div class="item">
+                                    <div class="testimonial-block">
+                                        <div class="testimonial-content">
+                                            <p class="testimonial-text">“Nam aclorem atsem vulputate euismodulla nonlacinia augueauriset venenatis maurised consequat quis exa plarliquam”</p>
+                                            <span class="testi-meta"><strong>- Sarah Arnold</strong> (Our Tourist)</span>
+                                            <div class="testi-arrow"></div>
+                                        </div>
+                                        <div class="testi-img">
+                                            <img src="<?php echo base_url('uploads/images/testi_img_1.jpg'); ?>" alt="" class="rounded-circle">
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /.testimonial-item -->
+                                <!-- testimonial-item -->
+                                <div class="item">
+                                    <div class="testimonial-block">
+                                        <div class="testimonial-content">
+                                            <p class="testimonial-text">“Proin dictum justo at finibus consectetur Proin odio odio molestie qui commodo sit amet euismod dictum ligula”</p>
+                                            <span class="testi-meta"><strong>- Maria Young</strong> (Our Tourist)</span>
+                                            <div class="testi-arrow"></div>
+                                        </div>
+                                        <div class="testi-img">
+                                            <img src="<?php echo base_url('uploads/images/testi_img_2.jpg'); ?>" alt="" class="rounded-circle">
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /.testimonial-item -->
+                                <!-- testimonial-item -->
+                                <div class="item">
+                                    <div class="testimonial-block">
+                                        <div class="testimonial-content">
+                                            <p class="testimonial-text">“Crasin leo arcuiquamnec elementum erossed tincidunt dolroin tristiquecongue Inaex pharetra euismod duieget”</p>
+                                            <span class="testi-meta"><strong>- Helena Lehoux</strong> (Our Tourist)</span>
+                                            <div class="testi-arrow"></div>
+                                        </div>
+                                        <div class="testi-img">
+                                            <img src="<?php echo base_url('uploads/images/testi_img_3.jpg'); ?>" alt="" class="rounded-circle">
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /.testimonial-item -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
-    </div>
-  </main>
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <form>
+                            <div class="search-form">
+                                <input type="text" class="form-control" placeholder="Find here">
+                                <button type="button" class="btn btn-primary btn-sm" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">close</span>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-
-<div id="container-floating">
-
-  <div class="nd5 nds" data-toggle="tooltip" data-placement="left" data-original-title="Simone"></div>
-  <div class="nd4 nds" data-toggle="tooltip" data-placement="left" data-original-title="contract@gmail.com"><img class="reminder">
-    <p class="letter">C</p>
+        <a href="javascript:" id="return-to-top"><i class="fa fa-angle-up"></i></a>
   </div>
-  <div class="nd3 nds" data-toggle="tooltip" data-placement="left" data-original-title="Reminder"><img class="reminder" src="//ssl.gstatic.com/bt/C3341AA7A1A076756462EE2E5CD71C11/1x/ic_reminders_speeddial_white_24dp.png" /></div>
-  <div class="nd1 nds" data-toggle="tooltip" data-placement="left" data-original-title="Edoardo@live.it"><img class="reminder">
-    <p class="letter">E</p>
-  </div>
-
-  <div id="floating-button" data-toggle="tooltip" data-placement="left" data-original-title="Create" onclick="newmail()">
-    <p class="plus">+</p>
-    <img class="edit" src="https://ssl.gstatic.com/bt/C3341AA7A1A076756462EE2E5CD71C11/1x/bt_compose2_1x.png">
-  </div>
-
-</div>
-
-
-
-
-      <!-- Initializations -->
-  <script type="text/javascript">
-    // Animations initialization
-    new WOW().init();
-  </script>
-  
-  <script language="JavaScript" type="text/javascript">
-  TrustLogo("https://balisunsetadventure.com/assets/img/comodo_secure_seal_76x26_transp.png", "CL1", "none");
-  </script>
-  <a  href="https://ssl.comodo.com" id="comodoTL">Comodo SSL</a>
-  <script>
-    // get today value
-    var date = new Date();
-
-    var day = date.getDate();
-    var month = date.getMonth() + 1;
-    var year = date.getFullYear();
-
-    if (month < 10) month = "0" + month;
-    if (day < 10) day = "0" + day;
-
-    var today = year + "-" + month + "-" + day;
-
-
-    document.getElementById('theDate').value = today;
-  </script>
 </body>
 
 </html>

@@ -26,7 +26,7 @@ class Welcome extends CI_Controller {
 		$this->load->view('v_script');
 		$this->load->view('v_header', $data);
 		$this->load->view('v_home', $data);
-		$this->load->view('v_footer');
+		$this->load->view('v_footer', $data);
 
 		// tes komen malu
 	}

@@ -9,16 +9,14 @@
                     <!-- footer-links -->
                     <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-12 ">
                         <div class="footer-widget ">
-                            <h3 class="footer-title ">Quick Links</h3>
+                            <h3 class="footer-title ">About Bali Sunset Adventure</h3>
                             <ul class="angle list-none">
-                                <li><a href="# ">Home</a></li>
-                                <li><a href="# ">About</a></li>
-                                <li><a href="# ">Services</a></li>
-                                <li><a href="# ">Booking</a></li>
-                                <li><a href="# ">F.A.Q</a></li>
+                                <li><a href="# ">How To Order</a></li>
+                                <li><a href="<?php echo base_url('Contact_us'); ?>">Contact Us</a></li>
+                                <li><a href="# ">Call Center</a></li>
+                                <li><a href="# ">Carrier</a></li>
                                 <li><a href="# ">Comment</a></li>
-                                <li><a href="# ">Gallery</a></li>
-                                <li><a href="# ">Contact Us</a></li>
+                                <li><a href="<?php echo base_url('About'); ?>">About Us</a></li>
                             </ul>
                         </div>
                     </div>
@@ -40,10 +38,11 @@
                     <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12 ">
                         <div class="footer-widget">
                             <h3 class="footer-title">Contact Info</h3>
-                            <div class="ft-contact-info"> <span class="ft-contact-icon"><i class="fa fa-map-marker"></i></span> <span class="ft-contact-text">3927 Birch StreetEl Paso, TX 79930 </span></div>
-                            <div class="ft-contact-info"> <span class="ft-contact-icon"><i class="fa fa-phone "></i></span> <span class="ft-contact-text">+180-123-4567</span></div>
-                            <div class="ft-contact-info"> <span class="ft-contact-icon"><i class="fa fa-envelope "></i></span> <span class="ft-contact-text">info@travel.com</span></div>
+                            <div class="ft-contact-info"> <span class="ft-contact-icon"><i class="fa fa-map-marker"></i></span> <span class="ft-contact-text"><?php echo $list_contact->alamat; ?></span></div>
+                            <div class="ft-contact-info"> <span class="ft-contact-icon"><i class="fa fa-phone "></i></span> <span class="ft-contact-text"><?php echo $list_contact->phone; ?></span></div>
+                            <div class="ft-contact-info"> <span class="ft-contact-icon"><i class="fa fa-envelope "></i></span> <span class="ft-contact-text"><?php echo $list_contact->email; ?></span></div>
                             <div class="social-icon "> <a href="# " class="btn-social-icon "><i class="fa fa-facebook "></i></a> <a href="# " class="btn-social-icon "><i class="fa fa-twitter "></i></a> <a href="# " class="btn-social-icon "><i class="fa fa-linkedin "></i></a> <a href="# " class="btn-social-icon "><i class="fa fa-google-plus "></i></a> </div>
+
                         </div>
                     </div>
                     <!-- /.footer-post -->
@@ -54,7 +53,7 @@
                 <div class="container ">
                     <div class="row ">
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 text-center ">
-                            <p>Copyright © All Rights Reserved 2020 Template Design & Development by <a href="https://easetemplate.com/ " target="_blank " class="copyrightlink ">EaseTemplate</a></p>
+                            <p>Copyright © All Rights Reserved 2019</p>
                         </div>
                     </div>
                     <!-- /. tiny-footer -->

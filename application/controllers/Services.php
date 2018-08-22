@@ -34,7 +34,6 @@ class Services extends CI_Controller {
 		$data['list_slider'] = $this->M_home->get_slider();
 		$data['list_service_detail'] = $this->M_service->detailService($id);
 		$data['list_photo_service'] = $this->M_service->photoService($id);
-
 		$this->load->view('v_style', $data);
 		$this->load->view('v_script');
 		$this->load->view('v_header', $data);

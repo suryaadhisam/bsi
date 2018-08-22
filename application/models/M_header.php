@@ -9,7 +9,7 @@ class M_header extends CI_Model {
 
   function get_contact_us(){
     $query = $this->db->query('SELECT * FROM tb_contact_us');
-    return $query->result();
+    return $query->row();
   }
 
   function get_socmed(){

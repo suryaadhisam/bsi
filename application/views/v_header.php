@@ -2,16 +2,16 @@
             <div class="top-header">
                 <div class="container">
                     <div class="row">
-                      <?php foreach($list_contact as $row) {?>
+                      <?php //foreach($list_contact as $row) {?>
                         <div class="col-xl-9 col-lg-7 col-md-9 d-none d-xl-block d-sm-block">
                             <div class="top-header-content">
                                 <ul class="list-none">
-                                    <li><i class="fa fa-envelope top-header-icon"></i><?php echo $row->email ?></li>
-                                    <li><i class="fa fa-phone top-header-icon"></i><?php echo $row->phone ?></li>
+                                    <li><i class="fa fa-envelope top-header-icon"></i><?php echo $list_contact->email ?></li>
+                                    <li><i class="fa fa-phone top-header-icon"></i><?php echo $list_contact->phone ?></li>
                                 </ul>
                             </div>
                         </div>
-                        <?php }  ?>
+                        <?php //}  ?>
                         <div class="col-xl-2 col-lg-4 col-md-3 col-sm-6 col-8 d-none d-block d-sm-block">
                             <div class="top-header-content">
                                 <div class="top-social">

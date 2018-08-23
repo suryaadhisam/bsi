@@ -104,8 +104,8 @@
         <div class="space-medium">
             <div class="container">
                 <!-- tour-1 -->
-                <?php foreach ($list_services as $key): ?>
-                  <?php if ($key->id % 2 == 1): ?>
+                <?php foreach ($list_services as $index => $key): ?>
+                  <?php if ($index % 2 == 1): ?>
                     <div class="row ">
                         <div class="col-xl-4 col-lg-4 offset-md-1 col-md-4 col-sm-12 col-12 mb40">
                             <div class="tour-img">
@@ -125,7 +125,7 @@
                   <?php endif; ?>
                   <!-- /.tour-1 -->
                   <!-- tour-2 -->
-                  <?php if ($key->id % 2 == 0): ?>
+                  <?php if ($index % 2 == 0): ?>
                     <div class="row">
                         <div class="col-xl-5 col-lg-5 offset-md-1 col-md-5 col-sm-12 col-12 mb40">
                             <div class="tour-block">
@@ -230,30 +230,33 @@
                     <!-- testimonial-head -->
                     <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12 mb60">
                         <div class="testimonial-head">
-                            <h2 class="mb40">What Our Customers Say About Our Tours</h2>
-                            <a href="#" class="btn-link">Read All Reviews <i class="fa fa-angle-right"></i></a>
+                            <h2 class="mb40">What Our Customers Say About Our Company</h2>
+                            <a href="<?php echo site_url('Comments'); ?>" class="btn-link">Read All Reviews <i class="fa fa-angle-right"></i></a>
                         </div>
                     </div>
                     <!-- /.testimonial-head -->
                     <div class="col-xl-6 col-lg-6 offset-md-1 col-md-6 col-sm-12 col-12 mb60">
                         <div class="testimonial-carousel">
                             <div class="owl-carousel owl-theme testimonial-owl">
-                                <!-- testimonial-item -->
+
+                              <?php foreach ($list_testimoni as $index => $row): ?>
                                 <div class="item">
                                     <div class="testimonial-block">
                                         <div class="testimonial-content">
-                                            <p class="testimonial-text">“Nam aclorem atsem vulputate euismodulla nonlacinia augueauriset venenatis maurised consequat quis exa plarliquam”</p>
-                                            <span class="testi-meta"><strong>- Sarah Arnold</strong> (Our Tourist)</span>
+                                            <?php $y=substr($row->comments,0,80) . '...'; ?>
+                                            <p class="testimonial-text">“<?php echo $y ?>”</p>
+                                            <span class="testi-meta"><strong>- <?php echo $row->name ?></strong> (<?php echo $row->country ?>)</span>
                                             <div class="testi-arrow"></div>
                                         </div>
                                         <div class="testi-img">
-                                            <img src="<?php echo base_url('uploads/images/testi_img_1.jpg'); ?>" alt="" class="rounded-circle">
+                                            <img style="width:160px; height:160px;" src="<?php echo base_url($row->path_img); ?>" alt="" class="rounded-circle">
                                         </div>
                                     </div>
                                 </div>
-                                <!-- /.testimonial-item -->
-                                <!-- testimonial-item -->
-                                <div class="item">
+                              <?php endforeach; ?>
+
+
+                                <!-- <div class="item">
                                     <div class="testimonial-block">
                                         <div class="testimonial-content">
                                             <p class="testimonial-text">“Proin dictum justo at finibus consectetur Proin odio odio molestie qui commodo sit amet euismod dictum ligula”</p>
@@ -265,8 +268,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <!-- /.testimonial-item -->
-                                <!-- testimonial-item -->
+
                                 <div class="item">
                                     <div class="testimonial-block">
                                         <div class="testimonial-content">
@@ -278,8 +280,8 @@
                                             <img src="<?php echo base_url('uploads/images/testi_img_3.jpg'); ?>" alt="" class="rounded-circle">
                                         </div>
                                     </div>
-                                </div>
-                                <!-- /.testimonial-item -->
+                                </div> -->
+
                             </div>
                         </div>
                     </div>

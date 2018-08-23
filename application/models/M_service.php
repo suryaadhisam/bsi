@@ -57,7 +57,7 @@ class M_service extends CI_Model {
   }
 
   function photoService($id){
-    $query = $this->db->query("SELECT * FROM tb_photo_service WHERE id_varian_service = '".$id."'");
+    $query = $this->db->query("SELECT * FROM tb_photo_service WHERE id_varian_service = '".$id."' AND state=1");
     return $query->result();
   }
 }

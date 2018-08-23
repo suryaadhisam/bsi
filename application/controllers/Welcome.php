@@ -9,7 +9,8 @@ class Welcome extends CI_Controller {
       $this->load->model('M_home');
 			$this->load->model('M_header');
 			$this->load->model('M_comments');
-  }
+			$this->load->model('M_facility');
+	}
 
 	public function index(){
 		$data['title']			= "Sunset Bali Adventure";
@@ -21,6 +22,7 @@ class Welcome extends CI_Controller {
 		$data['list_slider'] = $this->M_home->get_slider();
 		$data['list_services'] = $this->M_home->get_services();
 		$data['list_testimoni'] = $this->M_comments->get_comments();
+		$data['list_facility'] = $this->M_facility->get_facility();
 
 		$this->load->view('v_style', $data);
 		$this->load->view('v_script');

@@ -6,16 +6,16 @@
 
 Template Name:      TravelAir Website Template
 Version:            1.0.0
-Created Date:       26/1/2017 
+Created Date:       26/1/2017
 Author: EaseTemplate
-Author URL: https://easetemplate.com/               
+Author URL: https://easetemplate.com/
 License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 
 ------------------------------------------------------------------
 [CSS Table of contents]
 
-1.  Body / Typography 
+1.  Body / Typography
 2.  Form Elements
 3.  Buttons
 4.  General / Elements
@@ -42,13 +42,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 8. Footers
 9. Coaching Services
 
-  9.1  Service 
-  
+  9.1  Service
+
   ------------------------------------
 
 10.Pages
 
-  10.1  Tour List 
+  10.1  Tour List
   10.2  Tour List Single
   10.3  Tour Single
   10.4  About
@@ -63,15 +63,15 @@ License URL: http://creativecommons.org/licenses/by/3.0/
   10.13 Shortcodes - Alerts
   10.14 Shortcodes - Tabs
   10.15 Shortcodes - Accordions
-        
-       
+
+
 
   ------------------------------------
 11.Blog
   10.1 Blog Default
   10.2 Blog Single
   ------------------------------------
-  
+
 12.Sidebar
   11.1 Widget
   ------------------------------------
@@ -181,7 +181,7 @@ a img.aligncenter { display: block; margin-left: auto; margin-right: auto; }
 .wp-caption p.wp-caption-text { font-size: 11px; line-height: 17px; margin: 0; padding: 0 4px 5px; }
 
 /*-----------------------------------
-   3. Buttons 
+   3. Buttons
 -----------------------------------*/
 .btn { font-family: 'Merriweather Sans', sans-serif; font-size: 16px; text-transform: capitalize; font-weight: 700; padding: 14px 40px; letter-spacing: 0px; border-radius: 50px; line-height: 2; -webkit-transition: all 0.3s; -moz-transition: all 0.3s; transition: all 0.3s; word-wrap: break-word; white-space: normal !important; }
 .btn-primary { background-color: #fcd55a; color: #121113; border: 2px solid #fcd55a; }
@@ -214,10 +214,10 @@ a img.aligncenter { display: block; margin-left: auto; margin-right: auto; }
 button.btn { margin-right: -1px; }
 
 /*-----------------------------------
-   4. General / Elements 
+   4. General / Elements
 -----------------------------------*/
 
-/*----------------------- 
+/*-----------------------
    4.1 Section space :
 -------------------------*/
 
@@ -300,7 +300,7 @@ button.btn { margin-right: -1px; }
 .pdtb40 { padding-bottom: 40px; padding-top: 40px; }
 
 /*--------------------------------
-4.4 Background & Block color 
+4.4 Background & Block color
 ----------------------------------*/
 .bg-light { background-color: #fffcf7 !important; }
 .bg-line { background-color: #fff; border: 60px solid #e9ebef; padding-top: 80px; padding-bottom: 80px; }
@@ -328,7 +328,7 @@ button.btn { margin-right: -1px; }
 .bg-box { background-color: #eff6f5; padding: 40px; }
 
 /*--------------------------------
-4.5 Features Block 
+4.5 Features Block
 ----------------------------------*/
 .feature { }
 .features-section { }
@@ -376,7 +376,7 @@ button.btn { margin-right: -1px; }
 .star li:before { font-family: "FontAwesome"; display: inline-block; position: absolute; left: 0; font-size: 14px; color: #36333c; content: '\f005'; }
 
 /*--------------------------------
-4.7 Call to actions 
+4.7 Call to actions
 ----------------------------------*/
 .newsletter-wrapper { padding-top: 120px; padding-bottom: 102px; color: #fff; }
 .newsletter-title { font-size: 44px; color: #fff; }
@@ -396,7 +396,7 @@ button.btn { margin-right: -1px; }
 .question-icon { margin-bottom: 30px; }
 
 /*--------------------------------
-4.8 Image Hover Effect 
+4.8 Image Hover Effect
 ----------------------------------*/
 img { width: auto; max-width: 100%; height: auto; margin: 0; padding: 0; border: none; line-height: normal; vertical-align: middle; }
 .imghover { display: block; position: relative; max-width: 100%; }
@@ -409,15 +409,15 @@ img { width: auto; max-width: 100%; height: auto; margin: 0; padding: 0; border:
 .rounded { border-radius: 8px !important; }
 
 /*--------------------------------
-4.9 Icon 
+4.9 Icon
 ----------------------------------*/
 
 /*--------------------------------
-5 Header / Navigations 
+5 Header / Navigations
 ----------------------------------*/
 
 /*--------------------
-   5.1 Header Regular 
+   5.1 Header Regular
 ----------------------*/
 
 .top-header { background-color: #fff; border-bottom: 1px solid #eeeeee; }
@@ -538,13 +538,13 @@ img { width: auto; max-width: 100%; height: auto; margin: 0; padding: 0; border:
 .slider .owl-theme .owl-carousel .owl-item img { width: 100%; }
 
 /*-----------------------------------
-7. Footer 
+7. Footer
 -------------------------------------*/
-.footer { background: rgba(64, 14, 130, 1); 
-  background: -moz-linear-gradient(top, rgba(64, 14, 130, 1) 0%, rgba(64, 14, 130, 1) 0%, rgba(64, 14, 130, 1) 0%, rgba(117, 5, 125, 1) 50%, rgba(117, 5, 125, 1) 100%); 
-  background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(64, 14, 130, 1)), color-stop(0%, rgba(64, 14, 130, 1)), color-stop(0%, rgba(64, 14, 130, 1)), color-stop(50%, rgba(117, 5, 125, 1)), color-stop(100%, rgba(117, 5, 125, 1))); 
-  background: -webkit-linear-gradient(top, rgba(64, 14, 130, 1) 0%, rgba(64, 14, 130, 1) 0%, rgba(64, 14, 130, 1) 0%, rgba(117, 5, 125, 1) 50%, rgba(117, 5, 125, 1) 100%); 
-  background: -o-linear-gradient(top, rgba(64, 14, 130, 1) 0%, rgba(64, 14, 130, 1) 0%, rgba(64, 14, 130, 1) 0%, rgba(117, 5, 125, 1) 50%, rgba(117, 5, 125, 1) 100%); 
+.footer { background: rgba(64, 14, 130, 1);
+  background: -moz-linear-gradient(top, rgba(64, 14, 130, 1) 0%, rgba(64, 14, 130, 1) 0%, rgba(64, 14, 130, 1) 0%, rgba(117, 5, 125, 1) 50%, rgba(117, 5, 125, 1) 100%);
+  background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(64, 14, 130, 1)), color-stop(0%, rgba(64, 14, 130, 1)), color-stop(0%, rgba(64, 14, 130, 1)), color-stop(50%, rgba(117, 5, 125, 1)), color-stop(100%, rgba(117, 5, 125, 1)));
+  background: -webkit-linear-gradient(top, rgba(64, 14, 130, 1) 0%, rgba(64, 14, 130, 1) 0%, rgba(64, 14, 130, 1) 0%, rgba(117, 5, 125, 1) 50%, rgba(117, 5, 125, 1) 100%);
+  background: -o-linear-gradient(top, rgba(64, 14, 130, 1) 0%, rgba(64, 14, 130, 1) 0%, rgba(64, 14, 130, 1) 0%, rgba(117, 5, 125, 1) 50%, rgba(117, 5, 125, 1) 100%);
   background: -ms-linear-gradient(top, rgba(64, 14, 130, 1) 0%, rgba(64, 14, 130, 1) 0%, rgba(64, 14, 130, 1) 0%, rgba(117, 5, 125, 1) 50%, rgba(117, 5, 125, 1) 100%);
 
   background: linear-gradient(to bottom, rgb(14, 100, 19) 0%, rgb(175, 172, 12) 0%, #E65100 0%, #ca8446 50%, #ecca70 100%); filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#400e82', endColorstr='#75057d', GradientType=0); padding-top: 60px; color: #fff; font-weight: 400; font-size: 14px; }
@@ -604,7 +604,7 @@ img { width: auto; max-width: 100%; height: auto; margin: 0; padding: 0; border:
 -------------------------------------*/
 
 /*-------------------------
-9.1 Service 
+9.1 Service
 ---------------------------*/
 .service-wrapper { background-repeat: no-repeat; background-position: top center; background-image: url(../images/service_wrapper.jpg); }
 .service-block { text-align: center; background-color: transparent; padding: 66px 30px; }

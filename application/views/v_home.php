@@ -159,67 +159,28 @@
                     </div>
                     <div class="col-xl-8 col-lg-8 offset-md-1 col-md-8 col-sm-12 col-12 mb60">
                         <div class="">
-                            <p class="lead">Suctus felis non nibh maximus consectetuis sed nisl eniullase pellentesque euismod eronon ntesque tortor molestieege.</p>
+                            <p class="lead">Here are the facilities from us, we hope that with this facility you are more comfortable and like to come to Bali Sunset Adventure</p>
                         </div>
                     </div>
                 </div>
-                <!-- /.service-head -->
-                <div class="row">
-                    <!-- service-block -->
-                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 nopr">
-                        <div class="service-block border-bottom border-right">
-                            <div class="service-img"><img src="<?php echo base_url('uploads/images/hotel_1.png'); ?>" alt=""></div>
-                            <div class="service-content">
-                                <h3 class="service-title">Hotel Reservation</h3></div>
-                        </div>
-                    </div>
-                    <!-- /.service-block -->
-                    <!-- service-block -->
-                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 nopl nopr">
-                        <div class="service-block border-bottom border-right">
-                            <div class="service-img"><img src="<?php echo base_url('uploads/images/disability.png'); ?>" alt=""></div>
-                            <div class="service-content">
-                                <h3 class="service-title">Staff Transportation Services </h3></div>
-                        </div>
-                    </div>
-                    <!-- /.service-block -->
-                    <!-- service-block -->
-                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 nopl">
-                        <div class="service-block border-bottom">
-                            <div class="service-img"><img src="<?php echo base_url('uploads/images/airplane.png'); ?>" alt=""></div>
-                            <div class="service-content">
-                                <h3 class="service-title">Air Ticketing Services</h3></div>
-                        </div>
-                    </div>
-                    <!-- /.service-block -->
-                    <!-- service-block -->
-                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 nopr">
-                        <div class="service-block border-right">
-                            <div class="service-img"><img src="<?php echo base_url('uploads/images/passport.png'); ?>" alt=""></div>
-                            <div class="service-content">
-                                <h3 class="service-title">Passport and Visa Assistance </h3></div>
-                        </div>
-                    </div>
-                    <!-- /.service-block -->
-                    <!-- service-block -->
-                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 nopl nopr">
-                        <div class="service-block  border-right">
-                            <div class="service-img"><img src="<?php echo base_url('uploads/images/car_wash.png'); ?>" alt=""></div>
-                            <div class="service-content">
-                                <h3 class="service-title">Car Rental Services </h3></div>
-                        </div>
-                    </div>
-                    <!-- /.service-block -->
-                    <!-- service-block -->
-                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 nopl">
-                        <div class="service-block service-right-border service-bottom-border">
-                            <div class="service-img"><img src="<?php echo base_url('uploads/images/car.png'); ?>" alt=""></div>
-                            <div class="service-content">
-                                <h3 class="service-title">Car on Call</h3></div>
-                        </div>
-                    </div>
-                    <!-- /.service-block -->
-                </div>
+<div class="row">
+                <?php foreach ($list_facility as $key => $value): ?>
+
+                      <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 nopr">
+                          <div class="service-block border-bottom border-right">
+                              <div><i style="font-size:48px;color:#E65100" class="<?php echo $value->fa_icon; ?>"></i></div>
+                              <div class="service-content">
+                                  <h3 class="service-title"><?php echo $value->title ?></h3></div>
+                                  <?php $descrip = $value->caption;
+                                        $descrip = substr($descrip,0,80) . '...';?>
+                              <div class="">
+                                <p style="text-align:justify;"><?php  echo $descrip ?></p>
+                              </div>
+                          </div>
+                      </div>
+
+                <?php endforeach; ?>
+</div>
             </div>
         </div>
 

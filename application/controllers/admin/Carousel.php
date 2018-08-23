@@ -29,12 +29,8 @@ class Carousel extends CI_Controller {
 		$data['menu_admin_left'] = $this->load->view('admin/template/v_menu_admin_left', '', TRUE);
 		$data['menu_admin_top'] = $this->load->view('admin/template/v_menu_admin_top', '', TRUE);
 
-		$where = array(
-			'state' => 1
-		);
-	 
 		$this->load->library('pagination');        
-        $limit_per_page = 4;
+        $limit_per_page = 10;
         $page = ($this->uri->segment(3)) ? ($this->uri->segment(3) - 1) : 0;
         $total_records = $this->m_carousel->getCount();
      
@@ -84,7 +80,6 @@ class Carousel extends CI_Controller {
         } else {
 			$data["carousels"] = [];
 		}
-		
 
 		$this->load->view('admin/v_carousel', $data);
 	}
@@ -180,10 +175,10 @@ class Carousel extends CI_Controller {
 		echo json_encode($result);
 	}
 
-	public function softDeleteCarousel() {
+	public function deleteCarousel() {
 		try {
 			$this->db->trans_start();
-			$this->m_carousel->softDeleteCarousel($this->input->post('id_carousel'));
+			$this->m_carousel->deleteCarousel($this->input->post('id_carousel'));
 			$this->db->trans_complete();
 
 			$result = [
@@ -206,7 +201,33 @@ class Carousel extends CI_Controller {
 		echo json_encode($result);
 	}
 
-	public function updateCarousel() {
+    public function changeStateCarousel() {
+        try {
+            $this->db->trans_start();
+            $this->m_carousel->changeStateCarousel($this->input->post('id_carousel'), $this->input->post('state'));
+            $this->db->trans_complete();
+
+            $result = [
+                "status" => true,
+                "data" => [],
+                "message" => "Successfully change state carousel",
+                "errors" => []
+            ];
+        } catch(Excepion $err) {
+            $this->db->trans_complete();
+            $result = [
+                "status" => false,
+                "data" => [],
+                "message" => "Failed change state carousel",
+                "errors" => array(
+                    "delete carousel"=>"Failed change state carousel"
+                )
+            ];
+        }
+        echo json_encode($result);
+    }
+
+    public function updateCarousel() {
 		//pathDestination
 		$pathDestination = "uploads/carousels/";
 

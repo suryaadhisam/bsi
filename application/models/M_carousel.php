@@ -13,12 +13,12 @@ class M_carousel extends CI_Model {
 	}
 
 	function getCount() {
-		return $this->db->get_where($this->namaTabel, array('state' => 1))->num_rows();
+		return $this->db->get($this->namaTabel)->num_rows();
 	}
 	
 	public function getCurrentPageRecordCarousels($limit, $start) {
         $this->db->limit($limit, $start);
-        $query = $this->db->get_where($this->namaTabel, array('state' => 1));
+        $query = $this->db->get($this->namaTabel);
  
         if ($query->num_rows() > 0) {
             foreach ($query->result() as $row) {
@@ -37,14 +37,21 @@ class M_carousel extends CI_Model {
 		return $this->db->insert($this->namaTabel, $data);
 	}
 
-	function softDeleteCarousel($id) {
-		$data = array(
-			'state' => 0
-		);
-	
+	function deleteCarousel($id) {
 		$this->db->where('id_carousel', $id);
-		return $this->db->update($this->namaTabel, $data);
+        return $this->db->delete($this->namaTabel);
 	}
+
+    function changeStateCarousel($id, $state) {
+        $data = array(
+            'state' => $state
+        );
+
+        $this->db->where('id_carousel', $id);
+        return $this->db->update($this->namaTabel, $data);
+    }
+
+
 
 	function updateCarousel($data) {
 		$this->db->where('id_carousel', $data["id_carousel"]);

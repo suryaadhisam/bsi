@@ -81,7 +81,6 @@
                                             <span class="hasErrorText"></span>
                                             <div class="previewImgWraper">
                                                 <div class="row">
-                                                    <!-- <span class="buttonXImgPreviewFileUpload">x</span> -->
                                                     <div class="col-md-4 padding-right-0">
                                                         <img class="imgPreviewImgFileUpload">
                                                     </div>
@@ -96,7 +95,7 @@
                                 </form>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-primary" id="buttonAddCarousel"><i class="fa fa-refresh fa-spin loadingButtonProccess"></i> Add</button>
+                                <button type="button" class="btn btn-primary" id="buttonAddCarousel"><i class="fa fa-refresh fa-spin loadingButtonProccess"></i> Add Carousel</button>
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                             </div>
                         </div>
@@ -154,7 +153,7 @@
                                 </form>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-primary" id="buttonUpdateCarousel"><i class="fa fa-refresh fa-spin loadingButtonProccess"></i> Update</button>
+                                <button type="button" class="btn btn-primary" id="buttonUpdateCarousel"><i class="fa fa-refresh fa-spin loadingButtonProccess"></i> Update Carousel</button>
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                             </div>
                         </div>
@@ -174,6 +173,7 @@
                                         <tr>
                                             <th>Title</th>
                                             <th>Tagline</th>
+                                            <th>Status</th>
                                             <th>Action</th>
                                         </tr>
                                         </thead>
@@ -187,8 +187,14 @@
                                                         <?php echo $row->title; ?>
                                                     </td>
                                                     <td><?php echo $row->tagline; ?></td>
+                                                    <td><?php echo ($row->state == 1) ? "<b style='color: green;'>Active</b>" : "<b style='color: grey;'>Non Active</b>" ?></td>
                                                     <td>
                                                         <button type="button" class="btn btn-primary" onclick="openFormUpdateCarousel(<?php echo $row->id_carousel; ?>)"><i class="fa fa-pencil"></i>&nbsp; Edit</button>
+                                                        <?php if ($row->state == 1): ?>
+                                                            <button type="button" class="btn btn-warning" onclick="confirmChangeStateCarousel(<?php echo $row->id_carousel; ?>, 0)"><i class="fa fa-close"></i>&nbsp; Deactive</button>
+                                                        <?php else: ?>
+                                                            <button type="button" class="btn btn-success" onclick="confirmChangeStateCarousel(<?php echo $row->id_carousel; ?>, 1)"><i class="fa fa-check"></i>&nbsp; Active</button>
+                                                        <?php endif ?>
                                                         <button type="button" class="btn btn-danger" onclick="confirmDeleteCarousel(<?php echo $row->id_carousel; ?>)"><i class="fa fa-trash"></i>&nbsp; Delete</button>
                                                     </td>
                                                 </tr>
@@ -197,16 +203,7 @@
                                             ?>
                                         </tbody>
                                     </table>
-                                    <!-- <ul class="pagination justify-content-center">
-                                        <li class="page-item"><a class="page-link" href="#">Prev</a></li>
-                                        <li class="page-item active">
-                                            <a class="page-link" href="#">1</a>
-                                        </li>
-                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">4</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                                    </ul> -->
+
                                     <?php 
                                         if (isset($links)) {
                                             echo $links;
@@ -239,9 +236,11 @@
     
     var base_url = "<?php echo base_url(); ?>";
     var urlAddCarousel = base_url+"/admin/carousel/add";
-    var urlSoftDeleteCarousel = base_url+"/admin/carousel/soft-delete";
+    var urlDeleteCarousel = base_url+"/admin/carousel/delete";
     var urlUpdateCarousel = base_url+"/admin/carousel/update";
     var urlGetCarousel = base_url+"/admin/carousel/get";
+    var urlChangeStateCarousel = base_url+"/admin/carousel/change-state";
+
 
     var isChangeImg = false;
 
@@ -267,8 +266,9 @@
                         title: "Successfull",
                         icon: "success",
                         button: "OK",
-                    }).then((willDelete) => {
-                        if (willDelete) {
+                        type: 'success',
+                    }).then((willOk) => {
+                        if (willOk) {
                             location.reload();
                         }
                     });
@@ -322,7 +322,6 @@
             processData: false,
             contentType: false,
             data:data,
-            data:data,
             success: function(data) {
                 console.log(data);
                 $(".loadingButtonProccess").css("display", "none");
@@ -332,8 +331,9 @@
                         title: "Successfull",
                         icon: "success",
                         button: "OK",
-                    }).then((willDelete) => {
-                        if (willDelete) {
+                        type: 'success',
+                    }).then((willOk) => {
+                        if (willOk) {
                             location.reload();
                         }
                     });
@@ -386,15 +386,18 @@
 
     function confirmDeleteCarousel(idCarousel){
         swal({
-            title: "Are you sure?",
-            icon: "warning",
-            buttons: true,
-            dangerMode: true,
-        }).then((willDelete) => {
-            if (willDelete) {
+            title: 'Are you sure to delete?',
+            type: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#F44336',
+            cancelButtonColor: '#BDBDBD',
+            confirmButtonText: 'Delete',
+            reverseButtons: true
+        }).then((result) => {
+            if (result.value) {
                 $.ajax({
                     type: 'POST',
-                    url: urlSoftDeleteCarousel,
+                    url: urlDeleteCarousel,
                     dataType: 'json',
                     async: true,
                     data:{
@@ -407,8 +410,9 @@
                                 title: "Successfull",
                                 icon: "success",
                                 button: "OK",
-                            }).then((willDelete) => {
-                                if (willDelete) {
+                                type: 'success',
+                            }).then((willOk) => {
+                                if (willOk) {
                                     location.reload();
                                 }
                             });
@@ -418,10 +422,95 @@
                         console.log(error);
                     }
                 });
-
-                
             }
         });
+    }
+
+    function confirmChangeStateCarousel(idCarousel, state){
+        if(state === 1) {
+            swal({
+                title: 'Are you sure to deactive?',
+                type: 'question',
+                showCancelButton: true,
+                confirmButtonColor: '#795548',
+                cancelButtonColor: '#BDBDBD',
+                confirmButtonText: 'Deactive',
+                reverseButtons: true
+            }).then((result) => {
+                if (result.value) {
+                    $.ajax({
+                        type: 'POST',
+                        url: urlChangeStateCarousel,
+                        dataType: 'json',
+                        async: true,
+                        data:{
+                            id_carousel: idCarousel,
+                            state: state
+                        },
+                        success: function(data) {
+                            console.log(data);
+                            if(data.status){
+                                swal({
+                                    title: "Successfull",
+                                    icon: "success",
+                                    button: "OK",
+                                    type: 'success',
+                                }).then((willOk) => {
+                                    if (willOk) {
+                                        location.reload();
+                                    }
+                                });
+                            }
+                        },
+                        error: function(xhr, status, error){
+                            console.log(error);
+                        }
+                    });
+                }
+            });
+        }
+        else {
+            swal({
+                title: 'Are you sure to active?',
+                type: 'question',
+                showCancelButton: true,
+                confirmButtonColor: '#4CAF50',
+                cancelButtonColor: '#BDBDBD',
+                confirmButtonText: 'Active',
+                reverseButtons: true
+            }).then((result) => {
+                if (result.value) {
+                    $.ajax({
+                        type: 'POST',
+                        url: urlChangeStateCarousel,
+                        dataType: 'json',
+                        async: true,
+                        data:{
+                            id_carousel: idCarousel,
+                            state: state
+                        },
+                        success: function(data) {
+                            console.log(data);
+                            if(data.status){
+                                swal({
+                                    title: "Successfull",
+                                    icon: "success",
+                                    button: "OK",
+                                    type: 'success',
+                                }).then((willOk) => {
+                                    if (willOk) {
+                                        location.reload();
+                                    }
+                                });
+                            }
+                        },
+                        error: function(xhr, status, error){
+                            console.log(error);
+                        }
+                    });
+                }
+            });
+        }
     }
 
     $("#fileImgCarousel").change(function(){

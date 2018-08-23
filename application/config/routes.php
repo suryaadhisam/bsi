@@ -95,9 +95,10 @@ $route['admin/socmed/update'] = 'admin/socmed/updateSocmed';
 $route['admin/socmed/get'] = 'admin/socmed/getSocmed';
 
 $route['admin/carousel/add'] = 'admin/carousel/addCarousel';
-$route['admin/carousel/soft-delete'] = 'admin/carousel/softDeleteCarousel';
+$route['admin/carousel/delete'] = 'admin/carousel/deleteCarousel';
 $route['admin/carousel/update'] = 'admin/carousel/updateCarousel';
 $route['admin/carousel/get'] = 'admin/carousel/getCarousel';
+$route['admin/carousel/change-state'] = 'admin/carousel/changeStateCarousel';
 
 $route['admin/package/add'] = 'admin/package/addPackage';
 $route['admin/package/soft-delete'] = 'admin/package/softDeletePackage';

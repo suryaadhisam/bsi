@@ -188,6 +188,8 @@
 
     </div>
 
+
+    <a href="javascript:" id="return-to-top"><i class="fa fa-angle-up"></i></a>
   <script type="text/javascript">
     // Animations initialization
     new WOW().init();

@@ -7,6 +7,7 @@ class Gallery extends CI_Controller {
  	{
      	parent::__construct();
 			$this->load->model('M_header');
+			$this->load->model('M_gallery');
   }
 
 	public function index(){
@@ -14,13 +15,14 @@ class Gallery extends CI_Controller {
 		$data['list_contact'] = $this->M_header->get_contact_us();
 		$data['list_socmed'] = $this->M_header->get_socmed();
 		$data['logo'] = $this->M_header->get_logo();
+		$data['list_photo'] = $this->M_gallery->get_photo();
 
 		$data['title']			= "About || Sunset Bali Adventure";
 
 		$this->load->view('v_style', $data);
 		$this->load->view('v_script');
 		$this->load->view('v_header', $data);
-		$this->load->view('v_gallery');
+		$this->load->view('v_gallery', $data);
 		$this->load->view('v_footer');
 	}
 }

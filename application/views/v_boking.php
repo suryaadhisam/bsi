@@ -574,7 +574,7 @@
     </div>
   </main>
 
-
+  <a href="javascript:" id="return-to-top"><i class="fa fa-angle-up"></i></a>
   <script>
         $(document).ready(function () {
         var navListItems = $('div.setup-panel div a'),

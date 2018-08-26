@@ -21,3 +21,4 @@
 <script type="text/javascript" src="<?php echo base_url(''); ?>assets/js/owl.carousel2.thumbs.min.js"></script>
 <script type="text/javascript" src="<?php echo base_url(''); ?>assets/js/popup-gallery.js"></script>
 <script type="text/javascript" src="<?php echo base_url(''); ?>assets/js/thumb.js"></script>
+<script type="text/javascript" src="<?php echo base_url(''); ?>assets/js/script.js"></script>

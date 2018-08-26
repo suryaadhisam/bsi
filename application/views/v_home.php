@@ -101,8 +101,15 @@
             </div>
         </div>
 
-        <div class="space-medium">
+        <div class="">
             <div class="container">
+              <div class="row">
+                  <div class="col">
+                      <div class="">
+                          <h2 style="text-align:center;"><strong>Our Services</strong></h2>
+                      </div>
+                  </div>
+              </div>
                 <!-- tour-1 -->
                 <?php foreach ($list_services as $index => $key): ?>
                   <?php if ($index % 2 == 1): ?>
@@ -147,14 +154,14 @@
             </div>
         </div>
 
-
-        <div class="space-medium service-wrapper" style="">
+        <hr>
+        <div class="service-wrapper">
             <div class="container">
                 <!-- service-head -->
                 <div class="row">
                     <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12 mb60">
                         <div class="">
-                            <h2>Facilities</h2>
+                            <h2><strong>Facilities</strong></h2>
                         </div>
                     </div>
                     <div class="col-xl-8 col-lg-8 offset-md-1 col-md-8 col-sm-12 col-12 mb60">
@@ -163,9 +170,8 @@
                         </div>
                     </div>
                 </div>
-<div class="row">
-                <?php foreach ($list_facility as $key => $value): ?>
-
+                <div class="row">
+                  <?php foreach ($list_facility as $key => $value): ?>
                       <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 nopr">
                           <div class="service-block border-bottom border-right">
                               <div><i style="font-size:48px;color:#E65100" class="<?php echo $value->fa_icon; ?>"></i></div>
@@ -178,20 +184,19 @@
                               </div>
                           </div>
                       </div>
-
-                <?php endforeach; ?>
-</div>
+                    <?php endforeach; ?>
+                </div>
             </div>
         </div>
 
-
-        <div class="space-medium bg-light">
+        <hr>
+        <div class="bg-light">
             <div class="container">
                 <div class="row">
                     <!-- testimonial-head -->
                     <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12 mb60">
                         <div class="testimonial-head">
-                            <h2 class="mb40">What Our Customers Say About Our Company</h2>
+                            <h2 class="mb40"><strong>What Our Customers Say About Our Company</strong></h2>
                             <a href="<?php echo site_url('Comments'); ?>" class="btn-link">Read All Reviews <i class="fa fa-angle-right"></i></a>
                         </div>
                     </div>
@@ -216,32 +221,6 @@
                                 </div>
                               <?php endforeach; ?>
 
-
-                                <!-- <div class="item">
-                                    <div class="testimonial-block">
-                                        <div class="testimonial-content">
-                                            <p class="testimonial-text">“Proin dictum justo at finibus consectetur Proin odio odio molestie qui commodo sit amet euismod dictum ligula”</p>
-                                            <span class="testi-meta"><strong>- Maria Young</strong> (Our Tourist)</span>
-                                            <div class="testi-arrow"></div>
-                                        </div>
-                                        <div class="testi-img">
-                                            <img src="<?php echo base_url('uploads/images/testi_img_2.jpg'); ?>" alt="" class="rounded-circle">
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="item">
-                                    <div class="testimonial-block">
-                                        <div class="testimonial-content">
-                                            <p class="testimonial-text">“Crasin leo arcuiquamnec elementum erossed tincidunt dolroin tristiquecongue Inaex pharetra euismod duieget”</p>
-                                            <span class="testi-meta"><strong>- Helena Lehoux</strong> (Our Tourist)</span>
-                                            <div class="testi-arrow"></div>
-                                        </div>
-                                        <div class="testi-img">
-                                            <img src="<?php echo base_url('uploads/images/testi_img_3.jpg'); ?>" alt="" class="rounded-circle">
-                                        </div>
-                                    </div>
-                                </div> -->
 
                             </div>
                         </div>

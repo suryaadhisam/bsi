@@ -16,31 +16,26 @@
 
       <hr class="my-5">
       <section class="mt-5 wow fadeIn">
-        <h4 style="font-family:Impact, Charcoal, sans-serif; text-align:center; padding:0 0 25px 0;">Services</h4>
         <ul class="nav nav-pills nav-justified">
+          <?php foreach ($list_service as $key => $value): ?>
             <li class="nav-item">
-                <a class="nav-link active" data-toggle="tab" href="#panel1" role="tab">ATV Ride</a>
+                <a class="nav-link <?php echo ($key==0) ? 'active':''; ?>" data-toggle="tab" href="#<?php echo $value->id ?>" role="tab"><?php echo $value->varian; ?></a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#panel2" role="tab">River Tubing</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#panel4" role="tab">Cycling</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#panel5" role="tab">SPA & Reflexy</a>
-            </li>
+          <?php endforeach; ?>
         </ul>
         <br>
         <!-- Tab panels -->
         <div class="tab-content card" style="padding:5px 5px 20px 5px;">
-            <div class="tab-pane fade in show active" id="panel1" role="tabpanel">
+
+
+          <?php foreach ($list_service as $key => $row): ?>
+            <div class="tab-pane fade in show <?php echo ($key==0) ? 'active':''; ?>" id="<?php echo $row->id; ?>" role="tabpanel">
               <div class="row">
                   <div class="col-md-6 mb-4">
-                    <img  height="40" width="530" src="<?php echo base_url('assets/img/atv_1.jpg'); ?>" class="img-fluid z-depth-1-half" alt="">
+                    <img  height="40" width="530" src="<?php echo base_url($row->photo); ?>" class="img-fluid z-depth-1-half" alt="">
                   </div>
                   <div class="col-md-6 mb-4">
-                    <h3 class="h3 mb-3">ATV Ride</h3>
+                    <h3 class="h3 mb-3"><?php echo $row->varian ?></h3>
                     <table class="table">
                       <thead>
                         <tr>
@@ -67,66 +62,10 @@
                   <button type="button" class="btn btn-lg btn-info" style="margin: 0 0 0 910px">Read More..</button>
                 </div>
             </div>
-
-
-            <div class="tab-pane fade" id="panel2" role="tabpanel">
-              <div class="row">
-                <div class="col-md-6 mb-4">
-                  <img src="<?php echo base_url('assets/img/tubing_1.jpg'); ?>" class="img-fluid z-depth-1-half" alt="">
-                </div>
-                <div class="col-md-6 mb-4">
-                  <h3 class="h3 mb-3">River Tubing</h3>
-                  <table class="table">
-                    <thead>
-                      <tr>
-                        <th>Duration (hour)</th>
-                        <th>Package Type</th>
-                        <th>Price</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>1</td>
-                        <td>Single</td>
-                        <td>USD 38/Rp 500.000</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-                <button type="button" class="btn btn-lg btn-info" style="margin: 0 0 0 910px">Read More..</button>
-              </div>
-            </div>
-
-
-            <div class="tab-pane fade" id="panel4" role="tabpanel">
-              <div class="row">
-                <div class="col-md-6 mb-4">
-                  <img src="" class="img-fluid z-depth-1-half" alt="">
-                </div>
-                <div class="col-md-6 mb-4">
-                  <h3 class="h3 mb-3">Cycling</h3>
-                  <p><strong>Not Yet Inaugurated</strong></p>
-                  <hr>
-                </div>
-                <button type="button" class="btn btn-lg btn-info" style="margin: 0 0 0 910px">Read More..</button>
-              </div>
-            </div>
-
-            <div class="tab-pane fade" id="panel5" role="tabpanel">
-              <div class="row">
-                <div class="col-md-6 mb-4">
-                  <img src="" class="img-fluid z-depth-1-half" alt="">
-                </div>
-                <div class="col-md-6 mb-4">
-                  <h3 class="h3 mb-3">SPA & Reflexy</h3>
-                  <p><strong>Not Yet Inaugurated</strong></p>
-                  <hr>
-                </div>
-              </div>
-              <button type="button" class="btn btn-lg btn-info" style="margin: 0 0 0 910px">Read More..</button>
-            </div>
+          <?php endforeach; ?>
         </div>
       </section>
+
 
       <hr class="my-5">
 
@@ -134,55 +73,24 @@
       <section>
         <h2 style="font-family:Impact, Charcoal, sans-serif; text-align:center;">Facilities</h2>
         <div class="row features-small mb-5 mt-3 wow fadeIn">
-
-          <!--First column-->
-          <div class="col-md-6">
-
-            <div class="row">
-              <div class="col-2">
-                <i class="fa fa-check-circle fa-2x indigo-text"></i>
-              </div>
-              <div class="col-10">
-                <h6 class="feature-title">Free WIFI</h6>
-                <p class="grey-text"></p>
-                <div style="height:15px"></div>
-              </div>
-            </div>
-            <!--/Third row-->
-
-            <!--Fourth row-->
-            <div class="row">
-              <div class="col-2">
-                <i class="fa fa-check-circle fa-2x indigo-text"></i>
-              </div>
-              <div class="col-10">
-                <h6 class="feature-title">Restaurant</h6>
-                <p class="grey-text"></p>
-                <div style="height:15px"></div>
-              </div>
-            </div>
-            <!--/Fourth row-->
+          <div class="row">
+            <?php foreach ($list_facility as $key => $value): ?>
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 nopr">
+                    <div class="service-block border-bottom border-right">
+                        <div><i style="font-size:48px;color:#E65100" class="<?php echo $value->fa_icon; ?>"></i></div>
+                        <div class="service-content">
+                            <h3 class="service-title"><?php echo $value->title ?></h3></div>
+                            <?php $descrip = $value->caption;
+                                  $descrip = substr($descrip,0,80) . '...';?>
+                        <div class="">
+                          <p style="text-align:justify;"><?php  echo $descrip ?></p>
+                        </div>
+                    </div>
+                </div>
+              <?php endforeach; ?>
           </div>
-          <!--/First column-->
 
 
-
-          <!--Third column-->
-          <div class="col-md-6 mt-2">
-            <!--First row-->
-            <div class="row">
-              <div class="col-2">
-                <i class="fa fa-check-circle fa-2x indigo-text"></i>
-              </div>
-              <div class="col-10">
-                <h6 class="feature-title">Swing</h6>
-                <p class="grey-text"></p>
-                <div style="height:15px"></div>
-              </div>
-            </div>
-
-
-          </div>
         </div>
       </section>
 

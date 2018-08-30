@@ -8,7 +8,11 @@ class M_service extends CI_Model {
         parent::__construct();
     }
 
-	function getAllServices($where){
+  function allService(){
+    return $this->db->get('tb_varian_service')->result();
+  }
+
+  function getAllServices($where){
 		return $this->db->get_where($this->namaTabel, $where)->result();
 	}
 

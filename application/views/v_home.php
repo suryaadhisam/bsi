@@ -6,8 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:300,300i,400,400i,700,700i,800,800i" rel="stylesheet">
-
-
 </head>
 <body>
   <div class="wrapper">
@@ -122,14 +120,16 @@
                     <div class="row ">
                         <div class="col-xl-4 col-lg-4 offset-md-1 col-md-4 col-sm-12 col-12 mb40">
                             <div class="tour-img">
-                                <a href="#" class="imghover"> <img src="<?php echo base_url($key->photo); ?>" alt="" class="img-fluid"></a>
+                                <a href="<?php echo base_url($key->photo); ?>" class="imghover" target="_blank"> <img  alt="<?php echo $key->varian; ?>" src="<?php echo base_url($key->photo); ?>" class="img-fluid"></a>
                             </div>
                         </div>
                         <div class="col-xl-5 col-lg-5 offset-md-1 col-md-5 col-sm-12 col-12 mb40">
                             <div class="tour-block">
                                 <div class="tour-content">
                                     <h2 class="mb30"><a href="<?php echo base_url() ?>Services/detail_service/<?php echo $key->id; ?>" class="title"><?php echo $key->varian; ?></a></h2>
-                                    <p class="mb30">Vestibulum nec mauris interdum facilisis nequeet convallis odioses praesentet lacinia orciulla dolorerat ullamcorper sitamet meuesered egestas venenatis enimusce sed ipsum seddolor.</p>
+                                    <?php $sumary = $key->keterangan;
+                                          $sumary = substr($sumary,0,80) . '...';?>
+                                    <p class="mb30"><?php echo $sumary ?></p>
                                     <a href="<?php echo base_url() ?>Services/detail_service/<?php echo $key->id; ?>" class="btn-link">Go For Details...<i class="fa fa-angle-right"></i></a>
                                 </div>
                             </div>
@@ -144,14 +144,16 @@
                             <div class="tour-block">
                                 <div class="tour-content">
                                     <h2 class="mb30"><a href="<?php echo base_url() ?>Services/detail_service/<?php echo $key->id; ?>" class="title"><?php echo $key->varian; ?></a></h2>
-                                    <p class="mb30">Donec porttitor lorem utdiam iaculis euismod congue eroset lectus consectetur fermen uspendissolutpat risus utarcu dapibusat conquat quam sodenean pretium a metus euauctor.</p>
+                                    <?php $sumary = $key->keterangan;
+                                          $sumary = substr($sumary,0,80) . '...';?>
+                                    <p class="mb30"><?php echo $sumary ?></p>
                                     <a href="<?php echo base_url() ?>Services/detail_service/<?php echo $key->id; ?>" class="btn-link">Go For Details...<i class="fa fa-angle-right"></i></a>
                                 </div>
                             </div>
                         </div>
                         <div class="col-xl-4 col-lg-4 offset-md-1 col-md-4 col-sm-12 col-12 mb40">
                             <div class="tour-img">
-                                <a href="#" class="imghover"> <img src="<?php echo base_url($key->photo); ?>" alt="" class="img-fluid"></a>
+                                <a href="<?php echo base_url($key->photo); ?>" class="imghover" target="_blank"> <img src="<?php echo base_url($key->photo); ?>" alt="<?php echo $key->varian; ?>" class="img-fluid"></a>
                             </div>
                         </div>
                     </div>
@@ -159,6 +161,13 @@
                 <?php endforeach; ?>
             </div>
         </div>
+
+        <div id="myModal" class="modal">
+          <span class="close">&times;</span>
+          <img class="modal-content" id="img01">
+          <div id="caption"></div>
+        </div>
+
 
         <hr>
         <div class="service-wrapper">
@@ -178,11 +187,12 @@
                 </div>
                 <div class="row">
                   <?php foreach ($list_facility as $key => $value): ?>
+                    <?php if ($value->state == 1) { ?>
                       <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 nopr">
                           <div class="service-block border-bottom border-right">
-                              <div><i style="font-size:48px;color:#E65100" class="<?php echo $value->fa_icon; ?>"></i></div>
+                              <div><a href="<?php echo base_url() ?>Facility/detail_facility/<?php echo $value->id_facility; ?>" class="btn-link"><i style="font-size:48px;color:#E65100" class="<?php echo $value->fa_icon; ?>"></i></a></div>
                               <div class="service-content">
-                                  <h3 class="service-title"><?php echo $value->title ?></h3></div>
+                                  <a href="<?php echo base_url() ?>Facility/detail_facility/<?php echo $value->id_facility; ?>" class="btn-link"><h3 class="service-title"><?php echo $value->title ?></h3></a></div>
                                   <?php $descrip = $value->caption;
                                         $descrip = substr($descrip,0,80) . '...';?>
                               <div class="">
@@ -190,7 +200,25 @@
                               </div>
                           </div>
                       </div>
-                    <?php endforeach; ?>
+                    <?php } ?>
+                  <?php endforeach; ?>
+                  <hr>
+                  <?php foreach ($list_facility as $key => $value): ?>
+                    <?php if ($value->state == 2) { ?>
+                      <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 nopr">
+                          <div class="service-block border-bottom border-right">
+                              <div><a href="<?php echo base_url() ?>Facility/detail_facility/<?php echo $value->id_facility; ?>" class="btn-link"><i style="font-size:48px;color:#0000FF" class="<?php echo $value->fa_icon; ?>"></i></a></div>
+                              <div class="service-content">
+                                  <a href="<?php echo base_url() ?>Facility/detail_facility/<?php echo $value->id_facility; ?>" class="btn-link"><h3 class="service-title"><?php echo $value->title ?></h3></a></div>
+                                  <?php $descrip = $value->caption;
+                                        $descrip = substr($descrip,0,80) . '...';?>
+                              <div class="">
+                                <p style="text-align:justify;"><?php  echo $descrip ?></p>
+                              </div>
+                          </div>
+                      </div>
+                    <?php } ?>
+                  <?php endforeach; ?>
                 </div>
             </div>
         </div>

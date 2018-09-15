@@ -104,7 +104,7 @@ class About extends CI_Controller {
                 'sumary' => $this->input->post('summaryUpdate'),
                 'state' => $this->input->post('state')
             );
-            echo $data;
+
             $this->m_about->update($id, $data);
             $this->session->set_flashdata('status', 'Success update about');
             redirect(base_url('admin/about'));

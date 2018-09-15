@@ -120,5 +120,8 @@ $route['admin/schedule/destroy'] = 'admin/schedule/destroy';
 $route['admin/about/(:num)/edit'] = "admin/about/edit/$1";
 $route['admin/about/(:num)/update'] = "admin/about/update/$1";
 
-
 $route['admin/dashboard'] = "admin/about/create";
+
+$route['admin/contact-us'] = 'admin/contactUs';
+$route['admin/contact-us/(:num)/edit'] = "admin/contactUs/edit/$1";
+$route['admin/contact-us/(:num)/update'] = "admin/contactUs/update/$1";

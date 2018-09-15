@@ -6,4 +6,7 @@
 <!-- Main styles for this application -->
 <link href="<?php echo base_url(); ?>assets/css/admin/coreui/style.css" rel="stylesheet">
 
+<!-- Datatable -->
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+
 <link href="<?php echo base_url(); ?>assets/css/admin/style.css" rel="stylesheet">

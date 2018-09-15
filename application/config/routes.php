@@ -109,3 +109,16 @@ $route['admin/schedule/add'] = 'admin/schedule/addSchedule';
 $route['admin/schedule/soft-delete'] = 'admin/schedule/softDeleteSchedule';
 $route['admin/schedule/update'] = 'admin/schedule/updateSchedule';
 $route['admin/schedule/get'] = 'admin/schedule/getSchedule';
+
+$route['admin/about/index'] = 'admin/about/index';
+$route['admin/about/add'] = 'admin/about/store';
+
+$route['admin/about'] = 'admin/about/index';
+$route['admin/about/create'] = "admin/about/create";
+$route['admin/about/store'] = "admin/about/store";
+$route['admin/schedule/destroy'] = 'admin/schedule/destroy';
+$route['admin/about/(:num)/edit'] = "admin/about/edit/$1";
+$route['admin/about/(:num)/update'] = "admin/about/update/$1";
+
+
+$route['admin/dashboard'] = "admin/about/create";

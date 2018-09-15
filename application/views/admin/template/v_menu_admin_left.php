@@ -3,6 +3,8 @@
     <a href="<?php echo base_url() ?>admin/package" class="nav-link"><i class="icon-grid"></i> Package</a>
     <a href="<?php echo base_url() ?>admin/schedule" class="nav-link"><i class="icon-calendar"></i> Schedule</a>
     <a href="<?php echo base_url() ?>admin/services" class="nav-link"><i class="icon-emotsmile"></i> Services</a>
+    <a href="<?php echo base_url() ?>admin/about" class="nav-link"><i class="fa fa-info" aria-hidden="true"></i>About</a>
+
 </li>
 <li class="nav-item nav-dropdown">
     <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-wrench"></i> Settings</a>

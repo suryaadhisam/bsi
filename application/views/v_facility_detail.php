@@ -111,13 +111,9 @@
         .jssort111 .ti {position:absolute;bottom:0px;left:0px;width:100%;height:28px;line-height:28px;text-align:center;font-size:12px;color:#fff;background-color:rgba(0,0,0,.3)}
         .jssort111 .pav .ti, .jssort111 .pdn .ti, .jssort111 .p:hover.pdn .ti{color:#000;background-color:rgba(255,255,255,.6);}
     </style>
-
-
-
-
     <div class="container" style="padding:25px 25px 100px 25px;">
-      <?php foreach ($list_service_detail as $key): ?>
-        <h2 style="font-family:Impact, Charcoal, sans-serif; text-align:center;"><?php echo $key->varian; ?></h2>
+      <?php foreach ($list_facility_detail as $key): ?>
+        <h2 style="font-family:Impact, Charcoal, sans-serif; text-align:center;"><?php echo $key->title; ?></h2>
       <?php endforeach; ?>
 
       <div id="jssor_1" style="position:relative;margin:0 auto;top:0px;left:0px;width:980px;height:480px;overflow:hidden;visibility:hidden;">
@@ -126,7 +122,7 @@
             <img style="margin-top:-19px;position:relative;top:50%;width:38px;height:38px;" src="<?php echo base_url('/assets/img/svg/spin.svg'); ?>" />
         </div>
         <div data-u="slides" style="cursor:default;position:relative;top:0px;left:0px;width:980px;height:380px;overflow:hidden;">
-          <?php foreach ($list_photo_service as $key => $value): ?>
+          <?php foreach ($list_photo_facility as $key => $value): ?>
             <div>
                 <img data-u="image" src="<?php echo base_url($value->url); ?>" />
                 <div data-u="thumb">
@@ -157,16 +153,15 @@
         </div>
     </div>
 
-    <?php foreach ($list_service_detail as $key): ?>
+    <?php foreach ($list_facility_detail as $key): ?>
       <p style="text-align:justify; font-family:Georgia, serif;padding:25px 0px 25px 0px;">
-        <?php echo $key->keterangan; ?>
+        <?php echo $key->caption; ?>
       </p>
     <?php endforeach; ?>
-    <button type="button" class="btn btn-primary btn-lg" style="margin: 0 0 0 940px">Booking Now</button>
+
     <script type="text/javascript">jssor_1_slider_init();</script>
     <a href="javascript:" id="return-to-top"><i class="fa fa-angle-up"></i></a>
   </div>
-
 
 </body>
 </html>

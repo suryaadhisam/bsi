@@ -132,3 +132,10 @@ $route['admin/facility/store'] = "admin/facility/store";
 $route['admin/facility/destroy'] = 'admin/facility/destroy';
 $route['admin/facility/(:num)/edit'] = "admin/facility/edit/$1";
 $route['admin/facility/(:num)/update'] = "admin/facility/update/$1";
+
+$route['admin/faq'] = 'admin/faq';
+$route['admin/faq/create'] = "admin/faq/create";
+$route['admin/faq/store'] = "admin/faq/store";
+$route['admin/faq/destroy'] = 'admin/faq/destroy';
+$route['admin/faq/(:num)/edit'] = "admin/faq/edit/$1";
+$route['admin/faq/(:num)/update'] = "admin/faq/update/$1";

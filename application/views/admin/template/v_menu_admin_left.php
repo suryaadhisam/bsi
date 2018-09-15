@@ -11,6 +11,8 @@
             <a class="nav-link" href="<?php echo base_url() ?>admin/carousel"><i class="icon-control-play"></i> Carousel</a>
             <a class="nav-link" href="<?php echo base_url() ?>admin/social-media"><i class="icon-social-facebook"></i> Social Media</a>
             <a class="nav-link" href="<?php echo base_url() ?>admin/contact-us"><i class="fa fa-phone-square" aria-hidden="true"></i> Contact Us</a>
+            <a class="nav-link" href="<?php echo base_url() ?>admin/faq"><i class="fa fa-question" aria-hidden="true"></i> FAQ</a>
+
         </li>
     </ul>
 </li>

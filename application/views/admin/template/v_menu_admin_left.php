@@ -1,6 +1,8 @@
 <li class="nav-item">
     <a href="<?php echo base_url() ?>admin/dashboard" class="nav-link"><i class="fa fa-home" aria-hidden="true"></i>Dashboard</a>
     <a href="<?php echo base_url() ?>admin/about" class="nav-link"><i class="fa fa-info" aria-hidden="true"></i>About</a>
+    <a href="<?php echo base_url() ?>admin/facility" class="nav-link"><i class="fa fa-bath" aria-hidden="true"></i> Facility</a>
+
 </li>
 <li class="nav-item nav-dropdown">
     <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-wrench"></i> Settings</a>
@@ -12,3 +14,8 @@
         </li>
     </ul>
 </li>
+<li class="divider"></li>
+<li class="nav-item">
+    <a href="<?php echo base_url(); ?>admin/logout" class="nav-link"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a>
+</li>
+

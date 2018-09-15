@@ -292,8 +292,7 @@
                 if(data.status){
                     swal({
                         title: "Successfull",
-                        icon: "success",
-                        button: "OK",
+                        type: "success",
                     }).then((willDelete) => {
                         if (willDelete) {
                             location.reload();

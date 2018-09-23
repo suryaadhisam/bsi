@@ -118,21 +118,21 @@ class Gallery extends CI_Controller {
 
     public function destroy() {
         try {
-            $this->m_facility->destroy($this->input->post('id_facility'));
+            $this->m_gallery->destroy($this->input->post('id'));
 
             $result = array(
                 "status" => true,
                 "data" => array(),
-                "message" => "Successfully delete socmed",
+                "message" => "Successfully delete gallery",
                 "errors" => array()
             );
         } catch(Excepion $err) {
             $result = array(
                 "status" => false,
                 "data" => array(),
-                "message" => "Failed delete about",
+                "message" => "Failed delete gallery",
                 "errors" => array(
-                    "delete about"=>"Failed delete about"
+                    "delete about"=>"Failed delete gallery"
                 )
             );
         }

@@ -44,9 +44,9 @@
         <!-- Breadcrumb -->
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="<?php echo base_url('admin/dashboard'); ?>">Dashboard</a></li>
-            <li class="breadcrumb-item"><a href="<?php echo base_url('admin/facility'); ?>">Facility</a></li>
-            <li class="breadcrumb-item"><?php echo $facility->title ?></li>
-            <li class="breadcrumb-item active">Edit Facility</li>
+            <li class="breadcrumb-item"><a href="<?php echo base_url('admin/gallery'); ?>">Gallery</a></li>
+            <li class="breadcrumb-item"><?php echo $gallery->title ?></li>
+            <li class="breadcrumb-item active">Edit Gallery</li>
         </ol>
 
         <div class="container-fluid">
@@ -55,25 +55,45 @@
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="card-header">
-                                Edit Facility
+                                Edit Gallery
                             </div>
                             <div class="card-body">
-                                <form action="<?php echo base_url('admin/facility/'. $facility->id_facility .'/update'); ?>" method="post" class="form-horizontal" id="formEditFacility">
+                                <form action="<?php echo base_url('admin/gallery/'. $gallery->id .'/update'); ?>" method="post" class="form-horizontal" id="formEditGallery" enctype="multipart/form-data">
                                     <div class="form-group">
                                         <label class="col-md-12 col-form-label">Title</label>
                                         <div class="col-md-12">
-                                            <input value="<?php echo $facility->title ?>" type="text" id="title" name="title" class="form-control" placeholder="Free wifi...">
+                                            <input value="<?php echo $gallery->title ?>" type="text" id="title" name="title" class="form-control" placeholder="Free wifi...">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-12 col-form-label" for="pathImage">Photo</label>
+                                        <div class="col-md-12">
+                                            <button type="button" class="btn btn-primary" id="buttonUpdateFileToUpload">Choose image</button>
+
+                                            <input type="file" name="fileImgUpdate" id="fileImgUpdate" accept="image/x-png,image/jpg,image/jpeg" style="display: none;"/>
+                                            <span class="hasErrorText"></span>
+                                            <div class="previewImgWraper">
+                                                <div class="row">
+                                                    <!-- <span class="buttonXImgPreviewFileUpload">x</span> -->
+                                                    <div class="col-md-4 padding-right-0">
+                                                        <img class="imgPreviewImgFileUpload" src="<?php echo base_url().'/'.$gallery->url ?>">
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        <span class="textImgPreviewFileUpload">asas</span>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-md-12 col-form-label">Description</label>
                                         <div class="col-md-12">
-                                            <textarea id="caption" name="caption"><?php echo $facility->caption ?></textarea>
+                                            <textarea id="summary" name="summary"><?php echo $gallery->sumary ?></textarea>
                                         </div>
                                     </div>
 
                                     <div class="col-md-12">
-                                        <button type="button" class="btn btn-primary float-right" id="buttonUpdateFacility">Update Facility</button>
+                                        <button type="button" class="btn btn-primary float-right" id="buttonUpdateGallery">Update Gallery</button>
                                     </div>
                                 </form>
 
@@ -94,12 +114,25 @@
     <!-- include summernote css/js -->
     <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.js"></script>
 <script>
-    const caption = $('#caption');
-    const buttonUpdateFacility = $('#buttonUpdateFacility');
-    const formEditFacility = $('#formEditFacility');
+    const summary = $('#summary');
+    const buttonUpdateGallery = $('#buttonUpdateGallery');
+    const formEditGallery = $('#formEditGallery');
+
+    const base_url = "<?php echo base_url(); ?>";
+    const fileImgUpdate = $('#fileImgUpdate');
+    const textImgPreviewFileUpload = $('.textImgPreviewFileUpload');
+    const imgPreviewImgFileUpload = $('.imgPreviewImgFileUpload');
+    const previewImgWraper = $('.previewImgWraper');
+    const buttonUpdateFileToUpload = $('#buttonUpdateFileToUpload');
+    const dataGallery = <?php echo json_encode($gallery); ?>
+
 
     $(document).ready(function() {
-        caption.summernote({
+        imgPreviewImgFileUpload.attr('src', base_url+"/"+dataGallery.url);
+        textImgPreviewFileUpload.text(getFileNameImg(dataGallery.url));
+        previewImgWraper.css("display", "flex");
+
+        summary.summernote({
             placeholder: 'e.g. Free wifi...',
             tabsize: 2,
             height: 200,
@@ -119,11 +152,41 @@
             }
         });
 
-        buttonUpdateFacility.click(function(){
-            buttonUpdateFacility.html(`<i class="fa fa-refresh fa-spin"></i> Please wait...`).attr('disabled', 'disabled');
-            formEditFacility.submit();
+        buttonUpdateFileToUpload.click(function(){
+            fileImgUpdate.trigger("click");
+        });
+
+        fileImgUpdate.change(function() {
+            textImgPreviewFileUpload.text(this.files[0].name);
+
+            let url = $(this).val();
+            let ext = url.substring(url.lastIndexOf('.') + 1).toLowerCase();
+            if (this.files && this.files[0]&& (ext === "png" || ext === "jpeg" || ext === "jpg")) {
+                let reader = new FileReader();
+                reader.onload = function (e) {
+                    imgPreviewImgFileUpload.attr('src', e.target.result);
+                };
+                reader.readAsDataURL(this.files[0]);
+                previewImgWraper.css("display", "flex");
+            }
+            else {
+                swal({
+                    title: "Please choose img (.jpg, .jpeg or .png)",
+                    icon: "warning",
+                    button: "OK",
+                });
+            }
+        });
+
+        buttonUpdateGallery.click(function(){
+            buttonUpdateGallery.html(`<i class="fa fa-refresh fa-spin"></i> Please wait...`).attr('disabled', 'disabled');
+            formEditGallery.submit();
         });
     });
+
+    function getFileNameImg(fullPath){
+        return fullPath.substring(fullPath.lastIndexOf('/')+1);
+    }
 
 </script>
 </body>

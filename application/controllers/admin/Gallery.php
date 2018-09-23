@@ -141,7 +141,7 @@ class Gallery extends CI_Controller {
 
     public function edit($id) {
         $data = array();
-        $data['title'] = "Edit Facility || Sunset Bali Adventure";
+        $data['title'] = "Edit Gallery || Sunset Bali Adventure";
 
         $data['style'] = $this->load->view('admin/template/v_style', '', TRUE);
         $data['script'] = $this->load->view('admin/template/v_script', '', TRUE);
@@ -150,24 +150,47 @@ class Gallery extends CI_Controller {
         $data['menu_admin_left'] = $this->load->view('admin/template/v_menu_admin_left', '', TRUE);
         $data['menu_admin_top'] = $this->load->view('admin/template/v_menu_admin_top', '', TRUE);
 
-        $data['facility'] = $this->m_facility->getFacility($id);
-        $this->load->view('admin/facility/v_edit', $data);
+        $data['gallery'] = $this->m_gallery->getGallery($id);
+        $this->load->view('admin/gallery/v_edit', $data);
     }
 
     public function update($id) {
-        try {
-            $data = array(
-                'title' => $this->input->post('title'),
-                'caption' => $this->input->post('caption'),
-                'state' => $this->input->post('state')
-            );
+        //pathDestination
+        $pathDestination = "uploads/gallery/";
 
-            $this->m_facility->update($id, $data);
-            $this->session->set_flashdata('status', 'Success update facility');
-            redirect(base_url('admin/facility'));
+        //upload img
+        $resultTmp = $this->do_upload("fileImgUpdate", $pathDestination, "gallery-img");
+        @unlink($_FILES[$this->input->post('fileImgUpdate')]);
+
+        //add
+        try {
+            $this->db->trans_start();
+            if(!$resultTmp["status"]) {
+                $data = array(
+                    'title' => $this->input->post('title'),
+                    'sumary' => $this->input->post('summary'),
+                    'state' => 1
+                );
+            }
+            else {
+                $data = array(
+                    'title' => $this->input->post('title'),
+                    'sumary' => $this->input->post('summary'),
+                    'url' => $pathDestination.$resultTmp["data"]["upload_data"]["file_name"],
+                    'state' => 1
+                );
+            }
+
+            $this->m_gallery->update($id, $data);
+            $this->db->trans_complete();
+
+            $this->session->set_flashdata('status', 'Success update gallery');
+            redirect(base_url('admin/gallery'));
+
         } catch(Excepion $err) {
+            $this->db->trans_complete();
             $this->session->set_flashdata('status', $err->getMessage());
-            redirect(base_url('admin/facility'));
+            redirect(base_url('admin/gallery'));
         }
     }
 	

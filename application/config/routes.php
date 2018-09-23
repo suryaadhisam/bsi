@@ -139,3 +139,10 @@ $route['admin/faq/store'] = "admin/faq/store";
 $route['admin/faq/destroy'] = 'admin/faq/destroy';
 $route['admin/faq/(:num)/edit'] = "admin/faq/edit/$1";
 $route['admin/faq/(:num)/update'] = "admin/faq/update/$1";
+
+$route['admin/gallery'] = 'admin/gallery';
+$route['admin/gallery/create'] = "admin/gallery/create";
+$route['admin/gallery/store'] = "admin/gallery/store";
+$route['admin/gallery/destroy'] = 'admin/gallery/destroy';
+$route['admin/gallery/(:num)/edit'] = "admin/gallery/edit/$1";
+$route['admin/gallery/(:num)/update'] = "admin/gallery/update/$1";

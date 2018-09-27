@@ -7,15 +7,15 @@ class About extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('M_about');
-        $this->load->model('M_header');
+        $this->load->model('M_headfoot');
     }
-    
+
 	public function index(){
 
-		$data['list_contact'] = $this->M_header->get_contact_us();
-		$data['list_socmed'] = $this->M_header->get_socmed();
+		$data['list_contact'] = $this->M_headfoot->get_contact_us();
+		$data['list_socmed'] = $this->M_headfoot->get_socmed();
 		$data['list_about'] = $this->M_about->get_about();
-		$data['logo'] = $this->M_header->get_logo();
+		$data['logo'] = $this->M_headfoot->get_logo();
 
 		$data['title']			= "About || Sunset Bali Adventure";
 

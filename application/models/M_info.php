@@ -2,8 +2,8 @@
 
 class M_info extends CI_Model {
 
-  function get_services(){
-    $query = $this->db->query('SELECT * FROM tb_info');
+  function get_detail_info($id){
+    $query = $this->db->query("SELECT * FROM tb_info WHERE id_info = '".$id."'");
     return $query->result();
   }
 

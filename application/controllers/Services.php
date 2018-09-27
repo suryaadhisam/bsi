@@ -6,7 +6,7 @@ class Services extends CI_Controller {
 	public function __construct()
  	{
      	parent::__construct();
-			$this->load->model('M_header');
+			$this->load->model('M_headfoot');
 			$this->load->model('M_service');
 			$this->load->model('M_home');
 			$this->load->model('M_facility');
@@ -15,9 +15,9 @@ class Services extends CI_Controller {
 	public function index(){
 		$data['title']			= "Services || Sunset Bali Adventure";
 
-		$data['list_contact'] = $this->M_header->get_contact_us();
-		$data['list_socmed'] = $this->M_header->get_socmed();
-		$data['logo'] = $this->M_header->get_logo();
+		$data['list_contact'] = $this->M_headfoot->get_contact_us();
+		$data['list_socmed'] = $this->M_headfoot->get_socmed();
+		$data['logo'] = $this->M_headfoot->get_logo();
 		$data['list_service'] = $this->M_service->allService();
 		$data['list_facility'] = $this->M_facility->get_facility();
 		// var_dump($data['list_service']);
@@ -32,9 +32,9 @@ class Services extends CI_Controller {
 	function detail_service($id){
 		$data['title']			= "Services || Sunset Bali Adventure";
 
-		$data['list_contact'] = $this->M_header->get_contact_us();
-		$data['list_socmed'] = $this->M_header->get_socmed();
-		$data['logo'] = $this->M_header->get_logo();
+		$data['list_contact'] = $this->M_headfoot->get_contact_us();
+		$data['list_socmed'] = $this->M_headfoot->get_socmed();
+		$data['logo'] = $this->M_headfoot->get_logo();
 		$data['list_slider'] = $this->M_home->get_slider();
 		$data['list_service_detail'] = $this->M_service->detailService($id);
 		$data['list_photo_service'] = $this->M_service->photoService($id);

@@ -207,11 +207,11 @@
                     <?php if ($value->state == 2) { ?>
                       <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 nopr">
                           <div class="service-block border-bottom border-right">
-                              <div><a href="<?php echo base_url() ?>Facility/detail_facility/<?php echo $value->id_facility; ?>" class="btn-link"><i style="font-size:48px;color:#0000FF" class="<?php echo $value->fa_icon; ?>"></i></a></div>
+                              <div><a href="#" class="btn-link"><i style="font-size:48px;color:#0000FF" class="<?php echo $value->fa_icon; ?>"></i></a></div>
                               <div class="service-content">
                                   <a href="<?php echo base_url() ?>Facility/detail_facility/<?php echo $value->id_facility; ?>" class="btn-link"><h3 class="service-title"><?php echo $value->title ?></h3></a></div>
                                   <?php $descrip = $value->caption;
-                                        $descrip = substr($descrip,0,80) . '...';?>
+                                        $descrip = substr($descrip,0,200);?>
                               <div class="">
                                 <p style="text-align:justify;"><?php  echo $descrip ?></p>
                               </div>

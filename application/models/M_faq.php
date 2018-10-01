@@ -29,4 +29,9 @@ class M_faq extends CI_Model {
         $this->db->where('id_faq', $id);
         return $this->db->update($this->namaTabel, $data);
     }
+
+    function get_faq(){
+      $query = $this->db->query('SELECT * FROM tb_faq');
+      return $query->result();
+    }
 }

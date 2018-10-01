@@ -18,6 +18,9 @@ class Contact_Us extends CI_Controller {
 		$data['logo'] = $this->M_headfoot->get_logo();
 		$data['list_country'] = $this->M_contact->get_country();
 
+		$data['list_info'] = $this->M_headfoot->get_info();
+		$data['list_services'] = $this->M_headfoot->get_services();
+
 		$this->load->view('v_style', $data);
 		$this->load->view('v_script');
 		$this->load->view('v_header', $data);

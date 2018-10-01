@@ -17,7 +17,10 @@ class Gallery extends CI_Controller {
 		$data['logo'] = $this->M_headfoot->get_logo();
 		$data['list_photo'] = $this->M_gallery->get_photo();
 
-		$data['title']			= "About || Sunset Bali Adventure";
+		$data['list_info'] = $this->M_headfoot->get_info();
+		$data['list_services'] = $this->M_headfoot->get_services();
+
+		$data['title']			= "Gallery || Sunset Bali Adventure";
 
 		$this->load->view('v_style', $data);
 		$this->load->view('v_script');

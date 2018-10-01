@@ -31,6 +31,9 @@ class M_about extends CI_Model {
         return $this->db->update($this->namaTabel, $data);
     }
 
-
+    function get_about(){
+      $query = $this->db->query('SELECT * FROM tb_about');
+      return $query->result();
+    }
 
 }

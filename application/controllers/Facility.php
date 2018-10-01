@@ -22,6 +22,9 @@ class Facility extends CI_Controller {
 		$data['list_facility_detail'] = $this->M_facility->detailFacility($id);
 		$data['list_photo_facility'] = $this->M_facility->photoFacility($id);
 
+		$data['list_info'] = $this->M_headfoot->get_info();
+		$data['list_services'] = $this->M_headfoot->get_services();
+
 		$this->load->view('v_style', $data);
 		$this->load->view('v_script');
 		$this->load->view('v_header', $data);
@@ -38,6 +41,9 @@ class Facility extends CI_Controller {
 		$data['list_slider'] = $this->M_home->get_slider();
 		$data['list_facility_detail'] = $this->M_facility->detailFacility($id);
 		$data['list_photo_facility'] = $this->M_facility->photoFacility($id);
+
+		$data['list_info'] = $this->M_headfoot->get_info();
+		$data['list_services'] = $this->M_headfoot->get_services();
 
 		$this->load->view('v_style', $data);
 		$this->load->view('v_script');

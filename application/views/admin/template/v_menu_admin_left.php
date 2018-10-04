@@ -10,6 +10,7 @@
         <li class="nav-item">
             <a class="nav-link" href="<?php echo base_url() ?>admin/logo"><i class="fa fa-heart-o" aria-hidden="true"></i> Logo</a>
             <a class="nav-link" href="<?php echo base_url() ?>admin/flyer"><i class="fa fa-bullhorn" aria-hidden="true"></i> Flyer</a>
+            <a class="nav-link" href="<?php echo base_url() ?>admin/info"><i class="fa fa-info" aria-hidden="true"></i> Info</a>
             <a class="nav-link" href="<?php echo base_url() ?>admin/gallery"><i class="fa fa-picture-o" aria-hidden="true"></i>Galery</a>
             <a class="nav-link" href="<?php echo base_url() ?>admin/carousel"><i class="icon-control-play"></i> Carousel</a>
             <a class="nav-link" href="<?php echo base_url() ?>admin/social-media"><i class="icon-social-facebook"></i> Social Media</a>

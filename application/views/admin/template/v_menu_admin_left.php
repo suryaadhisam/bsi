@@ -1,5 +1,6 @@
 <li class="nav-item">
     <a href="<?php echo base_url() ?>admin/dashboard" class="nav-link"><i class="fa fa-home" aria-hidden="true"></i>Dashboard</a>
+    <a href="<?php echo base_url() ?>admin/testimoni" class="nav-link"><i class="fa fa-weixin" aria-hidden="true"></i>Pending Testimoni</a>
     <a href="<?php echo base_url() ?>admin/about" class="nav-link"><i class="fa fa-info" aria-hidden="true"></i>About</a>
     <a href="<?php echo base_url() ?>admin/facility" class="nav-link"><i class="fa fa-bath" aria-hidden="true"></i> Facility</a>
 

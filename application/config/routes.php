@@ -161,3 +161,6 @@ $route['admin/flyer/(:num)/update'] = "admin/flyer/update/$1";
 $route['admin/info'] = 'admin/info';
 $route['admin/info/(:num)/edit'] = "admin/info/edit/$1";
 $route['admin/info/(:num)/update'] = "admin/info/update/$1";
+
+$route['admin/testimoni'] = 'admin/testimoni';
+$route['admin/testimoni/changeState'] = "admin/testimoni/changeState";

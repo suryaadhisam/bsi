@@ -150,3 +150,10 @@ $route['admin/gallery/(:num)/update'] = "admin/gallery/update/$1";
 $route['admin/logo'] = 'admin/logo';
 $route['admin/logo/(:num)/edit'] = "admin/logo/edit/$1";
 $route['admin/logo/(:num)/update'] = "admin/logo/update/$1";
+
+$route['admin/flyer'] = 'admin/flyer';
+$route['admin/flyer/create'] = "admin/flyer/create";
+$route['admin/flyer/store'] = "admin/flyer/store";
+$route['admin/flyer/destroy'] = 'admin/flyer/destroy';
+$route['admin/flyer/(:num)/edit'] = "admin/flyer/edit/$1";
+$route['admin/flyer/(:num)/update'] = "admin/flyer/update/$1";

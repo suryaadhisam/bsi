@@ -146,3 +146,7 @@ $route['admin/gallery/store'] = "admin/gallery/store";
 $route['admin/gallery/destroy'] = 'admin/gallery/destroy';
 $route['admin/gallery/(:num)/edit'] = "admin/gallery/edit/$1";
 $route['admin/gallery/(:num)/update'] = "admin/gallery/update/$1";
+
+$route['admin/logo'] = 'admin/logo';
+$route['admin/logo/(:num)/edit'] = "admin/logo/edit/$1";
+$route['admin/logo/(:num)/update'] = "admin/logo/update/$1";

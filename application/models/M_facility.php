@@ -13,7 +13,8 @@ class M_facility extends CI_Model {
     }
 
     function store($data) {
-        return $this->db->insert($this->namaTabel, $data);
+        $this->db->insert($this->namaTabel, $data);
+        return $this->db->insert_id();
     }
 
     function destroy($id) {

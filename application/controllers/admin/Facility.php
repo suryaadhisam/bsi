@@ -11,7 +11,9 @@ class Facility extends CI_Controller {
 		}
 		$this->load->library('form_validation');
 		$this->load->model('m_facility');
-	}
+        $this->load->model('m_photo_facility');
+
+    }
 
 	public function index() {
         $data = array();
@@ -50,13 +52,86 @@ class Facility extends CI_Controller {
                 'caption' => $this->input->post('caption'),
                 'state' => 1
             );
-            $this->m_facility->store($data);
-            $this->session->set_flashdata('status', 'Success create facility');
-            redirect(base_url('admin/facility'));
-        } catch(Excepion $err) {
-            $this->session->set_flashdata('status', $err->getMessage());
-            redirect(base_url('admin/facility'));
+            $resultStore = $this->m_facility->store($data);
+
+            $result = array(
+                "status" => true,
+                "data" => $resultStore,
+                "message" => "Successfully add facility",
+                "errors" => array()
+            );
+
+            echo json_encode($result);
         }
+        catch(Excepion $err) {
+            $result = array(
+                "status" => false,
+                "data" => array(),
+                "message" => "Failed add facility",
+                "errors" => array()
+            );
+            echo json_encode($result);
+        }
+    }
+
+    public function uploadImages() {
+        //pathDestination
+        $pathDestination = "uploads/facilities/";
+
+        $facilityId = $this->input->post('facility_id');
+
+        //var_dump($_FILES);
+        $data = array();
+        foreach ($_FILES as $key => $value) {
+            array_push($data, $key);
+            $resultTmp = $this->do_upload($key, $pathDestination, "facility-" . $facilityId . "-img");
+
+            if ($resultTmp["status"]) {
+                @unlink($_FILES[$this->input->post($key)]);
+
+                $data = array(
+                    'id_facility' => $facilityId,
+                    'url' => $pathDestination . $resultTmp["data"]["upload_data"]["file_name"],
+                    'state' => 1
+                );
+                $this->m_photo_facility->store($data);
+            }
+        }
+        echo json_encode(array(
+            'status' => true,
+            'data' => array(),
+            'message' => 'Successfully create facility',
+            'errors' => array()
+        ));
+    }
+
+    public function do_upload($formFileName, $pathImg, $fileNameImg) {
+        $config['upload_path']          = realpath(FCPATH.$pathImg);
+        $config['allowed_types']        = 'jpg|png|jpeg';
+        $config['max_size']             = 1024 * 5; //5MB
+        $config['file_name']            = $fileNameImg;
+
+        $this->load->library('upload', $config);
+
+        if ( !$this->upload->do_upload($formFileName)) {
+            $error = array($formFileName => $this->upload->display_errors());
+            $result = array(
+                "status" => false,
+                "data" => array(),
+                "message" => "Failed upload img",
+                "errors" => $error
+            );
+        }
+        else {
+            $data = array('upload_data' => $this->upload->data());
+            $result = array(
+                "status" => true,
+                "data" => $data,
+                "message" => "Successfully upload img",
+                "errors" => array()
+            );
+        }
+        return $result;
     }
 
     public function destroy() {

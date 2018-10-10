@@ -7,6 +7,7 @@ class Boking extends CI_Controller {
  	{
      	parent::__construct();
 			$this->load->model('M_headfoot');
+			$this->load->model('M_facility');
   }
 
 	public function index(){
@@ -15,7 +16,7 @@ class Boking extends CI_Controller {
 		$data['list_contact'] = $this->M_headfoot->get_contact_us();
 		$data['list_socmed'] = $this->M_headfoot->get_socmed();
 		$data['logo'] = $this->M_headfoot->get_logo();
-
+		$data['list_facility'] = $this->M_facility->get_facility();
 		$data['list_info'] = $this->M_headfoot->get_info();
 		$data['list_services'] = $this->M_headfoot->get_services();
 
@@ -23,6 +24,6 @@ class Boking extends CI_Controller {
 		$this->load->view('v_script');
 		$this->load->view('v_header', $data);
 		$this->load->view('v_boking');
-		$this->load->view('v_footer');
+		$this->load->view('v_footer', $data);
 	}
 }

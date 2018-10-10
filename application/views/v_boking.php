@@ -5,37 +5,405 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="<?php echo base_url(''); ?>/assets/css/style.css" rel="stylesheet">
+    <style media="screen">
+    @import url(http://fonts.googleapis.com/css?family=Roboto+Condensed:400,700);
+      .head {
+        color: #ECF0F1;
+      }
+
+      .board {
+        width: 100%;
+        height: auto;
+        /* margin: 20px auto; */
+        background: #fefefe;
+        border-radius: 8px 8px 0 0;
+      }
+
+      .board .nav-tabs {
+        position: relative;
+        margin: 40px auto;
+        margin-bottom: 0;
+        box-sizing: border-box;
+      }
+
+      .liner {
+        height: 2px;
+        background: #ddd;
+        position: absolute;
+        width: 80%;
+        margin: 0 auto;
+        left: 0;
+        right: 0;
+        /* top: 50%; */
+        z-index: 1;
+      }
+
+      .nav-tabs > li {
+        width: 25%;
+      }
+
+      .nav-tabs > li:after {
+        content: " ";
+        position: absolute;
+        opacity: 0;
+        margin: 0 auto;
+        bottom: 0px;
+        border: 10px solid transparent;
+        border-bottom-color: #aaa;
+        transition: left 1s;
+      }
+
+      .nav-tabs > li.active:after {
+        left: calc(50% - 10px);
+        opacity: 1;
+      }
+
+      .nav-tabs > li[rel-index="-1"]:after {
+        left: calc(50% + 100% - 10px);
+      }
+
+      .nav-tabs > li[rel-index="-2"]:after {
+        left: calc(50% + 200% - 10px);
+      }
+
+      .nav-tabs > li[rel-index="-3"]:after {
+        left: calc(50% + 300% - 10px);
+      }
+
+      .nav-tabs > li[rel-index="1"]:after {
+        left: calc(50% - 100% - 10px);
+      }
+
+      .nav-tabs > li[rel-index="2"]:after {
+        left: calc(50% - 200% - 10px);
+      }
+
+      .nav-tabs > li[rel-index="3"]:after {
+        left: calc(50% - 300% - 10px);
+      }
+
+      .nav-tabs > li a {
+        width: 70px;
+        height: 70px;
+        line-height: 70px;
+        margin: 20px auto;
+        border-radius: 100%;
+        padding: 0;
+      }
+
+      .nav-tabs > li a:hover{
+        background: transparent;
+      }
+
+      .nav-tabs > li span {
+        width: 70px;
+        height: 70px;
+        line-height: 70px;
+        display: inline-block;
+        border-radius: 100px;
+        background: white;
+        z-index: 2;
+        position: absolute;
+        left: 0;
+        text-align: center;
+        font-size: 25px;
+      }
+
+      .nav-tabs > li:nth-of-type(1) span {
+        color: #3e5e9a;
+        border: 2px solid #3e5e9a;
+      }
+
+      .nav-tabs > li:nth-of-type(1).active span {
+        color: #fff;
+        background: #3e5e9a;
+      }
+
+      .nav-tabs > li:nth-of-type(2) span {
+        color: #f1685e;
+        border: 2px solid #f1685e;
+      }
+
+      .nav-tabs > li:nth-of-type(2).active span {
+        color: #fff;
+        background: #f1685e;
+      }
+
+      .nav-tabs > li:nth-of-type(3) span {
+        color: #febe29;
+        border: 2px solid #febe29;
+      }
+
+      .nav-tabs > li:nth-of-type(3).active span {
+        color: #fff;
+        background: #febe29;
+      }
+
+      .nav-tabs > li:nth-of-type(4) span {
+        color: #25c225;
+        border: 2px solid #25c225;
+      }
+
+      .nav-tabs > li:nth-of-type(4).active span {
+        color: #fff;
+        background: #25c225;
+      }
+
+      .nav-tabs > li > a.disabled {
+        opacity: 1;
+      }
+
+      .nav-tabs > li > a.disabled span {
+        border-color: #ddd;
+        color: #aaa;
+      }
+
+      div#step-1 {
+        background: #fff;
+      }
+
+      div[role="tabpanel"]:after {
+        content: "";
+        display: block;
+        clear: both;
+      }
+    </style>
 </head>
 <body>
 
-  <main style="padding : 100px 0 0 0;">
+  <main style="padding : 50px 0 25px 0;">
     <div class="container">
-      <div class="card">
-        <div class="card-body mb-4">
+      <h2 class="text-center font-weight-bold pt-4 pb-5"><strong>Boking Steps</strong></h2>
+      <div class="row">
+        <div class="board">
+            <ul class="nav nav-tabs">
+                <div class="liner"></div>
+                <li rel-index="0" class="active">
+                    <a href="#step-1" class="btn" aria-controls="step-1" role="tab" data-toggle="tab">
+                        <span><i class="glyphicon glyphicon-user"></i></span>
+                    </a>
+                </li>
+                <li rel-index="1">
+                    <a href="#step-2" class="btn disabled" aria-controls="step-2" role="tab" data-toggle="tab">
+                        <span><i class="glyphicon glyphicon-heart"></i></span>
+                    </a>
+                </li>
+                <li rel-index="2">
+                    <a href="#step-3" class="btn disabled" aria-controls="step-3" role="tab" data-toggle="tab">
+                        <span><i class="glyphicon glyphicon-plus"></i></span>
+                    </a>
+                </li>
+                <li rel-index="3">
+                    <a href="#step-4" class="btn disabled" aria-controls="step-4" role="tab" data-toggle="tab">
+                        <span><i class="glyphicon glyphicon-ok"></i></span>
+                    </a>
+                </li>
+            </ul>
+        </div>
 
-            <h2 class="text-center font-weight-bold pt-4 pb-5"><strong>Boking Steps</strong></h2>
-
-            <!-- Stepper -->
-            <div class="steps-form">
-                <div class="steps-row setup-panel">
-                    <div class="steps-step">
-                        <a href="#step-9" type="button" class="btn btn-indigo btn-circle">1</a>
-                        <p>Step 1</p>
-                    </div>
-                    <div class="steps-step">
-                        <a href="#step-10" type="button" class="btn btn-default btn-circle" disabled="disabled">2</a>
-                        <p>Step 2</p>
-                    </div>
-                    <div class="steps-step">
-                        <a href="#step-11" type="button" class="btn btn-default btn-circle" disabled="disabled">3</a>
-                        <p>Step 3</p>
-                    </div>
-                </div>
+        <div class="tab-content">
+            <br><br>
+            <div role="tabpanel" class="tab-pane active" id="step-1">
+                <div class="col-md-12">
+                  <form>
+                    <div class="bg-default enquiry-form ">
+                          <div class="container">
+                              <div class="row">
+                                  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label class="control-label sr-only" for="select"></label>
+                                                    <div class="select">
+                                                        <select id="select_service" name="city" class="form-control" onchange="disableMenu()">
+                                                          <?php foreach ($list_services as $row): ?>
+                                                            <option value="[<?php echo $row->id; ?>, <?php echo $row->min_person; ?>]"><?php echo $row->varian; ?></option>
+                                                          <?php endforeach; ?>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label class="control-label sr-only" for="datepicker"></label>
+                                                    <div class="input-group">
+                                                        <div class="field">
+                                                          <input id="datepicker" name="datepicker" type="text" placeholder="Check In" class="form-control" required>
+                                                          <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label class="control-label sr-only" for="select"></label>
+                                                    <div class="select" id="app">
+                                                        <select id="select_number" name="select" class="form-control"></select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                      <div class="actions">
+                        <button id="step-1-next"  type="submit" class="btn btn-lg btn-primary nextBtn pull-right">Next</button>
+                      </div>
+                    </form>
+                  </div>
             </div>
 
-            <form role="form" action="" method="post">
+            <script type="text/javascript">
+            // $("#datepicker").datepicker({
+            // onSelect: function() {
+            //     var dateObject = $(this).datepicker('getDate');
+            //     if (dateObject.length != 0) {
+            //       $('button[type=submit]').prop('disabled', false);
+            //     }
+            //   }
+            // });
+            </script>
 
-                <!-- First Step -->
+            <div role="tabpanel" class="tab-pane" id="step-2">
+                <div class="col-md-12">
+                    <h3 id=""></h3>
+                    <button id="step-2-next" class="btn btn-lg btn-primary nextBtn pull-right">Next</button>
+                </div>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="step-3">
+                <div class="col-md-12">
+                  <div class="row setup-content" id="step-11">
+                      <div class="col-md-12">
+                          <h3 class="font-weight-bold pl-0 my-4"><strong>Personal Information</strong></h3>
+                          <div class="row">
+                            <div class="col-md-6">
+                              <form>
+                                  <div class="form-group">
+                                      <label for="formGroupExampleInput">Full Name</label>
+                                      <input type="text" class="form-control" placeholder="Full Name">
+                                  </div>
+
+                                  <div class="form-group">
+                                      <label for="formGroupExampleInput2">Email</label>
+                                      <input type="text" class="form-control" placeholder="Email Address">
+                                  </div>
+
+                                  <div class="form-group">
+                                      <label for="exampleFormControlTextarea2">Address</label>
+                                      <textarea class="form-control rounded-0" id="exampleFormControlTextarea2" rows="3"></textarea>
+                                  </div>
+
+                                  <div class="form-group">
+                                      <label for="formGroupExampleInput2">City</label>
+                                      <input type="text" class="form-control">
+                                  </div>
+
+                                  <div class="form-group">
+                                      <label for="formGroupExampleInput2">State/Province</label>
+                                      <input type="text" class="form-control">
+                                  </div>
+
+                                  <div class="form-group">
+                                      <label for="formGroupExampleInput2">Country</label>
+                                      <input type="text" class="form-control">
+                                  </div>
+
+                                  <div class="form-group">
+                                      <label for="formGroupExampleInput2">Zip Code</label>
+                                      <input type="text" class="form-control">
+                                  </div>
+
+                                  <div class="form-group">
+                                      <label for="formGroupExampleInput2">Phone</label>
+                                      <input type="text" class="form-control">
+                                  </div>
+
+                                  <div class="form-group">
+                                      <label for="formGroupExampleInput2">Time Arrival</label>
+                                      <input type="text" class="form-control">
+                                  </div>
+
+                                  <div class="form-group">
+                                      <label for="exampleFormControlTextarea2">Special Request</label>
+                                      <textarea class="form-control rounded-0" id="exampleFormControlTextarea2" rows="3"></textarea>
+                                  </div>
+                              </form>
+                            </div>
+                            <div class="col-md-6">
+                              <div style="text-align: justify;text-justify: inter-word;">
+                                This page is protected by our secure server, which encrypts all submitted information. To provide you with an additional security, all credit card information are stored on a computer that is not connected to the Internet.
+                              </div>
+                              <h5>We accept major credit cards:</h5>
+
+                              <div class="form-group">
+                                  <label for="formGroupExampleInput2">Credit Card Type</label>
+                                  <input type="text" class="form-control">
+                              </div>
+
+                              <div class="form-group">
+                                  <label for="formGroupExampleInput2">Issuing Bank</label>
+                                  <input type="text" class="form-control">
+                              </div>
+
+                              <div class="form-group">
+                                  <label for="formGroupExampleInput2">Bank Country</label>
+                                  <input type="text" class="form-control">
+                              </div>
+
+                              <div class="form-group">
+                                  <label for="formGroupExampleInput2">Credit Card Number</label>
+                                  <input type="text" class="form-control">
+                              </div>
+
+                              <div class="form-group">
+                                  <label for="formGroupExampleInput2">CVV Number</label>
+                                  <input type="text" class="form-control">
+                              </div>
+
+                              <div class="form-group">
+                                  <label for="formGroupExampleInput2">Expired Date</label>
+                                  <input type="text" class="form-control">
+                              </div>
+
+                              <div class="form-group">
+                                  <label for="formGroupExampleInput2">Card's Name</label>
+                                  <input type="text" class="form-control">
+                              </div>
+
+                              <div class="form-group">
+                                  <label for="formGroupExampleInput2">Billing Address</label>
+                                  <input type="text" class="form-control">
+                              </div>
+                            </div>
+                          </div>
+
+
+                          <div class="form-check" style="text-align:center;">
+                            <div class="row">
+                              <div class="col">
+                                <label class="checkbox-inline">
+                                  <input type="checkbox" value="">I acknowledge reading the Terms & Conditions and I agree to pay according to the terms stated.
+                                </label>
+                              </div>
+                            </div>
+                          </div>
+                      </div>
+                    </div>
+                    <button id="step-3-next" class="btn btn-lg btn-primary nextBtn pull-right">Next</button>
+                </div>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="step-4">
+                <div class="col-md-12">
+                    <button id="step-4-next" class="btn btn-lg btn-primary pull-right">Continue</button>
+                </div>
+            </div>
+          </div>
+        </div>
+
+            <!-- <form role="form" action="" method="post">
                 <div class="row setup-content" id="step-9">
                     <div class="col-md-12">
                         <h3 class="font-weight-bold pl-0 my-4"><strong>Amount and Time</strong></h3>
@@ -64,7 +432,6 @@
                           </div>
                           <div class="col-md-3">
                             <input class="form-control" type="text" placeholder="Check In" id="datepicker">
-                            <!-- <p>Date: <input type="text" id="datepicker"></p> -->
                           </div>
                           </div>
                           <div class="row" style="padding : 50px 0 0 0;">
@@ -75,7 +442,6 @@
                     </div>
                 </div>
 
-                <!-- Second Step -->
                 <div class="row setup-content" id="step-10">
                     <div class="col-md-12">
                         <h3 class="font-weight-bold pl-0 my-4"><strong>Available Service</strong></h3>
@@ -120,7 +486,6 @@
                         </div>
 
                         <hr class="my-5">
-
                         <div class="row">
                           <div class="col-md-5 mb-4">
                             <img src="https://mdbootstrap.com/img/Marketing/mdb-press-pack/mdb-main.jpg" class="img-fluid z-depth-1-half" alt="">
@@ -162,7 +527,6 @@
                         </div>
 
                         <hr class="mb-5">
-
                         <div class="row">
                           <div class="col-md-5 mb-4">
                             <img src="https://mdbootstrap.com/img/Marketing/mdb-press-pack/mdb-main.jpg" class="img-fluid z-depth-1-half" alt="">
@@ -209,326 +573,130 @@
                     </div>
                 </div>
 
-                <!-- Third Step -->
-                <div class="row setup-content" id="step-11">
-                    <div class="col-md-12">
-                        <h3 class="font-weight-bold pl-0 my-4"><strong>Personal Information</strong></h3>
-                        <div class="row">
-                          <div class="col-md-6">
-                            <form>
-                                <div class="form-group">
-                                    <label for="formGroupExampleInput">Full Name</label>
-                                    <input type="text" class="form-control" placeholder="Full Name">
-                                </div>
 
-                                <div class="form-group">
-                                    <label for="formGroupExampleInput2">Email</label>
-                                    <input type="text" class="form-control" placeholder="Email Address">
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="exampleFormControlTextarea2">Address</label>
-                                    <textarea class="form-control rounded-0" id="exampleFormControlTextarea2" rows="3"></textarea>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="formGroupExampleInput2">City</label>
-                                    <input type="text" class="form-control">
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="formGroupExampleInput2">State/Province</label>
-                                    <input type="text" class="form-control">
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="formGroupExampleInput2">Country</label>
-                                    <input type="text" class="form-control">
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="formGroupExampleInput2">Zip Code</label>
-                                    <input type="text" class="form-control">
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="formGroupExampleInput2">Phone</label>
-                                    <input type="text" class="form-control">
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="formGroupExampleInput2">Time Arrival</label>
-                                    <input type="text" class="form-control">
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="exampleFormControlTextarea2">Special Request</label>
-                                    <textarea class="form-control rounded-0" id="exampleFormControlTextarea2" rows="3"></textarea>
-                                </div>
-                            </form>
-                          </div>
-                          <div class="col-md-6">
-                            <div style="text-align: justify;text-justify: inter-word;">
-                              This page is protected by our secure server, which encrypts all submitted information. To provide you with an additional security, all credit card information are stored on a computer that is not connected to the Internet.
-                            </div>
-                            <h5>We accept major credit cards:</h5>
-
-                            <div class="form-group">
-                                <label for="formGroupExampleInput2">Credit Card Type</label>
-                                <input type="text" class="form-control">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="formGroupExampleInput2">Issuing Bank</label>
-                                <input type="text" class="form-control">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="formGroupExampleInput2">Bank Country</label>
-                                <input type="text" class="form-control">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="formGroupExampleInput2">Credit Card Number</label>
-                                <input type="text" class="form-control">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="formGroupExampleInput2">CVV Number</label>
-                                <input type="text" class="form-control">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="formGroupExampleInput2">Expired Date</label>
-                                <input type="text" class="form-control">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="formGroupExampleInput2">Card's Name</label>
-                                <input type="text" class="form-control">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="formGroupExampleInput2">Billing Address</label>
-                                <input type="text" class="form-control">
-                            </div>
-                          </div>
-                        </div>
+            </form> -->
 
 
-                        <div class="form-check" style="text-align:center;">
-                            <input type="checkbox" class="form-check-input" id="checkbox104">
-                            <label class="form-check-label" for="checkbox104">I acknowledge reading the Terms & Conditions and I agree to pay according to the terms stated.</label>
-                        </div>
+<section>
+  <h2 style="font-family:Impact, Charcoal, sans-serif; text-align:center; padding-top:50px;">Facilities</h2>
+  <div class="row features-small mb-5 mt-3 wow fadeIn">
 
-                        <button class="btn btn-indigo btn-rounded prevBtn float-left" type="button">Previous</button>
-                        <button class="btn btn-default btn-rounded float-right" type="submit">Submit</button>
-                    </div>
-                </div>
-            </form>
+    <div class="row">
+      <?php foreach ($list_facility as $key => $value): ?>
+        <?php if ($value->state == 1) { ?>
+          <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 nopr">
+              <div class="service-block border-bottom border-right">
+                  <div><a href="<?php echo base_url() ?>Facility/detail_facility/<?php echo $value->id_facility; ?>" class="btn-link"><i style="font-size:48px;color:#E65100" class="<?php echo $value->fa_icon; ?>"></i></a></div>
+                  <div class="service-content">
+                      <a href="<?php echo base_url() ?>Facility/detail_facility/<?php echo $value->id_facility; ?>" class="btn-link"><h3 class="service-title"><?php echo $value->title ?></h3></a></div>
+                      <?php $descrip = $value->caption;
+                            $descrip = substr($descrip,0,80) . '...';?>
+                  <div class="">
+                    <p style="text-align:justify;"><?php  echo $descrip ?></p>
+                  </div>
+              </div>
           </div>
-        </div>
-<!-- Steps form -->
-      <hr class="my-5">
-      <section class="mt-5 wow fadeIn">
-
-        <h2 class="text-center font-weight-bold pt-4 pb-5"><strong>Service</strong></h2>
-        <ul class="nav nav-pills nav-justified">
-            <li class="nav-item">
-                <a class="nav-link active" data-toggle="tab" href="#panel1" role="tab">ATV Ride</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#panel2" role="tab">River Tubing</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#panel3" role="tab">Swing</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#panel4" role="tab">Cycling</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#panel5" role="tab">SPA & Reflexy</a>
-            </li>
-        </ul>
-        <br>
-        <!-- Tab panels -->
-        <div class="tab-content card" style="padding:5px 5px 20px 5px;">
-            <div class="tab-pane fade in show active" id="panel1" role="tabpanel">
-              <div class="row">
-                  <div class="col-md-6 mb-4">
-                    <img src="https://mdbootstrap.com/img/Marketing/mdb-press-pack/mdb-main.jpg" class="img-fluid z-depth-1-half" alt="">
+        <?php } ?>
+      <?php endforeach; ?>
+      <hr>
+      <?php foreach ($list_facility as $key => $value): ?>
+        <?php if ($value->state == 2) { ?>
+          <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 nopr">
+              <div class="service-block border-bottom border-right">
+                  <div><a href="#" class="btn-link"><i style="font-size:48px;color:#0000FF" class="<?php echo $value->fa_icon; ?>"></i></a></div>
+                  <div class="service-content">
+                      <a href="<?php echo base_url() ?>Facility/detail_facility/<?php echo $value->id_facility; ?>" class="btn-link"><h3 class="service-title"><?php echo $value->title ?></h3></a></div>
+                      <?php $descrip = $value->caption;
+                            $descrip = substr($descrip,0,200);?>
+                  <div class="">
+                    <p style="text-align:justify;"><?php  echo $descrip ?></p>
                   </div>
-                  <div class="col-md-6 mb-4">
-                    <h3 class="h3 mb-3">ATV Ride</h3>
-                    <p>This template is created with Material Design for Bootstrap (
-                      <strong>MDB</strong> ) framework.</p>
-                    <p>Read details below to learn more about MDB.</p>
-                    <hr>
-                    <p>
-                      <strong>400+</strong> material UI elements,
-                      <strong>600+</strong> material icons,
-                      <strong>74</strong> CSS animations, SASS files, templates, tutorials and many more.
-                      <strong>Free for personal and commercial use.</strong>
-                    </p>
-                  </div>
-                </div>
-            </div>
-
-
-            <div class="tab-pane fade" id="panel2" role="tabpanel">
-              <div class="row">
-                <div class="col-md-6 mb-4">
-                  <img src="https://mdbootstrap.com/img/Marketing/mdb-press-pack/mdb-main.jpg" class="img-fluid z-depth-1-half" alt="">
-                </div>
-                <div class="col-md-6 mb-4">
-                  <h3 class="h3 mb-3">River Tubing</h3>
-                  <p>This template is created with Material Design for Bootstrap (
-                    <strong>MDB</strong> ) framework.</p>
-                  <p>Read details below to learn more about MDB.</p>
-                  <hr>
-                  <p>
-                    <strong>400+</strong> material UI elements,
-                    <strong>600+</strong> material icons,
-                    <strong>74</strong> CSS animations, SASS files, templates, tutorials and many more.
-                    <strong>Free for personal and commercial use.</strong>
-                  </p>
-                </div>
               </div>
-            </div>
-
-            <div class="tab-pane fade" id="panel3" role="tabpanel">
-              <div class="row">
-                <div class="col-md-6 mb-4">
-                  <img src="https://mdbootstrap.com/img/Marketing/mdb-press-pack/mdb-main.jpg" class="img-fluid z-depth-1-half" alt="">
-                </div>
-                <div class="col-md-6 mb-4">
-                  <h3 class="h3 mb-3">Swing</h3>
-                  <p>This template is created with Material Design for Bootstrap (
-                    <strong>MDB</strong> ) framework.</p>
-                  <p>Read details below to learn more about MDB.</p>
-                  <hr>
-                  <p>
-                    <strong>400+</strong> material UI elements,
-                    <strong>600+</strong> material icons,
-                    <strong>74</strong> CSS animations, SASS files, templates, tutorials and many more.
-                    <strong>Free for personal and commercial use.</strong>
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div class="tab-pane fade" id="panel4" role="tabpanel">
-              <div class="row">
-                <div class="col-md-6 mb-4">
-                  <img src="https://mdbootstrap.com/img/Marketing/mdb-press-pack/mdb-main.jpg" class="img-fluid z-depth-1-half" alt="">
-                </div>
-                <div class="col-md-6 mb-4">
-                  <h3 class="h3 mb-3">Cycling</h3>
-                  <p>This template is created with Material Design for Bootstrap (
-                    <strong>MDB</strong> ) framework.</p>
-                  <p>Read details below to learn more about MDB.</p>
-                  <hr>
-                  <p>
-                    <strong>400+</strong> material UI elements,
-                    <strong>600+</strong> material icons,
-                    <strong>74</strong> CSS animations, SASS files, templates, tutorials and many more.
-                    <strong>Free for personal and commercial use.</strong>
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div class="tab-pane fade" id="panel5" role="tabpanel">
-              <div class="row">
-                <div class="col-md-6 mb-4">
-                  <img src="https://mdbootstrap.com/img/Marketing/mdb-press-pack/mdb-main.jpg" class="img-fluid z-depth-1-half" alt="">
-                </div>
-                <div class="col-md-6 mb-4">
-                  <h3 class="h3 mb-3">SPA & Reflexy</h3>
-                  <p>This template is created with Material Design for Bootstrap (
-                    <strong>MDB</strong> ) framework.</p>
-                  <p>Read details below to learn more about MDB.</p>
-                  <hr>
-                  <p>
-                    <strong>400+</strong> material UI elements,
-                    <strong>600+</strong> material icons,
-                    <strong>74</strong> CSS animations, SASS files, templates, tutorials and many more.
-                    <strong>Free for personal and commercial use.</strong>
-                  </p>
-                </div>
-              </div>
-            </div>
-        </div>
-
-        <hr class="my-5">
-
-        <h2 class="my-5 h3 text-center">Facilities</h2>
-      </section>
+          </div>
+        <?php } ?>
+      <?php endforeach; ?>
+    </div>
+  </div>
+</section>
 
     </div>
   </main>
 
   <a href="javascript:" id="return-to-top"><i class="fa fa-angle-up"></i></a>
-  <script>
-        $(document).ready(function () {
-        var navListItems = $('div.setup-panel div a'),
-            allWells = $('.setup-content'),
-            allNextBtn = $('.nextBtn'),
-            allPrevBtn = $('.prevBtn');
+  <script type="text/javascript">
+    $('#select_service')
+    .val('[1, 1]')
+    .trigger('change');
+    function disableMenu(){
+      var a = document.getElementById("select_service").value;
+      var id = a[1];
+      var max_person = parseInt(a[4]);
+      var arr = [];
+      var limit = parseInt(max_person*20);
 
-        allWells.hide();
+      $('#select_number').text('');
+      for (var i = max_person; i <= limit; i=i+max_person) {
+        arr[arr.length] = i;
+      }
+      for (var i = 0; i < arr.length; i++) {
+        $('#select_number').append(`
+            <option value="${arr[i]}"> ${arr[i]} </option>
+          `);
+      }
+      if(document.getElementById("select_service").value=="0"){
+          document.getElementById("select_number").disabled = true;
 
-        navListItems.click(function (e) {
-            e.preventDefault();
-            var $target = $($(this).attr('href')),
-                $item = $(this);
+      } else {
+          document.getElementById("select_number").disabled = false;
+      }
+    }
+  </script>
+  <script type="text/javascript">
+      $(function() {
+        // Nav Tab stuff
 
-            if (!$item.hasClass('disabled')) {
-                navListItems.removeClass('btn-indigo').addClass('btn-default');
-                $item.addClass('btn-indigo');
-                allWells.hide();
-                $target.show();
-                $target.find('input:eq(0)').focus();
+
+
+        $('.nav-tabs > li > a').click(function() {
+            if($(this).hasClass('disabled')) {
+                return false;
+            } else {
+                var linkIndex = $(this).parent().index() - 1;
+                $('.nav-tabs > li').each(function(index, item) {
+                    $(this).attr('rel-index', index - linkIndex);
+                });
             }
         });
+        $('#step-1-next').click(function() {
+            // Check values here
+            var isValid = true;
 
-        allPrevBtn.click(function(){
-            var curStep = $(this).closest(".setup-content"),
-                curStepBtn = curStep.attr("id"),
-                prevStepSteps = $('div.setup-panel div a[href="#' + curStepBtn + '"]').parent().prev().children("a");
-
-                prevStepSteps.removeAttr('disabled').trigger('click');
-        });
-
-        allNextBtn.click(function(){
-            var curStep = $(this).closest(".setup-content"),
-                curStepBtn = curStep.attr("id"),
-                nextStepWizard = $('div.setup-panel div a[href="#' + curStepBtn + '"]').parent().next().children("a"),
-                curInputs = curStep.find("input[type='text'],input[type='url']"),
-                isValid = true;
-
-            $(".form-group").removeClass("has-error");
-            for(var i=0; i< curInputs.length; i++){
-                if (!curInputs[i].validity.valid){
-                    isValid = false;
-                    $(curInputs[i]).closest(".form-group").addClass("has-error");
-                }
+            if(isValid) {
+                $('.nav-tabs > li:nth-of-type(2) > a').removeClass('disabled').click();
             }
-
-            if (isValid)
-                nextStepWizard.removeAttr('disabled').trigger('click');
         });
+        $('#step-2-next').click(function() {
+            // Check values here
+            var isValid = true;
 
-        $('div.setup-panel div a.btn-indigo').trigger('click');
+            if(isValid) {
+                $('.nav-tabs > li:nth-of-type(3) > a').removeClass('disabled').click();
+            }
+        });
+        $('#step-3-next').click(function() {
+            // Check values here
+            var isValid = true;
+
+            if(isValid) {
+                $('.nav-tabs > li:nth-of-type(4) > a').removeClass('disabled').click();
+            }
+        });
       });
   </script>
   <script>
     $( function() {
     $( "#datepicker" ).datepicker();
     } );
-  </script>
-  <script type="text/javascript">
-    new WOW().init();
   </script>
 </body>
 

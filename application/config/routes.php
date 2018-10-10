@@ -132,6 +132,7 @@ $route['admin/facility/store'] = "admin/facility/store";
 $route['admin/facility/destroy'] = 'admin/facility/destroy';
 $route['admin/facility/(:num)/edit'] = "admin/facility/edit/$1";
 $route['admin/facility/(:num)/update'] = "admin/facility/update/$1";
+$route['admin/facility/upload-images'] = "admin/facility/uploadImages";
 
 $route['admin/faq'] = 'admin/faq';
 $route['admin/faq/create'] = "admin/faq/create";
@@ -146,3 +147,21 @@ $route['admin/gallery/store'] = "admin/gallery/store";
 $route['admin/gallery/destroy'] = 'admin/gallery/destroy';
 $route['admin/gallery/(:num)/edit'] = "admin/gallery/edit/$1";
 $route['admin/gallery/(:num)/update'] = "admin/gallery/update/$1";
+
+$route['admin/logo'] = 'admin/logo';
+$route['admin/logo/(:num)/edit'] = "admin/logo/edit/$1";
+$route['admin/logo/(:num)/update'] = "admin/logo/update/$1";
+
+$route['admin/flyer'] = 'admin/flyer';
+$route['admin/flyer/create'] = "admin/flyer/create";
+$route['admin/flyer/store'] = "admin/flyer/store";
+$route['admin/flyer/destroy'] = 'admin/flyer/destroy';
+$route['admin/flyer/(:num)/edit'] = "admin/flyer/edit/$1";
+$route['admin/flyer/(:num)/update'] = "admin/flyer/update/$1";
+
+$route['admin/info'] = 'admin/info';
+$route['admin/info/(:num)/edit'] = "admin/info/edit/$1";
+$route['admin/info/(:num)/update'] = "admin/info/update/$1";
+
+$route['admin/testimoni'] = 'admin/testimoni';
+$route['admin/testimoni/changeState'] = "admin/testimoni/changeState";

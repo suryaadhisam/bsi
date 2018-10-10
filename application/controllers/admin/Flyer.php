@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Facility extends CI_Controller {
+class Flyer extends CI_Controller {
 
 	function __construct() {
 		parent::__construct();
@@ -10,14 +10,12 @@ class Facility extends CI_Controller {
 			redirect(base_url("admin/auth"));
 		}
 		$this->load->library('form_validation');
-		$this->load->model('m_facility');
-        $this->load->model('m_photo_facility');
-
-    }
+		$this->load->model('m_flyer');
+	}
 
 	public function index() {
         $data = array();
-        $data['title'] = "Facility || Sunset Bali Adventure";
+        $data['title'] = "Flyer || Sunset Bali Adventure";
 
         $data['style'] = $this->load->view('admin/template/v_style', '', TRUE);
         $data['script'] = $this->load->view('admin/template/v_script', '', TRUE);
@@ -26,14 +24,14 @@ class Facility extends CI_Controller {
         $data['menu_admin_left'] = $this->load->view('admin/template/v_menu_admin_left', '', TRUE);
         $data['menu_admin_top'] = $this->load->view('admin/template/v_menu_admin_top', '', TRUE);
 
-        $data["facilities"] = $this->m_facility->getAllFacility();
+        $data["flyer"] = $this->m_flyer->getAllFlyer();
 
-        $this->load->view('admin/facility/v_index', $data);
+        $this->load->view('admin/flyer/v_index', $data);
 	}
 
 	public function create() {
         $data = array();
-        $data['title'] = "Create Facility || Sunset Bali Adventure";
+        $data['title'] = "Create Flyer || Sunset Bali Adventure";
 
         $data['style'] = $this->load->view('admin/template/v_style', '', TRUE);
         $data['script'] = $this->load->view('admin/template/v_script', '', TRUE);
@@ -42,67 +40,50 @@ class Facility extends CI_Controller {
         $data['menu_admin_left'] = $this->load->view('admin/template/v_menu_admin_left', '', TRUE);
         $data['menu_admin_top'] = $this->load->view('admin/template/v_menu_admin_top', '', TRUE);
 
-        $this->load->view('admin/facility/v_create', $data);
+        $this->load->view('admin/flyer/v_create', $data);
     }
 
     public function store() {
         try {
-            $data = array(
-                'title' => $this->input->post('title'),
-                'caption' => $this->input->post('caption'),
-                'state' => 1
-            );
-            $resultStore = $this->m_facility->store($data);
+            //pathDestination
+            $pathDestination = "uploads/flyer/";
 
-            $result = array(
-                "status" => true,
-                "data" => $resultStore,
-                "message" => "Successfully add facility",
-                "errors" => array()
-            );
-
-            echo json_encode($result);
-        }
-        catch(Excepion $err) {
-            $result = array(
-                "status" => false,
-                "data" => array(),
-                "message" => "Failed add facility",
-                "errors" => array()
-            );
-            echo json_encode($result);
-        }
-    }
-
-    public function uploadImages() {
-        //pathDestination
-        $pathDestination = "uploads/facilities/";
-
-        $facilityId = $this->input->post('facility_id');
-
-        //var_dump($_FILES);
-        $data = array();
-        foreach ($_FILES as $key => $value) {
-            array_push($data, $key);
-            $resultTmp = $this->do_upload($key, $pathDestination, "facility-" . $facilityId . "-img");
-
-            if ($resultTmp["status"]) {
-                @unlink($_FILES[$this->input->post($key)]);
-
-                $data = array(
-                    'id_facility' => $facilityId,
-                    'url' => $pathDestination . $resultTmp["data"]["upload_data"]["file_name"],
-                    'state' => 1
+            //upload img
+            $resultTmp = $this->do_upload("fileImg", $pathDestination, "flyer-img");
+            if (!$resultTmp["status"]) {
+                $result = array(
+                    "status" => false,
+                    "data" => array(),
+                    "message" => "Incorrect input",
+                    "errors" => $resultTmp["errors"]
                 );
-                $this->m_photo_facility->store($data);
             }
+            else {
+                @unlink($_FILES[$this->input->post('fileImg')]);
+
+                //add
+                try {
+                    $this->db->trans_start();
+                    $data = array(
+                        'detail' => $this->input->post('detail'),
+                        'path_img' => $pathDestination.$resultTmp["data"]["upload_data"]["file_name"],
+                        'state' => 1
+                    );
+                    $this->m_flyer->store($data);
+                    $this->db->trans_complete();
+
+                    $this->session->set_flashdata('status', 'Success create flyer');
+                } catch(Excepion $err) {
+                    $this->db->trans_complete();
+                    $this->session->set_flashdata('status', 'Failed create flyer');
+                }
+            }
+
+            redirect(base_url('admin/flyer'));
+        } catch(Excepion $err) {
+            $this->session->set_flashdata('status', $err->getMessage());
+            redirect(base_url('admin/flyer'));
         }
-        echo json_encode(array(
-            'status' => true,
-            'data' => array(),
-            'message' => 'Successfully create facility',
-            'errors' => array()
-        ));
     }
 
     public function do_upload($formFileName, $pathImg, $fileNameImg) {
@@ -113,7 +94,7 @@ class Facility extends CI_Controller {
 
         $this->load->library('upload', $config);
 
-        if ( !$this->upload->do_upload($formFileName)) {
+        if (!$this->upload->do_upload($formFileName)) {
             $error = array($formFileName => $this->upload->display_errors());
             $result = array(
                 "status" => false,
@@ -136,21 +117,21 @@ class Facility extends CI_Controller {
 
     public function destroy() {
         try {
-            $this->m_facility->destroy($this->input->post('id_facility'));
+            $this->m_flyer->destroy($this->input->post('id_popup'));
 
             $result = array(
                 "status" => true,
                 "data" => array(),
-                "message" => "Successfully delete socmed",
+                "message" => "Successfully delete flyer",
                 "errors" => array()
             );
         } catch(Excepion $err) {
             $result = array(
                 "status" => false,
                 "data" => array(),
-                "message" => "Failed delete about",
+                "message" => "Failed delete flyer",
                 "errors" => array(
-                    "delete about"=>"Failed delete about"
+                    "delete_flyer"=>"Failed delete flyer"
                 )
             );
         }
@@ -159,7 +140,7 @@ class Facility extends CI_Controller {
 
     public function edit($id) {
         $data = array();
-        $data['title'] = "Edit Facility || Sunset Bali Adventure";
+        $data['title'] = "Edit Flyer || Sunset Bali Adventure";
 
         $data['style'] = $this->load->view('admin/template/v_style', '', TRUE);
         $data['script'] = $this->load->view('admin/template/v_script', '', TRUE);
@@ -168,24 +149,45 @@ class Facility extends CI_Controller {
         $data['menu_admin_left'] = $this->load->view('admin/template/v_menu_admin_left', '', TRUE);
         $data['menu_admin_top'] = $this->load->view('admin/template/v_menu_admin_top', '', TRUE);
 
-        $data['facility'] = $this->m_facility->getFacility($id);
-        $this->load->view('admin/facility/v_edit', $data);
+        $data['flyer'] = $this->m_flyer->getFlyer($id);
+        $this->load->view('admin/flyer/v_edit', $data);
     }
 
     public function update($id) {
-        try {
-            $data = array(
-                'title' => $this->input->post('title'),
-                'caption' => $this->input->post('caption'),
-                'state' => $this->input->post('state')
-            );
+        //pathDestination
+        $pathDestination = "uploads/flyer/";
 
-            $this->m_facility->update($id, $data);
-            $this->session->set_flashdata('status', 'Success update facility');
-            redirect(base_url('admin/facility'));
+        //upload img
+        $resultTmp = $this->do_upload("fileImgUpdate", $pathDestination, "flyer-img");
+        @unlink($_FILES[$this->input->post('fileImgUpdate')]);
+
+        //add
+        try {
+            $this->db->trans_start();
+            if(!$resultTmp["status"]) {
+                $data = array(
+                    'detail' => $this->input->post('detail'),
+                    'state' => 1
+                );
+            }
+            else {
+                $data = array(
+                    'detail' => $this->input->post('detail'),
+                    'path_img' => $pathDestination.$resultTmp["data"]["upload_data"]["file_name"],
+                    'state' => 1
+                );
+            }
+
+            $this->m_flyer->update($id, $data);
+            $this->db->trans_complete();
+
+            $this->session->set_flashdata('status', 'Success update flyer');
+            redirect(base_url('admin/flyer'));
+
         } catch(Excepion $err) {
+            $this->db->trans_complete();
             $this->session->set_flashdata('status', $err->getMessage());
-            redirect(base_url('admin/facility'));
+            redirect(base_url('admin/flyer'));
         }
     }
 	

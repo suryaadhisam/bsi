@@ -56,45 +56,10 @@
                                 <div class="card text-white bg-blue">
                                     <div class="card-body">
                                         <div class="h1 text-muted text-right mb-4">
-                                            <i class="fa fa-bullhorn"></i>
+                                            <i class="fa fa-weixin"></i>
                                         </div>
-                                        <div class="text-value" style="font-size: 20pt">100</div>
-                                        <small class="text-muted text-uppercase font-weight-bold">Total Event</small>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="card text-white bg-green">
-                                    <div class="card-body">
-                                        <div class="h1 text-muted text-right mb-4">
-                                            <i class="fa fa-newspaper-o"></i>
-                                        </div>
-                                        <div class="text-value" style="font-size: 20pt">23</div>
-                                        <small class="text-muted text-uppercase font-weight-bold">Total News</small>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-sm-3">
-                                <div class="card text-white bg-orange">
-                                    <div class="card-body">
-                                        <div class="h1 text-muted text-right mb-4">
-                                            <i class="fa fa-user"></i>
-                                        </div>
-                                        <div class="text-value" style="font-size: 20pt">11</div>
-                                        <small class="text-muted text-uppercase font-weight-bold">Total Users</small>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-sm-3">
-                                <div class="card text-white bg-cyan">
-                                    <div class="card-body">
-                                        <div class="h1 text-muted text-right mb-4">
-                                            <i class="fa fa-book"></i>
-                                        </div>
-                                        <div class="text-value" style="font-size: 20pt">121</div>
-                                        <small class="text-muted text-uppercase font-weight-bold">Total Library</small>
+                                        <div class="text-value" style="font-size: 20pt"><?php echo $pending_testimoni_count; ?></div>
+                                        <small class="text-muted text-uppercase font-weight-bold">Pending testimoni</small>
                                     </div>
                                 </div>
                             </div>

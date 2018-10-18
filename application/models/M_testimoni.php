@@ -18,6 +18,11 @@ class M_testimoni extends CI_Model {
         return $query->result();
     }
 
+    function getCountTestimoniPending() {
+        $query = $this->db->query('SELECT * FROM ' . $this->namaTabel . ' WHERE state=0');
+        return count($query->result());
+    }
+
     function changeState($id, $state) {
         $data = array(
             'state' => $state

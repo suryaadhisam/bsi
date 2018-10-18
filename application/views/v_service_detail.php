@@ -162,7 +162,7 @@
         <?php echo $key->keterangan; ?>
       </p>
     <?php endforeach; ?>
-    <button type="button" class="btn btn-primary btn-lg" style="margin: 0 0 0 940px">Booking Now</button>
+<!--    <button type="button" class="btn btn-primary btn-lg" style="margin: 0 0 0 940px">Booking Now</button>-->
     <script type="text/javascript">jssor_1_slider_init();</script>
     <a href="javascript:" id="return-to-top"><i class="fa fa-angle-up"></i></a>
   </div>

@@ -68,7 +68,7 @@
                                     </div>
                                 </div>
                                 <div class="col-xl-3 col-lg-12 col-md-6 col-sm-3 col-12">
-                                    <button type="submit" name="singlebutton" class="btn btn-primary btn-lg">Booking Now</button>
+                                    <button type="submit" name="singlebutton" class="btn btn-primary btn-lg" disabled>Booking Now (soon)</button>
                                 </div>
                             </div>
                         </form>

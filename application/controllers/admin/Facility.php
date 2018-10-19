@@ -12,7 +12,6 @@ class Facility extends CI_Controller {
 		$this->load->library('form_validation');
 		$this->load->model('m_facility');
         $this->load->model('m_photo_facility');
-
     }
 
 	public function index() {
@@ -79,8 +78,17 @@ class Facility extends CI_Controller {
         $pathDestination = "uploads/facilities/";
 
         $facilityId = $this->input->post('facility_id');
+        $mediasDeletes = explode(',', $this->input->post('medias-deletes'));
+        $mediasCount = $this->input->post('medias-count');
 
-        //var_dump($_FILES);
+        //Hapus images
+        if(count($mediasDeletes) >= 1 && $mediasDeletes[0] != "") {
+            foreach ($mediasDeletes as $index => $row) {
+                $this->m_photo_facility->destroyPhotoFacility($row);
+            }
+        }
+
+//        var_dump($_FILES);
         $data = array();
         foreach ($_FILES as $key => $value) {
             array_push($data, $key);
@@ -100,7 +108,7 @@ class Facility extends CI_Controller {
         echo json_encode(array(
             'status' => true,
             'data' => array(),
-            'message' => 'Successfully create facility',
+            'message' => 'Success',
             'errors' => array()
         ));
     }
@@ -169,6 +177,8 @@ class Facility extends CI_Controller {
         $data['menu_admin_top'] = $this->load->view('admin/template/v_menu_admin_top', '', TRUE);
 
         $data['facility'] = $this->m_facility->getFacility($id);
+        $data['facility_images'] = $this->m_facility->getFacilityImages($id);
+
         $this->load->view('admin/facility/v_edit', $data);
     }
 
@@ -181,11 +191,23 @@ class Facility extends CI_Controller {
             );
 
             $this->m_facility->update($id, $data);
-            $this->session->set_flashdata('status', 'Success update facility');
-            redirect(base_url('admin/facility'));
-        } catch(Excepion $err) {
-            $this->session->set_flashdata('status', $err->getMessage());
-            redirect(base_url('admin/facility'));
+
+            $result = array(
+                "status" => true,
+                "data" => $id,
+                "message" => "Success update facility",
+                "errors" => array()
+            );
+            echo json_encode($result);
+        }
+        catch(Excepion $err) {
+            $result = array(
+                "status" => false,
+                "data" => array(),
+                "message" => "Failed add facility",
+                "errors" => array()
+            );
+            echo json_encode($result);
         }
     }
 	

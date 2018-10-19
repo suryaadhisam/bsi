@@ -15,4 +15,9 @@ class M_photo_facility extends CI_Model {
         $this->db->where('id_facility', $id);
         return $this->db->delete($this->namaTabel);
     }
+
+    function destroyPhotoFacility($id) {
+        $this->db->where('id', $id);
+        return $this->db->delete($this->namaTabel);
+    }
 }

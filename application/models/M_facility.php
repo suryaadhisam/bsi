@@ -26,6 +26,10 @@ class M_facility extends CI_Model {
         return $this->db->where('id_facility', $id)->get($this->namaTabel)->row();
     }
 
+    function getFacilityImages($id) {
+        return $this->db->where('id_facility', $id)->get('tb_photo_facility')->result();
+    }
+
     function update($id, $data) {
         $this->db->where('id_facility', $id);
         return $this->db->update($this->namaTabel, $data);

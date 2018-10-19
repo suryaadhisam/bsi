@@ -250,26 +250,32 @@
                             </div>
                         </div>
                       <div class="actions">
-                        <button id="step-1-next"  type="submit" class="btn btn-lg btn-primary nextBtn pull-right">Next</button>
+                        <button id="step-1-next" disabled = "true" type="button" class="btn btn-lg btn-primary nextBtn pull-right">Next</button>
                       </div>
                     </form>
                   </div>
             </div>
 
             <script type="text/javascript">
-            // $("#datepicker").datepicker({
-            // onSelect: function() {
-            //     var dateObject = $(this).datepicker('getDate');
-            //     if (dateObject.length != 0) {
-            //       $('button[type=submit]').prop('disabled', false);
-            //     }
-            //   }
-            // });
+              $("#datepicker").datepicker({
+              onSelect: function() {
+                  var dateObject = $(this).datepicker({ dateFormat: 'yy-mm-dd' }).val();
+                  var dateTime = new Date($(this).datepicker("getDate"));
+
+                  var strDateTime =  dateTime.getFullYear() + "-" + (dateTime.getMonth()+1) + "-" + dateTime.getDate();
+                  // var date = $("#scheduleDate").datepicker({ dateFormat: 'dd,MM,yyyy' }).val();
+                  console.log(strDateTime);
+                  document.getElementById('date_boking').innerHTML = dateObject;
+                  if (dateObject.length != 0) {
+                    $('button[type=button]').prop('disabled', false);
+                  }
+                }
+              });
             </script>
 
             <div role="tabpanel" class="tab-pane" id="step-2">
                 <div class="col-md-12">
-                    <h3 id=""></h3>
+                    <h3 id="date_boking"></h3>
                     <button id="step-2-next" class="btn btn-lg btn-primary nextBtn pull-right">Next</button>
                 </div>
             </div>

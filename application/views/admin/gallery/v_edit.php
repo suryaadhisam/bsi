@@ -8,7 +8,7 @@
     <title><?php echo $title; ?></title>
     <?php echo $style; ?>
     <!-- include summernote css/js -->
-    <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.css" rel="stylesheet">
 </head>
 
 <body class="app header-fixed sidebar-fixed aside-menu-fixed aside-menu-hidden">
@@ -112,7 +112,7 @@
 </footer>
     <?php echo $script; ?>
     <!-- include summernote css/js -->
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.js"></script>
 <script>
     const summary = $('#summary');
     const buttonUpdateGallery = $('#buttonUpdateGallery');

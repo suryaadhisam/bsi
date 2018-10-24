@@ -25,4 +25,3 @@
 <li class="nav-item">
     <a href="<?php echo base_url(); ?>admin/logout" class="nav-link"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a>
 </li>
-

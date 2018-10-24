@@ -79,10 +79,11 @@
                                             </select>
                                         </div>
                                     </div>
+
                                     <div class="form-group">
                                         <label class="col-md-12 col-form-label">Answer</label>
                                         <div class="col-md-12">
-                                            <input value="<?php echo $faq->answer ?>" type="text" id="answer" name="answer" class="form-control" placeholder="To pay with...">
+                                            <textarea id="answer" name="answer" class="form-control" placeholder="To pay with..." rows="6"><?php echo $faq->answer ?></textarea>
                                         </div>
                                     </div>
 

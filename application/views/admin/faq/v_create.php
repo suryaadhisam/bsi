@@ -64,10 +64,11 @@
                                             <input type="text" id="question" name="question" class="form-control" placeholder="How to...">
                                         </div>
                                     </div>
+
                                     <div class="form-group">
                                         <label class="col-md-12 col-form-label">Answer</label>
                                         <div class="col-md-12">
-                                            <input type="text" id="answer" name="answer" class="form-control" placeholder="To pay with...">
+                                            <textarea id="answer" name="answer" class="form-control" placeholder="To pay with..." rows="6"></textarea>
                                         </div>
                                     </div>
 

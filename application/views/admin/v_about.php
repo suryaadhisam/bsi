@@ -113,7 +113,7 @@
 </footer>
     <?php echo $script; ?>
     <!-- include summernote css/js -->
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.js"></script>
 <script>
     const base_url = "<?php echo base_url(); ?>";
     const urlDeleteAbout = base_url + "/admin/about/destroy";

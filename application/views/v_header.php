@@ -1,3 +1,10 @@
+<style media="screen">
+.responsive {
+  width: 30%;
+  max-width: 400px;
+  height: auto;
+}
+</style>
 <div class="header-wrapper">
             <div class="top-header">
                 <div class="container">
@@ -57,7 +64,7 @@
                     <div class="row">
                         <div class="col-xl-3 col-lg-2 col-md-3 col-sm-3 col-12">
                           <?php foreach ($logo as $row): ?>
-                            <div class="logo"> <a href="<?php echo site_url('Welcome') ?>"><img src="<?php echo base_url($row->path); ?>" alt=""> </a> </div>
+                            <div class="logo"> <a href="<?php echo site_url('Welcome') ?>"><img class="responsive" src="<?php echo base_url($row->path); ?>" alt=""> </a> </div>
                           <?php endforeach; ?>
                         </div>
                         <div class="col-xl-9 col-lg-10 col-md-9 col-sm-12 col-12">

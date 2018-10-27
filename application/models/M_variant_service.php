@@ -21,5 +21,10 @@ class M_variant_service extends CI_Model {
         return $this->db->insert_id();
     }
 
+    function destroy($id) {
+        $this->db->where('id', $id);
+        return $this->db->delete($this->namaTabel);
+    }
+
 
 }

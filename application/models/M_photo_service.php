@@ -11,7 +11,7 @@ class M_photo_service extends CI_Model {
         return $this->db->insert_id();
     }
 
-    function destroy($id) {
+    function destroyVariantService($id) {
         $this->db->where('id_varian_service', $id);
         return $this->db->delete($this->namaTabel);
     }

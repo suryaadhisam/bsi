@@ -123,6 +123,29 @@ class Services extends CI_Controller {
         ));
     }
 
+    public function destroy() {
+        try {
+            $this->m_photo_service->destroyVariantService($this->input->post('id'));
+            $this->m_variant_service->destroy($this->input->post('id'));
+
+            $result = array(
+                "status" => true,
+                "data" => array(),
+                "message" => "Successfully delete variant service",
+                "errors" => array()
+            );
+        } catch(Excepion $err) {
+            $result = array(
+                "status" => false,
+                "data" => array(),
+                "message" => "Failed delete variant servoce",
+                "errors" => array(
+                    "delete about"=>"Failed delete variant service"
+                )
+            );
+        }
+        echo json_encode($result);
+    }
 
 
 

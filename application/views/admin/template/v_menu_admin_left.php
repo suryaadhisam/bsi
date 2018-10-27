@@ -3,6 +3,7 @@
     <a href="<?php echo base_url() ?>admin/testimoni" class="nav-link"><i class="fa fa-weixin" aria-hidden="true"></i>Pending Testimoni</a>
     <a href="<?php echo base_url() ?>admin/about" class="nav-link"><i class="fa fa-info" aria-hidden="true"></i>About</a>
     <a href="<?php echo base_url() ?>admin/facility" class="nav-link"><i class="fa fa-bath" aria-hidden="true"></i> Facility</a>
+    <a href="<?php echo base_url() ?>admin/variant-services" class="nav-link"><i class="fa fa-cubes" aria-hidden="true"></i> Services</a>
 
 </li>
 <li class="nav-item nav-dropdown">

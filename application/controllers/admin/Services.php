@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Service extends CI_Controller {
+class Services extends CI_Controller {
 
 	function __construct(){
 		parent::__construct();
@@ -10,110 +10,144 @@ class Service extends CI_Controller {
 			redirect(base_url("admin/auth"));
 		}
 		$this->load->library('form_validation');
+		$this->load->model('m_variant_service');
 		$this->load->model('m_service');
+		$this->load->model('m_photo_service');
 
 	}
 
 	public function index(){
-		
+        $data = array();
+        $data['title'] = "Variant Services || Sunset Bali Adventure";
+
+        $data['style'] = $this->load->view('admin/template/v_style', '', TRUE);
+        $data['script'] = $this->load->view('admin/template/v_script', '', TRUE);
+
+        $data['footer'] = $this->load->view('admin/template/v_footer', '', TRUE);
+        $data['menu_admin_left'] = $this->load->view('admin/template/v_menu_admin_left', '', TRUE);
+        $data['menu_admin_top'] = $this->load->view('admin/template/v_menu_admin_top', '', TRUE);
+
+        $data["variant_services"] = $this->m_variant_service->getAllVariantServices();
+
+        $this->load->view('admin/variant_services/v_index', $data);
 	}
 
-	public function getServices() {
-		$data = array();
-		$data['title'] = "Services || Sunset Bali Adventure";
+    public function create() {
+        $data = array();
+        $data['title'] = "Create Variant Services || Sunset Bali Adventure";
 
-		$data['style'] = $this->load->view('admin/template/v_style', '', TRUE);
-		$data['script'] = $this->load->view('admin/template/v_script', '', TRUE);
-		
-		$data['footer'] = $this->load->view('admin/template/v_footer', '', TRUE);
-		$data['menu_admin_left'] = $this->load->view('admin/template/v_menu_admin_left', '', TRUE);
-		$data['menu_admin_top'] = $this->load->view('admin/template/v_menu_admin_top', '', TRUE);
+        $data['style'] = $this->load->view('admin/template/v_style', '', TRUE);
+        $data['script'] = $this->load->view('admin/template/v_script', '', TRUE);
 
-		$this->load->model("m_service");
+        $data['footer'] = $this->load->view('admin/template/v_footer', '', TRUE);
+        $data['menu_admin_left'] = $this->load->view('admin/template/v_menu_admin_left', '', TRUE);
+        $data['menu_admin_top'] = $this->load->view('admin/template/v_menu_admin_top', '', TRUE);
 
-		$where = array(
-			'state' => 1
-		);
-	 
-		$this->load->library('pagination');        
-        $limit_per_page = 4;
-        $page = ($this->uri->segment(3)) ? ($this->uri->segment(3) - 1) : 0;
-        $total_records = $this->m_service->getCount();
-     
-        if ($total_records > 0) {
-            // get current page records
-            $data["services"] = $this->m_service->getCurrentPageRecordServices($limit_per_page, $page*$limit_per_page);
-                 
-            $config['base_url'] = base_url() . 'admin/services';
-            $config['total_rows'] = $total_records;
-            $config['per_page'] = $limit_per_page;
-            $config["uri_segment"] = 3;
-             
-            // custom paging configuration
-            $config['num_links'] = 2;
-            $config['use_page_numbers'] = TRUE;
-            $config['reuse_query_string'] = TRUE;
-             
-            $config['full_tag_open'] = '<div class="pagination justify-content-center">';
-            $config['full_tag_close'] = '</div>';
-             
-            $config['first_link'] = 'First Page';
-            $config['first_tag_open'] = '<li class="page-item">';
-            $config['first_tag_close'] = '</li>';
-             
-            $config['last_link'] = 'Last Page';
-            $config['last_tag_open'] = '<li class="page-item">';
-            $config['last_tag_close'] = '</li>';
-             
-            $config['next_link'] = 'Next';
-            $config['next_tag_open'] = '<li class="page-item">';
-            $config['next_tag_close'] = '</li>';
- 
-            $config['prev_link'] = 'Prev';
-            $config['prev_tag_open'] = '<li class="page-item">';
-            $config['prev_tag_close'] = '</li>';
- 
-            $config['cur_tag_open'] = '<li class="page-item active"><a class="page-link">';
-            $config['cur_tag_close'] = '</a></li>';
- 
-            $config['num_tag_open'] = '<li class="page-item">';
-            $config['num_tag_close'] = '</li>';
-             
-            $this->pagination->initialize($config);
-                 
-            // build paging links
-            $data["links"] = $this->pagination->create_links();
-        } else {
-			$data["services"] = [];
-		}
-		
+        $data['services'] = $this->load->view('admin/template/v_menu_admin_top', '', TRUE);
+        $data['variant_type'] = $this->m_service->getAllServices();
 
-		$this->load->view('admin/v_services', $data);
-	}
+        $this->load->view('admin/variant_services/v_create', $data);
+    }
 
-	public function getService() {
+    public function store() {
+        try {
+            $data = array(
+                'service_id' => $this->input->post('service_id'),
+                'varian' => $this->input->post('varian'),
+                'harga_idr' => $this->input->post('harga_idr'),
+                'harga_usd' => $this->input->post('harga_usd'),
+                'keterangan' => $this->input->post('keterangan'),
+                'min_person' => $this->input->post('min_person'),
+                'photo' => '',
+                'state' => 1,
+            );
+            $resultStore = $this->m_variant_service->store($data);
+
+            $result = array(
+                "status" => true,
+                "data" => $resultStore,
+                "message" => "Successfully add variant service",
+                "errors" => array()
+            );
+
+            echo json_encode($result);
+        }
+        catch(Excepion $err) {
+            $result = array(
+                "status" => false,
+                "data" => array(),
+                "message" => "Failed add variant service",
+                "errors" => array()
+            );
+            echo json_encode($result);
+        }
+    }
+
+    public function uploadImages() {
+        //pathDestination
+        $pathDestination = "uploads/services/";
+
+        $variantServiceId = $this->input->post('id_varian_service');
+        $mediasDeletes = explode(',', $this->input->post('medias-deletes'));
+        $mediasCount = $this->input->post('medias-count');
+
+        //Hapus images
+        if(count($mediasDeletes) >= 1 && $mediasDeletes[0] != "") {
+            foreach ($mediasDeletes as $index => $row) {
+                $this->m_photo_service->destroyPhotoService($row);
+            }
+        }
+
+//        var_dump($_FILES);
+        $data = array();
+        foreach ($_FILES as $key => $value) {
+            array_push($data, $key);
+            $resultTmp = $this->do_upload($key, $pathDestination, "variant-service-" . $variantServiceId . "-img");
+
+            if ($resultTmp["status"]) {
+                @unlink($_FILES[$this->input->post($key)]);
+
+                $data = array(
+                    'id_varian_service' => $variantServiceId,
+                    'url' => $pathDestination . $resultTmp["data"]["upload_data"]["file_name"],
+                    'state' => 1
+                );
+                $this->m_photo_service->store($data);
+            }
+        }
+        echo json_encode(array(
+            'status' => true,
+            'data' => array(),
+            'message' => 'Success',
+            'errors' => array()
+        ));
+    }
+
+
+
+
+    public function getService() {
 		try {
 			$where = array(
 				'id_services' => $this->input->post('idServices')
 			);
 
-			$result = [
-				"status" => true,
-				"data" => $this->m_service->getService($where)[0],
-				"message" => "Successfully get service",
-				"errors" => []
-			];
+			$result = array(
+                "status" => true,
+                "data" => $this->m_service->getService($where)[0],
+                "message" => "Successfully get service",
+                "errors" => array()
+            );
 		} catch(Excepion $err) {
-			$result = [
-				"status" => false,
-				"data" => [],
-				"message" => "Failed get service",
-				"errors" => array(
-					"get service"=>"Failed get service"
-				)
-			];
+			$result = array(
+			    "status" => false,
+                "data" => array(),
+                "message" => "Failed get service",
+                "errors" => array(
+                    "get service"=>"Failed get service"
+                )
+            );
 		}
-
 		echo json_encode($result);
 	}
 
@@ -129,23 +163,23 @@ class Service extends CI_Controller {
 		$this->form_validation->set_rules('brgPersonal','Brg personal','required|max_length[255]');
 
 		if ($this->form_validation->run() == FALSE) {
-			$result = [
+			$result = array(
 				"status" => false,
-				"data" => [],
+				"data" => array(),
 				"message" => "Incorrect input",
 				"errors" => $this->form_validation->error_array()
-			];
+            );
 		}
 		else {
 			//upload img
 			$resultTmp = $this->do_upload("fileImgService", $pathDestination, "service-img");
 			if (!$resultTmp["status"]){
-				$result = [
+				$result = array(
 					"status" => false,
-					"data" => [],
+					"data" => array(),
 					"message" => "Incorrect input",
 					"errors" => $resultTmp["errors"]
-				];
+                );
 			} else {
 				@unlink($_FILES[$this->input->post('fileImgService')]);
 			
@@ -163,22 +197,22 @@ class Service extends CI_Controller {
 					$this->m_service->addService($data);
 					$this->db->trans_complete();
 
-					$result = [
+					$result = array(
 						"status" => true,
-						"data" => [],
+						"data" => array(),
 						"message" => "Successfully add services",
-						"errors" => []
-					];
+						"errors" => array()
+                    );
 				} catch(Excepion $err) {
 					$this->db->trans_complete();
-					$result = [
+					$result = array(
 						"status" => false,
-						"data" => [],
+						"data" => array(),
 						"message" => "Failed add services",
 						"errors" => array(
 							"add service"=>"Failed add services"
 						)
-					];
+                    );
 				}
 			}
 		}
@@ -192,22 +226,22 @@ class Service extends CI_Controller {
 			$this->m_service->softDeleteService($this->input->post('id_services'));
 			$this->db->trans_complete();
 
-			$result = [
+			$result = array(
 				"status" => true,
-				"data" => [],
+				"data" => array(),
 				"message" => "Successfully delete service",
-				"errors" => []
-			];
+				"errors" => array()
+            );
 		} catch(Excepion $err) {
 			$this->db->trans_complete();
-			$result = [
+			$result = array(
 				"status" => false,
-				"data" => [],
+				"data" => array(),
 				"message" => "Failed delete service",
 				"errors" => array(
 					"delete service"=>"Failed delete service"
 				)
-			];
+            );
 		}
 		echo json_encode($result);
 	}
@@ -224,35 +258,35 @@ class Service extends CI_Controller {
 		$this->form_validation->set_rules('brgPersonalUpdate','Brg personal','required|max_length[255]');
 
 		if ($this->form_validation->run() == FALSE) {
-			$result = [
+			$result = array(
 				"status" => false,
-				"data" => [],
+				"data" => array(),
 				"message" => "Incorrect input",
 				"errors" => $this->form_validation->error_array()
-			];
+            );
 		} 
 		else {
 			if($this->input->post('isChangeImg')) {
 				//upload img
 				$resultTmp = $this->do_upload("fileImgServiceUpdate", $pathDestination, "service-img");
 				if (!$resultTmp["status"]){
-					$result = [
+					$result = array(
 						"status" => false,
-						"data" => [],
+						"data" => array(),
 						"message" => "Incorrect input",
 						"errors" => $resultTmp["errors"]
-					];
+                    );
 				}
 				else {
 					$data = $this->upload->data();
-					$result = [
+					$result = array(
 						"status" => true,
 						"data" => array(
 							"full_path" => $pathDestination."".$data["file_name"]
 						),
 						"message" => "Successfully update services",
-						"errors" => []
-					];		
+						"errors" => array()
+                    );
 				}
 			}
 			@unlink($_FILES[$this->input->post('fileImgServiceUpdate')]);
@@ -282,22 +316,22 @@ class Service extends CI_Controller {
 				$this->m_service->updateService($data);
 				$this->db->trans_complete();
 
-				$result = [
+				$result = array(
 					"status" => true,
-					"data" => [],
+					"data" => array(),
 					"message" => "Successfully update service",
-					"errors" => []
-				];
+					"errors" => array()
+                );
 			} catch(Excepion $err) {
 				$this->db->trans_complete();
-				$result = [
+				$result = array(
 					"status" => false,
-					"data" => [],
+					"data" => array(),
 					"message" => "Failed update service",
 					"errors" => array(
 						"update service"=>"Failed update service"
 					)
-				];
+                );
 			}
 		}
 
@@ -314,21 +348,21 @@ class Service extends CI_Controller {
 
 			if ( !$this->upload->do_upload($formFileName)) {
 				$error = array($formFileName => $this->upload->display_errors());
-				$result = [
+				$result = array(
 					"status" => false,
-					"data" => [],
+					"data" => array(),
 					"message" => "Failed upload img",
 					"errors" => $error
-				];
+                );
 			}
 			else {
 				$data = array('upload_data' => $this->upload->data());
-				$result = [
+				$result = array(
 					"status" => true,
 					"data" => $data,
 					"message" => "Successfully upload img",
-					"errors" => []
-				];
+					"errors" => array()
+                );
 			}
 			return $result;
 	}

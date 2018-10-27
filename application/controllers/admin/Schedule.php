@@ -129,7 +129,7 @@ class Schedule extends CI_Controller {
 	public function addSchedule() {
 		//validasi
 		$this->form_validation->set_error_delimiters('', '');
-		$this->form_validation->set_rules('serviceId','Service', 'required');
+		$this->form_validation->set_rules('serviceId', 'Services', 'required');
 		$this->form_validation->set_rules('timeStart','Time start','required');
 		$this->form_validation->set_rules('timeEnd','Time end','required');
 
@@ -205,7 +205,7 @@ class Schedule extends CI_Controller {
 	public function updateSchedule() {
 		//validasi
 		$this->form_validation->set_error_delimiters('', '');
-		$this->form_validation->set_rules('serviceIdUpdate','Service', 'required');
+		$this->form_validation->set_rules('serviceIdUpdate', 'Services', 'required');
 		$this->form_validation->set_rules('timeStartUpdate','Time start','required');
 		$this->form_validation->set_rules('timeEndUpdate','Time end','required');
 

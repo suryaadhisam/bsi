@@ -543,7 +543,7 @@ if ( ! function_exists('set_status_header'))
 				500	=> 'Internal Server Error',
 				501	=> 'Not Implemented',
 				502	=> 'Bad Gateway',
-				503	=> 'Service Unavailable',
+				503	=> 'Services Unavailable',
 				504	=> 'Gateway Timeout',
 				505	=> 'HTTP Version Not Supported',
 				511	=> 'Network Authentication Required',

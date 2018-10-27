@@ -8,13 +8,13 @@ class M_service extends CI_Model {
         parent::__construct();
     }
 
-  function allService(){
-    return $this->db->get('tb_varian_service')->result();
-  }
+    function allService(){
+        return $this->db->get('tb_varian_service')->result();
+    }
 
-  function getAllServices($where){
-		return $this->db->get_where($this->namaTabel, $where)->result();
-	}
+    function getAllServices($where = array()){
+        return $this->db->get_where($this->namaTabel, $where)->result();
+    }
 
 	function getCount() {
 		return $this->db->get_where($this->namaTabel, array('state' => 1))->num_rows();
@@ -55,13 +55,14 @@ class M_service extends CI_Model {
 		return $this->db->update($this->namaTabel, $data);
 	}
 
-  function detailService($id){
-    $query = $this->db->query("SELECT * FROM tb_varian_service WHERE id = '".$id."'");
-    return $query->result();
-  }
+    function detailService($id){
+        $query = $this->db->query("SELECT * FROM tb_varian_service WHERE id = '".$id."'");
+        return $query->result();
+    }
 
-  function photoService($id){
-    $query = $this->db->query("SELECT * FROM tb_photo_service WHERE id_varian_service = '".$id."' AND state=1");
-    return $query->result();
-  }
+    function photoService($id){
+        $query = $this->db->query("SELECT * FROM tb_photo_service WHERE id_varian_service = '".$id."' AND state=1");
+        return $query->result();
+    }
+
 }

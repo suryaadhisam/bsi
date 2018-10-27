@@ -64,9 +64,6 @@ $route['admin/booking/(:num)'] = 'admin/booking/getAllBooking/$1';
 $route['admin/package'] = 'admin/package/getPackages';
 $route['admin/package/(:num)'] = 'admin/package/getPackages/$1';
 
-$route['admin/services'] = 'admin/service/getServices';
-$route['admin/services/(:num)'] = 'admin/service/getServices/$1';
-
 $route['admin/carousel'] = 'admin/carousel/getCarousels';
 $route['admin/carousel/(:num)'] = 'admin/carousel/getCarousels/$1';
 
@@ -165,3 +162,15 @@ $route['admin/info/(:num)/update'] = "admin/info/update/$1";
 
 $route['admin/testimoni'] = 'admin/testimoni';
 $route['admin/testimoni/changeState'] = "admin/testimoni/changeState";
+
+
+//$route['admin/services'] = 'admin/service/getServices';
+//$route['admin/services/(:num)'] = 'admin/service/getServices/$1';
+
+$route['admin/variant-services'] = 'admin/services/index';
+$route['admin/variant-services/create'] = "admin/services/create";
+$route['admin/variant-services/store'] = "admin/services/store";
+$route['admin/variant-services/destroy'] = 'admin/services/destroy';
+$route['admin/variant-services/(:num)/edit'] = "admin/services/getServices/$1";
+$route['admin/variant-services/(:num)/update'] = "admin/services/update/$1";
+$route['admin/variant-services/upload-images'] = "admin/services/uploadImages";

@@ -12,6 +12,8 @@ class M_variant_service extends CI_Model {
         $this->db->select('tb_services.name_services, tb_varian_service.id, tb_varian_service.varian, tb_varian_service.harga_idr, tb_varian_service.harga_usd');
         $this->db->from($this->namaTabel);
         $this->db->join('tb_services', 'tb_services.id_services = tb_varian_service.service_id', 'left');
+        $this->db->order_by('tb_services.name_services', 'asc');
+        $this->db->order_by('tb_varian_service.varian', 'asc');
         $query = $this->db->get();
         return $query->result();
     }

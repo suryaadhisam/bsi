@@ -137,7 +137,7 @@ background-color: #152836
       <div class="demo-gallery">
             <ul id="lightgallery" class="list-unstyled row">
                 <?php foreach ($list_photo as $key => $value): ?>
-                  <?php $url = 'http://localhost/bsa/'.$value->url ?>
+                  <?php $url = base_url().$value->url ?>
                   <li class="col-xs-6 col-sm-4 col-md-2 col-lg-2" data-responsive="<?php echo $url; ?>" data-src="<?php echo $url; ?>" data-sub-html="<h4><?php echo $value->title ?></h4><p><?php echo $value->sumary ?>.</p>">
                       <a href="">
                           <img class="img-responsive" src="<?php echo $url; ?>">

@@ -170,7 +170,7 @@
     let orderImages = [];
 
     const base_url = "<?php echo base_url(); ?>";
-    const urlFacilityIndex = base_url + "/admin/variant-services";
+    const urlVariantServiceIndex = base_url + "/admin/variant-services";
     const urlStoreVariantService = base_url + "/admin/variant-services/store";
     const urlUploadImages = base_url + "/admin/variant-services/upload-images";
 
@@ -308,7 +308,7 @@
                     'success'
                 ).then((willDelete) => {
                     if (willDelete) {
-                        window.location.replace(urlFacilityIndex);
+                        window.location.replace(urlVariantServiceIndex);
                     }
                 });
 

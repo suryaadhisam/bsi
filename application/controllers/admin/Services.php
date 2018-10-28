@@ -147,6 +147,58 @@ class Services extends CI_Controller {
         echo json_encode($result);
     }
 
+    public function edit($id) {
+        $data = array();
+        $data['title'] = "Edit Variant Service || Sunset Bali Adventure";
+
+        $data['style'] = $this->load->view('admin/template/v_style', '', TRUE);
+        $data['script'] = $this->load->view('admin/template/v_script', '', TRUE);
+
+        $data['footer'] = $this->load->view('admin/template/v_footer', '', TRUE);
+        $data['menu_admin_left'] = $this->load->view('admin/template/v_menu_admin_left', '', TRUE);
+        $data['menu_admin_top'] = $this->load->view('admin/template/v_menu_admin_top', '', TRUE);
+
+        $data['variant_service'] = $this->m_variant_service->getVariantService($id);
+        $data['variant_service_images'] = $this->m_variant_service->getVariantServiceImages($id);
+        $data['variant_type'] = $this->m_service->getAllServices();
+
+        $this->load->view('admin/variant_services/v_edit', $data);
+    }
+
+    public function update($id) {
+        try {
+            $data = array(
+                'service_id' => $this->input->post('service_id'),
+                'varian' => $this->input->post('varian'),
+                'harga_idr' => $this->input->post('harga_idr'),
+                'harga_usd' => $this->input->post('harga_usd'),
+                'keterangan' => $this->input->post('keterangan'),
+                'min_person' => $this->input->post('min_person'),
+                'photo' => '',
+                'state' => 1,
+            );
+
+            $this->m_variant_service->update($id, $data);
+
+            $result = array(
+                "status" => true,
+                "data" => $id,
+                "message" => "Successfully update variant service",
+                "errors" => array()
+            );
+            echo json_encode($result);
+        }
+        catch(Excepion $err) {
+            $result = array(
+                "status" => false,
+                "data" => array(),
+                "message" => "Failed update variant service",
+                "errors" => array()
+            );
+            echo json_encode($result);
+        }
+    }
+
 
 
     public function getService() {

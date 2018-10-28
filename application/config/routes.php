@@ -171,6 +171,6 @@ $route['admin/variant-services'] = 'admin/services/index';
 $route['admin/variant-services/create'] = "admin/services/create";
 $route['admin/variant-services/store'] = "admin/services/store";
 $route['admin/variant-services/destroy'] = 'admin/services/destroy';
-$route['admin/variant-services/(:num)/edit'] = "admin/services/getServices/$1";
+$route['admin/variant-services/(:num)/edit'] = "admin/services/edit/$1";
 $route['admin/variant-services/(:num)/update'] = "admin/services/update/$1";
 $route['admin/variant-services/upload-images'] = "admin/services/uploadImages";

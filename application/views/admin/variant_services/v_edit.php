@@ -44,9 +44,9 @@
         <!-- Breadcrumb -->
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="<?php echo base_url('admin/dashboard'); ?>">Dashboard</a></li>
-            <li class="breadcrumb-item"><a href="<?php echo base_url('admin/facility'); ?>">Facility</a></li>
-            <li class="breadcrumb-item"><?php echo $facility->title ?></li>
-            <li class="breadcrumb-item active">Edit Facility</li>
+            <li class="breadcrumb-item"><a href="<?php echo base_url('admin/variant-services'); ?>">Variant Services</a></li>
+            <li class="breadcrumb-item"><?php echo $variant_service->varian ?></li>
+            <li class="breadcrumb-item active">Edit Variant Service</li>
         </ol>
 
         <div class="container-fluid">
@@ -55,23 +55,77 @@
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="card-header">
-                                Edit Facility
+                                Edit Variant Service
                             </div>
                             <div class="card-body">
-                                <form method="POST" action="<?php echo base_url('admin/facility/'. $facility->id_facility .'/update'); ?>" class="form-horizontal" id="formEditFacility" accept-charset="UTF-8" enctype="multipart/form-data">
-                                    <div class="form-group">
-                                        <label class="col-md-12 col-form-label">Title</label>
-                                        <div class="col-md-12">
-                                            <input value="<?php echo $facility->title ?>" type="text" id="title" name="title" class="form-control" placeholder="Free wifi...">
+                                <form method="POST" action="<?php echo base_url('admin/variant-services/'. $variant_service->id .'/update'); ?>" class="form-horizontal" id="formEditVariantService" accept-charset="UTF-8" enctype="multipart/form-data">
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="col-md-12 col-form-label">Variant Type</label>
+                                                <div class="col-md-12">
+                                                    <select class="form-control" id="service_id" name="service_id">
+                                                        <?php
+                                                        foreach($variant_type as $index => $variant) {
+                                                            if($variant->id_services == $variant_service->service_id) {
+                                                                echo '<option value="' . $variant->id_services . '" selected>' . $variant->name_services . '</option>';
+                                                            }
+                                                            else {
+                                                                echo '<option value="' . $variant->id_services . '">' . $variant->name_services . '</option>';
+                                                            }
+                                                        }
+                                                        ?>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="col-md-12 col-form-label">Variant Name</label>
+                                                <div class="col-md-12">
+                                                    <input type="text" id="varian" name="varian" class="form-control" placeholder="ATV Ride Single..." value="<?php echo $variant_service->varian; ?>">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="col-md-12 col-form-label">Min. Person</label>
+                                                <div class="col-md-12">
+                                                    <input type="number" min="0" id="min_person" name="min_person" class="form-control" value="<?php echo $variant_service->min_person; ?>">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="col-md-12 col-form-label">Price IDR</label>
+                                                <div class="col-md-12">
+                                                    <input type="number" min="0" id="harga_idr" name="harga_idr" class="form-control" value="<?php echo $variant_service->harga_idr; ?>">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="col-md-12 col-form-label">Price USD</label>
+                                                <div class="col-md-12">
+                                                    <input type="number" min="0" id="harga_usd" name="harga_usd" class="form-control" step="0.01" value="<?php echo $variant_service->harga_usd; ?>">
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        <input class="form-control display-none" id="facility_images" placeholder="e.g. Choose file ..." multiple="" accept="image/*" name="facility_images[]" type="file">
+                                        <input class="form-control display-none" id="variant_service_images" placeholder="e.g. Choose file ..." multiple="" accept="image/*" name="variant_service_images[]" type="file">
                                         <div class="col-sm-12 padding-right-15 padding-left-15 margin-bottom-1rem uploadImagesWraper">
                                             <label for="event_images">Images</label>
                                             <div class="display-flex">
-                                                <div class="uploadImageWraper border-thin-dashed-gray" onclick="facilityImages.trigger('click');">
+                                                <div class="uploadImageWraper border-thin-dashed-gray" onclick="variant_service_images.trigger('click');">
                                                     <a>
                                                         <span class="icon"><i class="fa fa-plus-circle fa-2x" aria-hidden="true"></i></span>
                                                     </a>
@@ -80,19 +134,18 @@
 
                                                 </ul>
                                             </div>
-
                                         </div>
                                     </div>
 
                                     <div class="form-group">
                                         <label class="col-md-12 col-form-label">Description</label>
                                         <div class="col-md-12">
-                                            <textarea id="caption" name="caption"><?php echo $facility->caption ?></textarea>
+                                            <textarea id="keterangan" name="keterangan"><?php echo $variant_service->keterangan; ?></textarea>
                                         </div>
                                     </div>
 
                                     <div class="col-md-12">
-                                        <button type="button" class="btn btn-primary float-right" id="buttonUpdateFacility">Update Facility</button>
+                                        <button type="button" class="btn btn-primary float-right" id="buttonUpdateVariantService">Update variant service</button>
                                     </div>
                                 </form>
 
@@ -113,26 +166,26 @@
     <!-- include summernote css/js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.js"></script>
 <script>
-    const caption = $('#caption');
-    const buttonUpdateFacility = $('#buttonUpdateFacility');
-    const formEditFacility = $('#formEditFacility');
+    const keterangan = $('#keterangan');
+    const buttonUpdateVariantService = $('#buttonUpdateVariantService');
+    const formEditVariantService = $('#formEditVariantService');
     let imagesDeleted = [];
-    const facilityImages = $('#facility_images');
+    const variant_service_images = $('#variant_service_images');
 
     let imagesFiles = [];
     const uploadImagesUl = $('#uploadImagesUl');
     let orderImages = [];
 
     const base_url = "<?php echo base_url(); ?>";
-    const urlFacilityIndex = base_url+"/admin/facility";
-    const urlUpdateFacility = base_url + "/admin/facility/" + <?php echo $facility->id_facility; ?> + "/update";
-    const urlUploadImages = base_url+"/admin/facility/upload-images";
+    const urlVariantServiceIndex = base_url + "/admin/variant-services";
+    const urlUpdateVariantService = base_url + "/admin/variant-services/" + <?php echo $variant_service->id; ?> + "/update";
+    const urlUploadImages = base_url + "/admin/variant-services/upload-images";
 
     $(document).ready(function() {
-        imagesFiles = <?php echo json_encode($facility_images); ?>;
+        imagesFiles = <?php echo json_encode($variant_service_images); ?>;
         showPreviewImages();
 
-        caption.summernote({
+        keterangan.summernote({
             placeholder: 'e.g. Free wifi...',
             tabsize: 2,
             height: 200,
@@ -152,13 +205,13 @@
             }
         });
 
-        buttonUpdateFacility.click(function(){
-            buttonUpdateFacility.html(`<i class="fa fa-refresh fa-spin"></i> Please wait...`).attr('disabled', 'disabled');
+        buttonUpdateVariantService.click(function() {
+            buttonUpdateVariantService.html(`<i class="fa fa-refresh fa-spin"></i> Please wait...`).attr('disabled', 'disabled');
             // formEditFacility.submit();
-            updateFacility();
+            updateVariantService();
         });
 
-        facilityImages.on("change", function(e){
+        variant_service_images.on("change", function(e){
             if(e.target.files.length > 0) {
                 for (let i = 0; i < e.target.files.length; i++) {
                     imagesFiles.push(e.target.files[i]);
@@ -228,14 +281,14 @@
         }
     }
 
-    function updateFacility () {
+    function updateVariantService () {
         $.ajax({
             type:"POST",
-            url: urlUpdateFacility,
-            data: formEditFacility.serialize(),
+            url: urlUpdateVariantService,
+            data: formEditVariantService.serialize(),
             dataType: 'json',
             beforeSend: function(request) {
-                buttonUpdateFacility.html(`<i class="fa fa-refresh fa-spin"></i> Please wait...`).attr('disabled', 'disabled');
+                buttonUpdateVariantService.html(`<i class="fa fa-refresh fa-spin"></i> Please wait...`).attr('disabled', 'disabled');
             },
             success: function(res) {
                 if(res.status) {
@@ -248,7 +301,7 @@
                         '',
                         'error'
                     );
-                    buttonUpdateFacility.html(`Update Facility`).attr('disabled', false);
+                    buttonUpdateVariantService.html(`Update variant service`).attr('disabled', false);
                 }
             },
             error: function(xhr, status, error) {
@@ -257,11 +310,11 @@
         });
     }
 
-    function uploadImage (facilityId) {
+    function uploadImage (variantServiceid) {
         let uploadData = new FormData();
         let mediasCount = 0;
 
-        uploadData.append('facility_id', facilityId);
+        uploadData.append('id_varian_service', variantServiceid);
         imagesFiles.forEach(function(item, i){
             if(item instanceof File) {
                 uploadData.append(`image-${i}`, item);
@@ -284,21 +337,20 @@
             contentType: false,
             data: uploadData,
             beforeSend: function(request) {
-                buttonUpdateFacility.html(`<i class="fa fa-refresh fa-spin"></i> Uploading images...`).attr('disabled', 'disabled');
+                buttonUpdateVariantService.html(`<i class="fa fa-refresh fa-spin"></i> Uploading images...`).attr('disabled', 'disabled');
             },
             success: function(res) {
-                console.log(res);
-                // swal(
-                //     res.message,
-                //     '',
-                //     'success'
-                // ).then((willDelete) => {
-                //     if (willDelete) {
-                //         window.location.replace(urlFacilityIndex);
-                //     }
-                // });
+                swal(
+                    res.message,
+                    '',
+                    'success'
+                ).then((willDelete) => {
+                    if (willDelete) {
+                        window.location.replace(urlVariantServiceIndex);
+                    }
+                });
 
-                buttonUpdateFacility.html(`Update Facility`).attr('disabled', false);
+                buttonUpdateVariantService.html(`Update variant service`).attr('disabled', false);
             },
             error: function(xhr, status, error) {
                 console.log(error);

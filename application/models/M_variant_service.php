@@ -28,5 +28,17 @@ class M_variant_service extends CI_Model {
         return $this->db->delete($this->namaTabel);
     }
 
+    function getVariantService($id) {
+        return $this->db->where('id', $id)->get($this->namaTabel)->row();
+    }
+
+    function getVariantServiceImages($id) {
+        return $this->db->where('id_varian_service', $id)->get('tb_photo_service')->result();
+    }
+
+    function update($id, $data) {
+        $this->db->where('id', $id);
+        return $this->db->update($this->namaTabel, $data);
+    }
 
 }

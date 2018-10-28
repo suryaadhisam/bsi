@@ -275,7 +275,7 @@
         if(isChangeImg) {
             data.append("isChangeImg", isChangeImg);
         }
-        data.append("id", $("#idSocmed").val());
+        data.append("idSocmed", $("#idSocmed").val());
 
         $.ajax({
             type: 'POST',
@@ -327,7 +327,7 @@
                 $("#nameSocmedUpdate").val(data.data.socmed_name);
                 $("#linkSocmedUpdate").val(data.data.socmed_url);
 
-                $("#idService").val(idSocmed);
+                $("#idSocmed").val(idSocmed);
                 $('#modalUpdateSocmed').modal('show');
                 isChangeImg = false;
             },

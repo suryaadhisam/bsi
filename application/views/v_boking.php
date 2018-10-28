@@ -187,12 +187,12 @@
                 </li>
                 <li rel-index="1">
                     <a href="#step-2" class="btn disabled" aria-controls="step-2" role="tab" data-toggle="tab">
-                        <span><i class="glyphicon glyphicon-heart"></i></span>
+                        <span><i class="glyphicon glyphicon-plus"></i></span>
                     </a>
                 </li>
                 <li rel-index="2">
                     <a href="#step-3" class="btn disabled" aria-controls="step-3" role="tab" data-toggle="tab">
-                        <span><i class="glyphicon glyphicon-plus"></i></span>
+                        <span><i class="glyphicon glyphicon-heart"></i></span>
                     </a>
                 </li>
                 <li rel-index="3">
@@ -206,7 +206,15 @@
         <div class="tab-content">
             <br><br>
             <div role="tabpanel" class="tab-pane active" id="step-1">
+              <div class="row">
                 <div class="col-md-12">
+                    <h3 style="text-align:center;" ></h3>
+                    <p style="text-align: center;" id="date_boking">hahaha</p>
+                    <button id="step-2-next" class="btn btn-lg btn-primary nextBtn pull-right">Next</button>
+                </div>
+              </div>
+
+                <!-- <div class="col-md-12">
                   <form>
                     <div class="bg-default enquiry-form ">
                           <div class="container">
@@ -253,8 +261,14 @@
                         <button id="step-1-next" disabled = "true" type="button" class="btn btn-lg btn-primary nextBtn pull-right">Next</button>
                       </div>
                     </form>
-                  </div>
+                  </div> -->
             </div>
+            <script type="text/javascript">
+            // $('#datepicker').datepicker({
+            //   minDate:new Date(),
+            //   disabledDates: [new Date()]
+            //   });
+            </script>
 
             <script type="text/javascript">
               $("#datepicker").datepicker({
@@ -263,22 +277,25 @@
                   var dateTime = new Date($(this).datepicker("getDate"));
 
                   var strDateTime =  dateTime.getFullYear() + "-" + (dateTime.getMonth()+1) + "-" + dateTime.getDate();
-                  // var date = $("#scheduleDate").datepicker({ dateFormat: 'dd,MM,yyyy' }).val();
-                  console.log(strDateTime);
                   document.getElementById('date_boking').innerHTML = dateObject;
                   if (dateObject.length != 0) {
                     $('button[type=button]').prop('disabled', false);
                   }
+                  console.log(strDateTime);
                 }
               });
             </script>
 
+
+
             <div role="tabpanel" class="tab-pane" id="step-2">
                 <div class="col-md-12">
-                    <h3 id="date_boking"></h3>
+                    <h3 style="text-align:center;" ></h3>
+                    <p style="padding-left:520px;" id="date_boking"></p>
                     <button id="step-2-next" class="btn btn-lg btn-primary nextBtn pull-right">Next</button>
                 </div>
             </div>
+
             <div role="tabpanel" class="tab-pane" id="step-3">
                 <div class="col-md-12">
                   <div class="row setup-content" id="step-11">
@@ -700,9 +717,10 @@
       });
   </script>
   <script>
-    $( function() {
-    $( "#datepicker" ).datepicker();
-    } );
+    // $( function() {
+    // $( "#datepicker" ).datepicker();
+    //   minDate: 0;
+    // } );
   </script>
 </body>
 

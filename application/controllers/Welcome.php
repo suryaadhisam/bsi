@@ -10,6 +10,7 @@ class Welcome extends CI_Controller {
 			$this->load->model('M_headfoot');
 			$this->load->model('M_comments');
 			$this->load->model('M_facility');
+			$this->load->model('M_flyer');
 	}
 
 	public function index(){
@@ -24,6 +25,7 @@ class Welcome extends CI_Controller {
 		$data['list_testimoni'] = $this->M_comments->get_comments();
 		$data['list_facility'] = $this->M_facility->get_facility();
 		$data['list_info'] = $this->M_headfoot->get_info();
+		$data['list_flyer'] = $this->M_flyer->getListFlyer();
 
 		$this->load->view('v_style', $data);
 		$this->load->view('v_script');
@@ -32,5 +34,20 @@ class Welcome extends CI_Controller {
 		$this->load->view('v_footer', $data);
 
 		// tes komen malu
+	}
+
+	public function cek_facility(){
+		$id_fac = $this->input->post('id_facility');
+		$data = $this->M_facility->cekFacility($id_fac);
+		$data = (int)$data;
+		echo $data;
+		// if ($data == 1) {
+		// 	echo $data;
+		// } else {
+		// 	$message = "Sorry detail facilities are not available";
+		// 	echo $message;
+		// }
+		// echo "lol";
+		
 	}
 }

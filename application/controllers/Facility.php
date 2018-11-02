@@ -51,4 +51,6 @@ class Facility extends CI_Controller {
 		$this->load->view('v_facility_detail', $data);
 		$this->load->view('v_footer');
 	}
+
+	
 }

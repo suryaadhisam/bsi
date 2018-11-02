@@ -80,52 +80,76 @@
       <hr class="my-5">
 
       <!--Section: Not enough-->
-      <section>
-        <h2 style="font-family:Impact, Charcoal, sans-serif; text-align:center;">Facilities</h2>
-        <div class="row features-small mb-5 mt-3 wow fadeIn">
-
-          <div class="row">
-            <?php foreach ($list_facility as $key => $value): ?>
-              <?php if ($value->state == 1) { ?>
-                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 nopr">
-                    <div class="service-block border-bottom border-right">
-                        <div><a href="<?php echo base_url() ?>Facility/detail_facility/<?php echo $value->id_facility; ?>" class="btn-link"><i style="font-size:48px;color:#E65100" class="<?php echo $value->fa_icon; ?>"></i></a></div>
-                        <div class="service-content">
-                            <a href="<?php echo base_url() ?>Facility/detail_facility/<?php echo $value->id_facility; ?>" class="btn-link"><h3 class="service-title"><?php echo $value->title ?></h3></a></div>
-                            <?php $descrip = $value->caption;
-                                  $descrip = substr($descrip,0,80) . '...';?>
+      <div class="container">
+                <!-- service-head -->
+                <div class="row">
+                    <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12 mb60">
                         <div class="">
-                          <p style="text-align:justify;"><?php  echo $descrip ?></p>
+                            <h2><strong>Facilities</strong></h2>
+                        </div>
+                    </div>
+                    <div class="col-xl-8 col-lg-8 offset-md-1 col-md-8 col-sm-12 col-12 mb60">
+                        <div class="">
+                            <p class="lead">Here are the facilities from us, we hope that with this facility you are more comfortable and like to come to Bali Sunset Adventure</p>
                         </div>
                     </div>
                 </div>
-              <?php } ?>
-            <?php endforeach; ?>
-            <hr>
-            <?php foreach ($list_facility as $key => $value): ?>
-              <?php if ($value->state == 2) { ?>
-                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 nopr">
-                    <div class="service-block border-bottom border-right">
-                        <div><a href="#" class="btn-link"><i style="font-size:48px;color:#0000FF" class="<?php echo $value->fa_icon; ?>"></i></a></div>
-                        <div class="service-content">
-                            <a href="<?php echo base_url() ?>Facility/detail_facility/<?php echo $value->id_facility; ?>" class="btn-link"><h3 class="service-title"><?php echo $value->title ?></h3></a></div>
-                            <?php $descrip = $value->caption;
-                                  $descrip = substr($descrip,0,200);?>
-                        <div class="">
-                          <p style="text-align:justify;"><?php  echo $descrip ?></p>
-                        </div>
-                    </div>
+                <div class="row">
+                  <?php foreach ($list_facility as $key => $value): ?>
+                      <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 nopr">
+                          <div class="service-block border-bottom border-right">
+                              <div id="solTitle">
+                              <a data-id="<?php echo $value->id_facility; ?>" href="<?php echo base_url() ?>Facility/detail_facility/<?php echo $value->id_facility; ?>" class="btn-link"><i id="juke"  style="font-size:48px;color:#E65100" class="<?php echo $value->fa_icon; ?>"></i></a>
+                              </div>
+                              <div class="service-content" id="solTitle">
+                                  <a href="<?php echo base_url() ?>Facility/detail_facility/<?php echo $value->id_facility; ?>" class="btn-link"><h3 class="service-title"><?php echo $value->title ?></h3></a></div>
+                                  <?php $descrip = $value->caption;
+                                        $descrip = substr($descrip,0,80) . '...';?>
+                              <div class="">
+                                <p style="text-align:justify;"><?php  echo $descrip ?></p>
+                              </div>
+                          </div>
+                      </div>
+                  <?php endforeach; ?>
                 </div>
-              <?php } ?>
-            <?php endforeach; ?>
-          </div>
-
-        </div>
-      </section>
+            </div>
 
     </div>
 
+     <script>
+            $(document).ready(function() {
+                $("#solTitle a").click(function() {
+                    var id = $(this).data("id");
+                    // alert(id);
+                    $(document).ready(function(){      
+                        $.ajax({
+                            url: "<?php echo base_url(); ?>welcome/cek_facility",
+                            type: "POST",
+                            dataType : "json",
+                            data: {"id_facility": id},
+                            success : function(data) {
+                                    // alert(data);
+                                    if (data == 1) {
+                                        return;
+                                    } else {
+                                        alert("Sorry detail facilities are not available");
+                                        window.location = "<?php echo site_url('services/index'); ?>";
+                                    }
+ 
+                                },
+                                error : function(data) {
+                                    // do something
+                                    alert("hay");
+                                    // console.log(data);
+                                }   
+                            });
+                            
+                        return false;
+                    });
 
+                });
+            });
+        </script>
     <a href="javascript:" id="return-to-top"><i class="fa fa-angle-up"></i></a>
 </body>
 

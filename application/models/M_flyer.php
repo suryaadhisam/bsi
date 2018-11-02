@@ -31,4 +31,9 @@ class M_flyer extends CI_Model {
         return $this->db->update($this->namaTabel, $data);
     }
 
+    function getListFlyer(){
+        $query = $this->db->query('SELECT * FROM tb_flyer WHERE state = 1');
+        return $query->result();
+    }
+
 }

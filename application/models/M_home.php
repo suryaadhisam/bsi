@@ -11,4 +11,9 @@ class M_home extends CI_Model {
     return $query->result();
   }
 
+  function get_flyer(){
+    $query = $this->db->query('SELECT * FROM tb_flyer WHERE state = 1');
+    return $query->result();
+  }
+
 }

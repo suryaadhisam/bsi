@@ -48,4 +48,9 @@ class M_facility extends CI_Model {
         $query = $this->db->query("SELECT * FROM tb_photo_facility WHERE id_facility = '".$id."' AND state=1");
         return $query->result();
     }
+
+    function cekFacility($id){
+        $query = $this->db->query("SELECT 1 FROM tb_photo_facility WHERE id_facility='".$id."' LIMIT 1");
+        return $query->result();
+    }
 }

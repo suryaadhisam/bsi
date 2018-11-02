@@ -9,6 +9,57 @@
 </head>
 <body>
   <div class="wrapper">
+    <?php if(!empty($list_flyer)){ ?>
+        <script type="text/javascript">
+            $( function() {
+                $( "#myModal" ).modal();
+            } );
+        </script>
+    <?php } ?>
+
+    <!-- The Modal -->
+    <div class="modal fade" id="myModal">
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+
+          <!-- Modal Header -->
+          <!-- <div class="modal-header">
+            <h4 class="modal-title">Modal Heading</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div> -->
+
+          <!-- Modal body -->
+          <div class="modal-body">
+          <div class="slider">
+          <div class="owl-carousel owl-one owl-theme">
+                    <?php foreach ($list_flyer as $row): ?>
+                    <div class="item">
+                        <div class="slider-img">
+                            <img src="<?php echo base_url($row->path_img); ?>" alt="">
+                        </div>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                                    <!-- <div class="slider-captions">
+                                        <h4 class="slider-title"></h4>
+                                    </div> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+          </div>
+
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
 
     <div class="slider">
           <div class="owl-carousel owl-one owl-theme">
@@ -36,42 +87,9 @@
             <div class="container">
                 <div class="row">
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
-                        <form>
-                            <div class="row">
-                                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-3 col-12">
-                                    <div class="form-group">
-                                        <label class="control-label sr-only" for="select"></label>
-                                        <div class="select">
-                                            <select id="select_service" name="city" class="form-control" onchange="disableMenu()">
-                                              <?php foreach ($list_services as $row): ?>
-                                                <option value="[<?php echo $row->id; ?>, <?php echo $row->min_person; ?>]"><?php echo $row->varian; ?></option>
-                                              <?php endforeach; ?>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-3 col-12">
-                                    <div class="form-group">
-                                        <label class="control-label sr-only" for="datepicker"></label>
-                                        <div class="input-group">
-                                            <input id="datepicker" name="datepicker" type="text" placeholder="Check In" class="form-control" required>
-                                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-3 col-12">
-                                    <div class="form-group">
-                                        <label class="control-label sr-only" for="select"></label>
-                                        <div class="select" id="app">
-                                            <select id="select_number" name="select" class="form-control"></select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xl-3 col-lg-12 col-md-6 col-sm-3 col-12">
-                                    <button type="submit" name="singlebutton" class="btn btn-primary btn-lg" disabled>Booking Now (soon)</button>
-                                </div>
-                            </div>
-                        </form>
+                        <div class="example2">
+                            <marquee behavior="scroll" direction="left"><h1><font color="white"><b>BALI SUNSET ADVENTURE</b></font></h1></marquee>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -170,7 +188,7 @@
 
 
         <hr>
-        <div class="service-wrapper">
+        <!-- <div class="service-wrapper"> -->
             <div class="container">
                 <!-- service-head -->
                 <div class="row">
@@ -187,11 +205,12 @@
                 </div>
                 <div class="row">
                   <?php foreach ($list_facility as $key => $value): ?>
-                    <?php if ($value->state == 1) { ?>
                       <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 nopr">
                           <div class="service-block border-bottom border-right">
-                              <div><a href="<?php echo base_url() ?>Facility/detail_facility/<?php echo $value->id_facility; ?>" class="btn-link"><i style="font-size:48px;color:#E65100" class="<?php echo $value->fa_icon; ?>"></i></a></div>
-                              <div class="service-content">
+                              <div id="solTitle">
+                              <a data-id="<?php echo $value->id_facility; ?>" href="<?php echo base_url() ?>Facility/detail_facility/<?php echo $value->id_facility; ?>" class="btn-link"><i id="juke"  style="font-size:48px;color:#E65100" class="<?php echo $value->fa_icon; ?>"></i></a>
+                              </div>
+                              <div class="service-content" id="solTitle">
                                   <a href="<?php echo base_url() ?>Facility/detail_facility/<?php echo $value->id_facility; ?>" class="btn-link"><h3 class="service-title"><?php echo $value->title ?></h3></a></div>
                                   <?php $descrip = $value->caption;
                                         $descrip = substr($descrip,0,80) . '...';?>
@@ -200,28 +219,44 @@
                               </div>
                           </div>
                       </div>
-                    <?php } ?>
-                  <?php endforeach; ?>
-                  <hr>
-                  <?php foreach ($list_facility as $key => $value): ?>
-                    <?php if ($value->state == 2) { ?>
-                      <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 nopr">
-                          <div class="service-block border-bottom border-right">
-                              <div><a href="#" class="btn-link"><i style="font-size:48px;color:#0000FF" class="<?php echo $value->fa_icon; ?>"></i></a></div>
-                              <div class="service-content">
-                                  <a href="<?php echo base_url() ?>Facility/detail_facility/<?php echo $value->id_facility; ?>" class="btn-link"><h3 class="service-title"><?php echo $value->title ?></h3></a></div>
-                                  <?php $descrip = $value->caption;
-                                        $descrip = substr($descrip,0,200);?>
-                              <div class="">
-                                <p style="text-align:justify;"><?php  echo $descrip ?></p>
-                              </div>
-                          </div>
-                      </div>
-                    <?php } ?>
                   <?php endforeach; ?>
                 </div>
             </div>
-        </div>
+        <!-- </div> -->
+        <script>
+            $(document).ready(function() {
+                $("#solTitle a").click(function() {
+                    var id = $(this).data("id");
+                    // alert(id);
+                    $(document).ready(function(){      
+                        $.ajax({
+                            url: "<?php echo base_url(); ?>welcome/cek_facility",
+                            type: "POST",
+                            dataType : "json",
+                            data: {"id_facility": id},
+                            success : function(data) {
+                                    // alert(data);
+                                    if (data == 1) {
+                                        return;
+                                    } else {
+                                        alert("Sorry detail facilities are not available");
+                                        window.location = "<?php echo site_url('welcome/index'); ?>";
+                                    }
+ 
+                                },
+                                error : function(data) {
+                                    // do something
+                                    alert("hay");
+                                    // console.log(data);
+                                }   
+                            });
+                            
+                        return false;
+                    });
+
+                });
+            });
+        </script>
 
         <hr>
         <div class="bg-light">

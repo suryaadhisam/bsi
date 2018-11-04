@@ -140,7 +140,7 @@ background-color: #152836
                   <?php $url = base_url().$value->url ?>
                   <li class="col-xs-6 col-sm-4 col-md-2 col-lg-2" data-responsive="<?php echo $url; ?>" data-src="<?php echo $url; ?>" data-sub-html="<h4><?php echo $value->title ?></h4><p><?php echo $value->sumary ?>.</p>">
                       <a href="">
-                          <img class="img-responsive" src="<?php echo $url; ?>">
+                          <img class="img-responsive" style="width:auto; height:80px;" src="<?php echo $url; ?>">
                       </a>
                   </li>
                 <?php endforeach; ?>

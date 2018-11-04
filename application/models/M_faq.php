@@ -31,7 +31,7 @@ class M_faq extends CI_Model {
     }
 
     function get_faq(){
-      $query = $this->db->query('SELECT * FROM tb_faq');
+      $query = $this->db->query('SELECT * FROM tb_faq WHERE state = 1');
       return $query->result();
     }
 }

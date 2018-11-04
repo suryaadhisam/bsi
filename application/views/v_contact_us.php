@@ -130,7 +130,7 @@
                   <label for="fname">Full Name</label>
                 </div>
                 <div class="col-75">
-                  <input type="text" id="name" name="name" placeholder="Your name..">
+                  <input type="text" id="name" name="name" placeholder="Your name.." required>
                 </div>
               </div>
               <div class="row">
@@ -138,7 +138,7 @@
                   <label for="lname">Email</label>
                 </div>
                 <div class="col-75">
-                  <input type="email" id="email" name="email" placeholder="Your email..">
+                  <input type="email" id="email" name="email" placeholder="Your email.." required>
                 </div>
               </div>
               <div class="row">
@@ -148,7 +148,7 @@
                 <div class="col-75">
                   <select id="country" name="country" class="form-control">
                     <?php foreach ($list_country as $key => $row): ?>
-                      <option value="<?php echo $row->countryName; ?>"><?php echo $row->countryName; ?></option>
+                      <option required value="<?php echo $row->countryName; ?>"><?php echo $row->countryName; ?></option>
                     <?php endforeach; ?>
                   </select>
                 </div>
@@ -159,7 +159,7 @@
                 </div>
                 <div class="col-75">
                   <select id="country" name="gender" class="form-control">
-                      <option value="male">Male</option>
+                      <option value="male" required>Male</option>
                       <option value="male">Female</option>
                   </select>
                 </div>
@@ -169,12 +169,12 @@
                   <label for="subject">Message</label>
                 </div>
                 <div class="col-75">
-                  <textarea id="subject" name="message" placeholder="Write something.." style="height:200px"></textarea>
+                  <textarea required id="subject" name="message" placeholder="Write something.." style="height:200px"></textarea>
                 </div>
               </div>
               <div class="row">
                 <div class="col" style="text-align:right;">
-                  <input type="submit" value="Submit">
+                  <input type="submit" value="Submit" >
                 </div>
               </div>
             </form>

@@ -102,7 +102,7 @@
                               <a data-id="<?php echo $value->id_facility; ?>" href="<?php echo base_url() ?>Facility/detail_facility/<?php echo $value->id_facility; ?>" class="btn-link"><i id="juke"  style="font-size:48px;color:#E65100" class="<?php echo $value->fa_icon; ?>"></i></a>
                               </div>
                               <div class="service-content" id="solTitle">
-                                  <a href="<?php echo base_url() ?>Facility/detail_facility/<?php echo $value->id_facility; ?>" class="btn-link"><h3 class="service-title"><?php echo $value->title ?></h3></a></div>
+                                  <a data-id="<?php echo $value->id_facility; ?>" href="<?php echo base_url() ?>Facility/detail_facility/<?php echo $value->id_facility; ?>" class="btn-link"><h3 class="service-title"><?php echo $value->title ?></h3></a></div>
                                   <?php $descrip = $value->caption;
                                         $descrip = substr($descrip,0,80) . '...';?>
                               <div class="">

@@ -38,6 +38,7 @@ class Welcome extends CI_Controller {
 
 	public function cek_facility(){
 		$id_fac = $this->input->post('id_facility');
+		$id_fac = (int)$id_fac;
 		$data = $this->M_facility->cekFacility($id_fac);
 		$data = (int)$data;
 		echo $data;

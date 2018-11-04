@@ -111,7 +111,11 @@
         .jssort111 .ti {position:absolute;bottom:0px;left:0px;width:100%;height:28px;line-height:28px;text-align:center;font-size:12px;color:#fff;background-color:rgba(0,0,0,.3)}
         .jssort111 .pav .ti, .jssort111 .pdn .ti, .jssort111 .p:hover.pdn .ti{color:#000;background-color:rgba(255,255,255,.6);}
     </style>
-
+    <style>
+        .ui-helper-center {
+            text-align: center;
+        }
+    </style>
 
 
 
@@ -158,6 +162,26 @@
     </div>
 
     <?php foreach ($list_service_detail as $key): ?>
+        <table class="table" align="center">
+        <thead>
+        <tr>
+            <th class="ui-helper-center">Min Person</th>
+            <th class="ui-helper-center">IDR</th>
+            <th class="ui-helper-center">USD</th>
+        </tr>
+        </thead>
+        <tbody>
+        <?php
+            $number_usd = $key->harga_usd;
+            $number_idr = number_format("$key->harga_idr",2,",",".");
+            ?>
+            <tr>
+                <td class="ui-helper-center"><?php echo $key->min_person ?></td>
+                <td class="ui-helper-center"><?php echo "Rp ".$number_idr ?></td>
+                <td class="ui-helper-center"><?php echo '$ ' . number_format($number_usd, 2);?></td>
+            </tr>
+        </tbody>
+    </table>
       <p style="text-align:justify; font-family:Georgia, serif;padding:25px 0px 25px 0px;">
         <?php echo $key->keterangan; ?>
       </p>

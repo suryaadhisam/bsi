@@ -6,6 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:300,300i,400,400i,700,700i,800,800i" rel="stylesheet">
+    <style>
+        .center {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 50%;
+        }
+
+        .modal-backdrop {
+            background-color: #fd7e14;
+        }
+    </style>
 </head>
 <body>
   <div class="wrapper">
@@ -35,7 +47,7 @@
                     <?php foreach ($list_flyer as $row): ?>
                     <div class="item">
                         <div class="slider-img">
-                            <img src="<?php echo base_url($row->path_img); ?>" alt="">
+                            <a href="<?php echo base_url($row->path_img); ?>" target="_blank"><img src="<?php echo base_url($row->path_img); ?>" style="width:auto; height:100%" class="center"></a>
                         </div>
                         <div class="container">
                             <div class="row">
@@ -208,10 +220,9 @@
                       <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 nopr">
                           <div class="service-block border-bottom border-right">
                               <div id="solTitle">
-                              <a data-id="<?php echo $value->id_facility; ?>" href="<?php echo base_url() ?>Facility/detail_facility/<?php echo $value->id_facility; ?>" class="btn-link"><i id="juke"  style="font-size:48px;color:#E65100" class="<?php echo $value->fa_icon; ?>"></i></a>
+                                <a data-id="<?php echo $value->id_facility; ?>" href="<?php echo base_url() ?>Facility/detail_facility/<?php echo $value->id_facility; ?>" class="btn-link"><i id="juke"  style="font-size:48px;color:#E65100" class="<?php echo $value->fa_icon; ?>"></i></a>
+                                <a data-id="<?php echo $value->id_facility; ?>" href="<?php echo base_url() ?>Facility/detail_facility/<?php echo $value->id_facility; ?>" class="btn-link"><h3 class="service-title"><?php echo $value->title ?></h3></a>
                               </div>
-                              <div class="service-content" id="solTitle">
-                                  <a href="<?php echo base_url() ?>Facility/detail_facility/<?php echo $value->id_facility; ?>" class="btn-link"><h3 class="service-title"><?php echo $value->title ?></h3></a></div>
                                   <?php $descrip = $value->caption;
                                         $descrip = substr($descrip,0,80) . '...';?>
                               <div class="">
@@ -246,8 +257,8 @@
                                 },
                                 error : function(data) {
                                     // do something
-                                    alert("hay");
-                                    // console.log(data);
+                                    alert("Sorry detail facilities are not available");
+                                    window.location = "<?php echo site_url('welcome/index'); ?>";
                                 }   
                             });
                             

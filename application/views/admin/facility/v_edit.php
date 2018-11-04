@@ -59,10 +59,18 @@
                             </div>
                             <div class="card-body">
                                 <form method="POST" action="<?php echo base_url('admin/facility/'. $facility->id_facility .'/update'); ?>" class="form-horizontal" id="formEditFacility" accept-charset="UTF-8" enctype="multipart/form-data">
+                                    <input type="hidden" name="state" value="<?php echo $facility->state ?>">
                                     <div class="form-group">
                                         <label class="col-md-12 col-form-label">Title</label>
                                         <div class="col-md-12">
                                             <input value="<?php echo $facility->title ?>" type="text" id="title" name="title" class="form-control" placeholder="Free wifi...">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-md-12 col-form-label">Fa Icon (<a target="_blank" href="https://fontawesome.com/v4.7.0/icons/">font awesome list</a>)</label>
+                                        <div class="col-md-12">
+                                            <input type="text" id="fa_icon" name="fa_icon" class="form-control" placeholder="E.g. fa fa-wifi" value="<?php echo $facility->fa_icon ?>">
                                         </div>
                                     </div>
 
@@ -287,16 +295,15 @@
                 buttonUpdateFacility.html(`<i class="fa fa-refresh fa-spin"></i> Uploading images...`).attr('disabled', 'disabled');
             },
             success: function(res) {
-                console.log(res);
-                // swal(
-                //     res.message,
-                //     '',
-                //     'success'
-                // ).then((willDelete) => {
-                //     if (willDelete) {
-                //         window.location.replace(urlFacilityIndex);
-                //     }
-                // });
+                swal(
+                    res.message,
+                    '',
+                    'success'
+                ).then((willDelete) => {
+                    if (willDelete) {
+                        window.location.replace(urlFacilityIndex);
+                    }
+                });
 
                 buttonUpdateFacility.html(`Update Facility`).attr('disabled', false);
             },

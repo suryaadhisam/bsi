@@ -48,6 +48,7 @@ class Facility extends CI_Controller {
         try {
             $data = array(
                 'title' => $this->input->post('title'),
+                'fa_icon' => $this->input->post('fa_icon'),
                 'caption' => $this->input->post('caption'),
                 'state' => 1
             );
@@ -186,6 +187,7 @@ class Facility extends CI_Controller {
         try {
             $data = array(
                 'title' => $this->input->post('title'),
+                'fa_icon' => $this->input->post('fa_icon'),
                 'caption' => $this->input->post('caption'),
                 'state' => $this->input->post('state')
             );

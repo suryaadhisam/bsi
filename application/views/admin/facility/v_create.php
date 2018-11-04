@@ -66,6 +66,13 @@
                                     </div>
 
                                     <div class="form-group">
+                                        <label class="col-md-12 col-form-label">Fa Icon (<a target="_blank" href="https://fontawesome.com/v4.7.0/icons/">font awesome list</a>)</label>
+                                        <div class="col-md-12">
+                                            <input type="text" id="fa_icon" name="fa_icon" class="form-control" placeholder="E.g. fa fa-wifi">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
                                         <input class="form-control display-none" id="facility_images" placeholder="e.g. Choose file ..." multiple="" accept="image/*" name="facility_images[]" type="file">
                                         <div class="col-sm-12 padding-right-15 padding-left-15 margin-bottom-1rem uploadImagesWraper">
                                             <label for="event_images">Images</label>

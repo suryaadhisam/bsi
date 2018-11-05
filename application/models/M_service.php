@@ -9,7 +9,8 @@ class M_service extends CI_Model {
     }
 
     function allService(){
-        return $this->db->get('tb_varian_service')->result();
+        $query = $this->db->query("SELECT b.*, (SELECT a.url FROM tb_photo_service AS a WHERE b.id = a.id_varian_service LIMIT 1) as path_photo FROM tb_varian_service AS b WHERE state = 1");
+        return $query->result();
     }
 
     function getAllServices($where = array()){

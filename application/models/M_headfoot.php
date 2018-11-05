@@ -23,7 +23,7 @@ class M_headfoot extends CI_Model {
   }
 
   function get_services(){
-    $query = $this->db->query('SELECT * FROM tb_varian_service WHERE state = 1');
+    $query = $this->db->query('SELECT b.*, (SELECT a.url FROM tb_photo_service AS a WHERE b.id = a.id_varian_service LIMIT 1) as path_photo FROM tb_varian_service AS b WHERE state = 1');
     return $query->result();
   }
 

@@ -29,29 +29,59 @@ class Contact_Us extends CI_Controller {
 	}
 
 	public function create_testi(){
-		$name = $this->input->post('name');
-		$email = $this->input->post('email');
-		$country = $this->input->post('country');
-		$message = $this->input->post('message');
-		$gender = $this->input->post('gender');
+		$config['upload_path'] = './uploads/comments/';
+		$config['allowed_types'] = 'gif|jpg|png';
+		$config['max_size'] = 1024 * 5;
 
-		if ($gender == 'Male') {
-			$path_img = 'uploads/comments/male.png';
+		$this->load->library('upload', $config);
+		if (!$this->upload->do_upload()) {
+			# code...
+			$name = $this->input->post('name');
+			$email = $this->input->post('email');
+			$country = $this->input->post('country');
+			$message = $this->input->post('message');
+			$gender = $this->input->post('gender');
+
+			if ($gender == 'Male') {
+				$path_img = 'uploads/comments/male.png';
+			}
+			else {
+				$path_img = 'uploads/comments/female.png';
+			}
+
+			$data = array(
+				'name' => $name,
+				'email' => $email,
+				'country' => $country,
+				'comments' => $message,
+				'gender' => $gender,
+				'path_img' => $path_img
+				);
+
+			$this->M_contact->input_data($data,'tb_testimoni');
+			redirect('Contact_Us/index');
+		} else {
+			# code...
+			$img = $this->upload->data();
+			$path_img = $img['file_name'];
+			$name = $this->input->post('name');
+			$email = $this->input->post('email');
+			$country = $this->input->post('country');
+			$message = $this->input->post('message');
+			$gender = $this->input->post('gender');
+			$data = array(
+				'name' => $name,
+				'email' => $email,
+				'country' => $country,
+				'comments' => $message,
+				'gender' => $gender,
+				'path_img' => $path_img
+				);
+			
+			$this->M_contact->input_data($data,'tb_testimoni');
+			redirect('Contact_Us/index');
 		}
-		else {
-			$path_img = 'uploads/comments/female.png';
-		}
+		
 
-		$data = array(
-			'name' => $name,
-			'email' => $email,
-			'country' => $country,
-			'comments' => $message,
-			'gender' => $gender,
-			'path_img' => $path_img
-			);
-
-		$this->M_contact->input_data($data,'tb_testimoni');
-		redirect('Contact_Us/index');
 	}
 }

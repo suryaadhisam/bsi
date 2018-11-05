@@ -124,7 +124,7 @@
 
 
           <div style="padding:10px 0px 0px 0px;">
-            <form action="<?php echo base_url(). 'Contact_Us/create_testi'; ?>" method="post">
+            <form action="<?php echo base_url(). 'Contact_Us/create_testi'; ?>" method="post" enctype="multipart/form-data">
               <div class="row">
                 <div class="col-25">
                   <label for="fname">Full Name</label>
@@ -153,6 +153,16 @@
                   </select>
                 </div>
               </div>
+              
+              <div class="row">
+                <div class="col-25">
+                  <label for="lname">Photo</label>
+                </div>
+                <div class="col-75">
+                  <input type="file" id="photo" name="photo" accept="image/x-png,image/jpg,image/jpeg">
+                </div>
+              </div>
+
               <div class="row">
                 <div class="col-25">
                   <label for="country">Gender</label>

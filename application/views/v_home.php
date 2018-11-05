@@ -150,7 +150,7 @@
                     <div class="row ">
                         <div class="col-xl-4 col-lg-4 offset-md-1 col-md-4 col-sm-12 col-12 mb40">
                             <div class="tour-img">
-                                <a href="<?php echo base_url($key->photo); ?>" class="imghover" target="_blank"> <img  alt="<?php echo $key->varian; ?>" src="<?php echo base_url($key->photo); ?>" class="img-fluid"></a>
+                                <a href="<?php echo base_url($key->photo); ?>" class="imghover" target="_blank"> <img  alt="<?php echo $key->varian; ?>" src="<?php echo base_url($key->path_photo); ?>" class="img-fluid"></a>
                             </div>
                         </div>
                         <div class="col-xl-5 col-lg-5 offset-md-1 col-md-5 col-sm-12 col-12 mb40">
@@ -183,7 +183,7 @@
                         </div>
                         <div class="col-xl-4 col-lg-4 offset-md-1 col-md-4 col-sm-12 col-12 mb40">
                             <div class="tour-img">
-                                <a href="<?php echo base_url($key->photo); ?>" class="imghover" target="_blank"> <img src="<?php echo base_url($key->photo); ?>" alt="<?php echo $key->varian; ?>" class="img-fluid"></a>
+                                <a href="<?php echo base_url($key->photo); ?>" class="imghover" target="_blank"> <img src="<?php echo base_url($key->path_photo); ?>" alt="<?php echo $key->varian; ?>" class="img-fluid"></a>
                             </div>
                         </div>
                     </div>

@@ -32,7 +32,7 @@
             <div class="tab-pane fade in show <?php echo ($key==0) ? 'active':''; ?>" id="<?php echo $row->id; ?>" role="tabpanel">
               <div class="row">
                   <div class="col-md-6 mb-4">
-                    <a href="<?php echo base_url($row->photo); ?>" class="imghover"><img  style="height:350px; width:auto;padding-left:100px;" src="<?php echo base_url($row->photo); ?>" class="img-fluid z-depth-1-half" alt=""></a>
+                    <a href="<?php echo base_url($row->path_photo); ?>" class="imghover"><img  style="height:350px; width:auto;padding-left:100px;" src="<?php echo base_url($row->path_photo); ?>" class="img-fluid z-depth-1-half" alt=""></a>
                   </div>
                   <div class="col-md-6 mb-4">
                     <a href="<?php echo base_url() ?>Services/detail_service/<?php echo $row->id; ?>" target="_blank"><h3 class="h3 mb-3"><?php echo $row->varian ?></h3></a>

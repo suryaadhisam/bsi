@@ -28,13 +28,74 @@ class Contact_Us extends CI_Controller {
 		$this->load->view('v_footer');
 	}
 
+
+	// public function upload_gambar(){
+	// 	 //pathDestination
+	// 	 $pathDestination = "uploads/comments/";
+ 
+	// 	 $data = array();
+	// 	 foreach ($_FILES as $key => $value) {
+	// 		 array_push($data, $key);
+	// 		 $resultTmp = $this->do_upload($key, $pathDestination, "variant-service-" . $variantServiceId . "-img");
+ 
+	// 		 if ($resultTmp["status"]) {
+	// 			 @unlink($_FILES[$this->input->post($key)]);
+ 
+	// 			 $data = array(
+	// 				 'id_varian_service' => $variantServiceId,
+	// 				 'url' => $pathDestination . $resultTmp["data"]["upload_data"]["file_name"],
+	// 				 'state' => 1
+	// 			 );
+
+
+	// 			 $this->m_photo_service->store($data);
+	// 		 }
+	// 	 }
+	// 	 echo json_encode(array(
+	// 		 'status' => true,
+	// 		 'data' => array(),
+	// 		 'message' => 'Success',
+	// 		 'errors' => array()
+	// 	 ));
+	// }
+
+
+	// public function do_upload($formFileName, $pathImg, $fileNameImg) {
+	// 	$config['upload_path']          = realpath(FCPATH.$pathImg);
+	// 	$config['allowed_types']        = 'jpg|png|jpeg';
+	// 	$config['max_size']             = 1024 * 5; //5MB
+	// 	$config['file_name']            = $fileNameImg;
+
+	// 	$this->load->library('upload', $config);
+
+	// 	if ( !$this->upload->do_upload($formFileName)) {
+	// 		$error = array($formFileName => $this->upload->display_errors());
+	// 		$result = array(
+	// 			"status" => false,
+	// 			"data" => array(),
+	// 			"message" => "Failed upload img",
+	// 			"errors" => $error
+	// 		);
+	// 	}
+	// 	else {
+	// 		$data = array('upload_data' => $this->upload->data());
+	// 		$result = array(
+	// 			"status" => true,
+	// 			"data" => $data,
+	// 			"message" => "Successfully upload img",
+	// 			"errors" => array()
+	// 		);
+	// 	}
+	// 	return $result;
+	// }
+
 	public function create_testi(){
 		$config['upload_path'] = './uploads/comments/';
 		$config['allowed_types'] = 'gif|jpg|png';
 		$config['max_size'] = 1024 * 5;
 
 		$this->load->library('upload', $config);
-		if (!$this->upload->do_upload()) {
+		if (!$this->upload->do_upload('photo')) {
 			# code...
 			$name = $this->input->post('name');
 			$email = $this->input->post('email');
@@ -42,7 +103,7 @@ class Contact_Us extends CI_Controller {
 			$message = $this->input->post('message');
 			$gender = $this->input->post('gender');
 
-			if ($gender == 'Male') {
+			if ($gender == 'male') {
 				$path_img = 'uploads/comments/male.png';
 			}
 			else {

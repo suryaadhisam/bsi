@@ -170,7 +170,7 @@
                 <div class="col-75">
                   <select id="country" name="gender" class="form-control">
                       <option value="male" required>Male</option>
-                      <option value="male">Female</option>
+                      <option value="female">Female</option>
                   </select>
                 </div>
               </div>

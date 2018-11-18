@@ -31,4 +31,9 @@ class M_testimoni extends CI_Model {
         $this->db->where('id_comments', $id);
         return $this->db->update($this->namaTabel, $data);
     }
+
+    function getApprovedTestimony() {
+        $query = $this->db->query('SELECT * FROM ' . $this->namaTabel . ' WHERE state=1');
+        return $query->result();
+    }
 }

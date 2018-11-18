@@ -13,9 +13,25 @@ class Testimoni extends CI_Controller {
 		$this->load->model('m_testimoni');
 	}
 
-	public function index() {
+    public function approvedTestimony() {
         $data = array();
-        $data['title'] = "Testimoni || Sunset Bali Adventure";
+        $data['title'] = "Approved Testimony || Sunset Bali Adventure";
+
+        $data['style'] = $this->load->view('admin/template/v_style', '', TRUE);
+        $data['script'] = $this->load->view('admin/template/v_script', '', TRUE);
+
+        $data['footer'] = $this->load->view('admin/template/v_footer', '', TRUE);
+        $data['menu_admin_left'] = $this->load->view('admin/template/v_menu_admin_left', '', TRUE);
+        $data['menu_admin_top'] = $this->load->view('admin/template/v_menu_admin_top', '', TRUE);
+
+        $data["testimoni"] = $this->m_testimoni->getApprovedTestimony();
+
+        $this->load->view('admin/testimoni/v_approved_testimony', $data);
+    }
+
+	public function pendingTestimony() {
+        $data = array();
+        $data['title'] = "Pending Testimony || Sunset Bali Adventure";
 
         $data['style'] = $this->load->view('admin/template/v_style', '', TRUE);
         $data['script'] = $this->load->view('admin/template/v_script', '', TRUE);
@@ -26,7 +42,7 @@ class Testimoni extends CI_Controller {
 
         $data["testimoni"] = $this->m_testimoni->getAllTestimoniPending();
 
-        $this->load->view('admin/testimoni/v_index', $data);
+        $this->load->view('admin/testimoni/v_pending_testimony', $data);
 	}
 
     public function changeState() {

@@ -125,6 +125,7 @@ class Contact_Us extends CI_Controller {
 			# code...
 			$img = $this->upload->data();
 			$path_img = $img['file_name'];
+			$path_img = 'uploads/comments/'.$path_img;
 			$name = $this->input->post('name');
 			$email = $this->input->post('email');
 			$country = $this->input->post('country');

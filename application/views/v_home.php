@@ -159,7 +159,7 @@
                                     <h2 class="mb30"><a href="<?php echo base_url() ?>Services/detail_service/<?php echo $key->id; ?>" class="title"><?php echo $key->varian; ?></a></h2>
                                     <?php $sumary = $key->keterangan;
                                           $sumary = substr($sumary,0,80) . '...';?>
-                                    <p class="mb30"><?php echo $sumary ?></p>
+                                    <!-- <p class="mb30"><?php echo $sumary ?></p> -->
                                     <a href="<?php echo base_url() ?>Services/detail_service/<?php echo $key->id; ?>" class="btn-link">Go For Details...<i class="fa fa-angle-right"></i></a>
                                 </div>
                             </div>
@@ -176,7 +176,7 @@
                                     <h2 class="mb30"><a href="<?php echo base_url() ?>Services/detail_service/<?php echo $key->id; ?>" class="title"><?php echo $key->varian; ?></a></h2>
                                     <?php $sumary = $key->keterangan;
                                           $sumary = substr($sumary,0,80) . '...';?>
-                                    <p class="mb30"><?php echo $sumary ?></p>
+                                    <!-- <p class="mb30"><?php echo $sumary ?></p> -->
                                     <a href="<?php echo base_url() ?>Services/detail_service/<?php echo $key->id; ?>" class="btn-link">Go For Details...<i class="fa fa-angle-right"></i></a>
                                 </div>
                             </div>

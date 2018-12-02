@@ -44,7 +44,8 @@
         <!-- Breadcrumb -->
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="<?php echo base_url('admin/dashboard'); ?>">Dashboard</a></li>
-            <li class="breadcrumb-item active">Pending Testimoni</li>
+            <li class="breadcrumb-item">Testimony</li>
+            <li class="breadcrumb-item active">Pending</li>
         </ol>
 
         <div class="container-fluid">
